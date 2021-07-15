@@ -1,0 +1,132 @@
+{
+	"name": "Default",
+	
+	"editor_actions_icon_background": "#ffffff",
+	"editor_actions_icon_tint": "686871",
+	"editor_actions_popover_background": "#f7f7f7",
+	
+	"library_background": "#fafafa",
+	"thumbnail_border": "#d1d1d1",
+	
+	"default_text": "#333333",
+	
+	"__tint": "#5794b0",
+	"tint": "#0987b4",
+	
+	"text_selection_tint": "#5794b0",
+	"bar_background": "#ffffff",
+	"tab_background": "#f0f0f0",
+	"tab_title": "#000000",
+	"separator_line": "#b3b3b3",
+	
+	"background": "#ffffff",
+	
+	"gutter_background": "#fafafa",
+	"gutter_border": "#dddddd",
+	"line_number": "#a5a5a5",
+	
+	"interstitial": "#f2f2f2",
+	"error_text": "#ce5149",
+	
+	"scopes": {
+		"default": {
+			"color": "#000000"
+		},
+		"string": {
+			"color": "#ce5149"
+		},
+		"docstring": {
+			"color": "#447919",
+			"font-style": "italic"
+		},
+		"number": {
+			"color": "#2682d5"
+		},
+		"keyword": {
+			"color": "#a4258f"
+		},
+		"module": {
+			"color": "#6e41a8"
+		},
+		"function": {
+			"color": "#21767e"
+		},
+		"builtinfunction": {
+			"color": "#21767e"
+		},
+		"functiondef": {
+			"color": "#21767e",
+			"font-style": "bold"
+		},
+		"classdef": {
+			"color": "#21767e",
+			"font-style": "bold"
+		},
+        "class": {
+            "color": "#21767e"
+        },
+		"comment": {
+			"color": "#808080",
+			"font-style": "italic"
+		},
+		"marker": {
+			"box-background-color": "#ffff0030",
+			"box-border-color": "#ffe5b3",
+			"box-border-type": 4
+		},
+		
+		"decorator": {
+			"color": "#99684c"
+		},
+		
+		"formatting": {
+			"color": "#80808080"
+		},
+		"codeblock-start": {
+			"color": "#80808080"
+		},
+		"bold": {
+			"font-style": "bold"
+		},
+		"italic": {
+			"font-style": "italic"
+		},
+		"bold-italic": {
+			"font-style": "bold-italic"
+		},
+		"heading-1": {
+			"font-style": "bold"
+		},
+		"heading-2": {
+			"font-style": "bold"
+		},
+		"heading-3": {
+			"font-style": "bold"
+		},
+		"link": {
+			"text-decoration": "underline"
+		},
+		"code": {
+			"background-color": "#80808020",
+			"corner-radius": 2.0
+		},
+		
+		"project": {
+			"font-style": "bold"
+		},
+		"checkbox": {
+			"checkbox": true
+		},
+		"checkbox-done": {
+			"checkbox": true,
+			"done": true
+		},
+		"task-done": {
+			"text-decoration": "strikeout",
+			"color": "#66666680"
+		},
+		"tag": {
+			"text-decoration": "none"
+		}
+	}
+}
