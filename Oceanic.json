@@ -1,0 +1,125 @@
+{
+	"name": "Oceanic",
+	
+	"library_background": "#1c2933",
+	"thumbnail_border": "#1f424c",
+	
+	"default_text": "#f8f8f2",
+	"error_text": "#ea9292",
+	"dark_keyboard": true,
+	
+	"tint": "#9ddef4",
+	"library_tint": "#9adef5",
+	
+	"text_selection_tint": "#42505a",
+	"bar_background": "#293d4c",
+	"tab_background": "#23333f",
+	"tab_title": "#8f8e8c",
+	"separator_line": "#1e2b34",
+	
+	"background": "#24333e",
+	
+	"gutter_background": "#233541",
+	"gutter_border": "#1f424c",
+	"line_number": "#8f8e8c",
+	
+	"font-size": 15.0,
+	"font-family": "Menlo-Regular",
+	
+	"interstitial": "#1c2933",
+	
+	"scopes": {
+		"default": {
+			"color": "#f9f9f5"
+		},
+		
+		"string": {
+			"color": "#9ddef4"
+		},
+		"docstring": {
+			"color": "#9ddef4",
+			"font-style": "italic"
+		},
+		"number": {
+			"color": "#c4e188"
+		},
+		"keyword": {
+			"color": "#ea9292"
+		},
+		"module": {
+			"color": "#ffdab7"
+		},
+		"function": {
+			"color": "#f6bcf0"
+		},
+		"builtinfunction": {
+			"color": "#f6bcf0"
+		},
+		"functiondef": {
+			"color": "#f6bcf0",
+			"font-style": "bold"
+		},
+		"classdef": {
+			"color": "#f6bcf0",
+			"font-style": "bold"
+		},
+        "class": {
+            "color": "#f6bcf0"
+        },
+		"comment": {
+			"color": "#808080",
+			"font-style": "italic"
+		},
+		
+		"formatting": {
+			"color": "#80808080"
+		},
+		"codeblock-start": {
+			"color": "#80808080"
+		},
+		"bold": {
+			"font-style": "bold"
+		},
+		"italic": {
+			"font-style": "italic"
+		},
+		"bold-italic": {
+			"font-style": "bold-italic"
+		},
+		"heading-1": {
+			"font-style": "bold"
+		},
+		"heading-2": {
+			"font-style": "bold"
+		},
+		"heading-3": {
+			"font-style": "bold"
+		},
+		"link": {
+			"text-decoration": "underline"
+		},
+		"code": {
+			"background-color": "#80808040",
+			"corner-radius": 2.0
+		},
+		
+		
+		"project": {
+			"font-style": "bold"
+		},
+		"checkbox": {
+			"checkbox": true
+		},
+		"checkbox-done": {
+			"checkbox": true,
+			"done": true
+		},
+		"task-done": {
+			"text-decoration": "strikeout",
+			"color": "#99999980"
+		},
+		"tag": {
+			"text-decoration": "none"
+		}
+	}
+}
