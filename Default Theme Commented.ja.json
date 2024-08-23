@@ -1,7 +1,13 @@
 {
-    "name": "Default Commented", "name___comment": "The theme's display name in the Themes menu.",
+    "name": "Default Commented", "name___comment": {
+      "en": "The theme's display name in the Themes menu.",
+      "ja": "「テーマ」メニューでのテーマの表示名。"
+    },
     
-    "library_background": "#fafafa", "library_background___comment": "The background color of the Script Library.",
+    "library_background": "#fafafa", "library_background___comment": {
+      "en": "The background color of the Script Library.",
+      "ja": "スクリプト ライブラリの背景色。"
+    },
     "thumbnail_border": "#d1d1d1", "thumbnail_border___comment": "The color of the borders between files in the Script Library.",
     
     "default_text": "#333333", "default_text___comment": "The default color of interface text.",
