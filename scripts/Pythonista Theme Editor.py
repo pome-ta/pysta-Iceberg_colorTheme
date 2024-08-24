@@ -96,7 +96,7 @@ def main():
   if not edited_theme:
     return
   user_theme_path = os.path.join(get_user_themes_path(), 'MyTheme.json')
-  with open(user_theme_path, 'w') as f:
+  with open(user_theme_path, 'w', encoding='utf-8') as f:
     f.write(edited_theme)
   set_theme('User:MyTheme')
   dialogs.hud_alert('Theme saved')
