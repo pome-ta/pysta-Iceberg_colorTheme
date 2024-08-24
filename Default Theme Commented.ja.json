@@ -14,102 +14,102 @@
   "thumbnail_border": "#d1d1d1",
   "thumbnail_border___comment": {
     "en": "The color of the borders between files in the Script Library.",
-    "ja": "The color of the borders between files in the Script Library."
+    "ja": "スクリプト ライブラリ内のファイル間の境界線の色。"
   },
 
   "default_text": "#333333",
   "default_text___comment": {
     "en": "The default color of interface text.",
-    "ja": "The default color of interface text."
+    "ja": "インターフェイステキストのデフォルトの色。"
   },
 
   "tint": "#5794b0",
   "tint___comment": {
     "en": "The tint color of interface buttons.",
-    "ja": "The tint color of interface buttons."
+    "ja": "インターフェースボタンの色合い。"
   },
 
   "text_selection_tint": "#5794b0",
   "text_selection_tint___comment": {
     "en": "The tint color of the text selection and cursor.",
-    "ja": "The tint color of the text selection and cursor."
+    "ja": "テキスト選択とカーソルの色合い。"
   },
 
   "bar_background": "#ffffff",
   "bar_background___comment": {
     "en": "The background color of the toolbar and the active tab.",
-    "ja": "The background color of the toolbar and the active tab."
+    "ja": "ツールバーとアクティブなタブの背景色。"
   },
 
   "tab_background": "#f0f0f0",
   "tab_background___comment": {
     "en": "The background color of inactive tabs.",
-    "ja": "The background color of inactive tabs."
+    "ja": "非アクティブなタブの背景色。"
   },
 
   "tab_title": "#000000",
   "tab_title___comment": {
     "en": "The color of the tab title text.",
-    "ja": "The color of the tab title text."
+    "ja": "タブのタイトルのテキストの色。"
   },
 
   "separator_line": "#b3b3b3",
   "separator_line___comment": {
     "en": "The color of the separator line between toolbar/tabs and editor.",
-    "ja": "The color of the separator line between toolbar/tabs and editor."
+    "ja": "ツールバー/タブとエディターの間の区切り線の色。"
   },
 
   "background": "#ffffff",
   "background___comment": {
     "en": "The default background color of the editor.",
-    "ja": "The default background color of the editor."
+    "ja": "エディターのデフォルトの背景色。"
   },
 
   "gutter_background": "#fafafa",
   "gutter_background___comment": {
     "en": "The background color of the line number column on the left side of the editor.",
-    "ja": "The background color of the line number column on the left side of the editor."
+    "ja": "エディターの左側の行番号列の背景色。"
   },
 
   "gutter_border": "#dddddd",
   "gutter_border___comment": {
     "en": "The color of the border that separates the gutter from the editor.",
-    "ja": "The color of the border that separates the gutter from the editor."
+    "ja": "エディターから余白を区切る境界線の色。"
   },
 
   "line_number": "#a5a5a5",
   "line_number___comment": {
     "en": "The color of the line numbers in the gutter.",
-    "ja": "The color of the line numbers in the gutter."
+    "ja": "ガター内の行番号の色。"
   },
 
   "dark_keyboard": false,
   "dark_keyboard___comment": {
     "en": "Whether to use a dark onscreen keyboard.",
-    "ja": "Whether to use a dark onscreen keyboard."
+    "ja": "ダーク色のオンスクリーン キーボードを使用するかどうか。"
   },
 
   "font-size": 15.0,
   "font-size___comment": {
     "en": "The default editor and console font size.",
-    "ja": "The default editor and console font size."
+    "ja": "デフォルトのエディターとコンソールのフォント サイズ。"
   },
 
   "font-family": "Menlo-Regular",
   "font-family___comment": {
     "en": "The default editor and console font family.",
-    "ja": "The default editor and console font family."
+    "ja": "デフォルトのエディターおよびコンソールのフォント ファミリ。"
   },
 
   "scopes___comment": {
     "en": "Formatting for various kinds of text in the editor. Formatting options are similar to CSS styles.",
-    "ja": "Formatting for various kinds of text in the editor. Formatting options are similar to CSS styles."
+    "ja": "エディターでのさまざまな種類のテキストの書式設定。書式設定オプションは CSS スタイルに似ています。"
   },
 
   "scopes": {
     "default___comment": {
       "en": "Default text, for plain text files or text with no special meaning.",
-      "ja": "Default text, for plain text files or text with no special meaning."
+      "ja": "デフォルトのテキスト。プレーン テキスト ファイルまたは特別な意味を持たないテキストの場合。"
     },
     "default": {
       "color": "#000000"
@@ -117,7 +117,7 @@
 
     "string___comment": {
       "en": "String literals.",
-      "ja": "String literals."
+      "ja": "文字列リテラル。"
     },
     "string": {
       "color": "#ce5149"
@@ -125,7 +125,7 @@
 
     "docstring___comment": {
       "en": "Python multiline string literals.",
-      "ja": "Python multiline string literals."
+      "ja": "Python の複数行の文字列リテラル。"
     },
     "docstring": {
       "color": "#447919",
@@ -134,7 +134,7 @@
 
     "number___comment": {
       "en": "Numbers.",
-      "ja": "Numbers."
+      "ja": "数字。"
     },
     "number": {
       "color": "#2682d5"
@@ -142,7 +142,7 @@
 
     "keyword___comment": {
       "en": "Language keywords.",
-      "ja": "Language keywords."
+      "ja": "言語のキーワード。"
     },
     "keyword": {
       "color": "#a4258f"
@@ -150,7 +150,7 @@
 
     "module___comment": {
       "en": "Python module names as part of import statements.",
-      "ja": "Python module names as part of import statements."
+      "ja": "import ステートメントの一部としての Python モジュール名。"
     },
     "module": {
       "color": "#6e41a8"
@@ -158,7 +158,7 @@
 
     "function___comment": {
       "en": "Function names as part of a function call.",
-      "ja": "Function names as part of a function call."
+      "ja": "関数呼び出しの一部としての関数名。"
     },
     "function": {
       "color": "#21767e"
@@ -166,7 +166,7 @@
 
     "builtinfunction___comment": {
       "en": "Built-in function names as part of a function call.",
-      "ja": "Built-in function names as part of a function call."
+      "ja": "関数呼び出しの一部としての組み込み関数名。"
     },
     "builtinfunction": {
       "color": "#21767e"
@@ -174,7 +174,7 @@
 
     "functiondef___comment": {
       "en": "Function names as part of a function definition.",
-      "ja": "Function names as part of a function definition."
+      "ja": "関数定義の一部としての関数名。"
     },
     "functiondef": {
       "color": "#21767e",
@@ -183,7 +183,7 @@
 
     "classdef___comment": {
       "en": "Class names as part of a class definition.",
-      "ja": "Class names as part of a class definition."
+      "ja": "クラス定義の一部としてのクラス名。"
     },
     "classdef": {
       "color": "#21767e",
@@ -192,7 +192,7 @@
 
     "class___comment": {
       "en": "Class names as part of a class instantiation.",
-      "ja": "Class names as part of a class instantiation."
+      "ja": "クラスのインスタンス化の一部としてのクラス名。"
     },
     "class": {
       "color": "#21767e"
@@ -200,7 +200,7 @@
 
     "comment___comment": {
       "en": "Comments.",
-      "ja": "Comments."
+      "ja": "コメント。"
     },
     "comment": {
       "color": "#808080",
@@ -209,7 +209,7 @@
 
     "escape___comment": {
       "en": "Should probably be for escaped characters in string literals, but doesn't seem to do anything.",
-      "ja": "Should probably be for escaped characters in string literals, but doesn't seem to do anything."
+      "ja": "おそらく文字列リテラル内のエスケープ文字用であるはずですが、何もしないようです。"
     },
     "escape": {
       "background-color": "#ebf1d8"
@@ -217,7 +217,7 @@
 
     "decorator___comment": {
       "en": "Function or class decoration statements.",
-      "ja": "Function or class decoration statements."
+      "ja": "関数またはクラスの装飾ステートメント。"
     },
     "decorator": {
       "color": "#99684c"
@@ -225,7 +225,7 @@
 
     "formatting___comment": {
       "en": "Markdown formatting characters.",
-      "ja": "Markdown formatting characters."
+      "ja": "マークダウン形式の文字。"
     },
     "formatting": {
       "color": "#80808080"
@@ -233,7 +233,7 @@
 
     "codeblock-start___comment": {
       "en": "GitHub-style syntax highlighting instructions after code block start.",
-      "ja": "GitHub-style syntax highlighting instructions after code block start."
+      "ja": "コードブロック開始後の GitHub スタイルの構文強調表示命令。"
     },
     "codeblock-start": {
       "color": "#80808080"
@@ -241,7 +241,7 @@
 
     "bold___comment": {
       "en": "Bold text.",
-      "ja": "Bold text."
+      "ja": "太字のテキスト。"
     },
     "bold": {
       "font-style": "bold"
@@ -249,7 +249,7 @@
 
     "italic___comment": {
       "en": "Italic text.",
-      "ja": "Italic text."
+      "ja": "斜体のテキスト。"
     },
     "italic": {
       "font-style": "italic"
@@ -257,7 +257,7 @@
 
     "bold-italic___comment": {
       "en": "Bold and italic text.",
-      "ja": "Bold and italic text."
+      "ja": "太字と斜体のテキスト。"
     },
     "bold-italic": {
       "font-style": "bold-italic"
@@ -265,7 +265,7 @@
 
     "heading-1___comment": {
       "en": "Level 1 headings.",
-      "ja": "Level 1 headings."
+      "ja": "レベル 1 の見出し。"
     },
     "heading-1": {
       "font-style": "bold"
@@ -273,7 +273,7 @@
 
     "heading-2___comment": {
       "en": "Level 2 headings.",
-      "ja": "Level 2 headings."
+      "ja": "レベル 2 の見出し。"
     },
     "heading-2": {
       "font-style": "bold"
@@ -281,7 +281,7 @@
 
     "heading-3___comment": {
       "en": "Level 3 headings.",
-      "ja": "Level 3 headings."
+      "ja": "レベル 3 の見出し。"
     },
     "heading-3": {
       "font-style": "bold"
@@ -289,7 +289,7 @@
 
     "link___comment": {
       "en": "Link titles.",
-      "ja": "Link titles."
+      "ja": "タイトルをリンクします。"
     },
     "link": {
       "text-decoration": "underline"
@@ -297,7 +297,7 @@
 
     "code___comment": {
       "en": "Inline code sequences.",
-      "ja": "Inline code sequences."
+      "ja": "インラインコードシーケンス。"
     },
     "code": {
       "background-color": "#80808020",
@@ -306,7 +306,7 @@
 
     "project___comment": {
       "en": "Taskpaper project.",
-      "ja": "Taskpaper project."
+      "ja": "タスクペーパープロジェクト。"
     },
     "project": {
       "font-style": "bold"
@@ -314,7 +314,7 @@
 
     "checkbox___comment": {
       "en": "Taskpaper checkbox.",
-      "ja": "Taskpaper checkbox."
+      "ja": "タスクペーパーのチェックボックス。"
     },
     "checkbox": {
       "checkbox": true
@@ -322,7 +322,7 @@
 
     "checkbox-done___comment": {
       "en": "Checked Taskpaper checkbox.",
-      "ja": "Checked Taskpaper checkbox."
+      "ja": "タスクペーパーのチェックボックスをオンにします。"
     },
     "checkbox-done": {
       "checkbox": true,
@@ -331,7 +331,7 @@
 
     "task-done___comment": {
       "en": "Finished Taskpaper task.",
-      "ja": "Finished Taskpaper task."
+      "ja": "タスクペーパーのタスクが完了しました。"
     },
     "task-done": {
       "text-decoration": "strikeout",
@@ -340,7 +340,7 @@
 
     "tag___comment": {
       "en": "Is this Taskpaper or HTML or what now?",
-      "ja": "Is this Taskpaper or HTML or what now?"
+      "ja": "これは Taskpaper ですか、HTML ですか、それとも何ですか?"
     },
     "tag": {
       "text-decoration": "none"

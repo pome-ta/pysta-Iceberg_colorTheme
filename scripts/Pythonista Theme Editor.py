@@ -85,7 +85,7 @@ def main():
   base_theme_name = get_current_theme_name()
   default_theme_path = get_theme_path(base_theme_name)
   try:
-    with open(default_theme_path) as f:
+    with open(default_theme_path, encoding='utf-8') as f:
       theme_json = f.read()
   except Exception as e:
     theme_json = ''

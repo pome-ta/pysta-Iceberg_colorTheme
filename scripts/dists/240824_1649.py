@@ -22,7 +22,9 @@ hub_path = origin_path / parent_level(level)
 
 target_path = hub_path / app_file_path
 
-#webbrowser.open(f'pythonista3:/{target_path}')
+webbrowser.open(f'pythonista3:/{target_path}')
 
+'''
 resolve_origin_path = origin_path.resolve()
 resolve_target_path = target_path.resolve()
+'''
