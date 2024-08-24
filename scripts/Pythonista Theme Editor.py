@@ -55,6 +55,16 @@ def get_current_theme_name():
   return str(defaults.objectForKey_('ThemeName'))
 
 
+def edit_theme(theme_name: str, theme_json: str = '') -> str:
+  return dialogs.text_dialog('Edit Theme (%s)' % theme_name,
+                             theme_json,
+                             font=('Menlo', 12),
+                             autocorrection=False,
+                             spellchecking=False,
+                             autocapitalization=ui.AUTOCAPITALIZE_NONE,
+                             done_button_title='Apply')
+
+
 @on_main_thread
 def set_theme(name):
   defaults = ObjCClass('NSUserDefaults').standardUserDefaults()
@@ -72,15 +82,15 @@ def set_theme(name):
 def main():
   base_theme_name = get_current_theme_name()
   default_theme_path = get_theme_path(base_theme_name)
-  with open(default_theme_path) as f:
-    theme_json = f.read()
-  edited_theme = dialogs.text_dialog('Edit Theme (%s)' % base_theme_name,
-                                     theme_json,
-                                     font=('Menlo', 14),
-                                     autocorrection=False,
-                                     spellchecking=False,
-                                     autocapitalization=ui.AUTOCAPITALIZE_NONE,
-                                     done_button_title='Apply')
+  try:
+    with open(default_theme_path) as f:
+      theme_json = f.read()
+  except Exception as e:
+    theme_json = ''
+    print(f'{e}:')
+
+  edited_theme = edit_theme(base_theme_name, theme_json)
+
   if not edited_theme:
     return
   user_theme_path = os.path.join(get_user_themes_path(), 'MyTheme.json')
