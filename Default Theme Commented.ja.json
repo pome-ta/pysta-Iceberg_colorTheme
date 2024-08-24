@@ -10,22 +10,49 @@
     "en": "The background color of the Script Library.",
     "ja": "スクリプト ライブラリの背景色。"
   },
+
   "thumbnail_border": "#d1d1d1",
-  "thumbnail_border___comment": "The color of the borders between files in the Script Library.",
+  "thumbnail_border___comment": {
+    "en": "The color of the borders between files in the Script Library.",
+    "ja": "The color of the borders between files in the Script Library."
+  },
 
   "default_text": "#333333",
-  "default_text___comment": "The default color of interface text.",
+  "default_text___comment": {
+    "en": "The default color of interface text.",
+    "ja": "The default color of interface text."
+  },
 
   "tint": "#5794b0",
-  "tint___comment": "The tint color of interface buttons.",
+  "tint___comment": {
+    "en": "The tint color of interface buttons.",
+    "ja": "The tint color of interface buttons."
+  },
+
   "text_selection_tint": "#5794b0",
-  "text_selection_tint___comment": "The tint color of the text selection and cursor.",
+  "text_selection_tint___comment": {
+    "en": "The tint color of the text selection and cursor.",
+    "ja": "The tint color of the text selection and cursor."
+  },
+
   "bar_background": "#ffffff",
-  "bar_background___comment": "The background color of the toolbar and the active tab.",
+  "bar_background___comment": {
+    "en": "The background color of the toolbar and the active tab.",
+    "ja": "The background color of the toolbar and the active tab."
+  },
+
   "tab_background": "#f0f0f0",
-  "tab_background___comment": "The background color of inactive tabs.",
+  "tab_background___comment": {
+    "en": "The background color of inactive tabs.",
+    "ja": "The background color of inactive tabs."
+  },
+
   "tab_title": "#000000",
-  "tab_title___comment": "The color of the tab title text.",
+  "tab_title___comment": {
+    "en": "The color of the tab title text.",
+    "ja": "The color of the tab title text."
+  },
+
   "separator_line": "#b3b3b3",
   "separator_line___comment": "The color of the separator line between toolbar/tabs and editor.",
 
