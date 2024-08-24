@@ -7,4 +7,4 @@ main_root_str = str(ObjCClass('NSBundle').mainBundle().resourcePath())
 
 main_root_path = Path(main_root_str)
 
-webbrowser.open(f'pythonista3://{main_root_path}')
+#webbrowser.open(f'pythonista3://{main_root_path}')

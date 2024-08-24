@@ -12,6 +12,8 @@ WARNING: Use at your own risk! User themes aren't "officially" supported, and
 this may break in future versions. If you enter invalid JSON or anything else
 that the app can't deal with, it *will* crash -- your input is not validated
 in any way.
+> 警告:使用は自己責任でお願いします! ユーザーテーマは「公式」にはサポートされておらず、将来のバージョンでは壊れる可能性があります。 無効なJSONやその他のものを入力した場合
+を入力すると、アプリはクラッシュします。
 '''
 
 from objc_util import *
