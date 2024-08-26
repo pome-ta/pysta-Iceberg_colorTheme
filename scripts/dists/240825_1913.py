@@ -2,8 +2,8 @@ import os
 import webbrowser
 
 env = 'CFFIXED_USER_HOME'
-env = 'HOME'
-env = 'TMPDIR'
+#env = 'HOME'
+#env = 'TMPDIR'
 
 
 home = os.getenv(env)
