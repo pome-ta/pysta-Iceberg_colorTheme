@@ -16,16 +16,27 @@ def get_json2dict(path: Path) -> dict:
     return json.load(f)
 
 
-def get_deep_dict(target: dict, parent:dict) -> dict:
+def get_deep_dict(target: dict, parent: dict = {}) -> dict:
   for k, v in target.items():
     if regex.match(k):
       continue
+    '''
     if isinstance(v, dict):
+      v = get_deep_dict(v, {})
+      #v_dict = get_deep_dict(v, {})
+      #v = v_dict
+      #print(k, v_dict)
+      #print(v)
       #parent[k] = get_deep_dict(v, k)
-      v = get_deep_dict(v, k)
+      #v = get_deep_dict(v, k)
+      #print(get_deep_dict(v, target))
       #i = get_deep_dict(v, target)
       #continue
-    parent[k] = v
+    '''
+
+    value = get_deep_dict(v, {}) if isinstance(v, dict) else v
+
+    parent[k] = value
   return parent
 
 
