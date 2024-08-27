@@ -40,22 +40,7 @@ def merge_list(a, b):
   return m
 
 
-'''
 def merge_dict(a, b):
-  m = copy.copy(a)
-  for item in b:
-    if isinstance(b[item], dict):
-      m[item] = merge_dict(a[item], b[item])
-    elif isinstance(b[item], list):
-      m[item] = merge_list(a[item], b[item])
-    else:
-      m[item] = b[item]
-  return m
-'''
-
-
-def merge_dict(a, b):
-  #print(a)
   m = copy.copy(a if a else {})
   for item in b:
     if isinstance(b.get(item), dict):
@@ -94,9 +79,6 @@ d = get_json2dict(pick)
 default_dict = get_deep_dict(d, {})
 '''
 
-
 json_data = json.dumps(tmp_dict, indent=2, sort_keys=True)
 print(json_data)
-
-
 
