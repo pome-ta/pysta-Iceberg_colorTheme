@@ -1,8 +1,8 @@
 from pathlib import Path
-import json
 import re
 import itertools
 import copy
+import json
 
 from objc_util import ObjCClass
 import pdbg
@@ -93,4 +93,10 @@ pick = list(user_theme_path.iterdir())[0]
 d = get_json2dict(pick)
 default_dict = get_deep_dict(d, {})
 '''
+
+
+json_data = json.dumps(tmp_dict, indent=2, sort_keys=True)
+print(json_data)
+
+
 
