@@ -7,6 +7,12 @@ import json
 from objc_util import ObjCClass
 import pdbg
 
+dumps_path = Path('./dumps')
+'''
+if not dumps_path.exists():
+  dumps_path.parent.mkdir(parents=True, exist_ok=True)
+'''
+
 NSBundle = ObjCClass('NSBundle')
 PA2UITheme = ObjCClass('PA2UITheme')
 
@@ -52,6 +58,20 @@ def merge_dict(a, b):
   return m
 
 
+def to_dumps(dict_data: dict) -> str:
+  return json.dumps(tmp_dict, indent=1, sort_keys=True, ensure_ascii=False)
+
+
+def write_dumps(data: str, name: str, dir: Path) -> None:
+  json_path = Path(dir, f'{name}.json')
+
+  if not json_path.exists():
+    json_path.parent.mkdir(parents=True, exist_ok=True)
+    json_path.touch()
+
+  json_path.write_text(data, encoding='utf-8')
+
+
 root_theme_path = Path(str(NSBundle.mainBundle().resourcePath()), 'Themes2')
 
 user_theme_path = Path(str(PA2UITheme.sharedTheme().userThemesPath()))
@@ -62,23 +82,16 @@ paths_iter = itertools.chain(root_theme_path.iterdir(),
 tmp_dict = {}
 
 for p in paths_iter:
+  if not p.suffix == '.json':
+    continue
   _theme_dict = get_json2dict(p)
   theme_dict = remove_comment_dict(_theme_dict)
+  _dump = to_dumps(theme_dict)
+  write_dumps(_dump, p.stem, dumps_path)
   tmp_dict = merge_dict(theme_dict, tmp_dict)
-  '''
-  if not tmp_dict:
-    tmp_dict = theme_dict
-    continue
-  tmp_dict = merge_dict(theme_dict, tmp_dict)
-  '''
-'''
-pick = list(root_theme_path.iterdir())[0]
-pick = list(user_theme_path.iterdir())[0]
 
-d = get_json2dict(pick)
-default_dict = get_deep_dict(d, {})
-'''
-
-json_data = json.dumps(tmp_dict, indent=2, sort_keys=True)
-print(json_data)
+#json_data = json.dumps(tmp_dict, indent=2, sort_keys=True)
+#print(json_data)
+_dump = to_dumps(tmp_dict)
+write_dumps(_dump, 'tmpMergeDumps', dumps_path)
 
