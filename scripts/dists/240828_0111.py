@@ -62,10 +62,8 @@ def print_len(d: dict, name: str, deep: int = 0) -> None:
     print_len(v, k, deep)
 
 
-# xxx: 空で返す場合あり？
 def to_dumps(dict_data: dict) -> str:
-  _dumps = json.dumps(dict_data, indent=1, sort_keys=True, ensure_ascii=False)
-  return _dumps
+  return json.dumps(dict_data, indent=1, sort_keys=True, ensure_ascii=False)
 
 
 def write_dumps(data: str, name: str, dir: Path) -> None:
@@ -87,31 +85,26 @@ if __name__ == '__main__':
                                user_theme_path.iterdir())
 
   tmp_dict = {}
-  
 
   for p in paths_iter:
     if not p.suffix == '.json':
       continue
     _theme_dict = get_json2dict(p)
     theme_dict = remove_comment_dict(_theme_dict)
-    if p.stem == 'Theme09_Editorial':
-      
-      #to_dumps(theme_dict)
-      #print(theme_dict)
-      print(json.dumps(theme_dict, indent=1, sort_keys=True, ensure_ascii=False))
-      print(to_dumps(theme_dict))
-    #print(len(theme_dict))
-    #_dump = to_dumps(theme_dict)
-    #write_dumps(_dump, p.stem, dumps_path)
-    #print(p.stem)
-    #print(f'\t{len(theme_dict)}')
-    #print_len(json.loads(to_dumps(theme_dict)), p.stem)
-    #print('')
-    
+
+    _dump = to_dumps(theme_dict)
+    '''
+    write_dumps(_dump, p.stem, dumps_path)
+    '''
+
+    print_len(json.loads(_dump), p.stem)
+    print('')
+
     tmp_dict = merge_dict(theme_dict, tmp_dict)
 
-  #_dump = to_dumps(tmp_dict)
-  #write_dumps(_dump, 'tmpMergeDumps', dumps_path)
-  #print_len(json.loads(to_dumps(tmp_dict)), 'tmpMergeDumps')
-  
+  _dump = to_dumps(tmp_dict)
+  '''
+  write_dumps(_dump, 'tmpMergeDumps', dumps_path)
+  '''
+  print_len(json.loads(_dump), 'tmpMergeDumps')
 
