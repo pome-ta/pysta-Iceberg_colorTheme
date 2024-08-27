@@ -58,6 +58,7 @@ def print_len(d: dict, name: str, deep: int = 0) -> None:
   deep += 1
   for k, v in d.items():
     if not isinstance(v, dict):
+      print(f'{indent * deep}- {k}:')
       continue
     print_len(v, k, deep)
 

@@ -5,1053 +5,1451 @@
 
 ```
 - Theme09_Editorial: 20
+  - background:
+  - bar_background:
+  - dark_keyboard:
+  - default_text:
+  - error_text:
+  - font-family:
+  - font-size:
+  - gutter_background:
+  - gutter_border:
+  - interstitial:
+  - library_background:
+  - line_number:
+  - name:
   - scopes: 27
     - bold: 1
+      - font-style:
     - bold-italic: 1
+      - font-style:
     - builtinfunction: 1
+      - color:
     - checkbox: 1
+      - checkbox:
     - checkbox-done: 2
+      - checkbox:
+      - done:
     - class: 1
+      - color:
     - classdef: 2
+      - color:
+      - font-style:
     - code: 2
+      - background-color:
+      - corner-radius:
     - codeblock-start: 1
+      - color:
     - comment: 2
+      - color:
+      - font-style:
     - default: 1
+      - color:
     - docstring: 1
+      - color:
     - formatting: 1
+      - color:
     - function: 1
+      - color:
     - functiondef: 2
+      - color:
+      - font-style:
     - heading-1: 1
+      - font-style:
     - heading-2: 1
+      - font-style:
     - heading-3: 1
+      - font-style:
     - italic: 1
+      - font-style:
     - keyword: 1
+      - color:
     - link: 1
+      - text-decoration:
     - module: 1
+      - color:
     - number: 1
+      - color:
     - project: 1
+      - font-style:
     - string: 1
+      - color:
     - tag: 1
+      - text-decoration:
     - task-done: 2
+      - color:
+      - text-decoration:
+  - separator_line:
+  - tab_background:
+  - tab_title:
+  - text_selection_tint:
+  - thumbnail_border:
+  - tint:
 
 - Theme04_SolarizedDark 2: 21
+  - background:
+  - bar_background:
+  - dark_keyboard:
+  - default_text:
+  - error_text:
+  - font-family:
+  - font-size:
+  - gutter_background:
+  - gutter_border:
+  - interstitial:
+  - library_background:
+  - library_tint:
+  - line_number:
+  - name:
   - scopes: 27
     - bold: 1
+      - font-style:
     - bold-italic: 1
+      - font-style:
     - builtinfunction: 1
+      - color:
     - checkbox: 1
+      - checkbox:
     - checkbox-done: 2
+      - checkbox:
+      - done:
     - class: 1
+      - color:
     - classdef: 2
+      - color:
+      - font-style:
     - code: 2
+      - background-color:
+      - corner-radius:
     - codeblock-start: 1
+      - color:
     - comment: 2
+      - color:
+      - font-style:
     - default: 1
+      - color:
     - docstring: 2
+      - color:
+      - font-style:
     - formatting: 1
+      - color:
     - function: 1
+      - color:
     - functiondef: 2
+      - color:
+      - font-style:
     - heading-1: 1
+      - font-style:
     - heading-2: 1
+      - font-style:
     - heading-3: 1
+      - font-style:
     - italic: 1
+      - font-style:
     - keyword: 1
+      - color:
     - link: 1
+      - text-decoration:
     - module: 1
+      - color:
     - number: 1
+      - color:
     - project: 1
+      - font-style:
     - string: 1
+      - color:
     - tag: 1
+      - text-decoration:
     - task-done: 2
+      - color:
+      - text-decoration:
+  - separator_line:
+  - tab_background:
+  - tab_title:
+  - text_selection_tint:
+  - thumbnail_border:
+  - tint:
 
 - Theme10_WWDC16: 21
+  - background:
+  - bar_background:
+  - dark_keyboard:
+  - default_text:
+  - error_text:
+  - font-family:
+  - font-size:
+  - gutter_background:
+  - gutter_border:
+  - interstitial:
+  - library_background:
+  - library_tint:
+  - line_number:
+  - name:
   - scopes: 28
     - bold: 1
+      - font-style:
     - bold-italic: 1
+      - font-style:
     - builtinfunction: 1
+      - color:
     - checkbox: 1
+      - checkbox:
     - checkbox-done: 2
+      - checkbox:
+      - done:
     - class: 1
+      - color:
     - classdef: 2
+      - color:
+      - font-style:
     - code: 2
+      - background-color:
+      - corner-radius:
     - codeblock-start: 1
+      - color:
     - comment: 1
+      - color:
     - decorator: 1
+      - color:
     - default: 1
+      - color:
     - docstring: 2
+      - color:
+      - font-style:
     - formatting: 1
+      - color:
     - function: 1
+      - color:
     - functiondef: 2
+      - color:
+      - font-style:
     - heading-1: 1
+      - font-style:
     - heading-2: 1
+      - font-style:
     - heading-3: 1
+      - font-style:
     - italic: 1
+      - font-style:
     - keyword: 1
+      - color:
     - link: 1
+      - text-decoration:
     - module: 1
+      - color:
     - number: 1
+      - color:
     - project: 1
+      - font-style:
     - string: 1
+      - color:
     - tag: 1
+      - text-decoration:
     - task-done: 2
+      - color:
+      - text-decoration:
+  - separator_line:
+  - tab_background:
+  - tab_title:
+  - text_selection_tint:
+  - thumbnail_border:
+  - tint:
 
 - Default: 21
+  - __tint:
+  - background:
+  - bar_background:
+  - default_text:
+  - editor_actions_icon_background:
+  - editor_actions_icon_tint:
+  - editor_actions_popover_background:
+  - error_text:
+  - gutter_background:
+  - gutter_border:
+  - interstitial:
+  - library_background:
+  - line_number:
+  - name:
   - scopes: 29
     - bold: 1
+      - font-style:
     - bold-italic: 1
+      - font-style:
     - builtinfunction: 1
+      - color:
     - checkbox: 1
+      - checkbox:
     - checkbox-done: 2
+      - checkbox:
+      - done:
     - class: 1
+      - color:
     - classdef: 2
+      - color:
+      - font-style:
     - code: 2
+      - background-color:
+      - corner-radius:
     - codeblock-start: 1
+      - color:
     - comment: 2
+      - color:
+      - font-style:
     - decorator: 1
+      - color:
     - default: 1
+      - color:
     - docstring: 2
+      - color:
+      - font-style:
     - formatting: 1
+      - color:
     - function: 1
+      - color:
     - functiondef: 2
+      - color:
+      - font-style:
     - heading-1: 1
+      - font-style:
     - heading-2: 1
+      - font-style:
     - heading-3: 1
+      - font-style:
     - italic: 1
+      - font-style:
     - keyword: 1
+      - color:
     - link: 1
+      - text-decoration:
     - marker: 3
+      - box-background-color:
+      - box-border-color:
+      - box-border-type:
     - module: 1
+      - color:
     - number: 1
+      - color:
     - project: 1
+      - font-style:
     - string: 1
+      - color:
     - tag: 1
+      - text-decoration:
     - task-done: 2
+      - color:
+      - text-decoration:
+  - separator_line:
+  - tab_background:
+  - tab_title:
+  - text_selection_tint:
+  - thumbnail_border:
+  - tint:
 
 - Theme11_Ayu: 21
+  - background:
+  - bar_background:
+  - default_text:
+  - editor_actions_icon_background:
+  - editor_actions_icon_tint:
+  - editor_actions_popover_background:
+  - error_text:
+  - gutter_background:
+  - gutter_border:
+  - interstitial:
+  - library_background:
+  - library_tint:
+  - line_number:
+  - name:
   - scopes: 29
     - bold: 1
+      - font-style:
     - bold-italic: 1
+      - font-style:
     - builtinfunction: 1
+      - color:
     - checkbox: 1
+      - checkbox:
     - checkbox-done: 2
+      - checkbox:
+      - done:
     - class: 1
+      - color:
     - classdef: 2
+      - color:
+      - font-style:
     - code: 2
+      - background-color:
+      - corner-radius:
     - codeblock-start: 1
+      - color:
     - comment: 1
+      - color:
     - decorator: 1
+      - color:
     - default: 1
+      - color:
     - docstring: 2
+      - color:
+      - font-style:
     - formatting: 1
+      - color:
     - function: 1
+      - color:
     - functiondef: 2
+      - color:
+      - font-style:
     - heading-1: 1
+      - font-style:
     - heading-2: 1
+      - font-style:
     - heading-3: 1
+      - font-style:
     - italic: 1
+      - font-style:
     - keyword: 1
+      - color:
     - link: 1
+      - text-decoration:
     - marker: 3
+      - box-background-color:
+      - box-border-color:
+      - box-border-type:
     - module: 1
+      - color:
     - number: 1
+      - color:
     - project: 1
+      - font-style:
     - string: 1
+      - color:
     - tag: 1
+      - text-decoration:
     - task-done: 2
+      - color:
+      - text-decoration:
+  - separator_line:
+  - tab_background:
+  - tab_title:
+  - text_selection_tint:
+  - thumbnail_border:
+  - tint:
 
 - Theme03_SolarizedLight: 21
+  - background:
+  - bar_background:
+  - default_text:
+  - editor_actions_icon_background:
+  - error_text:
+  - font-family:
+  - font-size:
+  - gutter_background:
+  - gutter_border:
+  - interstitial:
+  - library_background:
+  - library_tint:
+  - line_number:
+  - name:
   - scopes: 28
     - bold: 1
+      - font-style:
     - bold-italic: 1
+      - font-style:
     - builtinfunction: 1
+      - color:
     - checkbox: 1
+      - checkbox:
     - checkbox-done: 2
+      - checkbox:
+      - done:
     - class: 1
+      - color:
     - classdef: 2
+      - color:
+      - font-style:
     - code: 2
+      - background-color:
+      - corner-radius:
     - codeblock-start: 1
+      - color:
     - comment: 2
+      - color:
+      - font-style:
     - default: 1
+      - color:
     - docstring: 2
+      - color:
+      - font-style:
     - escape: 1
+      - background-color:
     - formatting: 1
+      - color:
     - function: 1
+      - color:
     - functiondef: 2
+      - color:
+      - font-style:
     - heading-1: 1
+      - font-style:
     - heading-2: 1
+      - font-style:
     - heading-3: 1
+      - font-style:
     - italic: 1
+      - font-style:
     - keyword: 1
+      - color:
     - link: 1
+      - text-decoration:
     - module: 1
+      - color:
     - number: 1
+      - color:
     - project: 1
+      - font-style:
     - string: 1
+      - color:
     - tag: 1
+      - text-decoration:
     - task-done: 2
+      - color:
+      - text-decoration:
+  - separator_line:
+  - tab_background:
+  - tab_title:
+  - text_selection_tint:
+  - thumbnail_border:
+  - tint:
 
 - Theme01_Dawn: 17
+  - background:
+  - bar_background:
+  - default_text:
+  - error_text:
+  - gutter_background:
+  - gutter_border:
+  - interstitial:
+  - library_background:
+  - line_number:
+  - name:
   - scopes: 28
     - bold: 1
+      - font-style:
     - bold-italic: 1
+      - font-style:
     - builtinfunction: 1
+      - color:
     - checkbox: 1
+      - checkbox:
     - checkbox-done: 2
+      - checkbox:
+      - done:
     - class: 1
+      - color:
     - classdef: 2
+      - color:
+      - font-style:
     - code: 2
+      - background-color:
+      - corner-radius:
     - codeblock-start: 1
+      - color:
     - comment: 2
+      - color:
+      - font-style:
     - decorator: 1
+      - color:
     - default: 1
+      - color:
     - docstring: 2
+      - color:
+      - font-style:
     - formatting: 1
+      - color:
     - function: 1
+      - color:
     - functiondef: 2
+      - color:
+      - font-style:
     - heading-1: 1
+      - font-style:
     - heading-2: 1
+      - font-style:
     - heading-3: 1
+      - font-style:
     - italic: 1
+      - font-style:
     - keyword: 1
+      - color:
     - link: 1
+      - text-decoration:
     - module: 1
+      - color:
     - number: 1
+      - color:
     - project: 1
+      - font-style:
     - string: 1
+      - color:
     - tag: 1
+      - text-decoration:
     - task-done: 2
+      - color:
+      - text-decoration:
+  - separator_line:
+  - tab_background:
+  - tab_title:
+  - text_selection_tint:
+  - thumbnail_border:
+  - tint:
 
 - PythonistaDark: 21
+  - background:
+  - bar_background:
+  - dark_keyboard:
+  - default_text:
+  - error_text:
+  - font-family:
+  - font-size:
+  - gutter_background:
+  - gutter_border:
+  - interstitial:
+  - library_background:
+  - library_tint:
+  - line_number:
+  - name:
   - scopes: 28
     - bold: 1
+      - font-style:
     - bold-italic: 1
+      - font-style:
     - builtinfunction: 1
+      - color:
     - checkbox: 1
+      - checkbox:
     - checkbox-done: 2
+      - checkbox:
+      - done:
     - class: 1
+      - color:
     - classdef: 2
+      - color:
+      - font-style:
     - code: 2
+      - background-color:
+      - corner-radius:
     - codeblock-start: 1
+      - color:
     - comment: 2
+      - color:
+      - font-style:
     - decorator: 1
+      - color:
     - default: 1
+      - color:
     - docstring: 1
+      - color:
     - formatting: 1
+      - color:
     - function: 1
+      - color:
     - functiondef: 2
+      - color:
+      - font-style:
     - heading-1: 1
+      - font-style:
     - heading-2: 1
+      - font-style:
     - heading-3: 1
+      - font-style:
     - italic: 1
+      - font-style:
     - keyword: 1
+      - color:
     - link: 1
+      - text-decoration:
     - module: 1
+      - color:
     - number: 1
+      - color:
     - project: 1
+      - font-style:
     - string: 1
+      - color:
     - tag: 1
+      - text-decoration:
     - task-done: 2
+      - color:
+      - text-decoration:
+  - separator_line:
+  - tab_background:
+  - tab_title:
+  - text_selection_tint:
+  - thumbnail_border:
+  - tint:
 
 - Theme08_Oceanic: 21
+  - background:
+  - bar_background:
+  - dark_keyboard:
+  - default_text:
+  - error_text:
+  - font-family:
+  - font-size:
+  - gutter_background:
+  - gutter_border:
+  - interstitial:
+  - library_background:
+  - library_tint:
+  - line_number:
+  - name:
   - scopes: 27
     - bold: 1
+      - font-style:
     - bold-italic: 1
+      - font-style:
     - builtinfunction: 1
+      - color:
     - checkbox: 1
+      - checkbox:
     - checkbox-done: 2
+      - checkbox:
+      - done:
     - class: 1
+      - color:
     - classdef: 2
+      - color:
+      - font-style:
     - code: 2
+      - background-color:
+      - corner-radius:
     - codeblock-start: 1
+      - color:
     - comment: 2
+      - color:
+      - font-style:
     - default: 1
+      - color:
     - docstring: 2
+      - color:
+      - font-style:
     - formatting: 1
+      - color:
     - function: 1
+      - color:
     - functiondef: 2
+      - color:
+      - font-style:
     - heading-1: 1
+      - font-style:
     - heading-2: 1
+      - font-style:
     - heading-3: 1
+      - font-style:
     - italic: 1
+      - font-style:
     - keyword: 1
+      - color:
     - link: 1
+      - text-decoration:
     - module: 1
+      - color:
     - number: 1
+      - color:
     - project: 1
+      - font-style:
     - string: 1
+      - color:
     - tag: 1
+      - text-decoration:
     - task-done: 2
+      - color:
+      - text-decoration:
+  - separator_line:
+  - tab_background:
+  - tab_title:
+  - text_selection_tint:
+  - thumbnail_border:
+  - tint:
 
 - Theme02_Tomorrow: 20
+  - background:
+  - bar_background:
+  - dark_keyboard:
+  - default_text:
+  - error_text:
+  - font-family:
+  - font-size:
+  - gutter_background:
+  - gutter_border:
+  - interstitial:
+  - library_background:
+  - line_number:
+  - name:
   - scopes: 27
     - bold: 1
+      - font-style:
     - bold-italic: 1
+      - font-style:
     - builtinfunction: 1
+      - color:
     - checkbox: 1
+      - checkbox:
     - checkbox-done: 2
+      - checkbox:
+      - done:
     - class: 1
+      - color:
     - classdef: 2
+      - color:
+      - font-style:
     - code: 2
+      - background-color:
+      - corner-radius:
     - codeblock-start: 1
+      - color:
     - comment: 2
+      - color:
+      - font-style:
     - default: 1
+      - color:
     - docstring: 1
+      - color:
     - formatting: 1
+      - color:
     - function: 1
+      - color:
     - functiondef: 2
+      - color:
+      - font-style:
     - heading-1: 1
+      - font-style:
     - heading-2: 1
+      - font-style:
     - heading-3: 1
+      - font-style:
     - italic: 1
+      - font-style:
     - keyword: 1
+      - color:
     - link: 1
+      - text-decoration:
     - module: 1
+      - color:
     - number: 1
+      - color:
     - project: 1
+      - font-style:
     - string: 1
+      - color:
     - tag: 1
+      - text-decoration:
     - task-done: 2
+      - color:
+      - text-decoration:
+  - separator_line:
+  - tab_background:
+  - tab_title:
+  - text_selection_tint:
+  - thumbnail_border:
+  - tint:
 
 - Theme05_CoolGlow: 21
+  - background:
+  - bar_background:
+  - dark_keyboard:
+  - default_text:
+  - error_text:
+  - font-family:
+  - font-size:
+  - gutter_background:
+  - gutter_border:
+  - interstitial:
+  - library_background:
+  - library_tint:
+  - line_number:
+  - name:
   - scopes: 27
     - bold: 1
+      - font-style:
     - bold-italic: 1
+      - font-style:
     - builtinfunction: 1
+      - color:
     - checkbox: 1
+      - checkbox:
     - checkbox-done: 2
+      - checkbox:
+      - done:
     - class: 1
+      - color:
     - classdef: 2
+      - color:
+      - font-style:
     - code: 2
+      - background-color:
+      - corner-radius:
     - codeblock-start: 1
+      - color:
     - comment: 2
+      - color:
+      - font-style:
     - default: 1
+      - color:
     - docstring: 2
+      - color:
+      - font-style:
     - formatting: 1
+      - color:
     - function: 1
+      - color:
     - functiondef: 2
+      - color:
+      - font-style:
     - heading-1: 1
+      - font-style:
     - heading-2: 1
+      - font-style:
     - heading-3: 1
+      - font-style:
     - italic: 1
+      - font-style:
     - keyword: 1
+      - color:
     - link: 1
+      - text-decoration:
     - module: 1
+      - color:
     - number: 1
+      - color:
     - project: 1
+      - font-style:
     - string: 1
+      - color:
     - tag: 1
+      - text-decoration:
     - task-done: 2
+      - color:
+      - text-decoration:
+  - separator_line:
+  - tab_background:
+  - tab_title:
+  - text_selection_tint:
+  - thumbnail_border:
+  - tint:
 
 - Theme06_Gold: 20
+  - background:
+  - bar_background:
+  - dark_keyboard:
+  - default_text:
+  - error_text:
+  - font-family:
+  - font-size:
+  - gutter_background:
+  - gutter_border:
+  - interstitial:
+  - library_background:
+  - line_number:
+  - name:
   - scopes: 27
     - bold: 1
+      - font-style:
     - bold-italic: 1
+      - font-style:
     - builtinfunction: 1
+      - color:
     - checkbox: 1
+      - checkbox:
     - checkbox-done: 2
+      - checkbox:
+      - done:
     - class: 1
+      - color:
     - classdef: 2
+      - color:
+      - font-style:
     - code: 2
+      - background-color:
+      - corner-radius:
     - codeblock-start: 1
+      - color:
     - comment: 2
+      - color:
+      - font-style:
     - default: 1
+      - color:
     - docstring: 1
+      - color:
     - formatting: 1
+      - color:
     - function: 1
+      - color:
     - functiondef: 2
+      - color:
+      - font-style:
     - heading-1: 1
+      - font-style:
     - heading-2: 1
+      - font-style:
     - heading-3: 1
+      - font-style:
     - italic: 1
+      - font-style:
     - keyword: 1
+      - color:
     - link: 1
+      - text-decoration:
     - module: 1
+      - color:
     - number: 1
+      - color:
     - project: 1
+      - font-style:
     - string: 1
+      - color:
     - tag: 1
+      - text-decoration:
     - task-done: 2
+      - color:
+      - text-decoration:
+  - separator_line:
+  - tab_background:
+  - tab_title:
+  - text_selection_tint:
+  - thumbnail_border:
+  - tint:
 
 - Theme07_TomorrowNight: 20
+  - background:
+  - bar_background:
+  - dark_keyboard:
+  - default_text:
+  - error_text:
+  - font-family:
+  - font-size:
+  - gutter_background:
+  - gutter_border:
+  - interstitial:
+  - library_background:
+  - line_number:
+  - name:
   - scopes: 27
     - bold: 1
+      - font-style:
     - bold-italic: 1
+      - font-style:
     - builtinfunction: 1
+      - color:
     - checkbox: 1
+      - checkbox:
     - checkbox-done: 2
+      - checkbox:
+      - done:
     - class: 1
+      - color:
     - classdef: 2
+      - color:
+      - font-style:
     - code: 2
+      - background-color:
+      - corner-radius:
     - codeblock-start: 1
+      - color:
     - comment: 2
+      - color:
+      - font-style:
     - default: 1
+      - color:
     - docstring: 1
+      - color:
     - formatting: 1
+      - color:
     - function: 1
+      - color:
     - functiondef: 2
+      - color:
+      - font-style:
     - heading-1: 1
+      - font-style:
     - heading-2: 1
+      - font-style:
     - heading-3: 1
+      - font-style:
     - italic: 1
+      - font-style:
     - keyword: 1
+      - color:
     - link: 1
+      - text-decoration:
     - module: 1
+      - color:
     - number: 1
+      - color:
     - project: 1
+      - font-style:
     - string: 1
+      - color:
     - tag: 1
+      - text-decoration:
     - task-done: 2
+      - color:
+      - text-decoration:
+  - separator_line:
+  - tab_background:
+  - tab_title:
+  - text_selection_tint:
+  - thumbnail_border:
+  - tint:
 
 - MyTheme: 18
+  - background:
+  - bar_background:
+  - dark_keyboard:
+  - default_text:
+  - font-family:
+  - font-size:
+  - gutter_background:
+  - gutter_border:
+  - library_background:
+  - line_number:
+  - name:
   - scopes: 29
     - bold: 1
+      - font-style:
     - bold-italic: 1
+      - font-style:
     - builtinfunction: 1
+      - color:
     - checkbox: 1
+      - checkbox:
     - checkbox-done: 2
+      - checkbox:
+      - done:
     - class: 1
+      - color:
     - classdef: 2
+      - color:
+      - font-style:
     - code: 2
+      - background-color:
+      - corner-radius:
     - codeblock-start: 1
+      - color:
     - comment: 2
+      - color:
+      - font-style:
     - decorator: 1
+      - color:
     - default: 1
+      - color:
     - docstring: 2
+      - color:
+      - font-style:
     - escape: 1
+      - background-color:
     - formatting: 1
+      - color:
     - function: 1
+      - color:
     - functiondef: 2
+      - color:
+      - font-style:
     - heading-1: 1
+      - font-style:
     - heading-2: 1
+      - font-style:
     - heading-3: 1
+      - font-style:
     - italic: 1
+      - font-style:
     - keyword: 1
+      - color:
     - link: 1
+      - text-decoration:
     - module: 1
+      - color:
     - number: 1
+      - color:
     - project: 1
+      - font-style:
     - string: 1
+      - color:
     - tag: 1
+      - text-decoration:
     - task-done: 2
+      - color:
+      - text-decoration:
+  - separator_line:
+  - tab_background:
+  - tab_title:
+  - text_selection_tint:
+  - thumbnail_border:
+  - tint:
 
 - 59962EDD-7900-44D0-9947-35D7739964A6: 21
+  - background:
+  - bar_background:
+  - dark_keyboard:
+  - default_text:
+  - error_text:
+  - font-family:
+  - font-size:
+  - gutter_background:
+  - gutter_border:
+  - interstitial:
+  - library_background:
+  - library_tint:
+  - line_number:
+  - name:
   - scopes: 27
     - bold: 1
+      - font-style:
     - bold-italic: 1
+      - font-style:
     - builtinfunction: 1
+      - color:
     - checkbox: 1
+      - checkbox:
     - checkbox-done: 2
+      - checkbox:
+      - done:
     - class: 1
+      - color:
     - classdef: 2
+      - color:
+      - font-style:
     - code: 2
+      - background-color:
+      - corner-radius:
     - codeblock-start: 1
+      - color:
     - comment: 2
+      - color:
+      - font-style:
     - default: 1
+      - color:
     - docstring: 2
+      - color:
+      - font-style:
     - formatting: 1
+      - color:
     - function: 1
+      - color:
     - functiondef: 2
+      - color:
+      - font-style:
     - heading-1: 1
+      - font-style:
     - heading-2: 1
+      - font-style:
     - heading-3: 1
+      - font-style:
     - italic: 1
+      - font-style:
     - keyword: 1
+      - color:
     - link: 1
+      - text-decoration:
     - module: 1
+      - color:
     - number: 1
+      - color:
     - project: 1
+      - font-style:
     - string: 1
+      - color:
     - tag: 1
+      - text-decoration:
     - task-done: 2
+      - color:
+      - text-decoration:
+  - separator_line:
+  - tab_background:
+  - tab_title:
+  - text_selection_tint:
+  - thumbnail_border:
+  - tint:
 
 - BCD46A04-50DD-4212-A800-39FDAEC8856F: 21
+  - background:
+  - bar_background:
+  - dark_keyboard:
+  - default_text:
+  - error_text:
+  - font-family:
+  - font-size:
+  - gutter_background:
+  - gutter_border:
+  - interstitial:
+  - library_background:
+  - library_tint:
+  - line_number:
+  - name:
   - scopes: 27
     - bold: 1
+      - font-style:
     - bold-italic: 1
+      - font-style:
     - builtinfunction: 1
+      - color:
     - checkbox: 1
+      - checkbox:
     - checkbox-done: 2
+      - checkbox:
+      - done:
     - class: 1
+      - color:
     - classdef: 2
+      - color:
+      - font-style:
     - code: 2
+      - background-color:
+      - corner-radius:
     - codeblock-start: 1
+      - color:
     - comment: 2
+      - color:
+      - font-style:
     - default: 1
+      - color:
     - docstring: 2
+      - color:
+      - font-style:
     - formatting: 1
+      - color:
     - function: 1
+      - color:
     - functiondef: 2
+      - color:
+      - font-style:
     - heading-1: 1
+      - font-style:
     - heading-2: 1
+      - font-style:
     - heading-3: 1
+      - font-style:
     - italic: 1
+      - font-style:
     - keyword: 1
+      - color:
     - link: 1
+      - text-decoration:
     - module: 1
+      - color:
     - number: 1
+      - color:
     - project: 1
+      - font-style:
     - string: 1
+      - color:
     - tag: 1
+      - text-decoration:
     - task-done: 2
+      - color:
+      - text-decoration:
+  - separator_line:
+  - tab_background:
+  - tab_title:
+  - text_selection_tint:
+  - thumbnail_border:
+  - tint:
 
 - tmpMergeDumps: 25
+  - __tint:
+  - background:
+  - bar_background:
+  - dark_keyboard:
+  - default_text:
+  - editor_actions_icon_background:
+  - editor_actions_icon_tint:
+  - editor_actions_popover_background:
+  - error_text:
+  - font-family:
+  - font-size:
+  - gutter_background:
+  - gutter_border:
+  - interstitial:
+  - library_background:
+  - library_tint:
+  - line_number:
+  - name:
   - scopes: 30
     - bold: 1
+      - font-style:
     - bold-italic: 1
+      - font-style:
     - builtinfunction: 1
+      - color:
     - checkbox: 1
+      - checkbox:
     - checkbox-done: 2
+      - checkbox:
+      - done:
     - class: 1
+      - color:
     - classdef: 2
+      - color:
+      - font-style:
     - code: 2
+      - background-color:
+      - corner-radius:
     - codeblock-start: 1
+      - color:
     - comment: 2
+      - color:
+      - font-style:
     - decorator: 1
+      - color:
     - default: 1
+      - color:
     - docstring: 2
+      - color:
+      - font-style:
     - escape: 1
+      - background-color:
     - formatting: 1
+      - color:
     - function: 1
+      - color:
     - functiondef: 2
+      - color:
+      - font-style:
     - heading-1: 1
+      - font-style:
     - heading-2: 1
+      - font-style:
     - heading-3: 1
+      - font-style:
     - italic: 1
+      - font-style:
     - keyword: 1
+      - color:
     - link: 1
+      - text-decoration:
     - marker: 3
+      - box-background-color:
+      - box-border-color:
+      - box-border-type:
     - module: 1
+      - color:
     - number: 1
+      - color:
     - project: 1
+      - font-style:
     - string: 1
+      - color:
     - tag: 1
+      - text-decoration:
     - task-done: 2
+      - color:
+      - text-decoration:
+  - separator_line:
+  - tab_background:
+  - tab_title:
+  - text_selection_tint:
+  - thumbnail_border:
+  - tint:
 ```
-
-- Theme09_Editorial: 20
-  - scopes: 27
-    - bold: 1
-    - bold-italic: 1
-    - builtinfunction: 1
-    - checkbox: 1
-    - checkbox-done: 2
-    - class: 1
-    - classdef: 2
-    - code: 2
-    - codeblock-start: 1
-    - comment: 2
-    - default: 1
-    - docstring: 1
-    - formatting: 1
-    - function: 1
-    - functiondef: 2
-    - heading-1: 1
-    - heading-2: 1
-    - heading-3: 1
-    - italic: 1
-    - keyword: 1
-    - link: 1
-    - module: 1
-    - number: 1
-    - project: 1
-    - string: 1
-    - tag: 1
-    - task-done: 2
-
-- Theme04_SolarizedDark 2: 21
-  - scopes: 27
-    - bold: 1
-    - bold-italic: 1
-    - builtinfunction: 1
-    - checkbox: 1
-    - checkbox-done: 2
-    - class: 1
-    - classdef: 2
-    - code: 2
-    - codeblock-start: 1
-    - comment: 2
-    - default: 1
-    - docstring: 2
-    - formatting: 1
-    - function: 1
-    - functiondef: 2
-    - heading-1: 1
-    - heading-2: 1
-    - heading-3: 1
-    - italic: 1
-    - keyword: 1
-    - link: 1
-    - module: 1
-    - number: 1
-    - project: 1
-    - string: 1
-    - tag: 1
-    - task-done: 2
-
-- Theme10_WWDC16: 21
-  - scopes: 28
-    - bold: 1
-    - bold-italic: 1
-    - builtinfunction: 1
-    - checkbox: 1
-    - checkbox-done: 2
-    - class: 1
-    - classdef: 2
-    - code: 2
-    - codeblock-start: 1
-    - comment: 1
-    - decorator: 1
-    - default: 1
-    - docstring: 2
-    - formatting: 1
-    - function: 1
-    - functiondef: 2
-    - heading-1: 1
-    - heading-2: 1
-    - heading-3: 1
-    - italic: 1
-    - keyword: 1
-    - link: 1
-    - module: 1
-    - number: 1
-    - project: 1
-    - string: 1
-    - tag: 1
-    - task-done: 2
-
-- Default: 21
-  - scopes: 29
-    - bold: 1
-    - bold-italic: 1
-    - builtinfunction: 1
-    - checkbox: 1
-    - checkbox-done: 2
-    - class: 1
-    - classdef: 2
-    - code: 2
-    - codeblock-start: 1
-    - comment: 2
-    - decorator: 1
-    - default: 1
-    - docstring: 2
-    - formatting: 1
-    - function: 1
-    - functiondef: 2
-    - heading-1: 1
-    - heading-2: 1
-    - heading-3: 1
-    - italic: 1
-    - keyword: 1
-    - link: 1
-    - marker: 3
-    - module: 1
-    - number: 1
-    - project: 1
-    - string: 1
-    - tag: 1
-    - task-done: 2
-
-- Theme11_Ayu: 21
-  - scopes: 29
-    - bold: 1
-    - bold-italic: 1
-    - builtinfunction: 1
-    - checkbox: 1
-    - checkbox-done: 2
-    - class: 1
-    - classdef: 2
-    - code: 2
-    - codeblock-start: 1
-    - comment: 1
-    - decorator: 1
-    - default: 1
-    - docstring: 2
-    - formatting: 1
-    - function: 1
-    - functiondef: 2
-    - heading-1: 1
-    - heading-2: 1
-    - heading-3: 1
-    - italic: 1
-    - keyword: 1
-    - link: 1
-    - marker: 3
-    - module: 1
-    - number: 1
-    - project: 1
-    - string: 1
-    - tag: 1
-    - task-done: 2
-
-- Theme03_SolarizedLight: 21
-  - scopes: 28
-    - bold: 1
-    - bold-italic: 1
-    - builtinfunction: 1
-    - checkbox: 1
-    - checkbox-done: 2
-    - class: 1
-    - classdef: 2
-    - code: 2
-    - codeblock-start: 1
-    - comment: 2
-    - default: 1
-    - docstring: 2
-    - escape: 1
-    - formatting: 1
-    - function: 1
-    - functiondef: 2
-    - heading-1: 1
-    - heading-2: 1
-    - heading-3: 1
-    - italic: 1
-    - keyword: 1
-    - link: 1
-    - module: 1
-    - number: 1
-    - project: 1
-    - string: 1
-    - tag: 1
-    - task-done: 2
-
-- Theme01_Dawn: 17
-  - scopes: 28
-    - bold: 1
-    - bold-italic: 1
-    - builtinfunction: 1
-    - checkbox: 1
-    - checkbox-done: 2
-    - class: 1
-    - classdef: 2
-    - code: 2
-    - codeblock-start: 1
-    - comment: 2
-    - decorator: 1
-    - default: 1
-    - docstring: 2
-    - formatting: 1
-    - function: 1
-    - functiondef: 2
-    - heading-1: 1
-    - heading-2: 1
-    - heading-3: 1
-    - italic: 1
-    - keyword: 1
-    - link: 1
-    - module: 1
-    - number: 1
-    - project: 1
-    - string: 1
-    - tag: 1
-    - task-done: 2
-
-- PythonistaDark: 21
-  - scopes: 28
-    - bold: 1
-    - bold-italic: 1
-    - builtinfunction: 1
-    - checkbox: 1
-    - checkbox-done: 2
-    - class: 1
-    - classdef: 2
-    - code: 2
-    - codeblock-start: 1
-    - comment: 2
-    - decorator: 1
-    - default: 1
-    - docstring: 1
-    - formatting: 1
-    - function: 1
-    - functiondef: 2
-    - heading-1: 1
-    - heading-2: 1
-    - heading-3: 1
-    - italic: 1
-    - keyword: 1
-    - link: 1
-    - module: 1
-    - number: 1
-    - project: 1
-    - string: 1
-    - tag: 1
-    - task-done: 2
-
-- Theme08_Oceanic: 21
-  - scopes: 27
-    - bold: 1
-    - bold-italic: 1
-    - builtinfunction: 1
-    - checkbox: 1
-    - checkbox-done: 2
-    - class: 1
-    - classdef: 2
-    - code: 2
-    - codeblock-start: 1
-    - comment: 2
-    - default: 1
-    - docstring: 2
-    - formatting: 1
-    - function: 1
-    - functiondef: 2
-    - heading-1: 1
-    - heading-2: 1
-    - heading-3: 1
-    - italic: 1
-    - keyword: 1
-    - link: 1
-    - module: 1
-    - number: 1
-    - project: 1
-    - string: 1
-    - tag: 1
-    - task-done: 2
-
-- Theme02_Tomorrow: 20
-  - scopes: 27
-    - bold: 1
-    - bold-italic: 1
-    - builtinfunction: 1
-    - checkbox: 1
-    - checkbox-done: 2
-    - class: 1
-    - classdef: 2
-    - code: 2
-    - codeblock-start: 1
-    - comment: 2
-    - default: 1
-    - docstring: 1
-    - formatting: 1
-    - function: 1
-    - functiondef: 2
-    - heading-1: 1
-    - heading-2: 1
-    - heading-3: 1
-    - italic: 1
-    - keyword: 1
-    - link: 1
-    - module: 1
-    - number: 1
-    - project: 1
-    - string: 1
-    - tag: 1
-    - task-done: 2
-
-- Theme05_CoolGlow: 21
-  - scopes: 27
-    - bold: 1
-    - bold-italic: 1
-    - builtinfunction: 1
-    - checkbox: 1
-    - checkbox-done: 2
-    - class: 1
-    - classdef: 2
-    - code: 2
-    - codeblock-start: 1
-    - comment: 2
-    - default: 1
-    - docstring: 2
-    - formatting: 1
-    - function: 1
-    - functiondef: 2
-    - heading-1: 1
-    - heading-2: 1
-    - heading-3: 1
-    - italic: 1
-    - keyword: 1
-    - link: 1
-    - module: 1
-    - number: 1
-    - project: 1
-    - string: 1
-    - tag: 1
-    - task-done: 2
-
-- Theme06_Gold: 20
-  - scopes: 27
-    - bold: 1
-    - bold-italic: 1
-    - builtinfunction: 1
-    - checkbox: 1
-    - checkbox-done: 2
-    - class: 1
-    - classdef: 2
-    - code: 2
-    - codeblock-start: 1
-    - comment: 2
-    - default: 1
-    - docstring: 1
-    - formatting: 1
-    - function: 1
-    - functiondef: 2
-    - heading-1: 1
-    - heading-2: 1
-    - heading-3: 1
-    - italic: 1
-    - keyword: 1
-    - link: 1
-    - module: 1
-    - number: 1
-    - project: 1
-    - string: 1
-    - tag: 1
-    - task-done: 2
-
-- Theme07_TomorrowNight: 20
-  - scopes: 27
-    - bold: 1
-    - bold-italic: 1
-    - builtinfunction: 1
-    - checkbox: 1
-    - checkbox-done: 2
-    - class: 1
-    - classdef: 2
-    - code: 2
-    - codeblock-start: 1
-    - comment: 2
-    - default: 1
-    - docstring: 1
-    - formatting: 1
-    - function: 1
-    - functiondef: 2
-    - heading-1: 1
-    - heading-2: 1
-    - heading-3: 1
-    - italic: 1
-    - keyword: 1
-    - link: 1
-    - module: 1
-    - number: 1
-    - project: 1
-    - string: 1
-    - tag: 1
-    - task-done: 2
-
-- MyTheme: 18
-  - scopes: 29
-    - bold: 1
-    - bold-italic: 1
-    - builtinfunction: 1
-    - checkbox: 1
-    - checkbox-done: 2
-    - class: 1
-    - classdef: 2
-    - code: 2
-    - codeblock-start: 1
-    - comment: 2
-    - decorator: 1
-    - default: 1
-    - docstring: 2
-    - escape: 1
-    - formatting: 1
-    - function: 1
-    - functiondef: 2
-    - heading-1: 1
-    - heading-2: 1
-    - heading-3: 1
-    - italic: 1
-    - keyword: 1
-    - link: 1
-    - module: 1
-    - number: 1
-    - project: 1
-    - string: 1
-    - tag: 1
-    - task-done: 2
-
-- 59962EDD-7900-44D0-9947-35D7739964A6: 21
-  - scopes: 27
-    - bold: 1
-    - bold-italic: 1
-    - builtinfunction: 1
-    - checkbox: 1
-    - checkbox-done: 2
-    - class: 1
-    - classdef: 2
-    - code: 2
-    - codeblock-start: 1
-    - comment: 2
-    - default: 1
-    - docstring: 2
-    - formatting: 1
-    - function: 1
-    - functiondef: 2
-    - heading-1: 1
-    - heading-2: 1
-    - heading-3: 1
-    - italic: 1
-    - keyword: 1
-    - link: 1
-    - module: 1
-    - number: 1
-    - project: 1
-    - string: 1
-    - tag: 1
-    - task-done: 2
-
-- BCD46A04-50DD-4212-A800-39FDAEC8856F: 21
-  - scopes: 27
-    - bold: 1
-    - bold-italic: 1
-    - builtinfunction: 1
-    - checkbox: 1
-    - checkbox-done: 2
-    - class: 1
-    - classdef: 2
-    - code: 2
-    - codeblock-start: 1
-    - comment: 2
-    - default: 1
-    - docstring: 2
-    - formatting: 1
-    - function: 1
-    - functiondef: 2
-    - heading-1: 1
-    - heading-2: 1
-    - heading-3: 1
-    - italic: 1
-    - keyword: 1
-    - link: 1
-    - module: 1
-    - number: 1
-    - project: 1
-    - string: 1
-    - tag: 1
-    - task-done: 2
-
-- tmpMergeDumps: 25
-  - scopes: 30
-    - bold: 1
-    - bold-italic: 1
-    - builtinfunction: 1
-    - checkbox: 1
-    - checkbox-done: 2
-    - class: 1
-    - classdef: 2
-    - code: 2
-    - codeblock-start: 1
-    - comment: 2
-    - decorator: 1
-    - default: 1
-    - docstring: 2
-    - escape: 1
-    - formatting: 1
-    - function: 1
-    - functiondef: 2
-    - heading-1: 1
-    - heading-2: 1
-    - heading-3: 1
-    - italic: 1
-    - keyword: 1
-    - link: 1
-    - marker: 3
-    - module: 1
-    - number: 1
-    - project: 1
-    - string: 1
-    - tag: 1
-    - task-done: 2
-
-
 
 # 📝 2024/08/27
 
