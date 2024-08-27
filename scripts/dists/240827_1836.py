@@ -7,12 +7,6 @@ import json
 from objc_util import ObjCClass
 import pdbg
 
-dumps_path = Path('./dumps')
-'''
-if not dumps_path.exists():
-  dumps_path.parent.mkdir(parents=True, exist_ok=True)
-'''
-
 NSBundle = ObjCClass('NSBundle')
 PA2UITheme = ObjCClass('PA2UITheme')
 
@@ -35,7 +29,7 @@ def remove_comment_dict(target: dict) -> dict:
 
 
 def merge_list(a, b):
-  m = copy.copy(a)
+  m = copy.copy(a if a else [])
   for i, value in enumerate(b):
     if isinstance(value, dict):
       m[i] = merge_dict(a[i], b[i])
@@ -64,34 +58,33 @@ def to_dumps(dict_data: dict) -> str:
 
 def write_dumps(data: str, name: str, dir: Path) -> None:
   json_path = Path(dir, f'{name}.json')
-
   if not json_path.exists():
     json_path.parent.mkdir(parents=True, exist_ok=True)
     json_path.touch()
-
   json_path.write_text(data, encoding='utf-8')
 
 
-root_theme_path = Path(str(NSBundle.mainBundle().resourcePath()), 'Themes2')
+if __name__ == '__main__':
+  dumps_path = Path('./dumps')
 
-user_theme_path = Path(str(PA2UITheme.sharedTheme().userThemesPath()))
+  root_theme_path = Path(str(NSBundle.mainBundle().resourcePath()), 'Themes2')
 
-paths_iter = itertools.chain(root_theme_path.iterdir(),
-                             user_theme_path.iterdir())
+  user_theme_path = Path(str(PA2UITheme.sharedTheme().userThemesPath()))
 
-tmp_dict = {}
+  paths_iter = itertools.chain(root_theme_path.iterdir(),
+                               user_theme_path.iterdir())
 
-for p in paths_iter:
-  if not p.suffix == '.json':
-    continue
-  _theme_dict = get_json2dict(p)
-  theme_dict = remove_comment_dict(_theme_dict)
-  _dump = to_dumps(theme_dict)
-  write_dumps(_dump, p.stem, dumps_path)
-  tmp_dict = merge_dict(theme_dict, tmp_dict)
+  tmp_dict = {}
 
-#json_data = json.dumps(tmp_dict, indent=2, sort_keys=True)
-#print(json_data)
-_dump = to_dumps(tmp_dict)
-write_dumps(_dump, 'tmpMergeDumps', dumps_path)
+  for p in paths_iter:
+    if not p.suffix == '.json':
+      continue
+    _theme_dict = get_json2dict(p)
+    theme_dict = remove_comment_dict(_theme_dict)
+    _dump = to_dumps(theme_dict)
+    write_dumps(_dump, p.stem, dumps_path)
+    tmp_dict = merge_dict(theme_dict, tmp_dict)
+
+  _dump = to_dumps(tmp_dict)
+  write_dumps(_dump, 'tmpMergeDumps', dumps_path)
 
