@@ -28,10 +28,6 @@ def get_deep_dict(target: dict, parent: dict = {}) -> dict:
   return parent
 
 
-def merge_dict():
-  pass
-
-
 root_theme_path = Path(str(NSBundle.mainBundle().resourcePath()), 'Themes2')
 
 user_theme_path = Path(str(PA2UITheme.sharedTheme().userThemesPath()))
@@ -43,12 +39,12 @@ tmp_dict = {}
 
 for p in paths_iter:
   theme_dict = get_json2dict(p)
-  tmp_dict = get_deep_dict(theme_dict, theme_dict)
-'''
+  _tmp_dict = get_deep_dict(theme_dict, theme_dict)
+  tmp_dict |= _tmp_dict
+
 pick = list(root_theme_path.iterdir())[0]
 pick = list(user_theme_path.iterdir())[0]
 
 d = get_json2dict(pick)
 default_dict = get_deep_dict(d, {})
-'''
 

@@ -5,6 +5,14 @@
 
 - vscode のtheme コンバートできたらおもろい？
 
+## 辞書
+
+
+[Pythonでネストしたdictをマージしたい #DeepMerge - Qiita](https://qiita.com/rana_kualu/items/7c957851a058c1ae7808)
+
+[Pythonで2つの辞書型(dict型)をマージ | レコチョクのエンジニアブログ](https://techblog.recochoku.jp/5748)
+
+
 
 # 📝 2024/08/25
 
