@@ -1,22 +1,18 @@
 {
- "__tint": "#5794b0",
- "background": "#262b30",
- "bar_background": "#414448",
+ "background": "000000",
+ "bar_background": "1B1719",
  "dark_keyboard": true,
- "default_text": "#e6e6e6",
- "editor_actions_icon_background": "#ffffff",
- "editor_actions_icon_tint": "686871",
- "editor_actions_popover_background": "#f7f7f7",
+ "default_text": "#E6E6E6",
  "error_text": "#f59f9f",
  "font-family": "Menlo-Regular",
- "font-size": 15.0,
- "gutter_background": "#262b30",
+ "font-size": 10,
+ "gutter_background": "141210",
  "gutter_border": "#222222",
- "interstitial": "#2a3036",
- "library_background": "#2a3036",
- "library_tint": "#35a298",
- "line_number": "#4c4c4c",
- "name": "Editorial",
+ "interstitial": "#2c2628",
+ "library_background": "1F1B1C",
+ "library_tint": "FFFFFF",
+ "line_number": "#625F5A",
+ "name": "Pythonista Dark",
  "scopes": {
   "bold": {
    "font-style": "bold"
@@ -25,7 +21,7 @@
    "font-style": "bold-italic"
   },
   "builtinfunction": {
-   "color": "#ff7817"
+   "color": "#6AB49B"
   },
   "checkbox": {
    "checkbox": true
@@ -35,44 +31,40 @@
    "done": true
   },
   "class": {
-   "color": "#ff7817"
+   "color": "#6ab49b"
   },
   "classdef": {
-   "color": "#ff7817",
+   "color": "#6AB49B",
    "font-style": "bold"
   },
   "code": {
    "background-color": "#80808040",
-   "corner-radius": 2.0
+   "corner-radius": 2
   },
   "codeblock-start": {
    "color": "#80808080"
   },
   "comment": {
-   "color": "#bcbcbc",
+   "color": "#807C76",
    "font-style": "italic"
   },
   "decorator": {
-   "color": "D38D5D"
+   "color": "#caae87"
   },
   "default": {
-   "color": "#f9f9f9"
+   "color": "F3E9D3"
   },
   "docstring": {
-   "color": "#74d154",
-   "font-style": "italic"
-  },
-  "escape": {
-   "background-color": "#ebf1d8"
+   "color": "#FFF3AA"
   },
   "formatting": {
    "color": "#80808080"
   },
   "function": {
-   "color": "#ff7817"
+   "color": "#6AB49B"
   },
   "functiondef": {
-   "color": "#ff7817",
+   "color": "6AB49B",
    "font-style": "bold"
   },
   "heading-1": {
@@ -88,27 +80,22 @@
    "font-style": "italic"
   },
   "keyword": {
-   "color": "#fddf48"
+   "color": "#D66668"
   },
   "link": {
    "text-decoration": "underline"
   },
-  "marker": {
-   "box-background-color": "#ffff0030",
-   "box-border-color": "#ffe5b3",
-   "box-border-type": 4
-  },
   "module": {
-   "color": "#ff7817"
+   "color": "#6AB49B"
   },
   "number": {
-   "color": "#e0f557"
+   "color": "#EF8F7A"
   },
   "project": {
    "font-style": "bold"
   },
   "string": {
-   "color": "#74d154"
+   "color": "#F0C18B"
   },
   "tag": {
    "text-decoration": "none"
@@ -118,10 +105,10 @@
    "text-decoration": "strikeout"
   }
  },
- "separator_line": "#000000",
- "tab_background": "#262b30",
- "tab_title": "#ffffff",
+ "separator_line": "#101010",
+ "tab_background": "#11100d",
+ "tab_title": "#FFFFFF",
  "text_selection_tint": "#ffffff",
- "thumbnail_border": "#414448",
- "tint": "#e6e6e6"
+ "thumbnail_border": "#101010",
+ "tint": "#79cdb1"
 }

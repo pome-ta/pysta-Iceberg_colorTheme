@@ -1,17 +1,18 @@
 {
- "background": "#262b30",
- "bar_background": "#414448",
+ "background": "#032a33",
+ "bar_background": "#093542",
  "dark_keyboard": true,
- "default_text": "#e6e6e6",
+ "default_text": "#849496",
  "error_text": "#f59f9f",
  "font-family": "Menlo-Regular",
  "font-size": 15.0,
- "gutter_background": "#262b30",
- "gutter_border": "#222222",
- "interstitial": "#2a3036",
- "library_background": "#2a3036",
- "line_number": "#4c4c4c",
- "name": "Editorial",
+ "gutter_background": "#06262f",
+ "gutter_border": "#043640",
+ "interstitial": "#022026",
+ "library_background": "#022026",
+ "library_tint": "#35a298",
+ "line_number": "#4a6b76",
+ "name": "Solarized Dark",
  "scopes": {
   "bold": {
    "font-style": "bold"
@@ -20,7 +21,7 @@
    "font-style": "bold-italic"
   },
   "builtinfunction": {
-   "color": "#ff7817"
+   "color": "#268bd2"
   },
   "checkbox": {
    "checkbox": true
@@ -30,10 +31,10 @@
    "done": true
   },
   "class": {
-   "color": "#ff7817"
+   "color": "#268bd2"
   },
   "classdef": {
-   "color": "#ff7817",
+   "color": "#268bd2",
    "font-style": "bold"
   },
   "code": {
@@ -44,23 +45,24 @@
    "color": "#80808080"
   },
   "comment": {
-   "color": "#bcbcbc",
+   "color": "#93A1A1",
    "font-style": "italic"
   },
   "default": {
-   "color": "#f9f9f9"
+   "color": "#849496"
   },
   "docstring": {
-   "color": "#74d154"
+   "color": "#589429",
+   "font-style": "italic"
   },
   "formatting": {
    "color": "#80808080"
   },
   "function": {
-   "color": "#ff7817"
+   "color": "#268bd2"
   },
   "functiondef": {
-   "color": "#ff7817",
+   "color": "#268bd2",
    "font-style": "bold"
   },
   "heading-1": {
@@ -76,22 +78,22 @@
    "font-style": "italic"
   },
   "keyword": {
-   "color": "#fddf48"
+   "color": "#859900"
   },
   "link": {
    "text-decoration": "underline"
   },
   "module": {
-   "color": "#ff7817"
+   "color": "#c54b21"
   },
   "number": {
-   "color": "#e0f557"
+   "color": "#d33682"
   },
   "project": {
    "font-style": "bold"
   },
   "string": {
-   "color": "#74d154"
+   "color": "#2aa198"
   },
   "tag": {
    "text-decoration": "none"
@@ -101,10 +103,10 @@
    "text-decoration": "strikeout"
   }
  },
- "separator_line": "#000000",
- "tab_background": "#262b30",
- "tab_title": "#ffffff",
- "text_selection_tint": "#ffffff",
- "thumbnail_border": "#414448",
- "tint": "#e6e6e6"
+ "separator_line": "#3d5861",
+ "tab_background": "#032a33",
+ "tab_title": "#849496",
+ "text_selection_tint": "#94a1a1",
+ "thumbnail_border": "#0c4759",
+ "tint": "#2aa198"
 }
