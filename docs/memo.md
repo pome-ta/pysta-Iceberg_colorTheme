@@ -7,6 +7,7 @@
 
 ### 対応確認
 
+```
 #161821 background: editor.background
 #161821 bar_background: activityBar.background
 #c6c8d1 default_text: tokenColors {scope: text}
@@ -18,6 +19,7 @@
 #444b71 line_number: editorLineNumber.foreground
 #e2a478 builtinfunction: entity.name.function.method
 class: 
+```
 
 
 
