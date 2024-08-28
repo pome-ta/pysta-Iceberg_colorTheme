@@ -1,6 +1,192 @@
 # 📝 2024/08/28
 
 
+## color
+
+[Theme Color | Visual Studio Code Extension API](https://code.visualstudio.com/api/references/theme-color)
+
+### Pythonista3 default
+
+
+```
+- Default: 21
+  - __tint:
+  - background:
+  - bar_background:
+  - default_text:
+  - editor_actions_icon_background:
+  - editor_actions_icon_tint:
+  - editor_actions_popover_background:
+  - error_text:
+  - gutter_background:
+  - gutter_border:
+  - interstitial:
+  - library_background:
+  - line_number:
+  - name:
+  - scopes: 29
+    - bold: 1
+      - font-style:
+    - bold-italic: 1
+      - font-style:
+    - builtinfunction: 1
+      - color:
+    - checkbox: 1
+      - checkbox:
+    - checkbox-done: 2
+      - checkbox:
+      - done:
+    - class: 1
+      - color:
+    - classdef: 2
+      - color:
+      - font-style:
+    - code: 2
+      - background-color:
+      - corner-radius:
+    - codeblock-start: 1
+      - color:
+    - comment: 2
+      - color:
+      - font-style:
+    - decorator: 1
+      - color:
+    - default: 1
+      - color:
+    - docstring: 2
+      - color:
+      - font-style:
+    - formatting: 1
+      - color:
+    - function: 1
+      - color:
+    - functiondef: 2
+      - color:
+      - font-style:
+    - heading-1: 1
+      - font-style:
+    - heading-2: 1
+      - font-style:
+    - heading-3: 1
+      - font-style:
+    - italic: 1
+      - font-style:
+    - keyword: 1
+      - color:
+    - link: 1
+      - text-decoration:
+    - marker: 3
+      - box-background-color:
+      - box-border-color:
+      - box-border-type:
+    - module: 1
+      - color:
+    - number: 1
+      - color:
+    - project: 1
+      - font-style:
+    - string: 1
+      - color:
+    - tag: 1
+      - text-decoration:
+    - task-done: 2
+      - color:
+      - text-decoration:
+  - separator_line:
+  - tab_background:
+  - tab_title:
+  - text_selection_tint:
+  - thumbnail_border:
+  - tint:
+
+- PythonistaDark: 21
+  - background:
+  - bar_background:
+  - dark_keyboard:
+  - default_text:
+  - error_text:
+  - font-family:
+  - font-size:
+  - gutter_background:
+  - gutter_border:
+  - interstitial:
+  - library_background:
+  - library_tint:
+  - line_number:
+  - name:
+  - scopes: 28
+    - bold: 1
+      - font-style:
+    - bold-italic: 1
+      - font-style:
+    - builtinfunction: 1
+      - color:
+    - checkbox: 1
+      - checkbox:
+    - checkbox-done: 2
+      - checkbox:
+      - done:
+    - class: 1
+      - color:
+    - classdef: 2
+      - color:
+      - font-style:
+    - code: 2
+      - background-color:
+      - corner-radius:
+    - codeblock-start: 1
+      - color:
+    - comment: 2
+      - color:
+      - font-style:
+    - decorator: 1
+      - color:
+    - default: 1
+      - color:
+    - docstring: 1
+      - color:
+    - formatting: 1
+      - color:
+    - function: 1
+      - color:
+    - functiondef: 2
+      - color:
+      - font-style:
+    - heading-1: 1
+      - font-style:
+    - heading-2: 1
+      - font-style:
+    - heading-3: 1
+      - font-style:
+    - italic: 1
+      - font-style:
+    - keyword: 1
+      - color:
+    - link: 1
+      - text-decoration:
+    - module: 1
+      - color:
+    - number: 1
+      - color:
+    - project: 1
+      - font-style:
+    - string: 1
+      - color:
+    - tag: 1
+      - text-decoration:
+    - task-done: 2
+      - color:
+      - text-decoration:
+  - separator_line:
+  - tab_background:
+  - tab_title:
+  - text_selection_tint:
+  - thumbnail_border:
+  - tint:
+
+```
+
+
 ## 各theme の要素数など
 
 ```
