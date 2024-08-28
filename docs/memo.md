@@ -1,12 +1,27 @@
 # 📝 2024/08/28
 
-
 ## color
 
 [Theme Color | Visual Studio Code Extension API](https://code.visualstudio.com/api/references/theme-color)
 
-### Pythonista3 default
 
+### 対応確認
+
+#161821 background: editor.background
+#161821 bar_background: activityBar.background
+#c6c8d1 default_text: tokenColors {scope: text}
+#e27878 error_text: editorError.foreground
+#1e2132 gutter_background: editorGutter.background
+#0e1015 gutter_border: panel.border
+#1e2132 library_background: menu.background
+#161821 library_tint: menu.separatorBackground
+#444b71 line_number: editorLineNumber.foreground
+#e2a478 builtinfunction: entity.name.function.method
+class: 
+
+
+
+### Pythonista3 default
 
 ```
 - Default: 21
@@ -186,8 +201,7 @@
 
 ```
 
-
-## 各theme の要素数など
+## 各 theme の要素数など
 
 ```
 - Theme09_Editorial: 20
@@ -1639,19 +1653,15 @@
 
 # 📝 2024/08/27
 
-
 ## 思いつき
 
-- vscode のtheme コンバートできたらおもろい？
+- vscode の theme コンバートできたらおもろい？
 
 ## 辞書
 
+[Python でネストした dict をマージしたい #DeepMerge - Qiita](https://qiita.com/rana_kualu/items/7c957851a058c1ae7808)
 
-[Pythonでネストしたdictをマージしたい #DeepMerge - Qiita](https://qiita.com/rana_kualu/items/7c957851a058c1ae7808)
-
-[Pythonで2つの辞書型(dict型)をマージ | レコチョクのエンジニアブログ](https://techblog.recochoku.jp/5748)
-
-
+[Python で 2 つの辞書型(dict 型)をマージ | レコチョクのエンジニアブログ](https://techblog.recochoku.jp/5748)
 
 # 📝 2024/08/25
 
