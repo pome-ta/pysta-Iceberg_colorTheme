@@ -66,13 +66,14 @@ def write_dumps(data: str, name: str, dir: Path) -> None:
 
 if __name__ == '__main__':
   dumps_path = Path('./dumps')
+  
 
-  root_theme_path = Path(str(NSBundle.mainBundle().resourcePath()), 'Themes2')
+  root_themes_path = Path(str(NSBundle.mainBundle().resourcePath()), 'Themes2')
 
-  user_theme_path = Path(str(PA2UITheme.sharedTheme().userThemesPath()))
+  user_themes_path = Path(str(PA2UITheme.sharedTheme().userThemesPath()))
 
-  paths_iter = itertools.chain(root_theme_path.iterdir(),
-                               user_theme_path.iterdir())
+  paths_iter = itertools.chain(root_themes_path.iterdir(),
+                               user_themes_path.iterdir())
 
   tmp_dict = {}
 
@@ -85,6 +86,8 @@ if __name__ == '__main__':
     write_dumps(_dump, p.stem, dumps_path)
     tmp_dict = merge_dict(theme_dict, tmp_dict)
 
+  name = 'tmpMergeDumps'
+  tmp_dict['name'] = name
   _dump = to_dumps(tmp_dict)
-  write_dumps(_dump, 'tmpMergeDumps', dumps_path)
+  write_dumps(_dump, name, dumps_path)
 
