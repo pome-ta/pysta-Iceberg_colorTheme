@@ -6,7 +6,7 @@ themes_path = Path(str(ObjCClass('PA2UITheme').sharedTheme().userThemesPath()))
 
 target_path = Path('./dumps/tmpMergeDumps.json')
 
-move_path = Path(themes_path, target_path.name)
+move_path = Path(themes_path, 'hoge.json')
 
-json_str = target_path.read_text()
-move_path.write_text(json_str, encoding='utf-8')
+#json_str = target_path.read_text()
+move_path.write_text('{"name": "hoge"}', encoding='utf-8')
