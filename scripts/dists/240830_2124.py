@@ -1,16 +1,16 @@
 from pathlib import Path
 import json
 
-
 # vscode_theme_path = Path('./vscodeThemes/iceberg.color-theme.json')
-vscode_theme_path = Path(Path(__file__).parent,'./vscodeThemes/iceberg.color-theme.json')
+vscode_theme_path = Path(
+  Path(__file__).parent, './vscodeThemes/iceberg.color-theme.json')
 vscode_theme_dict = json.loads(vscode_theme_path.read_text())
+file_name = vscode_theme_path.name
 
 theme_dict = {
   'font-family': 'Menlo-Regular',
   'font-size': 10,
 }
-
 
 scopes = {
   'bold': {
@@ -73,4 +73,38 @@ scopes = {
 theme_dict.update({
   'scopes': scopes,
 })
+
+#theme_dict.update({'name': vscode_theme_dict['name']})
+
+
+
+setup_dict = [
+  {
+    'pysta': 'name',
+    'vscode': [
+      'name',
+    ],
+  },
+  {
+    'pysta': 'background',
+    'vscode': [
+      'colors',
+      'editor.background',
+    ],
+  },
+  {
+    'pysta': 'bar_background',
+    'vscode': [
+      'colors',
+      'tab.activeBackground',
+    ],
+  },
+  {
+    'pysta': 'default_text',
+    'vscode': [
+      'colors',
+      'tab.activeBackground',
+    ],
+  },
+]
 
