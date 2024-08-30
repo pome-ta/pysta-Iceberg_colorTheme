@@ -1,17 +1,17 @@
 {
- "background": "24333E",
- "bar_background": "293D4C",
+ "background": "#24333E",
+ "bar_background": "#293D4C",
  "dark_keyboard": true,
- "default_text": "F8F8F2",
+ "default_text": "#F8F8F2",
  "error_text": "#ea9292",
  "font-family": "Menlo-Regular",
  "font-size": 10,
- "gutter_background": "233541",
- "gutter_border": "1F424C",
+ "gutter_background": "#233541",
+ "gutter_border": "#1F424C",
  "interstitial": "#1c2933",
- "library_background": "1C2933",
- "library_tint": "9ADEF5",
- "line_number": "8F8E8C",
+ "library_background": "#1C2933",
+ "library_tint": "#9ADEF5",
+ "line_number": "#8F8E8C",
  "name": "myOceanic",
  "scopes": {
   "bold": {
@@ -21,7 +21,7 @@
    "font-style": "bold-italic"
   },
   "builtinfunction": {
-   "color": "F6BCF0"
+   "color": "#F6BCF0"
   },
   "checkbox": {
    "checkbox": true
@@ -34,7 +34,7 @@
    "color": "#f6bcf0"
   },
   "classdef": {
-   "color": "F6BCF0",
+   "color": "#F6BCF0",
    "font-style": "bold"
   },
   "code": {
@@ -45,24 +45,24 @@
    "color": "#80808080"
   },
   "comment": {
-   "color": "808080",
+   "color": "#808080",
    "font-style": "italic"
   },
   "default": {
-   "color": "F9F9F5"
+   "color": "#F9F9F5"
   },
   "docstring": {
-   "color": "9DDEF4",
+   "color": "#9DDEF4",
    "font-style": "italic"
   },
   "formatting": {
    "color": "#80808080"
   },
   "function": {
-   "color": "F6BCF0"
+   "color": "#F6BCF0"
   },
   "functiondef": {
-   "color": "F6BCF0",
+   "color": "#F6BCF0",
    "font-style": "bold"
   },
   "heading-1": {
@@ -78,22 +78,22 @@
    "font-style": "italic"
   },
   "keyword": {
-   "color": "EA9292"
+   "color": "#EA9292"
   },
   "link": {
    "text-decoration": "underline"
   },
   "module": {
-   "color": "FFDAB7"
+   "color": "#FFDAB7"
   },
   "number": {
-   "color": "C4E188"
+   "color": "#C4E188"
   },
   "project": {
    "font-style": "bold"
   },
   "string": {
-   "color": "9DDEF4"
+   "color": "#9DDEF4"
   },
   "tag": {
    "text-decoration": "none"
@@ -103,10 +103,10 @@
    "text-decoration": "strikeout"
   }
  },
- "separator_line": "1E2B34",
- "tab_background": "23333F",
- "tab_title": "8F8E8C",
- "text_selection_tint": "BBE3FF",
- "thumbnail_border": "1F424C",
- "tint": "9DDEF4"
+ "separator_line": "#1E2B34",
+ "tab_background": "#23333F",
+ "tab_title": "#8F8E8C",
+ "text_selection_tint": "#BBE3FF",
+ "thumbnail_border": "#1F424C",
+ "tint": "#9DDEF4"
 }

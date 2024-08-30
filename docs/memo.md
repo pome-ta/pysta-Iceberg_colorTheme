@@ -14,6 +14,43 @@ Pythonista3 のテーマ設定スクショを格納
 
 ### 最小？最大？
 
+```
+min
+#161821 background editor.background
+#161821 bar_background tab.activeBackground
+#c6c8d1 default_text tokenColors {scope: text}
+#1e2132 gutter_background editorGutter.background
+#0e1015 gutter_border tab.border
+#161821 library_background sideBar.background
+#444b71 line_number editorLineNumber.foreground
+name name
+#161821 separator_line menu.separatorBackground
+#0e1015 tab_background tab.inactiveBackground
+#c6c8d1 tab_title tab.activeForeground
+#272c42 text_selection_tint editor.selectionBackground
+#0e1015 thumbnail_border sideBar.border
+#84a0c6 tint activityBarBadge.background
+
+#c6c8d1 builtinfunction "scope": "entity.name.function",foreground
+#c6c8d1 class "scope": "entity.name.class",foreground
+#c6c8d1 classdef "scope": "entity.name.class",foreground
+#a093c7 code "scope": "markup.inline.raw.string",foreground
+#6b7089 codeblock-start "scope": "markup.fenced_code.block",foreground
+#6b7089 comment "scope": "comment",foreground
+
+#c6c8d1 default "scope": "text",foreground
+#b4be82 docstring "scope": "punctuation.definition.block.tag.jsdoc",foreground
+#6b7089 formatting  "scope": "markup.fenced_code.block",foreground
+#c6c8d1 function  "scope": "entity.name.function",foreground
+#c6c8d1 functiondef  "scope": "entity.name.function",foreground
+#84a0c6 keyword keyword
+#a093c7 number constant
+#89b8c2 string "scope": "string",
+#a093c7 task-done "entity.other.attribute-name",
+
+scopes
+```
+
 Pythonista3 上でどこが何に対応してるか確認？
 
 ```

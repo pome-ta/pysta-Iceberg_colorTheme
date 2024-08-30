@@ -7,6 +7,7 @@ from pprint import pprint
 # 最大: tmpMergeDumps.json
 
 
+
 def get_json2dict(path:Path)->dict:
   return json.loads(path.read_text())
 
