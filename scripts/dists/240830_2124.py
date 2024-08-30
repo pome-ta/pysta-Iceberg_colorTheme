@@ -2,7 +2,8 @@ from pathlib import Path
 import json
 
 
-vscode_theme_path = Path('./vscodeThemes/iceberg.color-theme.json')
+# vscode_theme_path = Path('./vscodeThemes/iceberg.color-theme.json')
+vscode_theme_path = Path(Path(__file__).parent,'./vscodeThemes/iceberg.color-theme.json')
 vscode_theme_dict = json.loads(vscode_theme_path.read_text())
 
 theme_dict = {
