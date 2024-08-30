@@ -75,5 +75,13 @@ if __name__ == '__main__':
   paths_iter = itertools.chain(root_themes_path.iterdir(),
                                user_themes_path.iterdir())
 
+  _main_keys = []
+  _scopes_keys = []
   for p in paths_iter:
-    print(p.name)
+    json_dict = get_json2dict(p)
+    _main_keys.extend(list(json_dict.keys()))
+    _scopes_keys.extend(list(json_dict['scopes'].keys()))
+
+max_main_keys = sorted(set(_main_keys))
+max_scopes_keys = sorted(set(_scopes_keys))
+
