@@ -2,11 +2,11 @@
 
 ## 整理
 
-vscode のテーマとPythonista3 のテーマを揃える
+vscode のテーマと Pythonista3 のテーマを揃える
 
 編集に関しては、vscode でやるのが無難か？
 
-双方のdump したものがあるから、繋ぎ合わせていく？
+双方の dump したものがあるから、繋ぎ合わせていく？
 
 ### img
 
@@ -16,14 +16,119 @@ Pythonista3 のテーマ設定スクショを格納
 
 Pythonista3 上でどこが何に対応してるか確認？
 
+```
+- max_main_keys
+  - __tint
+  - background
+  - bar_background
+  - dark_keyboard
+  - default_text
+  - editor_actions_icon_background
+  - editor_actions_icon_tint
+  - editor_actions_popover_background
+  - error_text
+  - font-family
+  - font-size
+  - gutter_background
+  - gutter_border
+  - interstitial
+  - library_background
+  - library_tint
+  - line_number
+  - name
+  - scopes
+  - separator_line
+  - tab_background
+  - tab_title
+  - text_selection_tint
+  - thumbnail_border
+  - tint
 
+- max_scopes_keys
+  - bold
+  - bold-italic
+  - builtinfunction
+  - checkbox
+  - checkbox-done
+  - class
+  - classdef
+  - code
+  - codeblock-start
+  - comment
+  - decorator
+  - default
+  - docstring
+  - escape
+  - formatting
+  - function
+  - functiondef
+  - heading-1
+  - heading-2
+  - heading-3
+  - italic
+  - keyword
+  - link
+  - marker
+  - module
+  - number
+  - project
+  - string
+  - tag
+  - task-done
 
+- min_main_keys
+  - background
+  - bar_background
+  - default_text
+  - gutter_background
+  - gutter_border
+  - library_background
+  - line_number
+  - name
+  - scopes
+  - separator_line
+  - tab_background
+  - tab_title
+  - text_selection_tint
+  - thumbnail_border
+  - tint
+
+- min_scopes_keys
+  - bold
+  - bold-italic
+  - builtinfunction
+  - checkbox
+  - checkbox-done
+  - class
+  - classdef
+  - code
+  - codeblock-start
+  - comment
+  - default
+  - docstring
+  - formatting
+  - function
+  - functiondef
+  - heading-1
+  - heading-2
+  - heading-3
+  - italic
+  - keyword
+  - link
+  - module
+  - number
+  - project
+  - string
+  - tag
+  - task-done
+
+```
 
 # 📝 2024/08/29
 
 ## Pythonista3 が起動時に落ちる
 
-``` .json
+```.json
 {
   "name": "hoge"
 }
@@ -33,15 +138,11 @@ Pythonista3 上でどこが何に対応してるか確認？
 
 最低条件がどこまでか知りたいけど、時間かかるから面倒
 
-
-
-
 # 📝 2024/08/28
 
 ## color
 
 [Theme Color | Visual Studio Code Extension API](https://code.visualstudio.com/api/references/theme-color)
-
 
 ### 対応確認
 
@@ -56,10 +157,8 @@ Pythonista3 上でどこが何に対応してるか確認？
 #161821 library_tint: menu.separatorBackground
 #444b71 line_number: editorLineNumber.foreground
 #e2a478 builtinfunction: entity.name.function.method
-class: 
+class:
 ```
-
-
 
 ### Pythonista3 default
 
