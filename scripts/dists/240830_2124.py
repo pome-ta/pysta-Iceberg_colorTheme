@@ -2,13 +2,19 @@ from pathlib import Path
 import json
 
 
-def get_vs_value(key, vs_dict):
-  if isinstance(key, dict):
-    pass
-  v = vs_dict[key]
-  return v
-    
+def get_vs_value(value, vs_dict):
+  # print(v)
+  x = 1
+  if isinstance(value, dict):
+    for k, v in value.items():
+      return get_vs_value(v, vs_dict[k])
 
+  elif isinstance(value, list):
+    for i in value:
+      pass
+
+  else:
+    return vs_dict[value]
 
 # vscode_theme_path = Path('./vscodeThemes/iceberg.color-theme.json')
 vscode_theme_path = Path(
@@ -106,13 +112,254 @@ setup_dict = [
   {
     'pysta': 'default_text',
     'vscode': {
-      'colors':
-      'tab.activeBackground',
+      'tokenColors':
+      {'text':'foreground',},
     },
   },
+    {
+    'pysta': 'gutter_background',
+    'vscode': {
+      'colors':
+      'editorGutter.background',
+    },
+  },
+
+
+
+    {
+    'pysta': 'gutter_border',
+    'vscode': {
+      'colors':
+      'tab.border',
+    },
+  },
+
+    {
+    'pysta': 'library_background',
+    'vscode': {
+      'colors':
+      'sideBar.background',
+    },
+  },
+
+    {
+    'pysta': 'line_number',
+    'vscode': {
+      'colors':
+      'editorLineNumber.foreground',
+    },
+  },
+
+    {
+    'pysta': 'separator_line',
+    'vscode': {
+      'colors':
+      'menu.separatorBackground',
+    },
+  },
+
+    {
+    'pysta': 'tab_background',
+    'vscode': {
+      'colors':
+      'tab.inactiveBackground',
+    },
+  },
+
+    {
+    'pysta': 'tab_title',
+    'vscode': {
+      'colors':
+      'tab.activeForeground',
+    },
+  },
+
+    {
+    'pysta': 'text_selection_tint',
+    'vscode': {
+      'colors':
+      'editor.selectionBackground',
+    },
+  },
+
+    {
+    'pysta': 'thumbnail_border',
+    'vscode': {
+      'colors':
+      'sideBar.border',
+    },
+  },
+
+    {
+    'pysta': 'tint',
+    'vscode': {
+      'colors':
+      'activityBarBadge.background',
+    },
+  },
+
+
+
+    {
+    'pysta': {'scopes':'builtinfunction',},
+    'vscode': {
+      'tokenColors':
+      {'entity.name.function':'foreground',},
+    },
+  },
+
+      {
+    'pysta': {'scopes':'class',},
+    'vscode': {
+      'tokenColors':
+      {'entity.name.class':'foreground',},
+    },
+  },
+
+
+      {
+    'pysta': {'scopes':'classdef',},
+    'vscode': {
+      'tokenColors':
+      {'entity.name.class':'foreground',},
+    },
+  },
+
+
+      {
+    'pysta': {'scopes':'code',},
+    'vscode': {
+      'tokenColors':
+      {'markup.inline.raw.string':'foreground',},
+    },
+  },
+
+
+
+        {
+    'pysta': {'scopes':'codeblock-start',},
+    'vscode': {
+      'tokenColors':
+      {'markup.fenced_code.block':'foreground',},
+    },
+  },
+
+
+        {
+    'pysta': {'scopes':'comment',},
+    'vscode': {
+      'tokenColors':
+      {'comment':'foreground',},
+    },
+  },
+
+
+        {
+    'pysta': {'scopes':'default',},
+       'vscode': {
+      'tokenColors':
+      {'text':'foreground',},
+    },
+  },
+
+
+
+        {
+    'pysta': {'scopes':'docstring',},
+       'vscode': {
+      'tokenColors':
+      {'punctuation.definition.template-expression':'foreground',},
+    },
+  },
+
+
+          {
+    'pysta': {'scopes':'formatting',},
+       'vscode': {
+      'tokenColors':
+      {'markup.fenced_code.block':'foreground',},
+    },
+  },
+
+
+
+            {
+    'pysta': {'scopes':'function',},
+       'vscode': {
+      'tokenColors':
+      {'entity.name.function':'foreground',},
+    },
+  },
+
+
+              {
+    'pysta': {'scopes':'functiondef',},
+       'vscode': {
+      'tokenColors':
+      {'entity.name.function':'foreground',},
+    },
+  },
+
+
+                {
+    'pysta': {'scopes':'keyword',},
+       'vscode': {
+      'tokenColors':
+      {'keyword':'foreground',},
+    },
+  },
+
+
+ {
+    'pysta': {'scopes':'number',},
+       'vscode': {
+      'tokenColors':
+      {'constant':'foreground',},
+    },
+  },
+
+ {
+    'pysta':{'scopes': 'string',},
+       'vscode': {
+      'tokenColors':
+      {'string':'foreground',},
+    },
+  },
+
+   {
+    'pysta': {'scopes':'task-done ',},
+       'vscode': {
+      'tokenColors':
+      {'entity.other.attribute-name':'foreground',},
+    },
+  },
+
 ]
+
+# todo: 依存ゴリゴリで、ネストも深くてきもいけど、とりあえず
+def get_vsTheme_value(value, theme_dict):
+  if value == 'name':
+    return theme_dict[value]
+  for k, v in value.items():
+    if k == 'colors':
+      return theme_dict[k][v]
+    if k == 'tokenColors':
+      for token in theme_dict[k]:
+        token_scopes = token['scope'] if isinstance(token['scope'], list) else [token['scope']]
+        for _k, _v in v.items():
+          for ts in token_scopes:
+            if ts == _k:
+              return token['settings'][_v]
+
+
+
+
 
 
 for d in setup_dict:
-  v = get_vs_value(d['vscode'], vscode_theme_dict)
-  print(v)
+  # v = get_vs_value(d['vscode'], vscode_theme_dict)
+  vs_value = get_vsTheme_value(d['vscode'], vscode_theme_dict)
+  print(vs_value)
+
+
+x = 1
