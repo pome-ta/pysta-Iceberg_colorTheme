@@ -2,19 +2,16 @@ from pathlib import Path
 import json
 
 
-def get_vs_value(value, vs_dict):
-  # print(v)
-  x = 1
-  if isinstance(value, dict):
-    for k, v in value.items():
-      return get_vs_value(v, vs_dict[k])
+# def get_vs_value(value, vs_dict):
+#   if isinstance(value, dict):
+#     for k, v in value.items():
+#       return get_vs_value(v, vs_dict[k])
 
-  elif isinstance(value, list):
-    for i in value:
-      pass
-
-  else:
-    return vs_dict[value]
+#   elif isinstance(value, list):
+#     for i in value:
+#       pass
+#   else:
+#     return vs_dict[value]
 
 
 # vscode_theme_path = Path('./vscodeThemes/iceberg.color-theme.json')
@@ -86,9 +83,9 @@ scopes = {
   },
 }
 
-theme_dict.update({
-  'scopes': scopes,
-})
+# theme_dict.update({
+#   'scopes': scopes,
+# })
 
 #theme_dict.update({'name': vscode_theme_dict['name']})
 
@@ -179,7 +176,7 @@ setup_dict = [
   },
   {
     'pysta': {
-      'scopes': 'builtinfunction',
+      'scopes': {'builtinfunction':'color',},
     },
     'vscode': {
       'tokenColors': {
@@ -347,10 +344,14 @@ def get_vsTheme_value(value, theme_dict):
               return token['settings'][_v]
 
 
+
+def set_pystaTheme_value(value):
+  pass
+
 for d in setup_dict:
   # v = get_vs_value(d['vscode'], vscode_theme_dict)
   vs_value = get_vsTheme_value(d['vscode'], vscode_theme_dict)
-  print(vs_value)
+  print(d['pysta'])
 
 x = 1
 
