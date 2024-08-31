@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 
+
 # todo: 型`str` は色情報もあるので、今後分けていきたい
 @dataclass
 class Scopes:
@@ -10,7 +11,7 @@ class Scopes:
 class Theme:
   background: str = '#ff0000'
   bar_background: str = '#ff0000'
-  dark_keyboard:bool
+  dark_keyboard: bool
   default_text: str = '#ff0000'
   editor_actions_icon_background: str = '#ff0000'
   editor_actions_icon_tint: str = '#00ff00'
@@ -25,7 +26,7 @@ class Theme:
   line_number: str = '#ff0000'
   name: str = 'templateDefaultThemeSample'
 
-  scopes:dict
+  scopes: dict
 
   separator_line: str = '#ff0000'
   tab_background: str = '#ff0000'
@@ -34,6 +35,8 @@ class Theme:
   thumbnail_border: str = '#ff0000'
   tint: str = '#ff0000'
 
+
 theme = Theme(**{'background': '#0000ff'})
 
 x = 1
+
