@@ -5,6 +5,7 @@ import json
 def get_vs_value(key, vs_dict):
   if isinstance(key, dict):
     pass
+  v = vs_dict[key]
   return v
     
 
