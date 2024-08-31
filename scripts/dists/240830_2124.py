@@ -83,9 +83,9 @@ scopes = {
   },
 }
 
-# theme_dict.update({
-#   'scopes': scopes,
-# })
+theme_dict.update({
+  'scopes': scopes,
+})
 
 #theme_dict.update({'name': vscode_theme_dict['name']})
 
@@ -176,7 +176,7 @@ setup_dict = [
   },
   {
     'pysta': {
-      'scopes': {'builtinfunction':'color',},
+      'scopes': ['builtinfunction','color',],
     },
     'vscode': {
       'tokenColors': {
@@ -186,7 +186,7 @@ setup_dict = [
   },
   {
     'pysta': {
-      'scopes': 'class',
+      'scopes': ['class','color',],
     },
     'vscode': {
       'tokenColors': {
@@ -196,7 +196,7 @@ setup_dict = [
   },
   {
     'pysta': {
-      'scopes': 'classdef',
+      'scopes': ['classdef','color',],
     },
     'vscode': {
       'tokenColors': {
@@ -206,7 +206,7 @@ setup_dict = [
   },
   {
     'pysta': {
-      'scopes': 'code',
+      'scopes': ['code', 'background-color'],
     },
     'vscode': {
       'tokenColors': {
@@ -216,7 +216,7 @@ setup_dict = [
   },
   {
     'pysta': {
-      'scopes': 'codeblock-start',
+      'scopes': ['codeblock-start','color',],
     },
     'vscode': {
       'tokenColors': {
@@ -226,7 +226,7 @@ setup_dict = [
   },
   {
     'pysta': {
-      'scopes': 'comment',
+      'scopes': ['comment','color',],
     },
     'vscode': {
       'tokenColors': {
@@ -236,7 +236,7 @@ setup_dict = [
   },
   {
     'pysta': {
-      'scopes': 'default',
+      'scopes': ['default','color',],
     },
     'vscode': {
       'tokenColors': {
@@ -246,7 +246,7 @@ setup_dict = [
   },
   {
     'pysta': {
-      'scopes': 'docstring',
+      'scopes': ['docstring','color',],
     },
     'vscode': {
       'tokenColors': {
@@ -256,7 +256,7 @@ setup_dict = [
   },
   {
     'pysta': {
-      'scopes': 'formatting',
+      'scopes': ['formatting','color',],
     },
     'vscode': {
       'tokenColors': {
@@ -266,7 +266,7 @@ setup_dict = [
   },
   {
     'pysta': {
-      'scopes': 'function',
+      'scopes': ['function','color',],
     },
     'vscode': {
       'tokenColors': {
@@ -276,7 +276,7 @@ setup_dict = [
   },
   {
     'pysta': {
-      'scopes': 'functiondef',
+      'scopes': ['functiondef','color',],
     },
     'vscode': {
       'tokenColors': {
@@ -286,7 +286,7 @@ setup_dict = [
   },
   {
     'pysta': {
-      'scopes': 'keyword',
+      'scopes': ['keyword','color',],
     },
     'vscode': {
       'tokenColors': {
@@ -296,7 +296,7 @@ setup_dict = [
   },
   {
     'pysta': {
-      'scopes': 'number',
+      'scopes': ['number','color',],
     },
     'vscode': {
       'tokenColors': {
@@ -306,7 +306,7 @@ setup_dict = [
   },
   {
     'pysta': {
-      'scopes': 'string',
+      'scopes': ['string','color',],
     },
     'vscode': {
       'tokenColors': {
@@ -316,7 +316,7 @@ setup_dict = [
   },
   {
     'pysta': {
-      'scopes': 'task-done ',
+      'scopes': ['task-done','color',],
     },
     'vscode': {
       'tokenColors': {
