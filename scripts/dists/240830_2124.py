@@ -1,6 +1,14 @@
 from pathlib import Path
 import json
 
+
+def get_vs_value(key, vs_dict):
+  if isinstance(key, dict):
+    pass
+  return v
+    
+
+
 # vscode_theme_path = Path('./vscodeThemes/iceberg.color-theme.json')
 vscode_theme_path = Path(
   Path(__file__).parent, './vscodeThemes/iceberg.color-theme.json')
@@ -76,35 +84,34 @@ theme_dict.update({
 
 #theme_dict.update({'name': vscode_theme_dict['name']})
 
-
-
 setup_dict = [
   {
     'pysta': 'name',
-    'vscode': [
-      'name',
-    ],
+    'vscode': 'name',
   },
   {
     'pysta': 'background',
-    'vscode': [
-      'colors',
-      'editor.background',
-    ],
+    'vscode': {
+      'colors': 'editor.background',
+    },
   },
   {
     'pysta': 'bar_background',
-    'vscode': [
-      'colors',
+    'vscode': {
+      'colors':
       'tab.activeBackground',
-    ],
+    },
   },
   {
     'pysta': 'default_text',
-    'vscode': [
-      'colors',
+    'vscode': {
+      'colors':
       'tab.activeBackground',
-    ],
+    },
   },
 ]
 
+
+for d in setup_dict:
+  v = get_vs_value(d['vscode'], vscode_theme_dict)
+  print(v)
