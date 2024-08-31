@@ -3,15 +3,18 @@ import json
 from collections import namedtuple
 from types import SimpleNamespace
 
-class DictDotNotation(dict): 
-  def __init__(self, *args, **kwargs): 
-    super().__init__(*args, **kwargs) 
-    self.__dict__ = self 
+
+class DictDotNotation(dict):
+
+  def __init__(self, *args, **kwargs):
+    super().__init__(*args, **kwargs)
+    self.__dict__ = self
+
 
 # class DictDotNotation(dict):
 #   def __getattr__(self, key):
 #     return self.__getitem__(key)
-  
+
 #   def __setattr__(self, key, value):
 #     self.__setitem__(key, value)
 
@@ -27,3 +30,4 @@ theme = DictDotNotation(vscode_theme_dict)
 # ns = SimpleNamespace(**vscode_theme_dict)
 
 x = 1
+
