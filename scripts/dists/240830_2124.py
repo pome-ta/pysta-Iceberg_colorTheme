@@ -16,6 +16,7 @@ def get_vs_value(value, vs_dict):
   else:
     return vs_dict[value]
 
+
 # vscode_theme_path = Path('./vscodeThemes/iceberg.color-theme.json')
 vscode_theme_path = Path(
   Path(__file__).parent, './vscodeThemes/iceberg.color-theme.json')
@@ -105,236 +106,229 @@ setup_dict = [
   {
     'pysta': 'bar_background',
     'vscode': {
-      'colors':
-      'tab.activeBackground',
+      'colors': 'tab.activeBackground',
     },
   },
   {
     'pysta': 'default_text',
     'vscode': {
-      'tokenColors':
-      {'text':'foreground',},
+      'tokenColors': {
+        'text': 'foreground',
+      },
     },
   },
-    {
+  {
     'pysta': 'gutter_background',
     'vscode': {
-      'colors':
-      'editorGutter.background',
+      'colors': 'editorGutter.background',
     },
   },
-
-
-
-    {
+  {
     'pysta': 'gutter_border',
     'vscode': {
-      'colors':
-      'tab.border',
+      'colors': 'tab.border',
     },
   },
-
-    {
+  {
     'pysta': 'library_background',
     'vscode': {
-      'colors':
-      'sideBar.background',
+      'colors': 'sideBar.background',
     },
   },
-
-    {
+  {
     'pysta': 'line_number',
     'vscode': {
-      'colors':
-      'editorLineNumber.foreground',
+      'colors': 'editorLineNumber.foreground',
     },
   },
-
-    {
+  {
     'pysta': 'separator_line',
     'vscode': {
-      'colors':
-      'menu.separatorBackground',
+      'colors': 'menu.separatorBackground',
     },
   },
-
-    {
+  {
     'pysta': 'tab_background',
     'vscode': {
-      'colors':
-      'tab.inactiveBackground',
+      'colors': 'tab.inactiveBackground',
     },
   },
-
-    {
+  {
     'pysta': 'tab_title',
     'vscode': {
-      'colors':
-      'tab.activeForeground',
+      'colors': 'tab.activeForeground',
     },
   },
-
-    {
+  {
     'pysta': 'text_selection_tint',
     'vscode': {
-      'colors':
-      'editor.selectionBackground',
+      'colors': 'editor.selectionBackground',
     },
   },
-
-    {
+  {
     'pysta': 'thumbnail_border',
     'vscode': {
-      'colors':
-      'sideBar.border',
+      'colors': 'sideBar.border',
     },
   },
-
-    {
+  {
     'pysta': 'tint',
     'vscode': {
-      'colors':
-      'activityBarBadge.background',
+      'colors': 'activityBarBadge.background',
     },
   },
-
-
-
-    {
-    'pysta': {'scopes':'builtinfunction',},
+  {
+    'pysta': {
+      'scopes': 'builtinfunction',
+    },
     'vscode': {
-      'tokenColors':
-      {'entity.name.function':'foreground',},
+      'tokenColors': {
+        'entity.name.function': 'foreground',
+      },
     },
   },
-
-      {
-    'pysta': {'scopes':'class',},
+  {
+    'pysta': {
+      'scopes': 'class',
+    },
     'vscode': {
-      'tokenColors':
-      {'entity.name.class':'foreground',},
+      'tokenColors': {
+        'entity.name.class': 'foreground',
+      },
     },
   },
-
-
-      {
-    'pysta': {'scopes':'classdef',},
+  {
+    'pysta': {
+      'scopes': 'classdef',
+    },
     'vscode': {
-      'tokenColors':
-      {'entity.name.class':'foreground',},
+      'tokenColors': {
+        'entity.name.class': 'foreground',
+      },
     },
   },
-
-
-      {
-    'pysta': {'scopes':'code',},
+  {
+    'pysta': {
+      'scopes': 'code',
+    },
     'vscode': {
-      'tokenColors':
-      {'markup.inline.raw.string':'foreground',},
+      'tokenColors': {
+        'markup.inline.raw.string': 'foreground',
+      },
     },
   },
-
-
-
-        {
-    'pysta': {'scopes':'codeblock-start',},
+  {
+    'pysta': {
+      'scopes': 'codeblock-start',
+    },
     'vscode': {
-      'tokenColors':
-      {'markup.fenced_code.block':'foreground',},
+      'tokenColors': {
+        'markup.fenced_code.block': 'foreground',
+      },
     },
   },
-
-
-        {
-    'pysta': {'scopes':'comment',},
+  {
+    'pysta': {
+      'scopes': 'comment',
+    },
     'vscode': {
-      'tokenColors':
-      {'comment':'foreground',},
+      'tokenColors': {
+        'comment': 'foreground',
+      },
     },
   },
-
-
-        {
-    'pysta': {'scopes':'default',},
-       'vscode': {
-      'tokenColors':
-      {'text':'foreground',},
+  {
+    'pysta': {
+      'scopes': 'default',
+    },
+    'vscode': {
+      'tokenColors': {
+        'text': 'foreground',
+      },
     },
   },
-
-
-
-        {
-    'pysta': {'scopes':'docstring',},
-       'vscode': {
-      'tokenColors':
-      {'punctuation.definition.template-expression':'foreground',},
+  {
+    'pysta': {
+      'scopes': 'docstring',
+    },
+    'vscode': {
+      'tokenColors': {
+        'punctuation.definition.template-expression': 'foreground',
+      },
     },
   },
-
-
-          {
-    'pysta': {'scopes':'formatting',},
-       'vscode': {
-      'tokenColors':
-      {'markup.fenced_code.block':'foreground',},
+  {
+    'pysta': {
+      'scopes': 'formatting',
+    },
+    'vscode': {
+      'tokenColors': {
+        'markup.fenced_code.block': 'foreground',
+      },
     },
   },
-
-
-
-            {
-    'pysta': {'scopes':'function',},
-       'vscode': {
-      'tokenColors':
-      {'entity.name.function':'foreground',},
+  {
+    'pysta': {
+      'scopes': 'function',
+    },
+    'vscode': {
+      'tokenColors': {
+        'entity.name.function': 'foreground',
+      },
     },
   },
-
-
-              {
-    'pysta': {'scopes':'functiondef',},
-       'vscode': {
-      'tokenColors':
-      {'entity.name.function':'foreground',},
+  {
+    'pysta': {
+      'scopes': 'functiondef',
+    },
+    'vscode': {
+      'tokenColors': {
+        'entity.name.function': 'foreground',
+      },
     },
   },
-
-
-                {
-    'pysta': {'scopes':'keyword',},
-       'vscode': {
-      'tokenColors':
-      {'keyword':'foreground',},
+  {
+    'pysta': {
+      'scopes': 'keyword',
+    },
+    'vscode': {
+      'tokenColors': {
+        'keyword': 'foreground',
+      },
     },
   },
-
-
- {
-    'pysta': {'scopes':'number',},
-       'vscode': {
-      'tokenColors':
-      {'constant':'foreground',},
+  {
+    'pysta': {
+      'scopes': 'number',
+    },
+    'vscode': {
+      'tokenColors': {
+        'constant': 'foreground',
+      },
     },
   },
-
- {
-    'pysta':{'scopes': 'string',},
-       'vscode': {
-      'tokenColors':
-      {'string':'foreground',},
+  {
+    'pysta': {
+      'scopes': 'string',
+    },
+    'vscode': {
+      'tokenColors': {
+        'string': 'foreground',
+      },
     },
   },
-
-   {
-    'pysta': {'scopes':'task-done ',},
-       'vscode': {
-      'tokenColors':
-      {'entity.other.attribute-name':'foreground',},
+  {
+    'pysta': {
+      'scopes': 'task-done ',
+    },
+    'vscode': {
+      'tokenColors': {
+        'entity.other.attribute-name': 'foreground',
+      },
     },
   },
-
 ]
+
 
 # todo: 依存ゴリゴリで、ネストも深くてきもいけど、とりあえず
 def get_vsTheme_value(value, theme_dict):
@@ -345,15 +339,12 @@ def get_vsTheme_value(value, theme_dict):
       return theme_dict[k][v]
     if k == 'tokenColors':
       for token in theme_dict[k]:
-        token_scopes = token['scope'] if isinstance(token['scope'], list) else [token['scope']]
+        token_scopes = token['scope'] if isinstance(
+          token['scope'], list) else [token['scope']]
         for _k, _v in v.items():
           for ts in token_scopes:
             if ts == _k:
               return token['settings'][_v]
-
-
-
-
 
 
 for d in setup_dict:
@@ -361,5 +352,5 @@ for d in setup_dict:
   vs_value = get_vsTheme_value(d['vscode'], vscode_theme_dict)
   print(vs_value)
 
-
 x = 1
+
