@@ -23,6 +23,7 @@ Pythonista3 の Theme フォーマットと、VSCode の Theme フォーマッ�
 - 最小要件が把握できていない
 - `dark_keyboard`, `font-family`, `font-size` は、事前に固定になりそう
   - 可変的に指定できる窓口を用意していない
+  - `font-family`, `font-size` は、命名的に個別設定かも
 - 未設定の数値を`NONE` にするか、仮のカラーにするか決めてない
 
 #### VSCode 側
@@ -44,6 +45,10 @@ Pythonista3 の Theme フォーマットと、VSCode の Theme フォーマッ�
 
 
 Python 側でドットアクセスができるようになって、何か嬉しいことってあるかしら？
+
+
+
+`templateDefaultThemeSample` という地獄な名前
 
 
 # 📝 2024/08/30
