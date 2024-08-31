@@ -16,7 +16,6 @@ Pythonista3 の Theme フォーマットと、VSCode の Theme フォーマッ�
 - VSCode でカバーできない部分は事前に設定しておきたい
 - Theme ごとの紐付けを容易な設計にしたい
 
-
 #### Pythonista3 側
 
 - 実際のところ、どの項目がどこに反映されているのは不明点がある
@@ -33,23 +32,22 @@ Pythonista3 の Theme フォーマットと、VSCode の Theme フォーマッ�
 - 現在想定外の指定の方法について把握できていない
 - `tokenColors` 内の、`scope` が配列の可能性がある
 
-
 ### 構造を考える
 
 [vscode-iceberg-theme/src/themes/dark.ts](https://github.com/cocopon/vscode-iceberg-theme/blob/main/src/themes/dark.ts)
 
 結構ゴリゴリと書いてるぽいから、やはり書いた方がいいか？
 
-
 そうなると、`dict` の呼び出しをシュッとできるようになると、いいのだけど。。。
-
 
 Python 側でドットアクセスができるようになって、何か嬉しいことってあるかしら？
 
-
-
 `templateDefaultThemeSample` という地獄な名前
 
+対応表みたいなのを作ったらええのか？
+
+
+結局のところ、どこまでハードコードをするか？って問題か
 
 # 📝 2024/08/30
 
