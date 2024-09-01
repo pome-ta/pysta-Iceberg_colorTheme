@@ -31,18 +31,13 @@ def get_vsdict_value(items: list, theme_main: dict) -> str | bool | None:
   value = None
   for item in items:
     for k, v in item.items():
-      '''
+      #value = get_colors_value(v, theme_main.get(k)) if k == 'colors' else get_tokenColors_value(v, theme_main.get(k)) if k == 'tokenColors' else get_top_value(v, theme_main)
       if k == 'colors':
         value = get_colors_value(v, theme_main.get(k))
       elif k == 'tokenColors':
         value = get_tokenColors_value(v, theme_main.get(k))
       else:
         value = get_top_value(v, theme_main)
-      '''
-      value = get_colors_value(
-        v, theme_main.get(k)) if k == 'colors' else get_tokenColors_value(
-          v, theme_main.get(k)) if k == 'tokenColors' else get_top_value(
-            v, theme_main)
     if not value == None:
       return value
 
