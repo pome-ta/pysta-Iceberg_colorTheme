@@ -14,32 +14,61 @@ def get_colors_value(k: str, colors: dict) -> str:
   return colors.get(k)
 
 
-def get_tokenColors_value(k: str, tokenColors: dict) -> str:
-  pass
+def get_tokenColors_value(d: dict, tokenColors: list) -> str:
+  scope = d.get('scope')
+  settings = d.get('settings')
+  #print(scope, settings)
+  for tokenColor in tokenColors:
+    t_scope = tokenColor.get('scope')
+    # xxx: 配列格納に合わせる
+    t_scope = t_scope if isinstance(t_scope, list) else [t_scope]
+
+    if scope in t_scope:
+      return tokenColor.get('settings').get(settings)
 
 
-def get_vsdict_value(keys: list, theme_main: dict) -> str | bool:
-  v = None
-  for k in keys:
-    if k == 'colors':
-      pass
-    elif k == 'tokenColors':
-      pass
-    else:
-      v = get_top_value(k, theme_main)
-    if not v == None:
-      return v
+def get_vsdict_value(items: list, theme_main: dict) -> str | bool | None:
+  value = None
+  for item in items:
+    for k, v in item.items():
+      '''
+      if k == 'colors':
+        value = get_colors_value(v, theme_main.get(k))
+      elif k == 'tokenColors':
+        value = get_tokenColors_value(v, theme_main.get(k))
+      else:
+        value = get_top_value(v, theme_main)
+      '''
+      value = get_colors_value(
+        v, theme_main.get(k)) if k == 'colors' else get_tokenColors_value(
+          v, theme_main.get(k)) if k == 'tokenColors' else get_top_value(
+            v, theme_main)
+    if not value == None:
+      return value
 
 
 d1 = [
-  'hoge',
-  'name',
+  {
+    'top': 'name',
+  },
 ]
 d2 = [
   {
-    'colors',
-    'editor.background',
+    'hoge': 'activityBar.foreground',
+  },
+  {
+    'colors': 'editor.background',
   },
 ]
-a = get_vsdict_value(d1, vscode_theme_dict)
+
+d3 = [
+  {
+    'tokenColors': {
+      'scope': 'comment',
+      'settings': 'foreground',
+    },
+  },
+]
+
+a = get_vsdict_value(d3, vscode_theme_dict)
 
