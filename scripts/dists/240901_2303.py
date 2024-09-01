@@ -48,9 +48,7 @@ _background = [
   dict(colors='editor.background'),
 ]
 _bar_background = [
-  {
-    'colors': 'tab.activeBackground',
-  },
+  dict(colors='tab.activeBackground'),
 ]
 _default_text = [
   dict(tokenColors=dict([
@@ -289,10 +287,149 @@ class DataPalette:
   thumbnail_border: str = '#ff0000'
   tint: str = '#ff0000'
 
+# xxx: `None` が存在するか確認したいけど
+#     存在すれば、`True` ? `False` ? どっちだ？
+#     今回は、存在すれば、`True` （やはり逆か？）
+def check_dict_none(d:dict|str|None,parent:str='')->bool:
+  for k, v in d.items():
+    if isinstance(v, dict):
+      if check_dict_none(v, k):
+        return False
+    else:
+      if v == None:
+        print(f'value が、{parent},{v} です\nkey->{k}: value->{v}')
+        return True
+  return False
 
-def create_theme():
-  pass
 
 
-aa = DataPalette(**convert_dict)
+def create_theme_json(convert_pallet:dict)-> str:
+  p = DataPalette(**convert_pallet)
+  _theme_dict = {
+    'background':p.background,
+    'bar_background': p.bar_background,
+    'dark_keyboard': p.dark_keyboard,
+    'default_text': p.default_text,
+    'font-family': 'Menlo-Regular',
+    'font-size': 12.0,
+    'gutter_background': p.gutter_background,
+    'gutter_border': p.gutter_border,
+    'library_background': p.library_background,
+    'library_tint': p.library_tint,
+    'line_number': p.line_number,
+    'name': p.name,
+    'scopes': {
+      'bold': {
+        'font-style': 'bold',
+      },
+      'bold-italic': {
+        'font-style': 'bold-italic',
+      },
+      'builtinfunction': {
+        'color': p.scopes_builtinfunction_color,
+      },
+      'checkbox': {
+        'checkbox': True,
+      },
+      'checkbox-done': {
+        'checkbox': True,
+        'done': True,
+      },
+      'class': {
+        'color': p.scopes_class_color,
+      },
+      'classdef': {
+        'color': p.scopes_classdef_color,
+        'font-style': 'bold',
+      },
+      'code': {
+        'background-color': p.scopes_code_backgroundColor,
+        'corner-radius': 2.0,
+      },
+      'codeblock-start': {
+        'color': p.scopes_codeblockStart_color,
+      },
+      'comment': {
+        'color': p.scopes_comment_color,
+        'font-style': 'italic',
+      },
 
+      'default': {
+        'color': p.scopes_default_color,
+      },
+      'docstring': {
+        'color': p.scopes_docstring_color,
+        'font-style': 'italic',
+      },
+      'formatting': {
+        'color': p.scopes_formatting_color,
+      },
+      'function': {
+        'color': p.scopes_function_color,
+      },
+      'functiondef': {
+        'color': p.scopes_functiondef_color,
+        'font-style': 'bold',
+      },
+      'heading-1': {
+        'font-style': 'bold',
+      },
+      'heading-2': {
+        'font-style': 'bold',
+      },
+      'heading-3': {
+        'font-style': 'bold',
+        # 'font-style': None,
+      },
+      'italic': {
+        'font-style': 'italic',
+      },
+      'keyword': {
+        'color': p.scopes_keyword_color,
+      },
+      'link': {
+        'text-decoration': 'underline',
+      },
+      'module': {
+        'color': p.scopes_module_color,
+      },
+      'number': {
+        'color': p.scopes_number_color,
+      },
+      'project': {
+        'font-style': 'bold',
+      },
+      'string': {
+        'color': p.scopes_string_color,
+      },
+      'tag': {
+        'text-decoration': 'none',
+      },
+      'task-done': {
+        'color': p.scopes_taskDone_color,
+        'text-decoration': 'strikeout',
+      },
+    },
+    'separator_line': p.separator_line,
+    'tab_background': p.tab_background,
+    'tab_title': p.tab_title,
+    'text_selection_tint': p.text_selection_tint,
+    'thumbnail_border': p.thumbnail_border,
+    'tint': p.tint,
+  }
+
+  if not check_dict_none(_theme_dict):
+    json_str = json.dumps(_theme_dict,
+                      indent=1,
+                      sort_keys=True,
+                      ensure_ascii=False)
+    return json_str
+  else:
+    print('None の値があるため、変換できません')
+
+
+
+theme_json = create_theme_json(convert_dict)
+
+
+x = 1
