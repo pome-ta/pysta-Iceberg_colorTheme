@@ -1,0 +1,110 @@
+{
+ "background": "#161821",
+ "bar_background": "#161821",
+ "dark_keyboard": true,
+ "default_text": "#c6c8d1",
+ "font-family": "Menlo-Regular",
+ "font-size": 12.0,
+ "gutter_background": "#1e2132",
+ "gutter_border": "#0e1015",
+ "library_background": "#161821",
+ "library_tint": "#0e1015",
+ "line_number": "#444b71",
+ "name": "Iceberg",
+ "scopes": {
+  "bold": {
+   "font-style": "bold"
+  },
+  "bold-italic": {
+   "font-style": "bold-italic"
+  },
+  "builtinfunction": {
+   "color": "#c6c8d1"
+  },
+  "checkbox": {
+   "checkbox": true
+  },
+  "checkbox-done": {
+   "checkbox": true,
+   "done": true
+  },
+  "class": {
+   "color": "#c6c8d1"
+  },
+  "classdef": {
+   "color": "#c6c8d1",
+   "font-style": "bold"
+  },
+  "code": {
+   "background-color": "#a093c7",
+   "corner-radius": 2.0
+  },
+  "codeblock-start": {
+   "color": "#6b7089"
+  },
+  "comment": {
+   "color": "#6b7089",
+   "font-style": "italic"
+  },
+  "default": {
+   "color": "#c6c8d1"
+  },
+  "docstring": {
+   "color": "#b4be82",
+   "font-style": "italic"
+  },
+  "formatting": {
+   "color": "#6b7089"
+  },
+  "function": {
+   "color": "#c6c8d1"
+  },
+  "functiondef": {
+   "color": "#c6c8d1",
+   "font-style": "bold"
+  },
+  "heading-1": {
+   "font-style": "bold"
+  },
+  "heading-2": {
+   "font-style": "bold"
+  },
+  "heading-3": {
+   "font-style": "bold"
+  },
+  "italic": {
+   "font-style": "italic"
+  },
+  "keyword": {
+   "color": "#84a0c6"
+  },
+  "link": {
+   "text-decoration": "underline"
+  },
+  "module": {
+   "color": "#89b8c2"
+  },
+  "number": {
+   "color": "#a093c7"
+  },
+  "project": {
+   "font-style": "bold"
+  },
+  "string": {
+   "color": "#89b8c2"
+  },
+  "tag": {
+   "text-decoration": "none"
+  },
+  "task-done": {
+   "color": "#a093c7",
+   "text-decoration": "strikeout"
+  }
+ },
+ "separator_line": "#161821",
+ "tab_background": "#0e1015",
+ "tab_title": "#c6c8d1",
+ "text_selection_tint": "#272c42",
+ "thumbnail_border": "#0e1015",
+ "tint": "#84a0c6"
+}

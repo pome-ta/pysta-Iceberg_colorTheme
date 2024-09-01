@@ -2,12 +2,24 @@ from pathlib import Path
 import json
 from dataclasses import dataclass
 
+import requests
+
 from objc_util import ObjCClass
 
 root_path = Path(__file__).parent
+'''
 vscode_theme_path = Path(root_path, './vscodeThemes/iceberg.color-theme.json')
 file_name = vscode_theme_path.name
 vscode_theme_dict = json.loads(vscode_theme_path.read_text())
+'''
+url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg-light.color-theme.json'
+params = {
+  'raw': 'true',
+}
+
+response = requests.get(url, params)
+vscode_theme_dict = response.json()
+file_name = Path(url).name
 
 
 def get_top_value(k: str, vs: dict) -> str | bool | None:
@@ -225,7 +237,7 @@ set_keys = {
   'gutter_background': _gutter_background,
   'gutter_border': _gutter_border,
   'library_background': _library_background,
-  'library_tint':_library_tint,
+  'library_tint': _library_tint,
   'line_number': _line_number,
   'name': _name,
   'scopes_builtinfunction_color': _scopes_builtinfunction_color,
@@ -446,8 +458,6 @@ def export_theme(json_data: str, json_name: str, target: Path) -> None:
 userThemesPath_objc = ObjCClass('PA2UITheme').sharedTheme().userThemesPath()
 user_themes_path = Path(str(userThemesPath_objc))
 testThemes_path = Path(root_path, './testThemes')
-
-
 
 for p in [user_themes_path, testThemes_path]:
   export_theme(theme_json, file_name, p)
