@@ -4,6 +4,31 @@
 
 最大要素でやろうとしたけど、ミニマムから増やすか、、、
 
+## 少々ハードコード気味に
+
+
+
+### 分類分け
+
+`name(top?)`, `colors`, `tokenColors` と分けて取ってみる
+
+
+分類をどこで分けようか、自関数内？投げる手前の関数？
+
+### 予備候補の書き方
+
+配列で格納かしらね
+
+
+[deep-dark-space/themes/Deep Dark Space-color-theme.json at main · smpl-ndrw/deep-dark-space · GitHub](https://github.com/smpl-ndrw/deep-dark-space/blob/main/themes/Deep%20Dark%20Space-color-theme.json)
+
+
+`name`, のtop の所、他にもありそうやな
+
+`{"type": "dark",}` とかあったわ
+
+
+とりま、Iceberg のみで考えるか
 
 
 # 📝 2024/08/31
