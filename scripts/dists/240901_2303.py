@@ -287,10 +287,11 @@ class DataPalette:
   thumbnail_border: str = '#ff0000'
   tint: str = '#ff0000'
 
+
 # xxx: `None` が存在するか確認したいけど
 #     存在すれば、`True` ? `False` ? どっちだ？
 #     今回は、存在すれば、`True` （やはり逆か？）
-def check_dict_none(d:dict|str|None,parent:str='')->bool:
+def check_dict_none(d: dict | str | None, parent: str = '') -> bool:
   for k, v in d.items():
     if isinstance(v, dict):
       if check_dict_none(v, k):
@@ -302,11 +303,10 @@ def check_dict_none(d:dict|str|None,parent:str='')->bool:
   return False
 
 
-
-def create_theme_json(convert_pallet:dict)-> str:
+def create_theme_json(convert_pallet: dict) -> str:
   p = DataPalette(**convert_pallet)
   _theme_dict = {
-    'background':p.background,
+    'background': p.background,
     'bar_background': p.bar_background,
     'dark_keyboard': p.dark_keyboard,
     'default_text': p.default_text,
@@ -353,7 +353,6 @@ def create_theme_json(convert_pallet:dict)-> str:
         'color': p.scopes_comment_color,
         'font-style': 'italic',
       },
-
       'default': {
         'color': p.scopes_default_color,
       },
@@ -420,16 +419,15 @@ def create_theme_json(convert_pallet:dict)-> str:
 
   if not check_dict_none(_theme_dict):
     json_str = json.dumps(_theme_dict,
-                      indent=1,
-                      sort_keys=True,
-                      ensure_ascii=False)
+                          indent=1,
+                          sort_keys=True,
+                          ensure_ascii=False)
     return json_str
   else:
     print('None の値があるため、変換できません')
 
 
-
 theme_json = create_theme_json(convert_dict)
 
-
 x = 1
+
