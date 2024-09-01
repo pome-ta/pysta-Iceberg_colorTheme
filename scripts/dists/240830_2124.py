@@ -1,7 +1,6 @@
 from pathlib import Path
 import json
 
-
 # def get_vs_value(value, vs_dict):
 #   if isinstance(value, dict):
 #     for k, v in value.items():
@@ -12,7 +11,6 @@ import json
 #       pass
 #   else:
 #     return vs_dict[value]
-
 
 # vscode_theme_path = Path('./vscodeThemes/iceberg.color-theme.json')
 vscode_theme_path = Path(
@@ -176,7 +174,10 @@ setup_dict = [
   },
   {
     'pysta': {
-      'scopes': ['builtinfunction','color',],
+      'scopes': [
+        'builtinfunction',
+        'color',
+      ],
     },
     'vscode': {
       'tokenColors': {
@@ -186,7 +187,10 @@ setup_dict = [
   },
   {
     'pysta': {
-      'scopes': ['class','color',],
+      'scopes': [
+        'class',
+        'color',
+      ],
     },
     'vscode': {
       'tokenColors': {
@@ -196,7 +200,10 @@ setup_dict = [
   },
   {
     'pysta': {
-      'scopes': ['classdef','color',],
+      'scopes': [
+        'classdef',
+        'color',
+      ],
     },
     'vscode': {
       'tokenColors': {
@@ -216,7 +223,10 @@ setup_dict = [
   },
   {
     'pysta': {
-      'scopes': ['codeblock-start','color',],
+      'scopes': [
+        'codeblock-start',
+        'color',
+      ],
     },
     'vscode': {
       'tokenColors': {
@@ -226,7 +236,10 @@ setup_dict = [
   },
   {
     'pysta': {
-      'scopes': ['comment','color',],
+      'scopes': [
+        'comment',
+        'color',
+      ],
     },
     'vscode': {
       'tokenColors': {
@@ -236,7 +249,10 @@ setup_dict = [
   },
   {
     'pysta': {
-      'scopes': ['default','color',],
+      'scopes': [
+        'default',
+        'color',
+      ],
     },
     'vscode': {
       'tokenColors': {
@@ -246,7 +262,10 @@ setup_dict = [
   },
   {
     'pysta': {
-      'scopes': ['docstring','color',],
+      'scopes': [
+        'docstring',
+        'color',
+      ],
     },
     'vscode': {
       'tokenColors': {
@@ -256,7 +275,10 @@ setup_dict = [
   },
   {
     'pysta': {
-      'scopes': ['formatting','color',],
+      'scopes': [
+        'formatting',
+        'color',
+      ],
     },
     'vscode': {
       'tokenColors': {
@@ -266,7 +288,10 @@ setup_dict = [
   },
   {
     'pysta': {
-      'scopes': ['function','color',],
+      'scopes': [
+        'function',
+        'color',
+      ],
     },
     'vscode': {
       'tokenColors': {
@@ -276,7 +301,10 @@ setup_dict = [
   },
   {
     'pysta': {
-      'scopes': ['functiondef','color',],
+      'scopes': [
+        'functiondef',
+        'color',
+      ],
     },
     'vscode': {
       'tokenColors': {
@@ -286,7 +314,10 @@ setup_dict = [
   },
   {
     'pysta': {
-      'scopes': ['keyword','color',],
+      'scopes': [
+        'keyword',
+        'color',
+      ],
     },
     'vscode': {
       'tokenColors': {
@@ -296,7 +327,10 @@ setup_dict = [
   },
   {
     'pysta': {
-      'scopes': ['number','color',],
+      'scopes': [
+        'number',
+        'color',
+      ],
     },
     'vscode': {
       'tokenColors': {
@@ -306,7 +340,10 @@ setup_dict = [
   },
   {
     'pysta': {
-      'scopes': ['string','color',],
+      'scopes': [
+        'string',
+        'color',
+      ],
     },
     'vscode': {
       'tokenColors': {
@@ -316,7 +353,10 @@ setup_dict = [
   },
   {
     'pysta': {
-      'scopes': ['task-done','color',],
+      'scopes': [
+        'task-done',
+        'color',
+      ],
     },
     'vscode': {
       'tokenColors': {
@@ -344,9 +384,9 @@ def get_vsTheme_value(value, theme_dict):
               return token['settings'][_v]
 
 
-
 def set_pystaTheme_value(value):
   pass
+
 
 for d in setup_dict:
   # v = get_vs_value(d['vscode'], vscode_theme_dict)

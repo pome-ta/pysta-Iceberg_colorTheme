@@ -10,7 +10,7 @@ from tmpDict import tmp_theme_dict
 class DataPalette:
   background: str = '#ff0000'
   bar_background: str = '#ff0000'
-  dark_keyboard: bool
+  dark_keyboard: bool = True
   default_text: str = '#ff0000'
   editor_actions_icon_background: str = '#ff0000'
   editor_actions_icon_tint: str = '#00ff00'
@@ -25,7 +25,7 @@ class DataPalette:
   line_number: str = '#ff0000'
   name: str = 'templateDefaultThemeSample'
 
-  scopes: dict
+  scopes: str = 'dict'  # todo: 仮
 
   separator_line: str = '#ff0000'
   tab_background: str = '#ff0000'
@@ -43,4 +43,22 @@ vscode_theme_dict = json.loads(vscode_theme_path.read_text())
 def convert_palette(vs_dict: dict) -> dict:
 
   pass
+
+
+def get_vsdict_value(v: list | str, vs_dict):
+  if isinstance(v, str):
+    return vs_dict.get(v)
+
+
+def search_vsdict_value(ks, vs_dict:dict):
+  for k in ks:
+    if isinstance(k, str):
+      return vs_dict.get(k)
+    if isinstance(k, list):
+      pass
+
+#tokenColors, scope, comment, settings, foreground
+ky = ['tokenColors']
+#a = get_vsdict_value(ky, vscode_theme_dict)
+a = search_vsdict_value(ky, vscode_theme_dict)
 

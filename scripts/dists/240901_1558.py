@@ -1,19 +1,17 @@
+from pathlib import Path
+import json
+
+from objc_util import ObjCClass
+
 tmp_theme_dict = {
   'background': '#ff0000',
   'bar_background': '#ff0000',
-  'dark_keyboard': True,
   'default_text': '#ff0000',
-  'editor_actions_icon_background': '#ff0000',
-  'editor_actions_icon_tint': '#00ff00',
-  'editor_actions_popover_background': '#ff00ff',
-  'error_text': '#ff0000',
   'font-family': 'Menlo-Regular',
   'font-size': 12.0,
   'gutter_background': '#ff0000',
   'gutter_border': '#ff0000',
-  'interstitial': '#ff0000',
   'library_background': '#ff0000',
-  'library_tint': '#ff0000',
   'line_number': '#ff0000',
   'name': 'minimumTemplateDefaultThemeSample',
   'scopes': {
@@ -51,18 +49,12 @@ tmp_theme_dict = {
       'color': '#ff0000',
       'font-style': 'italic',
     },
-    'decorator': {
-      'color': '#ff0000',
-    },
     'default': {
       'color': '#ff0000',
     },
     'docstring': {
       'color': '#ff0000',
       'font-style': 'italic',
-    },
-    'escape': {
-      'background-color': '#ff0000',
     },
     'formatting': {
       'color': '#ff0000',
@@ -92,11 +84,6 @@ tmp_theme_dict = {
     'link': {
       'text-decoration': 'underline',
     },
-    'marker': {
-      'box-background-color': '#ff0000',
-      'box-border-color': '#ff0000',
-      'box-border-type': 4,
-    },
     'module': {
       'color': '#ff0000',
     },
@@ -124,4 +111,16 @@ tmp_theme_dict = {
   'thumbnail_border': '#ff0000',
   'tint': '#ff0000',
 }
+'''
+themes_path = Path(str(ObjCClass('PA2UITheme').sharedTheme().userThemesPath()))
+'''
+json_str = json.dumps(tmp_theme_dict,
+                      indent=1,
+                      sort_keys=True,
+                      ensure_ascii=False)
+json_file_name = f'{tmp_theme_dict["name"]}.json'
 
+root_path = Path(__file__).parent
+move_path = Path(root_path, './dumps', json_file_name)
+
+move_path.write_text(json_str, encoding='utf-8')
