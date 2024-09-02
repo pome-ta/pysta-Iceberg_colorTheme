@@ -22,6 +22,7 @@ vscode_theme_dict = response.json()
 file_name = Path(url).name
 '''
 
+
 def get_top_value(k: str, vs: dict) -> str | bool | None:
   return vs.get(k)
 
@@ -386,7 +387,6 @@ def create_theme_json(convert_pallet: dict) -> str:
       },
       'heading-3': {
         'font-style': 'bold',
-        # 'font-style': None,
       },
       'italic': {
         'font-style': 'italic',
