@@ -1,0 +1,110 @@
+{
+ "background": "#2e3440",
+ "bar_background": "#3b4252",
+ "dark_keyboard": true,
+ "default_text": "#d8dee9",
+ "font-family": "Menlo-Regular",
+ "font-size": 12.0,
+ "gutter_background": "#2e3440",
+ "gutter_border": "#3b425200",
+ "library_background": "#2e3440",
+ "library_tint": "#3b4252",
+ "line_number": "#4c566a",
+ "name": "Nord",
+ "scopes": {
+  "bold": {
+   "font-style": "bold"
+  },
+  "bold-italic": {
+   "font-style": "bold-italic"
+  },
+  "builtinfunction": {
+   "color": "#88C0D0"
+  },
+  "checkbox": {
+   "checkbox": true
+  },
+  "checkbox-done": {
+   "checkbox": true,
+   "done": true
+  },
+  "class": {
+   "color": "#8FBCBB"
+  },
+  "classdef": {
+   "color": "#8FBCBB",
+   "font-style": "bold"
+  },
+  "code": {
+   "background-color": "#616E88",
+   "corner-radius": 2.0
+  },
+  "codeblock-start": {
+   "color": "#8FBCBB"
+  },
+  "comment": {
+   "color": "#616E88",
+   "font-style": "italic"
+  },
+  "default": {
+   "color": "#d8dee9"
+  },
+  "docstring": {
+   "color": "#8FBCBB",
+   "font-style": "italic"
+  },
+  "formatting": {
+   "color": "#616E88"
+  },
+  "function": {
+   "color": "#88C0D0"
+  },
+  "functiondef": {
+   "color": "#88C0D0",
+   "font-style": "bold"
+  },
+  "heading-1": {
+   "font-style": "bold"
+  },
+  "heading-2": {
+   "font-style": "bold"
+  },
+  "heading-3": {
+   "font-style": "bold"
+  },
+  "italic": {
+   "font-style": "italic"
+  },
+  "keyword": {
+   "color": "#81A1C1"
+  },
+  "link": {
+   "text-decoration": "underline"
+  },
+  "module": {
+   "color": "#8FBCBB"
+  },
+  "number": {
+   "color": "#B48EAD"
+  },
+  "project": {
+   "font-style": "bold"
+  },
+  "string": {
+   "color": "#A3BE8C"
+  },
+  "tag": {
+   "text-decoration": "none"
+  },
+  "task-done": {
+   "color": "#8FBCBB",
+   "text-decoration": "strikeout"
+  }
+ },
+ "separator_line": "#3b4252",
+ "tab_background": "#2e3440",
+ "tab_title": "#d8dee9",
+ "text_selection_tint": "#434c5ecc",
+ "thumbnail_border": "#3b4252",
+ "tint": "#88c0d0"
+}

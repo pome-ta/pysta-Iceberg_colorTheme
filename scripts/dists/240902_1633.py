@@ -7,20 +7,27 @@ import requests
 from objc_util import ObjCClass
 
 root_path = Path(__file__).parent
-
+'''
 vscode_theme_path = Path(root_path, './vscodeThemes/iceberg.color-theme.json')
 file_name = vscode_theme_path.name
 vscode_theme_dict = json.loads(vscode_theme_path.read_text())
 '''
-url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg-light.color-theme.json'
+#url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg-light.color-theme.json'
+url = 'https://github.com/nordtheme/visual-studio-code/blob/develop/themes/nord-color-theme.json'
 params = {
   'raw': 'true',
 }
 
 response = requests.get(url, params)
-vscode_theme_dict = response.json()
 file_name = Path(url).name
-'''
+
+try:
+  vscode_theme_dict = response.json()
+except requests.exceptions.JSONDecodeError:
+  import re
+  regex = re.compile(r'/\*[\s\S]*?\*/|//.*')
+  res_comment_json = regex.sub('', response.text)
+  vscode_theme_dict = json.loads(res_comment_json)
 
 
 def get_top_value(k: str, vs: dict) -> str | bool | None:
@@ -54,6 +61,7 @@ def get_vsdict_value(items: list, theme_main: dict) -> str | bool | None:
         value = get_tokenColors_value(v, theme_main.get(k))
       else:
         value = get_top_value(v, theme_main)
+
     if not value == None:
       return value
 
@@ -70,6 +78,7 @@ _default_text = [
     ('scope', 'text'),
     ('settings', 'foreground'),
   ])),
+  dict(colors='foreground'),
 ]
 
 _gutter_background = [
@@ -115,10 +124,18 @@ _scopes_code_backgroundColor = [
     ('scope', 'markup.inline.raw.string'),
     ('settings', 'foreground'),
   ])),
+  dict(tokenColors=dict([
+    ('scope', 'text.html.markdown markup.quote'),
+    ('settings', 'foreground'),
+  ])),
 ]
 _scopes_codeblockStart_color = [
   dict(tokenColors=dict([
     ('scope', 'markup.fenced_code.block'),
+    ('settings', 'foreground'),
+  ])),
+  dict(tokenColors=dict([
+    ('scope', 'text.html.markdown beginning.punctuation.definition.quote'),
     ('settings', 'foreground'),
   ])),
 ]
@@ -133,16 +150,25 @@ _scopes_default_color = [
     ('scope', 'text'),
     ('settings', 'foreground'),
   ])),
+  dict(colors='foreground'),
 ]
 _scopes_docstring_color = [
   dict(tokenColors=dict([
     ('scope', 'punctuation.definition.template-expression'),
     ('settings', 'foreground'),
   ])),
+  dict(tokenColors=dict([
+    ('scope', 'source.js storage.type.class.jsdoc'),
+    ('settings', 'foreground'),
+  ])),
 ]
 _scopes_formatting_color = [
   dict(tokenColors=dict([
     ('scope', 'markup.fenced_code.block'),
+    ('settings', 'foreground'),
+  ])),
+  dict(tokenColors=dict([
+    ('scope', 'text.html.markdown markup.quote'),
     ('settings', 'foreground'),
   ])),
 ]
@@ -169,10 +195,18 @@ _scopes_module_color = [
     ('scope', 'entity.name.import.go'),
     ('settings', 'foreground'),
   ])),
+  dict(tokenColors=dict([
+    ('scope', 'source.java storage.modifier.import'),
+    ('settings', 'foreground'),
+  ])),
 ]
 _scopes_number_color = [
   dict(tokenColors=dict([
     ('scope', 'constant'),
+    ('settings', 'foreground'),
+  ])),
+  dict(tokenColors=dict([
+    ('scope', 'constant.numeric'),
     ('settings', 'foreground'),
   ])),
 ]
@@ -192,6 +226,7 @@ _separator_line = [
   {
     'colors': 'menu.separatorBackground',
   },
+  dict(colors='sideBar.border'),
 ]
 _tab_background = [
   {
@@ -432,7 +467,7 @@ def create_theme_json(convert_pallet: dict) -> str:
                           ensure_ascii=False)
     return json_str
   else:
-    print('None の値があるため、変換できません')
+    raise print('None の値があるため、変換できません')
 
 
 theme_json = create_theme_json(convert_dict)
