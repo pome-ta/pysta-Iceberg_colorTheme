@@ -72,36 +72,24 @@ _default_text = [
 ]
 
 _gutter_background = [
-  {
-    'colors': 'editorGutter.background',
-  },
+  dict(colors='editorGutter.background'),
 ]
 
 _gutter_border = [
-  {
-    'colors': 'tab.border',
-  },
+  dict(colors='tab.border'),
 ]
 
 _library_background = [
-  {
-    'colors': 'sideBar.background',
-  },
+  dict(colors='sideBar.background'),
 ]
 _library_tint = [
-  {
-    'colors': 'sideBar.border',
-  },
+  dict(colors='sideBar.border'),
 ]
 _line_number = [
-  {
-    'colors': 'editorLineNumber.foreground',
-  },
+  dict(colors='editorLineNumber.foreground'),
 ]
 _name = [
-  {
-    'top': 'name',
-  },
+  dict(top='name'),
 ]
 _scopes_builtinfunction_color = [
   dict(tokenColors=dict([
