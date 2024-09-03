@@ -3,6 +3,8 @@
 
 Theme の分析をしていきたい
 
+[draftPythonistaScripts/markdown/colorTest.md at main · pome-ta/draftPythonistaScripts](https://github.com/pome-ta/draftPythonistaScripts/blob/main/markdown/colorTest.md)
+
 
 
 
