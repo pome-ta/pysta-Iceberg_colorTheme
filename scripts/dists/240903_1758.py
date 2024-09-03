@@ -13,6 +13,9 @@ file_name = theme_path.name
 
 
 # todo: `value` を一覧として、初手取り出し
+def get_all_valus(d: dict):
+  pass
+
 
 # todo: `key` でのテスト
 # これだと、配列時の処理ができていない
@@ -27,6 +30,5 @@ def allkeys(a, parent=''):
 
 vs = list(allkeys(theme_dict))
 
-
-
 x = 1
+
