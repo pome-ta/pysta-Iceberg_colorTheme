@@ -13,22 +13,21 @@ file_name = theme_path.name
 
 
 # todo: `value` を一覧として、初手取り出し
-def get_all_valus(d: dict):
+def get_all_values(d: dict):
   pass
 
 
 # todo: `key` でのテスト
 # これだと、配列時の処理ができていない
-def allkeys(a, parent=''):
+def all_keys(a, parent=''):
   for key, value in a.items():
     yield parent + key
     if isinstance(value, dict):
-      yield from allkeys(value, parent + key + '.')
+      yield from all_keys(value, parent + key + '.')
 
 
 # print(theme_path.name)
 
-vs = list(allkeys(theme_dict))
+vs = list(all_keys(theme_dict))
 
 x = 1
-
