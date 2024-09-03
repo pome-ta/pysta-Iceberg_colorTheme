@@ -15,6 +15,20 @@ dracula theme は、CodeSandbox で`build` してから、格納
 
 [GitHub - dracula/visual-studio-code: 🧛🏻‍♂️ Dark theme for Visual Studio Code](https://github.com/dracula/visual-studio-code)
 
+
+## 分析
+
+`.json` から、`value` を抜き出し、まとめる
+
+
+`.md` の形式として吐き出す
+
+### `.md` 吐き出し
+
+table でまとめられたらいいけど、表示が変になるかな？
+
+
+
 # 📝 2024/09/02
 
 とりあえず書き出しはできたけど
