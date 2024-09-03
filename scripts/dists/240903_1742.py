@@ -3,11 +3,20 @@ import json
 
 import requests
 
+src_path = ''
+
+json_path = Path(src_path)
+file_name = json_path.name
+
+json_data = json_path.read_text()
+json_loads = json.loads(json_data)
+json_str = json.dumps(json_loads, indent=1, sort_keys=True, ensure_ascii=False)
+
+root_path = Path('./vscodeThemes')
+theme_path = Path(root_path, file_name)
+theme_path.write_text(json_str, encoding='utf-8')
+'''
 url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg.color-theme.json'
-url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg-light.color-theme.json'
-url = 'https://github.com/nordtheme/visual-studio-code/blob/develop/themes/nord-color-theme.json'
-url = 'https://github.com/ayu-theme/vscode-ayu/blob/master/ayu-light.json'
-url = 'https://github.com/ayu-theme/vscode-ayu/blob/master/ayu-light-bordered.json'
 
 params = {
   'raw': 'true',
@@ -24,14 +33,14 @@ except requests.exceptions.JSONDecodeError:
   res_comment_json = regex.sub('', response.text)
   vscode_theme_dict = json.loads(res_comment_json)
 
-json_str = json.dumps(vscode_theme_dict,
+json_str = json.dumps(_theme_dict,
                       indent=1,
                       sort_keys=True,
                       ensure_ascii=False)
 
-root_path = Path('./')
-target_path = Path('../dists/vscodeThemes')
-
-theme_path = Path(root_path, target_path, file_name)
+root_path = Path('./vscodeThemes')
+theme_path = Path(root_path, file_name)
 theme_path.write_text(json_str, encoding='utf-8')
+
+'''
 
