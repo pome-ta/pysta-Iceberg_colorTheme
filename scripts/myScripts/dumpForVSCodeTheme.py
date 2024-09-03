@@ -8,6 +8,7 @@ url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg-
 url = 'https://github.com/nordtheme/visual-studio-code/blob/develop/themes/nord-color-theme.json'
 url = 'https://github.com/ayu-theme/vscode-ayu/blob/master/ayu-light.json'
 url = 'https://github.com/ayu-theme/vscode-ayu/blob/master/ayu-light-bordered.json'
+url = 'https://github.com/microsoft/vscode/blob/main/extensions/theme-solarized-light/themes/solarized-light-color-theme.json'
 
 params = {
   'raw': 'true',

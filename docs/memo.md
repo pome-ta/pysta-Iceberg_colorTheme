@@ -6,7 +6,14 @@ Theme の分析をしていきたい
 [draftPythonistaScripts/markdown/colorTest.md at main · pome-ta/draftPythonistaScripts](https://github.com/pome-ta/draftPythonistaScripts/blob/main/markdown/colorTest.md)
 
 
+## theme あつめ
 
+VSCode のtheme をdump していく
+
+
+dracula theme は、CodeSandbox で`build` してから、格納
+
+[GitHub - dracula/visual-studio-code: 🧛🏻‍♂️ Dark theme for Visual Studio Code](https://github.com/dracula/visual-studio-code)
 
 # 📝 2024/09/02
 
