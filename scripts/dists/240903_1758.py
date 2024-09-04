@@ -17,6 +17,11 @@ file_name = theme_path.name
 color_regex = re.compile(r'^#[\da-fA-F]{3,8}')
 
 
+def yield_value(value: str | bool | None):
+  if isinstance(value, str) and color_regex.match(value):
+    yield value.upper()
+
+
 def for_type_list(lst: list):
   for v in lst:
     if isinstance(v, dict):
@@ -24,8 +29,7 @@ def for_type_list(lst: list):
     elif isinstance(v, list):
       yield from for_type_list(v)
     else:
-      if isinstance(v, str) and color_regex.match(v):
-        yield v
+      yield from yield_value(v)
 
 
 def for_type_dict(dct: dict):
@@ -35,8 +39,7 @@ def for_type_dict(dct: dict):
     elif isinstance(v, list):
       yield from for_type_list(v)
     else:
-      if isinstance(v, str) and color_regex.match(v):
-        yield v
+      yield from yield_value(v)
 
 
 # todo: `value` を一覧として、初手取り出し
