@@ -14,9 +14,6 @@ color_regex = re.compile(r'^#[\da-fA-F]{3,8}')
 
 # todo: `value` を一覧として、初手取り出し
 def get_all_values(vs_theme: dict):
-  # color_regex = re.compile(r'^#([\da-fA-F]{6}|[\da-fA-F]{3}||[\da-fA-F]{8})')
-  # color_regex = re.compile(r'^#[0-9a-fA-F]{3,6,8}')
-  # color_regex = re.compile(r'^#[\da-fA-F]{3,8}')
 
   def _yield_value(value: str | bool | None):
     if isinstance(value, str) and color_regex.match(value):
@@ -44,17 +41,6 @@ def get_all_values(vs_theme: dict):
     yield from _for_type_dict(vs_theme)
 
 
-# todo: `key` でのテスト
-# これだと、配列時の処理ができていない
-'''
-def all_keys(a, parent=''):
-  for key, value in a.items():
-    yield parent + key
-    if isinstance(value, dict):
-      yield from all_keys(value, parent + key + '.')
-'''
-
-
 def get_all_keys(vs_theme: dict):
 
   def _yield_value(value: str | bool | None, parent: str):
@@ -74,7 +60,7 @@ def get_all_keys(vs_theme: dict):
         yield from _for_type_dict(v, f'{parent}[{k}] :: ')
 
       elif isinstance(v, list):
-        # xxx: ここのパターン数ない
+        # xxx: ここのパターン数ない
         #print('in list')
         yield from _for_type_list(v, f'{parent}[{n}] :: ')
       else:
@@ -94,11 +80,45 @@ def get_all_keys(vs_theme: dict):
     yield from _for_type_dict(vs_theme, '')
 
 
-# print(theme_path.name)
+def set_colors_names(vs_theme: dict, color_list: list):
+  color_name = dict.fromkeys(color_list, [])
 
-# vs = list(all_keys(theme_dict))
-all_values = sorted(list(set(get_all_values(theme_dict))))
-all_keys = list(get_all_keys(theme_dict))
+  def _yield_value(value: str | bool | None, parent: str):
+    if isinstance(value, str) and color_regex.match(value):
+      color = value.upper()
+      if isinstance(color_name.get(color), list):
+        color_name[color].append(parent)
+
+  def _for_type_list(lst: list, parent: str):
+    for n, v in enumerate(lst):
+      if isinstance(v, dict):
+        k = v.get('scope')
+        _for_type_dict(v, f'{parent}[{k}] :: ')
+
+      elif isinstance(v, list):
+        _for_type_list(v, f'{parent}[{n}] :: ')
+      else:
+        _yield_value(v, f'{parent}[{v}] :: ')
+
+  def _for_type_dict(dct: dict, parent: str):
+    for k, v in dct.items():
+      if isinstance(v, dict):
+        _for_type_dict(v, f'{parent + k} :: ')
+      elif isinstance(v, list):
+        _for_type_list(v, f'{parent + k} :: ')
+      else:
+        _yield_value(v, f'{parent + k}')
+
+  if isinstance(vs_theme, dict):
+    _for_type_dict(vs_theme, '')
+    return color_name
+
+
+
+
+colors_set = sorted(list(set(get_all_values(theme_dict))))
+
+colors_names = set_colors_names(theme_dict, colors_set)
 
 x = 1
 
