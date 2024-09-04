@@ -86,9 +86,15 @@ md_fmt = '''
 | --- | --- |
 '''
 
+
+def set_parameter(c:str)->str:
+  return f'![](https://via.placeholder.com/16/{c[1:]}/FFFFFF/?text=%20) `{c}`'
+
+
+
 br = ' <br> '
 for k, v in colors_names.items():
-  rows = f'| {k} | {br.join(v)} |\n'
+  rows = f'| {set_parameter(k)} | {br.join(v)} |\n'
   md_fmt += rows
   
 print(f'### {file_name}')
