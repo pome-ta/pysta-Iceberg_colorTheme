@@ -49,7 +49,7 @@ def set_colors_names(vs_theme: dict, color_list: list):
     if isinstance(value, str) and color_regex.match(value):
       color = value.upper()
       if isinstance(color_name.get(color), list):
-        color_name[color].append(parent)
+        color_name[color].append(parent.replace(' ', ''))
 
   def _for_type_list(lst: list, parent: str):
     for n, v in enumerate(lst):
