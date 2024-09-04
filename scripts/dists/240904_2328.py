@@ -55,19 +55,19 @@ def set_colors_names(vs_theme: dict, color_list: list):
     for n, v in enumerate(lst):
       if isinstance(v, dict):
         k = v.get('scope')
-        _for_type_dict(v, f'{parent}[{k}] :: ')
+        _for_type_dict(v, f'{parent}[{k}]::')
 
       elif isinstance(v, list):
-        _for_type_list(v, f'{parent}[{n}] :: ')
+        _for_type_list(v, f'{parent}[{n}]::')
       else:
-        _set_value(v, f'{parent}[{v}] :: ')
+        _set_value(v, f'{parent}[{v}]::')
 
   def _for_type_dict(dct: dict, parent: str):
     for k, v in dct.items():
       if isinstance(v, dict):
-        _for_type_dict(v, f'{parent + k} :: ')
+        _for_type_dict(v, f'{parent + k}::')
       elif isinstance(v, list):
-        _for_type_list(v, f'{parent + k} :: ')
+        _for_type_list(v, f'{parent + k}::')
       else:
         _set_value(v, f'{parent + k}')
 
