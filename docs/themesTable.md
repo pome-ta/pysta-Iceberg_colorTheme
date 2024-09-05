@@ -1,5 +1,73 @@
 # Pythonista3 とVSCode のColor 対応表
 
+
+
+## `Theme03_SolarizedLight.json` `solarized-light-color-theme.json`
+
+| color | Pythonista3 | VSCode |
+| --- | --- | --- |
+| ![](https://via.placeholder.com/16/000000/FFFFFF/?text=%20)`#000000` | tab_title |  |
+| ![](https://via.placeholder.com/16/00000014/FFFFFF/?text=%20)`#00000014` |  | colors::walkThrough.embeddedEditorBackground |
+| ![](https://via.placeholder.com/16/002B36/FFFFFF/?text=%20)`#002B36` |  | colors::terminal.ansiBrightBlack |
+| ![](https://via.placeholder.com/16/073642/FFFFFF/?text=%20)`#073642` |  | colors::terminal.ansiBlack |
+| ![](https://via.placeholder.com/16/081E2580/FFFFFF/?text=%20)`#081E2580` |  | colors::editorIndentGuide.activeBackground |
+| ![](https://via.placeholder.com/16/25626E/FFFFFF/?text=%20)`#25626E` | scopes::module::color |  |
+| ![](https://via.placeholder.com/16/268BD2/FFFFFF/?text=%20)`#268BD2` | scopes::builtinfunction::color <br> scopes::class::color <br> scopes::classdef::color <br> scopes::function::color <br> scopes::functiondef::color | colors::terminal.ansiBlue <br> tokenColors::[['variable.language','variable.other']]::settings::foreground <br> tokenColors::[entity.name.function]::settings::foreground <br> tokenColors::[entity.name.tag]::settings::foreground <br> tokenColors::[support.function]::settings::foreground <br> tokenColors::[['meta.diff','meta.diff.header']]::settings::foreground <br> tokenColors::[markup.heading]::settings::foreground <br> tokenColors::[markup.heading.setext]::settings::foreground |
+| ![](https://via.placeholder.com/16/2AA198/FFFFFF/?text=%20)`#2AA198` | scopes::string::color | colors::terminal.ansiCyan <br> tokenColors::[string]::settings::foreground <br> tokenColors::[markup.inline.raw]::settings::foreground |
+| ![](https://via.placeholder.com/16/2AA19899/FFFFFF/?text=%20)`#2AA19899` |  | colors::pickerGroup.border <br> colors::pickerGroup.foreground <br> colors::ports.iconRunningProcessForeground |
+| ![](https://via.placeholder.com/16/35A298/FFFFFF/?text=%20)`#35A298` | library_tint <br> tint |  |
+| ![](https://via.placeholder.com/16/567983/FFFFFF/?text=%20)`#567983` |  | colors::editorLineNumber.activeForeground |
+| ![](https://via.placeholder.com/16/584C27/FFFFFF/?text=%20)`#584C27` |  | colors::activityBar.foreground |
+| ![](https://via.placeholder.com/16/584C27AA/FFFFFF/?text=%20)`#584C27AA` |  | colors::extensionButton.prominentHoverBackground |
+| ![](https://via.placeholder.com/16/586E75/FFFFFF/?text=%20)`#586E75` | default_text <br> scopes::default::color | colors::input.foreground <br> colors::sideBarTitle.foreground <br> colors::statusBar.foreground <br> colors::tab.inactiveForeground <br> colors::terminal.ansiBrightGreen <br> tokenColors::[storage]::settings::foreground |
+| ![](https://via.placeholder.com/16/586E7580/FFFFFF/?text=%20)`#586E7580` |  | colors::editorIndentGuide.background <br> colors::editorWhitespace.foreground |
+| ![](https://via.placeholder.com/16/586E75AA/FFFFFF/?text=%20)`#586E75AA` |  | colors::input.placeholderForeground |
+| ![](https://via.placeholder.com/16/589429/FFFFFF/?text=%20)`#589429` | scopes::docstring::color |  |
+| ![](https://via.placeholder.com/16/657B83/FFFFFF/?text=%20)`#657B83` |  | colors::editor.foreground <br> colors::editorCursor.foreground <br> colors::terminal.ansiBrightYellow <br> tokenColors::[None]::settings::foreground <br> tokenColors::[['meta.embedded','source.groovy.embedded','stringmeta.image.inline.markdown','variable.legacy.builtin.python']]::settings::foreground |
+| ![](https://via.placeholder.com/16/66666680/FFFFFF/?text=%20)`#66666680` | scopes::task-done::color |  |
+| ![](https://via.placeholder.com/16/6C6C6C/FFFFFF/?text=%20)`#6C6C6C` |  | colors::list.activeSelectionForeground |
+| ![](https://via.placeholder.com/16/6C71C4/FFFFFF/?text=%20)`#6C71C4` |  | colors::terminal.ansiBrightMagenta <br> tokenColors::[entity.other.inherited-class]::settings::foreground |
+| ![](https://via.placeholder.com/16/7744AA40/FFFFFF/?text=%20)`#7744AA40` |  | colors::peekViewEditor.matchHighlightBackground |
+| ![](https://via.placeholder.com/16/80808020/FFFFFF/?text=%20)`#80808020` | scopes::code::background-color |  |
+| ![](https://via.placeholder.com/16/80808080/FFFFFF/?text=%20)`#80808080` | scopes::codeblock-start::color <br> scopes::formatting::color |  |
+| ![](https://via.placeholder.com/16/839496/FFFFFF/?text=%20)`#839496` |  | colors::terminal.ansiBrightBlue |
+| ![](https://via.placeholder.com/16/859900/FFFFFF/?text=%20)`#859900` | scopes::keyword::color | colors::terminal.ansiGreen <br> tokenColors::[keyword]::settings::foreground <br> tokenColors::[punctuation.definition.variable]::settings::foreground <br> tokenColors::[['support.type','support.class']]::settings::foreground <br> tokenColors::[markup.inserted]::settings::foreground <br> tokenColors::[markup.quote]::settings::foreground |
+| ![](https://via.placeholder.com/16/878B9180/FFFFFF/?text=%20)`#878B9180` |  | colors::selection.background |
+| ![](https://via.placeholder.com/16/93A1A1/FFFFFF/?text=%20)`#93A1A1` | scopes::comment::color | colors::terminal.ansiBrightCyan <br> tokenColors::[comment]::settings::foreground <br> tokenColors::[punctuation.definition.tag]::settings::foreground <br> tokenColors::[entity.other.attribute-name]::settings::foreground |
+| ![](https://via.placeholder.com/16/94A1A1/FFFFFF/?text=%20)`#94A1A1` | text_selection_tint |  |
+| ![](https://via.placeholder.com/16/A7ACAD/FFFFFF/?text=%20)`#A7ACAD` | line_number <br> separator_line |  |
+| ![](https://via.placeholder.com/16/AB395B/FFFFFF/?text=%20)`#AB395B` |  | colors::debugExceptionWidget.border |
+| ![](https://via.placeholder.com/16/AC9D57/FFFFFF/?text=%20)`#AC9D57` |  | colors::button.background <br> colors::statusBarItem.remoteBackground |
+| ![](https://via.placeholder.com/16/B49471/FFFFFF/?text=%20)`#B49471` |  | colors::focusBorder |
+| ![](https://via.placeholder.com/16/B58900/FFFFFF/?text=%20)`#B58900` |  | colors::activityBarBadge.background <br> colors::extensionButton.prominentBackground <br> colors::list.highlightForeground <br> colors::peekView.border <br> colors::progressBar.background <br> colors::terminal.ansiYellow <br> tokenColors::[['constant.language','meta.preprocessor']]::settings::foreground <br> tokenColors::[markup.list]::settings::foreground |
+| ![](https://via.placeholder.com/16/B58900AA/FFFFFF/?text=%20)`#B58900AA` |  | colors::badge.background |
+| ![](https://via.placeholder.com/16/CB4B16/FFFFFF/?text=%20)`#CB4B16` |  | colors::tab.activeModifiedBorder <br> colors::terminal.ansiBrightRed <br> tokenColors::[['entity.name.class','entity.name.type','entity.name.namespace','entity.name.scope-resolution']]::settings::foreground <br> tokenColors::[['support.function.construct','keyword.other.new']]::settings::foreground <br> tokenColors::[['constant.character','constant.other']]::settings::foreground <br> tokenColors::[support.type.exception]::settings::foreground <br> tokenColors::[markup.changed]::settings::foreground |
+| ![](https://via.placeholder.com/16/CCC4B0/FFFFFF/?text=%20)`#CCC4B0` |  | colors::editorHoverWidget.background |
+| ![](https://via.placeholder.com/16/CE5149/FFFFFF/?text=%20)`#CE5149` | error_text |  |
+| ![](https://via.placeholder.com/16/D1CBB8/FFFFFF/?text=%20)`#D1CBB8` |  | colors::list.inactiveSelectionBackground |
+| ![](https://via.placeholder.com/16/D1D1D1/FFFFFF/?text=%20)`#D1D1D1` | thumbnail_border |  |
+| ![](https://via.placeholder.com/16/D33682/FFFFFF/?text=%20)`#D33682` | scopes::number::color | colors::terminal.ansiMagenta <br> tokenColors::[constant.numeric]::settings::foreground <br> tokenColors::[['markup.bold','markup.italic']]::settings::foreground |
+| ![](https://via.placeholder.com/16/D3AF86/FFFFFF/?text=%20)`#D3AF86` |  | colors::dropdown.border <br> colors::inputOption.activeBorder |
+| ![](https://via.placeholder.com/16/D3CBB7/FFFFFF/?text=%20)`#D3CBB7` |  | colors::tab.inactiveBackground |
+| ![](https://via.placeholder.com/16/D9D2C2/FFFFFF/?text=%20)`#D9D2C2` |  | colors::editorGroupHeader.tabsBackground |
+| ![](https://via.placeholder.com/16/DC322F/FFFFFF/?text=%20)`#DC322F` |  | colors::terminal.ansiRed <br> tokenColors::[string.regexp]::settings::foreground <br> tokenColors::[['punctuation.section.embedded.begin','punctuation.section.embedded.end']]::settings::foreground <br> tokenColors::[punctuation.separator.continuation]::settings::foreground <br> tokenColors::[invalid]::settings::foreground <br> tokenColors::[markup.deleted]::settings::foreground |
+| ![](https://via.placeholder.com/16/DDD6C1/FFFFFF/?text=%20)`#DDD6C1` |  | colors::activityBar.background <br> colors::debugExceptionWidget.background <br> colors::debugToolBar.background <br> colors::editorGroup.border <br> colors::input.background <br> colors::panel.border <br> colors::statusBarItem.prominentBackground <br> colors::tab.border |
+| ![](https://via.placeholder.com/16/DDD6C199/FFFFFF/?text=%20)`#DDD6C199` |  | colors::statusBarItem.prominentHoverBackground |
+| ![](https://via.placeholder.com/16/DDD6C1AA/FFFFFF/?text=%20)`#DDD6C1AA` |  | colors::editorGroup.dropBackground |
+| ![](https://via.placeholder.com/16/DFCA88/FFFFFF/?text=%20)`#DFCA88` |  | colors::list.activeSelectionBackground |
+| ![](https://via.placeholder.com/16/DFCA8844/FFFFFF/?text=%20)`#DFCA8844` |  | colors::list.hoverBackground |
+| ![](https://via.placeholder.com/16/DFCA8866/FFFFFF/?text=%20)`#DFCA8866` |  | colors::quickInputList.focusBackground |
+| ![](https://via.placeholder.com/16/EBF1D8/FFFFFF/?text=%20)`#EBF1D8` | scopes::escape::background-color |  |
+| ![](https://via.placeholder.com/16/EEE8D5/FFFFFF/?text=%20)`#EEE8D5` |  | colors::dropdown.background <br> colors::editor.lineHighlightBackground <br> colors::editor.selectionBackground <br> colors::editorWidget.background <br> colors::minimap.selectionHighlight <br> colors::peekViewResult.background <br> colors::peekViewTitle.background <br> colors::sideBar.background <br> colors::statusBar.background <br> colors::statusBar.debuggingBackground <br> colors::statusBar.noFolderBackground <br> colors::terminal.ansiWhite <br> colors::titleBar.activeBackground |
+| ![](https://via.placeholder.com/16/EFE9D6/FFFFFF/?text=%20)`#EFE9D6` | editor_actions_icon_background <br> gutter_border <br> interstitial <br> library_background <br> tab_background |  |
+| ![](https://via.placeholder.com/16/F7F0E0/FFFFFF/?text=%20)`#F7F0E0` |  | colors::notebook.cellEditorBackground |
+| ![](https://via.placeholder.com/16/FDF6E3/FFFFFF/?text=%20)`#FDF6E3` |  | colors::editor.background <br> colors::tab.activeBackground <br> colors::tab.lastPinnedBorder <br> colors::terminal.ansiBrightWhite <br> colors::terminal.background |
+| ![](https://via.placeholder.com/16/FDF6E5/FFFFFF/?text=%20)`#FDF6E5` | background <br> bar_background <br> gutter_background |  |
+| ![](https://via.placeholder.com/16/FFFBF2/FFFFFF/?text=%20)`#FFFBF2` |  | colors::peekViewEditor.background |
+
+
+
+
 ## `Theme11_Ayu.json` `ayu-light-bordered.json`
 
 | color | Pythonista3 | VSCode |

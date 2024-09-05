@@ -2,9 +2,8 @@ from pathlib import Path
 import json
 import re
 
-_vs_name = 'ayu-light-bordered.json'
-#_vs_name = './ayu-light.json'
-_py_name = './Theme11_Ayu.json'
+_vs_name = './solarized-light-color-theme.json'
+_py_name = './Theme03_SolarizedLight.json'
 
 root_path = Path(__file__).parent
 
