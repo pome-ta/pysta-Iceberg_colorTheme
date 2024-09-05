@@ -10,7 +10,7 @@ theme_dict = json.loads(theme_path.read_text())
 file_name = theme_path.name
 
 pyatas_path = Path(root_path, './dumps')
-#/private/var/mobile/Containers/Shared/AppGroup/CD0D241D-A767-4CE7-823D-680C601C49D6/File Provider Storage/Repositories/pystaColorThemeDev/scripts/dists/dumps/Theme03_SolarizedLight.json
+
 pysta_path = Path(pyatas_path, './Theme03_SolarizedLight.json')
 pysta_dict = json.loads(pysta_path.read_text())
 p_name = pysta_path.name
