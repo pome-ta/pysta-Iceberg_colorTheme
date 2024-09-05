@@ -47,13 +47,13 @@ def get_all_values(vs_theme: dict):
     yield from _for_type_dict(vs_theme)
 
 
-def set_colors_names(vs_theme: dict, color_name: dict):
+def set_colors_names(theme: dict, color_name: dict,idx:int):
 
-  def _set_value(value: str | bool | None, parent: str):
+  def _set_value(value: str | bool | None, parent: str, idx:int):
     if isinstance(value, str) and color_regex.match(value):
       color = value.upper()
       if isinstance(color_name.get(color), list):
-        color_name[color].append(parent.replace(' ', ''))
+        color_name[color][idx].append(parent.replace(' ', ''))
 
   def _for_type_list(lst: list, parent: str):
     for n, v in enumerate(lst):
@@ -64,7 +64,7 @@ def set_colors_names(vs_theme: dict, color_name: dict):
       elif isinstance(v, list):
         _for_type_list(v, f'{parent}[{n}]::')
       else:
-        _set_value(v, f'{parent}[{v}]::')
+        _set_value(v, f'{parent}[{v}]::', idx)
 
   def _for_type_dict(dct: dict, parent: str):
     for k, v in dct.items():
@@ -73,20 +73,31 @@ def set_colors_names(vs_theme: dict, color_name: dict):
       elif isinstance(v, list):
         _for_type_list(v, f'{parent + k}::')
       else:
-        _set_value(v, f'{parent + k}')
+        _set_value(v, f'{parent + k}', idx)
 
-  if isinstance(vs_theme, dict):
-    _for_type_dict(vs_theme, '')
+  if isinstance(theme, dict):
+    _for_type_dict(theme, '')
     return color_name
 
 
-colors_set = sorted(list(set(get_all_values(theme_dict))))
-color_name = dict.fromkeys(colors_set, [])
-colors_names = set_colors_names(theme_dict, color_name)
+vs_colors = list(set(get_all_values(theme_dict)))
+st_colors = list(set(get_all_values(pysta_dict)))
+
+colors = sorted(list(set(vs_colors + st_colors)))
+
+color_name = dict.fromkeys(colors, [[],[]])
+
+for n, t in enumerate([pysta_dict, theme_dict]):
+#for n, t in enumerate([theme_dict, pysta_dict]):
+  color_name = set_colors_names(t, color_name, n)
+  
+#colors_names = set_colors_names(theme_dict, color_name, idx)
+
+
 
 md_fmt = '''
-| color | name |
-| --- | --- |
+| color | Pythonista3 | VSCode |
+| --- | --- | --- |
 '''
 
 
@@ -95,11 +106,11 @@ def set_parameter(c: str) -> str:
 
 
 br = ' <br> '
-for k, v in colors_names.items():
-  rows = f'| {set_parameter(k)} | {br.join(v)} |\n'
+for k, v in color_name.items():
+  rows = f'| {set_parameter(k)} | {br.join(v[0])} | {br.join(v[1])} |\n'
   md_fmt += rows
 
-print(f'### {file_name}')
+print(f'### `{p_name}` `{file_name}`')
 print(md_fmt)
 x = 1
 
