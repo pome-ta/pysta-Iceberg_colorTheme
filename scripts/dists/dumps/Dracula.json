@@ -1,16 +1,16 @@
 {
- "background": "282A36",
- "bar_background": "282A36",
+ "background": "#282A36",
+ "bar_background": "#282A36",
  "dark_keyboard": true,
- "default_text": "F8F8F2",
+ "default_text": "#F8F8F2",
  "font-family": "Menlo-Regular",
  "font-size": 10,
- "gutter_background": "282A36",
- "gutter_border": "14151B",
+ "gutter_background": "#282A36",
+ "gutter_border": "#14151B",
  "interstitial": "#2c2628",
- "library_background": "282A36",
- "library_tint": "F8F8F2",
- "line_number": "9A9A96",
+ "library_background": "#282A36",
+ "library_tint": "#F8F8F2",
+ "line_number": "#9A9A96",
  "name": "Dracula",
  "scopes": {
   "bold": {
@@ -20,7 +20,7 @@
    "font-style": "bold-italic"
   },
   "builtinfunction": {
-   "color": "F8F8F2"
+   "color": "#F8F8F2"
   },
   "checkbox": {
    "checkbox": true
@@ -33,7 +33,7 @@
    "color": "#6ab49b"
   },
   "classdef": {
-   "color": "FF5555"
+   "color": "#FF5555"
   },
   "code": {
    "background-color": "#80808040",
@@ -43,26 +43,26 @@
    "color": "#80808080"
   },
   "comment": {
-   "color": "6272A4",
+   "color": "#6272A4",
    "font-style": "italic"
   },
   "decorator": {
-   "color": "FF5555"
+   "color": "#FF5555"
   },
   "default": {
-   "color": "F8F8F2"
+   "color": "#F8F8F2"
   },
   "docstring": {
-   "color": "F1FA8C"
+   "color": "#F1FA8C"
   },
   "formatting": {
    "color": "#80808080"
   },
   "function": {
-   "color": "F8F8F2"
+   "color": "#F8F8F2"
   },
   "functiondef": {
-   "color": "50FA7B"
+   "color": "#50FA7B"
   },
   "heading-1": {
    "font-style": "bold"
@@ -77,22 +77,22 @@
    "font-style": "italic"
   },
   "keyword": {
-   "color": "FF79C6"
+   "color": "#FF79C6"
   },
   "link": {
    "text-decoration": "underline"
   },
   "module": {
-   "color": "F8F8F2"
+   "color": "#F8F8F2"
   },
   "number": {
-   "color": "BD93F9"
+   "color": "#BD93F9"
   },
   "project": {
    "font-style": "bold"
   },
   "string": {
-   "color": "F1FA8C"
+   "color": "#F1FA8C"
   },
   "tag": {
    "text-decoration": "none"
@@ -102,10 +102,10 @@
    "text-decoration": "strikeout"
   }
  },
- "separator_line": "14151B",
- "tab_background": "14151B",
- "tab_title": "FFFFFF",
- "text_selection_tint": "FFFFFF",
- "thumbnail_border": "15161C",
- "tint": "50FA7B"
+ "separator_line": "#14151B",
+ "tab_background": "#14151B",
+ "tab_title": "#FFFFFF",
+ "text_selection_tint": "#FFFFFF",
+ "thumbnail_border": "#15161C",
+ "tint": "#50FA7B"
 }
