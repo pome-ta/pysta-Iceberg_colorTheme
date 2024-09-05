@@ -2,21 +2,21 @@ from pathlib import Path
 import json
 import re
 
-_vs_name = './solarized-light-color-theme.json'
-_py_name = './Theme03_SolarizedLight.json'
+_vs_name = 'iceberg.color-theme.json'
+_py_name = 'iceberg.color-theme.json'
 
 root_path = Path(__file__).parent
 
 themes_path = Path(root_path, './vscodeThemes')
 
 #theme_path = list(themes_path.iterdir())[0]
-theme_path = Path(themes_path, _vs_name)
+theme_path = Path(themes_path, f'./{_vs_name}')
 theme_dict = json.loads(theme_path.read_text())
 file_name = theme_path.name
 
 pyatas_path = Path(root_path, './dumps')
 
-pysta_path = Path(pyatas_path, _py_name)
+pysta_path = Path(pyatas_path, f'./{_py_name}')
 pysta_dict = json.loads(pysta_path.read_text())
 p_name = pysta_path.name
 
