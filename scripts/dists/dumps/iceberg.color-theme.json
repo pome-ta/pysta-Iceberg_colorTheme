@@ -1,18 +1,16 @@
 {
- "background": "24333E",
- "bar_background": "293D4C",
+ "background": "161821",
+ "bar_background": "161821",
  "dark_keyboard": true,
- "default_text": "F8F8F2",
- "error_text": "#ea9292",
+ "default_text": "C6C8D1",
  "font-family": "Menlo-Regular",
  "font-size": 10,
- "gutter_background": "233541",
- "gutter_border": "1F424C",
- "interstitial": "#1c2933",
- "library_background": "1C2933",
- "library_tint": "9ADEF5",
- "line_number": "8F8E8C",
- "name": "myOceanic",
+ "gutter_background": "1E2132",
+ "gutter_border": "0E1015",
+ "library_background": "161821",
+ "library_tint": "0E1015",
+ "line_number": "444B71",
+ "name": "Iceberg",
  "scopes": {
   "bold": {
    "font-style": "bold"
@@ -21,7 +19,7 @@
    "font-style": "bold-italic"
   },
   "builtinfunction": {
-   "color": "F6BCF0"
+   "color": "C6C8D1"
   },
   "checkbox": {
    "checkbox": true
@@ -31,38 +29,38 @@
    "done": true
   },
   "class": {
-   "color": "#f6bcf0"
+   "color": "#c6c8d1"
   },
   "classdef": {
-   "color": "F6BCF0",
+   "color": "C6C8D1",
    "font-style": "bold"
   },
   "code": {
-   "background-color": "#80808040",
+   "background-color": "#a093c7",
    "corner-radius": 2
   },
   "codeblock-start": {
-   "color": "#80808080"
+   "color": "#6b7089"
   },
   "comment": {
-   "color": "808080",
+   "color": "6B7089",
    "font-style": "italic"
   },
   "default": {
-   "color": "F9F9F5"
+   "color": "C6C8D1"
   },
   "docstring": {
-   "color": "9DDEF4",
+   "color": "B4BE82",
    "font-style": "italic"
   },
   "formatting": {
-   "color": "#80808080"
+   "color": "#6b7089"
   },
   "function": {
-   "color": "F6BCF0"
+   "color": "C6C8D1"
   },
   "functiondef": {
-   "color": "F6BCF0",
+   "color": "C6C8D1",
    "font-style": "bold"
   },
   "heading-1": {
@@ -78,35 +76,35 @@
    "font-style": "italic"
   },
   "keyword": {
-   "color": "EA9292"
+   "color": "84A0C6"
   },
   "link": {
    "text-decoration": "underline"
   },
   "module": {
-   "color": "FFDAB7"
+   "color": "89B8C2"
   },
   "number": {
-   "color": "C4E188"
+   "color": "A093C7"
   },
   "project": {
    "font-style": "bold"
   },
   "string": {
-   "color": "9DDEF4"
+   "color": "89B8C2"
   },
   "tag": {
    "text-decoration": "none"
   },
   "task-done": {
-   "color": "#99999980",
+   "color": "#a093c7",
    "text-decoration": "strikeout"
   }
  },
- "separator_line": "1E2B34",
- "tab_background": "23333F",
- "tab_title": "8F8E8C",
- "text_selection_tint": "BBE3FF",
- "thumbnail_border": "1F424C",
- "tint": "9DDEF4"
+ "separator_line": "161821",
+ "tab_background": "0E1015",
+ "tab_title": "C6C8D1",
+ "text_selection_tint": "272C42",
+ "thumbnail_border": "0E1015",
+ "tint": "84A0C6"
 }

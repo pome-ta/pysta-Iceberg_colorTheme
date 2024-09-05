@@ -1,13 +1,13 @@
 {
- "background": "#ff0000",
- "bar_background": "#ff0000",
- "default_text": "#ff0000",
+ "background": "FF0000",
+ "bar_background": "FF0000",
+ "default_text": "FF0000",
  "font-family": "Menlo-Regular",
- "font-size": 12.0,
- "gutter_background": "#ff0000",
- "gutter_border": "#ff0000",
- "library_background": "#ff0000",
- "line_number": "#ff0000",
+ "font-size": 10,
+ "gutter_background": "FF0000",
+ "gutter_border": "FF0000",
+ "library_background": "FF0000",
+ "line_number": "FF0000",
  "name": "minimumTemplateDefaultThemeSample",
  "scopes": {
   "bold": {
@@ -17,7 +17,7 @@
    "font-style": "bold-italic"
   },
   "builtinfunction": {
-   "color": "#ff0000"
+   "color": "FF0000"
   },
   "checkbox": {
    "checkbox": true
@@ -30,35 +30,35 @@
    "color": "#ff0000"
   },
   "classdef": {
-   "color": "#ff0000",
+   "color": "FF0000",
    "font-style": "bold"
   },
   "code": {
    "background-color": "#ff0000",
-   "corner-radius": 2.0
+   "corner-radius": 2
   },
   "codeblock-start": {
    "color": "#ff0000"
   },
   "comment": {
-   "color": "#ff0000",
+   "color": "FF0000",
    "font-style": "italic"
   },
   "default": {
-   "color": "#ff0000"
+   "color": "FF0000"
   },
   "docstring": {
-   "color": "#ff0000",
+   "color": "FF0000",
    "font-style": "italic"
   },
   "formatting": {
    "color": "#ff0000"
   },
   "function": {
-   "color": "#ff0000"
+   "color": "FF0000"
   },
   "functiondef": {
-   "color": "#ff0000",
+   "color": "FF0000",
    "font-style": "bold"
   },
   "heading-1": {
@@ -74,22 +74,22 @@
    "font-style": "italic"
   },
   "keyword": {
-   "color": "#ff0000"
+   "color": "FF0000"
   },
   "link": {
    "text-decoration": "underline"
   },
   "module": {
-   "color": "#ff0000"
+   "color": "FF0000"
   },
   "number": {
-   "color": "#ff0000"
+   "color": "FF0000"
   },
   "project": {
    "font-style": "bold"
   },
   "string": {
-   "color": "#ff0000"
+   "color": "FF0000"
   },
   "tag": {
    "text-decoration": "none"
@@ -99,10 +99,10 @@
    "text-decoration": "strikeout"
   }
  },
- "separator_line": "#ff0000",
- "tab_background": "#ff0000",
- "tab_title": "#ff0000",
- "text_selection_tint": "#ff0000",
- "thumbnail_border": "#ff0000",
- "tint": "#ff0000"
+ "separator_line": "FF0000",
+ "tab_background": "FF0000",
+ "tab_title": "FF0000",
+ "text_selection_tint": "FF0000",
+ "thumbnail_border": "FF0000",
+ "tint": "FF0000"
 }

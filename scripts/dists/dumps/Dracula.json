@@ -1,18 +1,17 @@
 {
- "background": "24333E",
- "bar_background": "293D4C",
+ "background": "282A36",
+ "bar_background": "282A36",
  "dark_keyboard": true,
  "default_text": "F8F8F2",
- "error_text": "#ea9292",
  "font-family": "Menlo-Regular",
  "font-size": 10,
- "gutter_background": "233541",
- "gutter_border": "1F424C",
- "interstitial": "#1c2933",
- "library_background": "1C2933",
- "library_tint": "9ADEF5",
- "line_number": "8F8E8C",
- "name": "myOceanic",
+ "gutter_background": "282A36",
+ "gutter_border": "14151B",
+ "interstitial": "#2c2628",
+ "library_background": "282A36",
+ "library_tint": "F8F8F2",
+ "line_number": "9A9A96",
+ "name": "Dracula",
  "scopes": {
   "bold": {
    "font-style": "bold"
@@ -21,7 +20,7 @@
    "font-style": "bold-italic"
   },
   "builtinfunction": {
-   "color": "F6BCF0"
+   "color": "F8F8F2"
   },
   "checkbox": {
    "checkbox": true
@@ -31,11 +30,10 @@
    "done": true
   },
   "class": {
-   "color": "#f6bcf0"
+   "color": "#6ab49b"
   },
   "classdef": {
-   "color": "F6BCF0",
-   "font-style": "bold"
+   "color": "FF5555"
   },
   "code": {
    "background-color": "#80808040",
@@ -45,25 +43,26 @@
    "color": "#80808080"
   },
   "comment": {
-   "color": "808080",
+   "color": "6272A4",
    "font-style": "italic"
+  },
+  "decorator": {
+   "color": "FF5555"
   },
   "default": {
-   "color": "F9F9F5"
+   "color": "F8F8F2"
   },
   "docstring": {
-   "color": "9DDEF4",
-   "font-style": "italic"
+   "color": "F1FA8C"
   },
   "formatting": {
    "color": "#80808080"
   },
   "function": {
-   "color": "F6BCF0"
+   "color": "F8F8F2"
   },
   "functiondef": {
-   "color": "F6BCF0",
-   "font-style": "bold"
+   "color": "50FA7B"
   },
   "heading-1": {
    "font-style": "bold"
@@ -78,22 +77,22 @@
    "font-style": "italic"
   },
   "keyword": {
-   "color": "EA9292"
+   "color": "FF79C6"
   },
   "link": {
    "text-decoration": "underline"
   },
   "module": {
-   "color": "FFDAB7"
+   "color": "F8F8F2"
   },
   "number": {
-   "color": "C4E188"
+   "color": "BD93F9"
   },
   "project": {
    "font-style": "bold"
   },
   "string": {
-   "color": "9DDEF4"
+   "color": "F1FA8C"
   },
   "tag": {
    "text-decoration": "none"
@@ -103,10 +102,10 @@
    "text-decoration": "strikeout"
   }
  },
- "separator_line": "1E2B34",
- "tab_background": "23333F",
- "tab_title": "8F8E8C",
- "text_selection_tint": "BBE3FF",
- "thumbnail_border": "1F424C",
- "tint": "9DDEF4"
+ "separator_line": "14151B",
+ "tab_background": "14151B",
+ "tab_title": "FFFFFF",
+ "text_selection_tint": "FFFFFF",
+ "thumbnail_border": "15161C",
+ "tint": "50FA7B"
 }
