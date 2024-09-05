@@ -1,48 +1,34 @@
 # 📝 2024/09/04
 
-## Pythonista3 とVSCode 一気出し
+## Pythonista3 と VSCode 一気出し
 
 ここに書き出すと、表示関係で面倒になるため、別`.md` へ吐き出し（予定）
-
 
 # 📝 2024/09/04
 
-
-## vscode のtheme color を`.md` として落とす
-
+## vscode の theme color を`.md` として落とす
 
 以下テスト
 
-
-
 ここに書き出すと、表示関係で面倒になるため、別`.md` へ吐き出し（予定）
 
-
-
-
-
 # 📝 2024/09/03
-
 
 Theme の分析をしていきたい
 
 [draftPythonistaScripts/markdown/colorTest.md at main · pome-ta/draftPythonistaScripts](https://github.com/pome-ta/draftPythonistaScripts/blob/main/markdown/colorTest.md)
 
-
 ## theme あつめ
 
-VSCode のtheme をdump していく
-
+VSCode の theme を dump していく
 
 dracula theme は、CodeSandbox で`build` してから、格納
 
 [GitHub - dracula/visual-studio-code: 🧛🏻‍♂️ Dark theme for Visual Studio Code](https://github.com/dracula/visual-studio-code)
 
-
 ## 分析
 
 `.json` から、`value` を抜き出し、まとめる
-
 
 `.md` の形式として吐き出す
 
@@ -50,18 +36,13 @@ dracula theme は、CodeSandbox で`build` してから、格納
 
 table でまとめられたらいいけど、表示が変になるかな？
 
-
-
 # 📝 2024/09/02
 
 とりあえず書き出しはできたけど
 
-
 - 書き換えの手間が多い
   - 項目増やすのに、数箇所書く
 - クレジット入れたいな
-
-
 
 # 📝 2024/09/01
 
@@ -71,12 +52,9 @@ table でまとめられたらいいけど、表示が変になるかな？
 
 ## 少々ハードコード気味に
 
-
-
 ### 分類分け
 
 `name(top?)`, `colors`, `tokenColors` と分けて取ってみる
-
 
 分類をどこで分けようか、自関数内？投げる手前の関数？
 
@@ -84,17 +62,13 @@ table でまとめられたらいいけど、表示が変になるかな？
 
 配列で格納かしらね
 
-
 [deep-dark-space/themes/Deep Dark Space-color-theme.json at main · smpl-ndrw/deep-dark-space · GitHub](https://github.com/smpl-ndrw/deep-dark-space/blob/main/themes/Deep%20Dark%20Space-color-theme.json)
 
-
-`name`, のtop の所、他にもありそうやな
+`name`, の top の所、他にもありそうやな
 
 `{"type": "dark",}` とかあったわ
 
-
 とりま、Iceberg のみで考えるか
-
 
 # 📝 2024/08/31
 
@@ -144,14 +118,9 @@ Python 側でドットアクセスができるようになって、何か嬉し�
 
 対応表みたいなのを作ったらええのか？
 
-
 結局のところ、どこまでハードコードをするか？って問題か
 
-
-
-`key` に`-` がついてる問題、`.css` と`.js` のstyle で考えたら、キャメルケースにするのが無難か
-
-
+`key` に`-` がついてる問題、`.css` と`.js` の style で考えたら、キャメルケースにするのが無難か
 
 # 📝 2024/08/30
 
