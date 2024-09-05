@@ -2,12 +2,19 @@ from pathlib import Path
 import json
 import re
 
-themes_path = Path(Path(__file__).parent, './vscodeThemes')
+root_path = Path(__file__).parent
 
+themes_path = Path(root_path, './vscodeThemes')
 theme_path = list(themes_path.iterdir())[0]
 theme_dict = json.loads(theme_path.read_text())
-
 file_name = theme_path.name
+
+pyatas_path = Path(root_path, './dumps')
+#/private/var/mobile/Containers/Shared/AppGroup/CD0D241D-A767-4CE7-823D-680C601C49D6/File Provider Storage/Repositories/pystaColorThemeDev/scripts/dists/dumps/Theme03_SolarizedLight.json
+pysta_path = Path(pyatas_path, './Theme03_SolarizedLight.json')
+pysta_dict = json.loads(pysta_path.read_text())
+p_name = pysta_path.name
+
 
 color_regex = re.compile(r'^#[\da-fA-F]{3,8}')
 
@@ -42,8 +49,8 @@ def get_all_values(vs_theme: dict):
 
 
 
-def set_colors_names(vs_theme: dict, color_list: list):
-  color_name = dict.fromkeys(color_list, [])
+def set_colors_names(vs_theme: dict, color_name: dict):
+  
 
   def _set_value(value: str | bool | None, parent: str):
     if isinstance(value, str) and color_regex.match(value):
@@ -79,7 +86,8 @@ def set_colors_names(vs_theme: dict, color_list: list):
 
 
 colors_set = sorted(list(set(get_all_values(theme_dict))))
-colors_names = set_colors_names(theme_dict, colors_set)
+color_name = dict.fromkeys(colors_set, [])
+colors_names = set_colors_names(theme_dict, color_name)
 
 md_fmt = '''
 | color | name |
