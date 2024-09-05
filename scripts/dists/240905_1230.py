@@ -20,11 +20,10 @@ color_regex = re.compile(r'^#[\da-fA-F]{3,8}')
 
 # todo: `value` を一覧として、初手取り出し
 def get_all_values(vs_theme: dict):
-
   def _yield_value(value: str | bool | None):
     if isinstance(value, str) and color_regex.match(value):
       yield value.upper()
-
+  
   def _for_type_list(lst: list):
     for v in lst:
       if isinstance(v, dict):
@@ -33,7 +32,7 @@ def get_all_values(vs_theme: dict):
         yield from _for_type_list(v)
       else:
         yield from _yield_value(v)
-
+  
   def _for_type_dict(dct: dict):
     for k, v in dct.items():
       if isinstance(v, dict):
@@ -42,30 +41,29 @@ def get_all_values(vs_theme: dict):
         yield from _for_type_list(v)
       else:
         yield from _yield_value(v)
-
+  
   if isinstance(vs_theme, dict):
     yield from _for_type_dict(vs_theme)
 
 
-def set_colors_names(theme: dict, color_name: dict,idx:int):
-
-  def _set_value(value: str | bool | None, parent: str, idx:int):
+def set_colors_names(theme: dict, color_name: dict, idx: int):
+  def _set_value(value: str | bool | None, parent: str, idx: int):
     if isinstance(value, str) and color_regex.match(value):
       color = value.upper()
       if isinstance(color_name.get(color), list):
         color_name[color][idx].append(parent.replace(' ', ''))
-
+  
   def _for_type_list(lst: list, parent: str):
     for n, v in enumerate(lst):
       if isinstance(v, dict):
         k = v.get('scope')
         _for_type_dict(v, f'{parent}[{k}]::')
-
+      
       elif isinstance(v, list):
         _for_type_list(v, f'{parent}[{n}]::')
       else:
         _set_value(v, f'{parent}[{v}]::', idx)
-
+  
   def _for_type_dict(dct: dict, parent: str):
     for k, v in dct.items():
       if isinstance(v, dict):
@@ -74,7 +72,7 @@ def set_colors_names(theme: dict, color_name: dict,idx:int):
         _for_type_list(v, f'{parent + k}::')
       else:
         _set_value(v, f'{parent + k}', idx)
-
+  
   if isinstance(theme, dict):
     _for_type_dict(theme, '')
     return color_name
@@ -85,14 +83,13 @@ st_colors = list(set(get_all_values(pysta_dict)))
 
 colors = sorted(list(set(vs_colors + st_colors)))
 
-color_name = dict.fromkeys(colors, [[],[]])
+color_name = dict.fromkeys(colors, [[], []])
 
 for n, t in enumerate([pysta_dict, theme_dict]):
-#for n, t in enumerate([theme_dict, pysta_dict]):
+  # for n, t in enumerate([theme_dict, pysta_dict]):
   color_name = set_colors_names(t, color_name, n)
-  
-#colors_names = set_colors_names(theme_dict, color_name, idx)
 
+# colors_names = set_colors_names(theme_dict, color_name, idx)
 
 
 md_fmt = '''
@@ -113,4 +110,3 @@ for k, v in color_name.items():
 print(f'### `{p_name}` `{file_name}`')
 print(md_fmt)
 x = 1
-

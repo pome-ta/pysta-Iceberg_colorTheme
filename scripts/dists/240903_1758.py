@@ -12,8 +12,8 @@ theme_dict = json.loads(theme_path.read_text())
 
 file_name = theme_path.name
 
-#color_regex = re.compile(r'^#([\da-fA-F]{6}|[\da-fA-F]{3}||[\da-fA-F]{8})')
-#color_regex = re.compile(r'^#[0-9a-fA-F]{3,6,8}')
+# color_regex = re.compile(r'^#([\da-fA-F]{6}|[\da-fA-F]{3}||[\da-fA-F]{8})')
+# color_regex = re.compile(r'^#[0-9a-fA-F]{3,6,8}')
 color_regex = re.compile(r'^#[\da-fA-F]{3,8}')
 
 
@@ -70,8 +70,7 @@ def all_keys(a, parent=''):
 
 # print(theme_path.name)
 
-#vs = list(all_keys(theme_dict))
+# vs = list(all_keys(theme_dict))
 a = sorted(list(set(get_all_values(theme_dict))))
 
 x = 1
-
