@@ -92,7 +92,6 @@ for n, t in enumerate([pysta_dict, theme_dict]):
   #for n, t in enumerate([theme_dict, pysta_dict]):
   colors_names = set_colors_names(t, colors_names, n)
 
-
 md_fmt = '''
 | color | Pythonista3 | VSCode |
 | --- | --- | --- |
@@ -100,7 +99,7 @@ md_fmt = '''
 
 
 def set_parameter(c: str) -> str:
-  return f'![](https://via.placeholder.com/16/{c[1:]}/FFFFFF/?text=%20) `{c}`'
+  return f'![](https://via.placeholder.com/16/{c[1:]}/FFFFFF/?text=%20)`{c}`'
 
 
 br = ' <br> '
