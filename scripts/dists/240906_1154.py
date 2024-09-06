@@ -11,7 +11,7 @@ def get_target_path(path: Path) -> Path:
   return Path(root_path, path)
 
 
-def get_json_to_dict(json_path: Path) -> dict:
+def get_json_path_to_dict(json_path: Path) -> dict:
   text_data = json_path.read_text()
   try:
     json_data = json.loads(text_data)
@@ -22,13 +22,22 @@ def get_json_to_dict(json_path: Path) -> dict:
     json_data = json.loads(res_comment_json)
     print(f'{e}\n\t-> json ファイル内のコメントを除去してデータ作成')
   return json_data
-  
+
+
+def get_all_keys(theme_dict: dict):
+  if isinstance(theme_dict, dict):
+    yield theme_dict
+
+
+def merge_keys_list(theme_path: Path) -> list:
+  pass
 
 
 if __name__ == '__main__':
   json_dir = './vscodeThemes'
   vs_theme_jdon_path = get_target_path(json_dir)
 
-  for p in vs_theme_jdon_path.iterdir():
-    a = get_json_to_dict(p)
+  dmy_theme_path = list(vs_theme_jdon_path.iterdir())[1]
+  dmy_theme_dict = get_json_path_to_dict(dmy_theme_path)
+  theme_keys_list = list(get_all_keys(dmy_theme_dict))
 
