@@ -16,6 +16,7 @@ def get_json_to_dict(json_path: Path) -> dict:
   try:
     json_data = json.loads(text_data)
   except json.decoder.JSONDecodeError as e:
+    import re
     regex = re.compile(r'/\*[\s\S]*?\*/|//.*')
     res_comment_json = regex.sub('', text_data)
     json_data = json.loads(res_comment_json)
