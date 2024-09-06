@@ -14,5 +14,7 @@ def get_target_path(path: Path) -> Path:
 if __name__ == '__main__':
   json_dir = './vscodeThemes'
   vs_theme_jdon_path = get_target_path(json_dir)
-  print(vs_theme_jdon_path.exists())
+  
+  for p in vs_theme_jdon_path.iterdir():
+    print(p.name)
 
