@@ -15,6 +15,36 @@
 
 意外に、一部の共通する部分をどう表示させて見せることができると。。。
 
+### 探す
+
+### サイト
+
+- [2024 VSCode のおすすめテーマはこれだ！ | Designup](https://designup.jp/vscode-best-themes.html)
+- [19 Best VSCode Themes to Boost Your Coding Experience (2024)](https://snappify.com/blog/best-vscode-themes)
+- [23 Best VS Code Themes in 2024 - DEV Community](https://dev.to/ikoichi/23-best-vs-code-themes-in-2024-45g1)
+  - 直リンなし
+- [Search results - tag:color-theme | Visual Studio Code , Visual Studio Marketplace](https://marketplace.visualstudio.com/search?term=tag%3Acolor-theme&target=VSCode&category=Themes&sortBy=Relevance)
+  - マケプレ
+    - tag: tag:color-theme
+    - Showing: Themes
+    - Sort By: Relevance
+
+### GitHub リンク
+
+- [GitHub - Binaryify/OneDark-Pro: Atom's iconic One Dark theme for Visual Studio Code](https://github.com/Binaryify/OneDark-Pro)
+- [GitHub - DevShayan/notepadpp-color-theme](https://github.com/DevShayan/notepadpp-color-theme)
+- [GitHub - thehelpfultipper/pink_panda_vsctheme](https://github.com/thehelpfultipper/pink_panda_vsctheme)
+  - ファイル名にスペースが存在する。。。
+- [GitHub - primer/github-vscode-theme: GitHub's VS Code themes](https://github.com/primer/github-vscode-theme?tab=readme-ov-file)
+  - `.json` はなく build が必要そう
+  - 要素の項目など確認できそう
+- [GitHub - tokyo-night/tokyo-night-vscode-theme: A clean, dark Visual Studio Code theme that celebrates the lights of Downtown Tokyo at night.](https://github.com/tokyo-night/tokyo-night-vscode-theme)
+- [GitHub - robb0wen/synthwave-vscode: Synthwave inspired colour theme for VS Code 🌅🕶](https://github.com/robb0wen/synthwave-vscode)
+
+### メモ
+
+`.json` 意外にも`.xml` 形式もありそう？
+
 ## `yield` を使っている
 
 ### なんとなくの理解、、、
