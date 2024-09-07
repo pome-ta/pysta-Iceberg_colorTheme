@@ -1,9 +1,12 @@
 '''
 VSCode のtheme の要素出現調査
+
+出現したすべての`key`
 '''
 
 from pathlib import Path
 import json
+from itertools import chain
 
 
 def get_target_path(path: Path) -> Path:
@@ -55,17 +58,25 @@ def get_all_keys(theme_dict: dict):
     yield from _for_type_dict(theme_dict, '')
 
 
-def merge_keys_list(theme_path: Path) -> list:
-  pass
+def iterdir_loop(iterdir):
+  for file_path in iterdir:
+    theme_dict = get_json_path_to_dict(file_path)
+    all_keys = get_all_keys(theme_dict)
+
+    yield all_keys
+
+
+def merge_all_keys_list(themes_dir: Path) -> list:
+  themes_iter = themes_dir.iterdir()
+  theme_keys = iterdir_loop(themes_iter)
+  set_keys = set(chain.from_iterable(theme_keys))
+
+  return sorted(list(set_keys))
 
 
 if __name__ == '__main__':
   json_dir = './vscodeThemes'
-  vs_theme_jdon_path = get_target_path(json_dir)
+  vs_themes_dir_path = get_target_path(json_dir)
 
-  dmy_theme_path = list(vs_theme_jdon_path.iterdir())[2]
-  dmy_theme_name = dmy_theme_path.name
-  dmy_theme_dict = get_json_path_to_dict(dmy_theme_path)
-  #theme_keys_list = sorted(list(set(get_all_keys(dmy_theme_dict))))
-  theme_keys_list = sorted(list(get_all_keys(dmy_theme_dict)))
+  merge_list = merge_all_keys_list(vs_themes_dir_path)
 
