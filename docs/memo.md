@@ -1,8 +1,6 @@
 # 📝 2024/09/08
 
-
-## chatGPT(free) に、Pythonista3 Theme 設定のスキームについて聞いてみる
-
+## ChatGPT 4o mini(free)君に、Pythonista3 Theme 設定のスキームについて聞いてみる
 
 - [pystaColorThemeDev/scripts/dists/dumps/minimumTemplateDefaultThemeSample.json at main · pome-ta/pystaColorThemeDev · GitHub](https://github.com/pome-ta/pystaColorThemeDev/blob/main/scripts/dists/dumps/minimumTemplateDefaultThemeSample.json)
 
@@ -18,13 +16,21 @@ pythonista3://?action=add-theme&theme-data=eNqdVk1zmzAQvedXeMjVzBjb8dDcDCa39tA_w
 
 - [pystaColorThemeDev/scripts/dists/dumps/iceberg.color-theme.json at main · pome-ta/pystaColorThemeDev · GitHub](https://github.com/pome-ta/pystaColorThemeDev/blob/main/scripts/dists/dumps/iceberg.color-theme.json)
 
-
-
 ```
 pythonista3://?action=add-theme&theme-data=eNqtVk1zmzAQvedXeMg1zACmGOcWEx966KV_gBFijRWE1iPENG4m_71CyLXBYIdOj97lvX272g9_PCwWjiJZmhFaFhIbkTuL54XjbX3P_-Y8te6cyDIt4ZghkcarZANPJ6BiioPBJFESv_odhrNMEnnUXqGuCDkTkIqmykAaXxiGm5UFZkQOtfiRHwfWvUOh3B2pGD8a3w8QHN2fUDScyItPavbbiPI9Y6spHqBuDR_6Z5sT0lpJJoqzTVspcuwkbcLNNg4MofF0pOpoU2WKcEYd4_3sPnLoHmiZ4bubo4A-rfVc1s6q6L5sjX0uTup6QtojjWic--PBb8btIzDvqzxX3b0IRrz1kq7OhaAoBUhXkpw1RmHQY9Vt8gu7LhmRHocvXhL1le9BU4nC9XuYQb0z5LlzXaEcdhORLnrxa3ytxbXPekeIO_b6O5QVUWq6ox6jbOXF6_Hkl_OSN5ZZiPuZjSWlB7XsYRS8KzcH3QREMRQGqBsGZDvSfexB4htQNU-mIsXdeAKHoc6rZKTuL7qBk9XgsRpBT3zTzTNQVpcjkz09KGPS25VTAjZqvAuCecU6ZfE_p6BhXPfwP9SnXScZR1pqfiLVnCGgWFUgpiDRxiDmbOIK84ZPPVS83sRJ0AfcPAVjAF1y0nD1lfo8WJTz9xTaLWjP3eSpszHStpGu7mvRKAX6Uupda4_o5YGt4UB026FMzVwOmU_H-UZwtdczJQjjUyFOAgYU28BfdmfTEaTqQn-noMezsMQ6m7QGDqbBzv8PglWQhLrKn38ANGArig~~
 ```
 
+### 回答
 
+ごにょごにょと、サンプルで出したテキストで事例をだしつつ、それっぽいコードブロックで案内をしているが
+
+Base64 エンコードと言っている。しかし、以前に変換してみたときは、それっぽい文字列にならなかった記憶なんよな。。。
+
+「JSON」 データの変換だと違うのかしら？
+
+> 変換後の文字列は、iOS アプリ「Pythonista3」の URL スキームの形式で、`action=add-theme` というアクションと、Base64 エンコードされた `theme-data` を含んでいます。この `theme-data` には、JSON 形式のテーマ設定が Base64 エンコードされたデータが含まれています。
+
+> この変換プロセスでは、JSON データを Base64 でエンコードし、そのエンコードされたデータを URL スキームのパラメータとして設定しています。これにより、JSON データを安全に URL 形式で送信し、アプリケーションがそのデータを処理できるようにしています。
 
 # 📝 2024/09/07
 
