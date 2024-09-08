@@ -27,7 +27,6 @@ def get_json_path_to_dict(json_path: Path) -> dict:
 
 
 def get_all_keys(theme_dict: dict):
-
   def _yield_keys(_keys: str, maybe_scope: None | list | str = None):
     # todo: key が`scope` の場合、value を捕捉
     if maybe_scope:
@@ -37,7 +36,7 @@ def get_all_keys(theme_dict: dict):
         yield f'{_keys}>{scope}'
     else:
       yield f'{_keys}'
-
+  
   def _for_type_list(_list: list, parent: str):
     for n, v in enumerate(_list):
       if isinstance(v, dict):
@@ -46,7 +45,7 @@ def get_all_keys(theme_dict: dict):
         yield from _for_type_list(v, f'{parent}||')
       else:
         yield from _yield_keys(f'{parent}', None)
-
+  
   def _for_type_dict(_dict: dict, parent: str):
     for k, v in _dict.items():
       if k == 'scope':
@@ -57,7 +56,7 @@ def get_all_keys(theme_dict: dict):
         yield from _for_type_list(v, f'{parent + k}::')
       else:
         yield from _yield_keys(f'{parent + k}', None)
-
+  
   if isinstance(theme_dict, dict):
     yield from _for_type_dict(theme_dict, '')
 
@@ -67,12 +66,12 @@ def theme_path_to_theme_data(path: Path) -> dict[str, list]:
   json_dict = get_json_path_to_dict(path)
   all_keys = get_all_keys(json_dict)
   set_sorted_keys = sorted(set(all_keys))
-  #set_sorted_keys = list(set(all_keys))
+  # set_sorted_keys = list(set(all_keys))
   return {name: set_sorted_keys}
 
 
 def get_primary_keys(_name_keys_array: list) -> list:
-  set_keys: set
+  set_keys: set = set()
   for n, name_keys in enumerate(_name_keys_array):
     for name, keys in name_keys.items():
       set_keys = set_keys & set(keys) if n else set(keys)
@@ -87,8 +86,7 @@ if __name__ == '__main__':
   name_keys_array = [
     theme_path_to_theme_data(p) for p in vs_themes_dir_path.iterdir()
   ]
-
+  
   primary_keys = get_primary_keys(name_keys_array)
-
+  
   print(primary_keys[69])
-
