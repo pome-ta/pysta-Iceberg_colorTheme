@@ -41,9 +41,9 @@ def get_all_keys(theme_dict: dict):
   def _for_type_list(_list: list, parent: str):
     for n, v in enumerate(_list):
       if isinstance(v, dict):
-        yield from _for_type_dict(v, f'{parent}||')
+        yield from _for_type_dict(v, f'{parent}[]')
       elif isinstance(v, list):
-        yield from _for_type_list(v, f'{parent}||')
+        yield from _for_type_list(v, f'{parent}[]')
       else:
         yield from _yield_keys(f'{parent}', None)
 
