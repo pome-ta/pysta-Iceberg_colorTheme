@@ -6,7 +6,6 @@ note: VSCode のtheme の要素出現調査
 
 from pathlib import Path
 import json
-from itertools import chain
 
 
 def get_target_path(path: Path | str) -> Path:
