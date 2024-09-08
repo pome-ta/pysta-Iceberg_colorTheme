@@ -32,8 +32,16 @@ a = {
       }
     },
     {
+      "name": "CommentList",
+      "scope": ["comment1", "comment2"],
+      "settings": {
+        "fontStyle": "italic",
+        "foreground": "#787b8099"
+      }
+    },
+    {
       "name": "Comment",
-      "scope": ["comment"],
+      "scope": "comment",
       "settings": {
         "fontStyle": "italic",
         "foreground": "#787b8099"
@@ -112,13 +120,14 @@ def get_all_keys(theme_dict: dict):
 
   def _for_type_dict(_dict: dict, parent: str):
     for k, v in _dict.items():
-      if isinstance(v, dict):
+      if k == 'scope':
+        yield from _yield_keys(f'{parent + k}', v)
+      elif isinstance(v, dict):
         yield from _for_type_dict(v, f'{parent + k}::')
       elif isinstance(v, list):
         yield from _for_type_list(v, f'{parent + k}::')
       else:
-        #print(v if k == 'scope' else None)
-        yield from _yield_keys(f'{parent + k}', v if k == 'scope' else None)
+        yield from _yield_keys(f'{parent + k}', None)
 
   if isinstance(theme_dict, dict):
     yield from _for_type_dict(theme_dict, '')
@@ -143,6 +152,6 @@ if __name__ == '__main__':
   '''
 
   all_keys = get_all_keys(a)
-  #aa = sorted(set(all_keys))
-  aa = list(all_keys)
+  aa = sorted(set(all_keys))
+  #aa = list(all_keys)
 
