@@ -1,5 +1,21 @@
 # 📝 2024/09/08
 
+## URL scheme どうすればいいか問題
+
+たぶん Base64 ではない気がするのよね。。。
+
+- [Custom URL Scheme の処理をシンプルに書く #Objective-C - Qiita](https://qiita.com/naonya3/items/c55e6151b4ff6ab5725f)
+
+  - `UIApplicationDelegate` で処理が書かれている？
+
+- [Defining a custom URL scheme for your app | Apple Developer Documentation](https://developer.apple.com/documentation/xcode/defining-a-custom-url-scheme-for-your-app)
+
+### ちなみに
+
+[GitHub - omz/PythonistaAppTemplate: Xcode template for building standalone apps from Pythonista (iOS) scripts](https://github.com/omz/PythonistaAppTemplate)
+
+Pythonista3 でアプリを配布できるリポジトリ内には、書かれていなかった
+
 ## ChatGPT 4o mini(free)君に、Pythonista3 Theme 設定のスキームについて聞いてみる
 
 - [pystaColorThemeDev/scripts/dists/dumps/minimumTemplateDefaultThemeSample.json at main · pome-ta/pystaColorThemeDev · GitHub](https://github.com/pome-ta/pystaColorThemeDev/blob/main/scripts/dists/dumps/minimumTemplateDefaultThemeSample.json)
