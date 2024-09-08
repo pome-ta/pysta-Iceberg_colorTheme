@@ -87,8 +87,19 @@ def remove_duplicate_keys(_name_keys_array: dict[str, list],
     return {name: sorted(list(unique_keys))}
 
 
-def output_markdown_table(_name_keys_array: list[dict]) -> None:
-  pass
+def create_markdown_table(_name_keys_array: list[dict]) -> str:
+  header = '| name | keys |'
+  separator = '| --- | --- |'
+  new_line = '\n'
+  br_tag = ' <br> '
+  
+  body = new_line.join([header, separator])
+  for theme_data in _name_keys_array:
+    for name, keys in theme_data.items():
+      body += f'{new_line}| {name} | {br_tag.join(keys)} |'
+  return body
+    
+  
 
 
 if __name__ == '__main__':
@@ -106,4 +117,7 @@ if __name__ == '__main__':
   ]
 
   output_arrays = [{'primary': primary_keys}] + name_keys_array
+  
+  markdown_table = create_markdown_table(output_arrays)
+  print(markdown_table)
 
