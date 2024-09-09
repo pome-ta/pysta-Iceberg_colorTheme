@@ -1,4 +1,194 @@
+
+
+
 # 📝 2024/09/09
+
+
+## terminal
+
+
+### solarized-light-color-theme.json
+
+
+| color_code | palette | key_name |
+| --- | --- | --- |
+| #073642 | ![](https://via.placeholder.com/16/073642/FFFFFF/?text=%20)`#073642` | terminal.ansiBlack |
+| #268bd2 | ![](https://via.placeholder.com/16/268bd2/FFFFFF/?text=%20)`#268bd2` | terminal.ansiBlue |
+| #002b36 | ![](https://via.placeholder.com/16/002b36/FFFFFF/?text=%20)`#002b36` | terminal.ansiBrightBlack |
+| #839496 | ![](https://via.placeholder.com/16/839496/FFFFFF/?text=%20)`#839496` | terminal.ansiBrightBlue |
+| #93a1a1 | ![](https://via.placeholder.com/16/93a1a1/FFFFFF/?text=%20)`#93a1a1` | terminal.ansiBrightCyan |
+| #586e75 | ![](https://via.placeholder.com/16/586e75/FFFFFF/?text=%20)`#586e75` | terminal.ansiBrightGreen |
+| #6c71c4 | ![](https://via.placeholder.com/16/6c71c4/FFFFFF/?text=%20)`#6c71c4` | terminal.ansiBrightMagenta |
+| #cb4b16 | ![](https://via.placeholder.com/16/cb4b16/FFFFFF/?text=%20)`#cb4b16` | terminal.ansiBrightRed |
+| #fdf6e3 | ![](https://via.placeholder.com/16/fdf6e3/FFFFFF/?text=%20)`#fdf6e3` | terminal.ansiBrightWhite |
+| #657b83 | ![](https://via.placeholder.com/16/657b83/FFFFFF/?text=%20)`#657b83` | terminal.ansiBrightYellow |
+| #2aa198 | ![](https://via.placeholder.com/16/2aa198/FFFFFF/?text=%20)`#2aa198` | terminal.ansiCyan |
+| #859900 | ![](https://via.placeholder.com/16/859900/FFFFFF/?text=%20)`#859900` | terminal.ansiGreen |
+| #d33682 | ![](https://via.placeholder.com/16/d33682/FFFFFF/?text=%20)`#d33682` | terminal.ansiMagenta |
+| #dc322f | ![](https://via.placeholder.com/16/dc322f/FFFFFF/?text=%20)`#dc322f` | terminal.ansiRed |
+| #eee8d5 | ![](https://via.placeholder.com/16/eee8d5/FFFFFF/?text=%20)`#eee8d5` | terminal.ansiWhite |
+| #b58900 | ![](https://via.placeholder.com/16/b58900/FFFFFF/?text=%20)`#b58900` | terminal.ansiYellow |
+| #FDF6E3 | ![](https://via.placeholder.com/16/FDF6E3/FFFFFF/?text=%20)`#FDF6E3` | terminal.background |
+
+
+### ayu-light-bordered.json
+
+
+| color_code | palette | key_name |
+| --- | --- | --- |
+| #000000 | ![](https://via.placeholder.com/16/000000/FFFFFF/?text=%20)`#000000` | terminal.ansiBlack |
+| #3199e1 | ![](https://via.placeholder.com/16/3199e1/FFFFFF/?text=%20)`#3199e1` | terminal.ansiBlue |
+| #686868 | ![](https://via.placeholder.com/16/686868/FFFFFF/?text=%20)`#686868` | terminal.ansiBrightBlack |
+| #399ee6 | ![](https://via.placeholder.com/16/399ee6/FFFFFF/?text=%20)`#399ee6` | terminal.ansiBrightBlue |
+| #4cbf99 | ![](https://via.placeholder.com/16/4cbf99/FFFFFF/?text=%20)`#4cbf99` | terminal.ansiBrightCyan |
+| #86b300 | ![](https://via.placeholder.com/16/86b300/FFFFFF/?text=%20)`#86b300` | terminal.ansiBrightGreen |
+| #a37acc | ![](https://via.placeholder.com/16/a37acc/FFFFFF/?text=%20)`#a37acc` | terminal.ansiBrightMagenta |
+| #f07171 | ![](https://via.placeholder.com/16/f07171/FFFFFF/?text=%20)`#f07171` | terminal.ansiBrightRed |
+| #d1d1d1 | ![](https://via.placeholder.com/16/d1d1d1/FFFFFF/?text=%20)`#d1d1d1` | terminal.ansiBrightWhite |
+| #f2ae49 | ![](https://via.placeholder.com/16/f2ae49/FFFFFF/?text=%20)`#f2ae49` | terminal.ansiBrightYellow |
+| #46ba94 | ![](https://via.placeholder.com/16/46ba94/FFFFFF/?text=%20)`#46ba94` | terminal.ansiCyan |
+| #6cbf43 | ![](https://via.placeholder.com/16/6cbf43/FFFFFF/?text=%20)`#6cbf43` | terminal.ansiGreen |
+| #9e75c7 | ![](https://via.placeholder.com/16/9e75c7/FFFFFF/?text=%20)`#9e75c7` | terminal.ansiMagenta |
+| #ea6c6d | ![](https://via.placeholder.com/16/ea6c6d/FFFFFF/?text=%20)`#ea6c6d` | terminal.ansiRed |
+| #c7c7c7 | ![](https://via.placeholder.com/16/c7c7c7/FFFFFF/?text=%20)`#c7c7c7` | terminal.ansiWhite |
+| #eca944 | ![](https://via.placeholder.com/16/eca944/FFFFFF/?text=%20)`#eca944` | terminal.ansiYellow |
+| #f8f9fa | ![](https://via.placeholder.com/16/f8f9fa/FFFFFF/?text=%20)`#f8f9fa` | terminal.background |
+| #5c6166 | ![](https://via.placeholder.com/16/5c6166/FFFFFF/?text=%20)`#5c6166` | terminal.foreground |
+
+
+### iceberg-light.color-theme.json
+
+
+| color_code | palette | key_name |
+| --- | --- | --- |
+| #dcdfe7 | ![](https://via.placeholder.com/16/dcdfe7/FFFFFF/?text=%20)`#dcdfe7` | terminal.ansiBlack |
+| #2d539e | ![](https://via.placeholder.com/16/2d539e/FFFFFF/?text=%20)`#2d539e` | terminal.ansiBlue |
+| #8389a3 | ![](https://via.placeholder.com/16/8389a3/FFFFFF/?text=%20)`#8389a3` | terminal.ansiBrightBlack |
+| #22478e | ![](https://via.placeholder.com/16/22478e/FFFFFF/?text=%20)`#22478e` | terminal.ansiBrightBlue |
+| #327698 | ![](https://via.placeholder.com/16/327698/FFFFFF/?text=%20)`#327698` | terminal.ansiBrightCyan |
+| #598030 | ![](https://via.placeholder.com/16/598030/FFFFFF/?text=%20)`#598030` | terminal.ansiBrightGreen |
+| #6845ad | ![](https://via.placeholder.com/16/6845ad/FFFFFF/?text=%20)`#6845ad` | terminal.ansiBrightMagenta |
+| #cc3768 | ![](https://via.placeholder.com/16/cc3768/FFFFFF/?text=%20)`#cc3768` | terminal.ansiBrightRed |
+| #262a3f | ![](https://via.placeholder.com/16/262a3f/FFFFFF/?text=%20)`#262a3f` | terminal.ansiBrightWhite |
+| #b6662d | ![](https://via.placeholder.com/16/b6662d/FFFFFF/?text=%20)`#b6662d` | terminal.ansiBrightYellow |
+| #3f83a6 | ![](https://via.placeholder.com/16/3f83a6/FFFFFF/?text=%20)`#3f83a6` | terminal.ansiCyan |
+| #668e3d | ![](https://via.placeholder.com/16/668e3d/FFFFFF/?text=%20)`#668e3d` | terminal.ansiGreen |
+| #7759b4 | ![](https://via.placeholder.com/16/7759b4/FFFFFF/?text=%20)`#7759b4` | terminal.ansiMagenta |
+| #cc517a | ![](https://via.placeholder.com/16/cc517a/FFFFFF/?text=%20)`#cc517a` | terminal.ansiRed |
+| #33374c | ![](https://via.placeholder.com/16/33374c/FFFFFF/?text=%20)`#33374c` | terminal.ansiWhite |
+| #c57339 | ![](https://via.placeholder.com/16/c57339/FFFFFF/?text=%20)`#c57339` | terminal.ansiYellow |
+| #33374c | ![](https://via.placeholder.com/16/33374c/FFFFFF/?text=%20)`#33374c` | terminal.foreground |
+| #aeb2c666 | ![](https://via.placeholder.com/16/aeb2c666/FFFFFF/?text=%20)`#aeb2c666` | terminal.selectionBackground |
+| #8389a3 | ![](https://via.placeholder.com/16/8389a3/FFFFFF/?text=%20)`#8389a3` | terminalCommandDecoration.defaultBackground |
+| #cc517a | ![](https://via.placeholder.com/16/cc517a/FFFFFF/?text=%20)`#cc517a` | terminalCommandDecoration.errorBackground |
+| #2d539e | ![](https://via.placeholder.com/16/2d539e/FFFFFF/?text=%20)`#2d539e` | terminalCommandDecoration.successBackground |
+
+
+### dracula.json
+
+
+| color_code | palette | key_name |
+| --- | --- | --- |
+| #21222C | ![](https://via.placeholder.com/16/21222C/FFFFFF/?text=%20)`#21222C` | terminal.ansiBlack |
+| #BD93F9 | ![](https://via.placeholder.com/16/BD93F9/FFFFFF/?text=%20)`#BD93F9` | terminal.ansiBlue |
+| #6272A4 | ![](https://via.placeholder.com/16/6272A4/FFFFFF/?text=%20)`#6272A4` | terminal.ansiBrightBlack |
+| #D6ACFF | ![](https://via.placeholder.com/16/D6ACFF/FFFFFF/?text=%20)`#D6ACFF` | terminal.ansiBrightBlue |
+| #A4FFFF | ![](https://via.placeholder.com/16/A4FFFF/FFFFFF/?text=%20)`#A4FFFF` | terminal.ansiBrightCyan |
+| #69FF94 | ![](https://via.placeholder.com/16/69FF94/FFFFFF/?text=%20)`#69FF94` | terminal.ansiBrightGreen |
+| #FF92DF | ![](https://via.placeholder.com/16/FF92DF/FFFFFF/?text=%20)`#FF92DF` | terminal.ansiBrightMagenta |
+| #FF6E6E | ![](https://via.placeholder.com/16/FF6E6E/FFFFFF/?text=%20)`#FF6E6E` | terminal.ansiBrightRed |
+| #FFFFFF | ![](https://via.placeholder.com/16/FFFFFF/FFFFFF/?text=%20)`#FFFFFF` | terminal.ansiBrightWhite |
+| #FFFFA5 | ![](https://via.placeholder.com/16/FFFFA5/FFFFFF/?text=%20)`#FFFFA5` | terminal.ansiBrightYellow |
+| #8BE9FD | ![](https://via.placeholder.com/16/8BE9FD/FFFFFF/?text=%20)`#8BE9FD` | terminal.ansiCyan |
+| #50FA7B | ![](https://via.placeholder.com/16/50FA7B/FFFFFF/?text=%20)`#50FA7B` | terminal.ansiGreen |
+| #FF79C6 | ![](https://via.placeholder.com/16/FF79C6/FFFFFF/?text=%20)`#FF79C6` | terminal.ansiMagenta |
+| #FF5555 | ![](https://via.placeholder.com/16/FF5555/FFFFFF/?text=%20)`#FF5555` | terminal.ansiRed |
+| #F8F8F2 | ![](https://via.placeholder.com/16/F8F8F2/FFFFFF/?text=%20)`#F8F8F2` | terminal.ansiWhite |
+| #F1FA8C | ![](https://via.placeholder.com/16/F1FA8C/FFFFFF/?text=%20)`#F1FA8C` | terminal.ansiYellow |
+| #282A36 | ![](https://via.placeholder.com/16/282A36/FFFFFF/?text=%20)`#282A36` | terminal.background |
+| #F8F8F2 | ![](https://via.placeholder.com/16/F8F8F2/FFFFFF/?text=%20)`#F8F8F2` | terminal.foreground |
+
+
+### iceberg.color-theme.json
+
+
+| color_code | palette | key_name |
+| --- | --- | --- |
+| #1e2132 | ![](https://via.placeholder.com/16/1e2132/FFFFFF/?text=%20)`#1e2132` | terminal.ansiBlack |
+| #84a0c6 | ![](https://via.placeholder.com/16/84a0c6/FFFFFF/?text=%20)`#84a0c6` | terminal.ansiBlue |
+| #6b7089 | ![](https://via.placeholder.com/16/6b7089/FFFFFF/?text=%20)`#6b7089` | terminal.ansiBrightBlack |
+| #91acd1 | ![](https://via.placeholder.com/16/91acd1/FFFFFF/?text=%20)`#91acd1` | terminal.ansiBrightBlue |
+| #95c4ce | ![](https://via.placeholder.com/16/95c4ce/FFFFFF/?text=%20)`#95c4ce` | terminal.ansiBrightCyan |
+| #c0ca8e | ![](https://via.placeholder.com/16/c0ca8e/FFFFFF/?text=%20)`#c0ca8e` | terminal.ansiBrightGreen |
+| #ada0d3 | ![](https://via.placeholder.com/16/ada0d3/FFFFFF/?text=%20)`#ada0d3` | terminal.ansiBrightMagenta |
+| #e98989 | ![](https://via.placeholder.com/16/e98989/FFFFFF/?text=%20)`#e98989` | terminal.ansiBrightRed |
+| #d2d4de | ![](https://via.placeholder.com/16/d2d4de/FFFFFF/?text=%20)`#d2d4de` | terminal.ansiBrightWhite |
+| #e9b189 | ![](https://via.placeholder.com/16/e9b189/FFFFFF/?text=%20)`#e9b189` | terminal.ansiBrightYellow |
+| #89b8c2 | ![](https://via.placeholder.com/16/89b8c2/FFFFFF/?text=%20)`#89b8c2` | terminal.ansiCyan |
+| #b4be82 | ![](https://via.placeholder.com/16/b4be82/FFFFFF/?text=%20)`#b4be82` | terminal.ansiGreen |
+| #a093c7 | ![](https://via.placeholder.com/16/a093c7/FFFFFF/?text=%20)`#a093c7` | terminal.ansiMagenta |
+| #e27878 | ![](https://via.placeholder.com/16/e27878/FFFFFF/?text=%20)`#e27878` | terminal.ansiRed |
+| #c6c8d1 | ![](https://via.placeholder.com/16/c6c8d1/FFFFFF/?text=%20)`#c6c8d1` | terminal.ansiWhite |
+| #e2a478 | ![](https://via.placeholder.com/16/e2a478/FFFFFF/?text=%20)`#e2a478` | terminal.ansiYellow |
+| #c6c8d1 | ![](https://via.placeholder.com/16/c6c8d1/FFFFFF/?text=%20)`#c6c8d1` | terminal.foreground |
+| #4a548266 | ![](https://via.placeholder.com/16/4a548266/FFFFFF/?text=%20)`#4a548266` | terminal.selectionBackground |
+| #6b7089 | ![](https://via.placeholder.com/16/6b7089/FFFFFF/?text=%20)`#6b7089` | terminalCommandDecoration.defaultBackground |
+| #e27878 | ![](https://via.placeholder.com/16/e27878/FFFFFF/?text=%20)`#e27878` | terminalCommandDecoration.errorBackground |
+| #84a0c6 | ![](https://via.placeholder.com/16/84a0c6/FFFFFF/?text=%20)`#84a0c6` | terminalCommandDecoration.successBackground |
+
+
+### ayu-light.json
+
+
+| color_code | palette | key_name |
+| --- | --- | --- |
+| #000000 | ![](https://via.placeholder.com/16/000000/FFFFFF/?text=%20)`#000000` | terminal.ansiBlack |
+| #3199e1 | ![](https://via.placeholder.com/16/3199e1/FFFFFF/?text=%20)`#3199e1` | terminal.ansiBlue |
+| #686868 | ![](https://via.placeholder.com/16/686868/FFFFFF/?text=%20)`#686868` | terminal.ansiBrightBlack |
+| #399ee6 | ![](https://via.placeholder.com/16/399ee6/FFFFFF/?text=%20)`#399ee6` | terminal.ansiBrightBlue |
+| #4cbf99 | ![](https://via.placeholder.com/16/4cbf99/FFFFFF/?text=%20)`#4cbf99` | terminal.ansiBrightCyan |
+| #86b300 | ![](https://via.placeholder.com/16/86b300/FFFFFF/?text=%20)`#86b300` | terminal.ansiBrightGreen |
+| #a37acc | ![](https://via.placeholder.com/16/a37acc/FFFFFF/?text=%20)`#a37acc` | terminal.ansiBrightMagenta |
+| #f07171 | ![](https://via.placeholder.com/16/f07171/FFFFFF/?text=%20)`#f07171` | terminal.ansiBrightRed |
+| #d1d1d1 | ![](https://via.placeholder.com/16/d1d1d1/FFFFFF/?text=%20)`#d1d1d1` | terminal.ansiBrightWhite |
+| #f2ae49 | ![](https://via.placeholder.com/16/f2ae49/FFFFFF/?text=%20)`#f2ae49` | terminal.ansiBrightYellow |
+| #46ba94 | ![](https://via.placeholder.com/16/46ba94/FFFFFF/?text=%20)`#46ba94` | terminal.ansiCyan |
+| #6cbf43 | ![](https://via.placeholder.com/16/6cbf43/FFFFFF/?text=%20)`#6cbf43` | terminal.ansiGreen |
+| #9e75c7 | ![](https://via.placeholder.com/16/9e75c7/FFFFFF/?text=%20)`#9e75c7` | terminal.ansiMagenta |
+| #ea6c6d | ![](https://via.placeholder.com/16/ea6c6d/FFFFFF/?text=%20)`#ea6c6d` | terminal.ansiRed |
+| #c7c7c7 | ![](https://via.placeholder.com/16/c7c7c7/FFFFFF/?text=%20)`#c7c7c7` | terminal.ansiWhite |
+| #eca944 | ![](https://via.placeholder.com/16/eca944/FFFFFF/?text=%20)`#eca944` | terminal.ansiYellow |
+| #f8f9fa | ![](https://via.placeholder.com/16/f8f9fa/FFFFFF/?text=%20)`#f8f9fa` | terminal.background |
+| #5c6166 | ![](https://via.placeholder.com/16/5c6166/FFFFFF/?text=%20)`#5c6166` | terminal.foreground |
+
+
+### nord-color-theme.json
+
+
+| color_code | palette | key_name |
+| --- | --- | --- |
+| #3b4252 | ![](https://via.placeholder.com/16/3b4252/FFFFFF/?text=%20)`#3b4252` | terminal.ansiBlack |
+| #81a1c1 | ![](https://via.placeholder.com/16/81a1c1/FFFFFF/?text=%20)`#81a1c1` | terminal.ansiBlue |
+| #4c566a | ![](https://via.placeholder.com/16/4c566a/FFFFFF/?text=%20)`#4c566a` | terminal.ansiBrightBlack |
+| #81a1c1 | ![](https://via.placeholder.com/16/81a1c1/FFFFFF/?text=%20)`#81a1c1` | terminal.ansiBrightBlue |
+| #8fbcbb | ![](https://via.placeholder.com/16/8fbcbb/FFFFFF/?text=%20)`#8fbcbb` | terminal.ansiBrightCyan |
+| #a3be8c | ![](https://via.placeholder.com/16/a3be8c/FFFFFF/?text=%20)`#a3be8c` | terminal.ansiBrightGreen |
+| #b48ead | ![](https://via.placeholder.com/16/b48ead/FFFFFF/?text=%20)`#b48ead` | terminal.ansiBrightMagenta |
+| #bf616a | ![](https://via.placeholder.com/16/bf616a/FFFFFF/?text=%20)`#bf616a` | terminal.ansiBrightRed |
+| #eceff4 | ![](https://via.placeholder.com/16/eceff4/FFFFFF/?text=%20)`#eceff4` | terminal.ansiBrightWhite |
+| #ebcb8b | ![](https://via.placeholder.com/16/ebcb8b/FFFFFF/?text=%20)`#ebcb8b` | terminal.ansiBrightYellow |
+| #88c0d0 | ![](https://via.placeholder.com/16/88c0d0/FFFFFF/?text=%20)`#88c0d0` | terminal.ansiCyan |
+| #a3be8c | ![](https://via.placeholder.com/16/a3be8c/FFFFFF/?text=%20)`#a3be8c` | terminal.ansiGreen |
+| #b48ead | ![](https://via.placeholder.com/16/b48ead/FFFFFF/?text=%20)`#b48ead` | terminal.ansiMagenta |
+| #bf616a | ![](https://via.placeholder.com/16/bf616a/FFFFFF/?text=%20)`#bf616a` | terminal.ansiRed |
+| #e5e9f0 | ![](https://via.placeholder.com/16/e5e9f0/FFFFFF/?text=%20)`#e5e9f0` | terminal.ansiWhite |
+| #ebcb8b | ![](https://via.placeholder.com/16/ebcb8b/FFFFFF/?text=%20)`#ebcb8b` | terminal.ansiYellow |
+| #2e3440 | ![](https://via.placeholder.com/16/2e3440/FFFFFF/?text=%20)`#2e3440` | terminal.background |
+| #d8dee9 | ![](https://via.placeholder.com/16/d8dee9/FFFFFF/?text=%20)`#d8dee9` | terminal.foreground |
+| #88c0d0 | ![](https://via.placeholder.com/16/88c0d0/FFFFFF/?text=%20)`#88c0d0` | terminal.tab.activeBorder |
+
+
+
 
 ## VSCode color theme 共通key 探し
 

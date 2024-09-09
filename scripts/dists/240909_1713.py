@@ -55,6 +55,10 @@ def get_terminal_key_value(_theme_data: dict):
     yield from _for_type_dict(_theme_data)
 
 
+def set_parameter(c: str) -> str:
+  return f'![](https://via.placeholder.com/16/{c[1:]}/FFFFFF/?text=%20)`{c}`'
+
+
 def create_markdown_data(_theme_data: dict[dict]) -> str:
   new_line = '\n'
   separate = '|'
@@ -65,21 +69,21 @@ def create_markdown_data(_theme_data: dict[dict]) -> str:
       args) + f' {separate}' + new_line
 
   headers = [
-    ['key_name', 'palette', 'color_code'],
+    ['color_code', 'palette', 'key_name'],
     ['---', '---', '---'],
   ]
   # xxx: `join` キモい
   markdown_format_str = ''.join([_rowline(*h) for h in headers])
   for name, terminal_key_value in _theme_data.items():
-    markdown_format_str = f'## {name}' + (new_line * 3) + markdown_format_str
+    markdown_format_str = f'### {name}' + (new_line * 3) + markdown_format_str
     # xxx: いまさら愚直に
     ansi_list = []
     other_list = []
     for k, v in terminal_key_value.items():
       if ansi_regexp.match(k):
-        ansi_list.append([k, v])
+        ansi_list.append([v,set_parameter(v), k])
       else:
-        other_list.append([k, v])
+        other_list.append([v, set_parameter(v), k])
     markdown_format_str += ''.join([_rowline(*r) for r in ansi_list])
     markdown_format_str += ''.join([_rowline(*r) for r in other_list])
 
@@ -88,7 +92,9 @@ def create_markdown_data(_theme_data: dict[dict]) -> str:
 
 def create_themes_markdown_data(_themes_data: list[dict[dict]]) -> str:
   new_lines = '\n' * 2
-  markdown_format_str = ''
+  return new_lines.join([create_markdown_data(theme) for theme in _themes_data])
+  
+  
 
 
 if __name__ == '__main__':
@@ -100,5 +106,6 @@ if __name__ == '__main__':
     dict(get_terminal_key_value(get_json_path_to_dict(p)))
   } for p in vs_themes_dir_path.iterdir()]
 
-  aaaa = create_markdown_data(terminal_data_array[0])
+  output_markdown = create_themes_markdown_data(terminal_data_array)
+  print(output_markdown)
 
