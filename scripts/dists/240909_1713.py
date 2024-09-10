@@ -81,7 +81,7 @@ def create_markdown_data(_theme_data: dict[dict]) -> str:
     other_list = []
     for k, v in terminal_key_value.items():
       if ansi_regexp.match(k):
-        ansi_list.append([v,set_parameter(v), k])
+        ansi_list.append([v, set_parameter(v), k])
       else:
         other_list.append([v, set_parameter(v), k])
     markdown_format_str += ''.join([_rowline(*r) for r in ansi_list])
@@ -92,9 +92,8 @@ def create_markdown_data(_theme_data: dict[dict]) -> str:
 
 def create_themes_markdown_data(_themes_data: list[dict[dict]]) -> str:
   new_lines = '\n' * 2
-  return new_lines.join([create_markdown_data(theme) for theme in _themes_data])
-  
-  
+  return new_lines.join(
+    [create_markdown_data(theme) for theme in _themes_data])
 
 
 if __name__ == '__main__':
