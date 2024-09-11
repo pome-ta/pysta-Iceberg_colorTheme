@@ -35,21 +35,18 @@ def joinkeys_values(theme_dict: dict):
 
   def _for_tokenColors(tokenColors: list, parent: str):
 
-    scope
-
     for tokenColor in tokenColors:
-      scope_name = tokenColor.get('scope')
-      
-      
-      
-      
-      for k, v in tokenColor.items():
-        scope_names = scope_names if isinstance(scope_names, list) else [sco]
+      _scope = tokenColor.get('scope')
+      scope_names = _scope if isinstance(_scope, list) else [_scope]
+      for scope_name in scope_names:
+        settings = tokenColor.get('settings')
+        for k, v in settings.items():
+          yield from _yield_key_value(v, f'{parent}scope::{scope_name}::{k}')
 
   def _type_dict(dct: dict, parent: str):
     for k, v in dct.items():
       if k == 'tokenColors':
-        pass
+        yield from _for_tokenColors(v, f'{parent + k}::')
       elif isinstance(v, dict):
         yield from _type_dict(v, f'{parent + k}::')
         '''
@@ -63,12 +60,40 @@ def joinkeys_values(theme_dict: dict):
     yield from _type_dict(theme_dict, '')
 
 
+def get_colorcode_name_array(key_value: dict) -> list:
+
+  # xxx: 2回ブン回してるけど、ええか
+  def _filter_color_code(_key_value: dict):
+    for k, v in _key_value.items():
+      if color_regex.match(v):
+        yield (k, v.upper())
+
+  def _match_colorcodes(_key_value: dict) -> list[str, list[str]]:
+    _color_pallet = sorted(set([v for v in _key_value.values()]))
+    _codes_names = [[_code, []] for _code in _color_pallet]
+
+    for k, v in _key_value.items():
+      idx = _color_pallet.index(v)
+      _codes_names[idx][1].append(k)
+    return _codes_names
+
+  names_codes_dict = dict(_filter_color_code(key_value))
+  codes_names = _match_colorcodes(names_codes_dict)
+  return codes_names
+
+
+def create_markdown_table(data_array: list) -> str:
+  pass
+
+
 if __name__ == '__main__':
   json_dir = './vscodeThemes'
   json_name = 'iceberg.color-theme.json'
 
+  # xxx: 関数名と変数名のルールがめちゃくちゃ
+
   vs_theme_path = get_target_path(Path(json_dir, json_name))
   vs_theme_data = get_json_path_to_dict(vs_theme_path)
-  #colors = {k:v for k,v in joinkeys_values(vs_theme_data)}
-  colors = dict(joinkeys_values(vs_theme_data))
+  all_key_value = dict(joinkeys_values(vs_theme_data))
+  colorcode_name_array = get_colorcode_name_array(all_key_value)
 
