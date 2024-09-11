@@ -83,7 +83,8 @@ def get_colorcode_name_array(key_value: dict) -> list:
 
 
 def set_parameter(c: str) -> str:
-  return f'![](https://via.placeholder.com/16/{c[1:]}/FFFFFF/?text=%20)`{c}`'
+  #return f'![](https://via.placeholder.com/16/{c[1:]}/FFFFFF/?text=%20)`{c}`'
+  return f'![](https://via.placeholder.com/16/{c[1:]}/FFFFFF/?text=%20)'
 
 
 def create_markdown_data(_theme_data: dict[dict]) -> str:
