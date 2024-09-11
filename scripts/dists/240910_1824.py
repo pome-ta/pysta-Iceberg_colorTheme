@@ -82,8 +82,44 @@ def get_colorcode_name_array(key_value: dict) -> list:
   return codes_names
 
 
-def create_markdown_table(data_array: list) -> str:
-  pass
+def set_parameter(c: str) -> str:
+  return f'![](https://via.placeholder.com/16/{c[1:]}/FFFFFF/?text=%20)`{c}`'
+
+
+def create_markdown_data(_theme_data: dict[dict]) -> str:
+  new_line = '\n'
+  separate = '|'
+
+  def _rowline(*args) -> str:
+    # xxx: スペースがあっちこっち行くの気持ち悪いな
+    return f'{separate} ' + f' {separate} '.join(
+      args) + f' {separate}' + new_line
+
+
+def create_markdown_table(data_name: str, data_array: list[list, list]) -> str:
+  new_line = '\n'
+  separate = '|'
+  br_tag = ' <br> '
+
+  def _rowline(*args) -> str:
+    # xxx: スペースがあっちこっち行くの気持ち悪いな
+    return f'{separate} ' + f' {separate} '.join(
+      args) + f' {separate}' + new_line
+
+  headers = [
+    ['color_code', 'palette', 'key_name'],
+    ['---', '---', '---'],
+  ]
+
+  markdown_table = [_rowline(*header) for header in headers]
+  markdown_table += [
+    _rowline(c, set_parameter(c), br_tag.join(n)) for c, n in data_array
+  ]
+
+  markdown_format_str = f'### {data_name}{new_line * 3}' + ''.join(
+    markdown_table)
+
+  return markdown_format_str
 
 
 if __name__ == '__main__':
@@ -96,4 +132,7 @@ if __name__ == '__main__':
   vs_theme_data = get_json_path_to_dict(vs_theme_path)
   all_key_value = dict(joinkeys_values(vs_theme_data))
   colorcode_name_array = get_colorcode_name_array(all_key_value)
+
+  md_str = create_markdown_table(vs_theme_path.name, colorcode_name_array)
+  print(md_str)
 
