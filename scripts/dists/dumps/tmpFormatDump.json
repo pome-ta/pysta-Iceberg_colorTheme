@@ -1,21 +1,21 @@
 {
  "__url": "url",
- "background": "#262b30",
- "bar_background": "#414448",
+ "background": "#ff0000",
+ "bar_background": "#ff0000",
  "dark_keyboard": true,
- "default_text": "#e6e6e6",
- "editor_actions_icon_background": "#ffffff",
- "editor_actions_icon_tint": "686871",
- "editor_actions_popover_background": "#f7f7f7",
- "error_text": "#f59f9f",
+ "default_text": "#ff0000",
+ "editor_actions_icon_background": "#ff0000",
+ "editor_actions_icon_tint": "#ff0000",
+ "editor_actions_popover_background": "#ff0000",
+ "error_text": "#ff0000",
  "font-family": "Menlo-Regular",
  "font-size": 15.0,
- "gutter_background": "#262b30",
- "gutter_border": "#222222",
- "interstitial": "#2a3036",
- "library_background": "#2a3036",
- "library_tint": "#35a298",
- "line_number": "#4c4c4c",
+ "gutter_background": "#ff0000",
+ "gutter_border": "#ff0000",
+ "interstitial": "#ff0000",
+ "library_background": "#ff0000",
+ "library_tint": "#ff0000",
+ "line_number": "#ff0000",
  "name": "tmpFormatDump",
  "scopes": {
   "bold": {
@@ -25,7 +25,7 @@
    "font-style": "bold-italic"
   },
   "builtinfunction": {
-   "color": "#ff7817"
+   "color": "#ff0000"
   },
   "checkbox": {
    "checkbox": true
@@ -35,44 +35,44 @@
    "done": true
   },
   "class": {
-   "color": "#ff7817"
+   "color": "#ff0000"
   },
   "classdef": {
-   "color": "#ff7817",
+   "color": "#ff0000",
    "font-style": "bold"
   },
   "code": {
-   "background-color": "#80808040",
+   "background-color": "#ff0000",
    "corner-radius": 2.0
   },
   "codeblock-start": {
-   "color": "#80808080"
+   "color": "#ff0000"
   },
   "comment": {
-   "color": "#bcbcbc",
+   "color": "#ff0000",
    "font-style": "italic"
   },
   "decorator": {
-   "color": "D38D5D"
+   "color": "#ff0000"
   },
   "default": {
-   "color": "#f9f9f9"
+   "color": "#ff0000"
   },
   "docstring": {
-   "color": "#74d154",
+   "color": "#ff0000",
    "font-style": "italic"
   },
   "escape": {
-   "background-color": "#ebf1d8"
+   "background-color": "#ff0000"
   },
   "formatting": {
-   "color": "#80808080"
+   "color": "#ff0000"
   },
   "function": {
-   "color": "#ff7817"
+   "color": "#ff0000"
   },
   "functiondef": {
-   "color": "#ff7817",
+   "color": "#ff0000",
    "font-style": "bold"
   },
   "heading-1": {
@@ -88,40 +88,40 @@
    "font-style": "italic"
   },
   "keyword": {
-   "color": "#fddf48"
+   "color": "#ff0000"
   },
   "link": {
    "text-decoration": "underline"
   },
   "marker": {
-   "box-background-color": "#ffff0030",
-   "box-border-color": "#ffe5b3",
+   "box-background-color": "#ff0000",
+   "box-border-color": "#ff0000",
    "box-border-type": 4
   },
   "module": {
-   "color": "#ff7817"
+   "color": "#ff0000"
   },
   "number": {
-   "color": "#e0f557"
+   "color": "#ff0000"
   },
   "project": {
    "font-style": "bold"
   },
   "string": {
-   "color": "#74d154"
+   "color": "#ff0000"
   },
   "tag": {
    "text-decoration": "none"
   },
   "task-done": {
-   "color": "#99999980",
+   "color": "#ff0000",
    "text-decoration": "strikeout"
   }
  },
- "separator_line": "#000000",
- "tab_background": "#262b30",
- "tab_title": "#ffffff",
- "text_selection_tint": "#ffffff",
- "thumbnail_border": "#414448",
- "tint": "#e6e6e6"
+ "separator_line": "#ff0000",
+ "tab_background": "#ff0000",
+ "tab_title": "#ff0000",
+ "text_selection_tint": "#ff0000",
+ "thumbnail_border": "#ff0000",
+ "tint": "#ff0000"
 }
