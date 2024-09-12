@@ -491,3 +491,9 @@ testThemes_path = Path(root_path, './testThemes')
 for p in [user_themes_path, testThemes_path]:
   export_theme(theme_json, file_name, p)
 
+
+if __name__ == '__main__':
+  json_dir = './vscodeThemes'
+  json_name = 'iceberg.color-theme.json'
+
+

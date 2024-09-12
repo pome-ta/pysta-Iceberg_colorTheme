@@ -1,5 +1,5 @@
 {
- "__tint": "#5794b0",
+ "__url": "url",
  "background": "#262b30",
  "bar_background": "#414448",
  "dark_keyboard": true,
@@ -16,7 +16,7 @@
  "library_background": "#2a3036",
  "library_tint": "#35a298",
  "line_number": "#4c4c4c",
- "name": "tmpMergeDumps",
+ "name": "tmpFormatDump",
  "scopes": {
   "bold": {
    "font-style": "bold"
