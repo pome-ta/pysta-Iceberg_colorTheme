@@ -5,7 +5,7 @@ note: それぞれの値の適応の仕方を考える
 
 from pathlib import Path
 import json
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 
 def get_target_path(path: Path | str) -> Path:
@@ -27,15 +27,15 @@ def get_json_path_to_dict(json_path: Path) -> dict:
 
 
 class VSTheme:
-
+  
   def __init__(self, theme: Path | dict):
     # xxx: 文字列でのurl やjson は考慮しない
     # xxx: Path か、dict(json からの変換) のみ
-    if isinstance(base_theme, dict):
+    if isinstance(theme, dict):
       self.base_theme = theme
     else:
       self.base_theme = get_json_path_to_dict(theme)
-      
+  
   def get_value(self):
     pass
 
@@ -51,8 +51,8 @@ class ThemeTemplate:
   editor_actions_icon_tint: str = '#ff0000'
   editor_actions_popover_background: str = '#ff0000'
   error_text: str = '#ff0000'
-  #font_family: str = 'Menlo-Regular'
-  #font_size: float = 15.0
+  # font_family: str = 'Menlo-Regular'
+  # font_size: float = 15.0
   gutter_background: str = '#ff0000'
   gutter_border: str = '#ff0000'
   interstitial: str = '#ff0000'
@@ -60,7 +60,7 @@ class ThemeTemplate:
   library_tint: str = '#ff0000'
   line_number: str = '#ff0000'
   name: str = 'tmpFormatDump'
-
+  
   scopes_bold_font_style: str = 'bold'
   scopes_bold_italic_font_style: str = 'bold-italic'
   scopes_builtinfunction_color: str = '#ff0000'
@@ -96,7 +96,7 @@ class ThemeTemplate:
   scopes_tag_text_decoration: str = 'none'
   scopes_taskDone_color: str = '#ff0000'
   scopes_taskDone_text_decoration: str = 'strikeout'
-
+  
   separator_line: str = '#ff0000'
   tab_background: str = '#ff0000'
   tab_title: str = '#ff0000'
@@ -234,7 +234,7 @@ def create_theme_json(pallet: dict, vs_theme_dict: dict) -> str:
     'thumbnail_border': '#ff0000',
     'tint': '#ff0000',
   }
-
+  
   json_theme = json.dumps(dict_theme,
                           indent=1,
                           sort_keys=True,
@@ -246,7 +246,7 @@ if __name__ == '__main__':
   # xxx: 後にGitHub から持ってくる
   vs_dir = './vscodeThemes'
   vs_name = 'iceberg.color-theme.json'
-
+  
   color_pallet = {
     'url': 'url',
     'background': '#ff0000',
@@ -257,8 +257,8 @@ if __name__ == '__main__':
     'editor_actions_icon_tint': '#ff0000',
     'editor_actions_popover_background': '#ff0000',
     'error_text': '#ff0000',
-    #'font_family': 'Menlo-Regular'
-    #'font_size': 15.0
+    # 'font_family': 'Menlo-Regular'
+    # 'font_size': 15.0
     'gutter_background': '#ff0000',
     'gutter_border': '#ff0000',
     'interstitial': '#ff0000',
@@ -308,4 +308,3 @@ if __name__ == '__main__':
     'thumbnail_border': '#ff0000',
     'tint': '#ff0000',
   }
-
