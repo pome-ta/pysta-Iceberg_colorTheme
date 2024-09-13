@@ -26,9 +26,23 @@ def get_json_path_to_dict(json_path: Path) -> dict:
   return json_data
 
 
+class VSTheme:
+
+  def __init__(self, theme: Path | dict):
+    # xxx: 文字列でのurl やjson は考慮しない
+    # xxx: Path か、dict(json からの変換) のみ
+    if isinstance(base_theme, dict):
+      self.base_theme = theme
+    else:
+      self.base_theme = get_json_path_to_dict(theme)
+      
+  def get_value(self):
+    pass
+
+
 @dataclass
 class ThemeTemplate:
-  __url: str = 'url'
+  url: str = 'url'
   background: str = '#ff0000'
   bar_background: str = ' #ff0000'
   dark_keyboard: bool = True
@@ -56,6 +70,7 @@ class ThemeTemplate:
   scopes_class_color: str = '#ff0000'
   scopes_classdef_color: str = '#ff0000'
   scopes_code_backgroundColor: str = '#ff0000'
+  scopes_code_corner_radius: float = 2.0
   scopes_codeblockStart_color: str = '#ff0000'
   scopes_decorator_color: str = '#ff0000'
   scopes_comment_color: str = '#ff0000'
@@ -90,8 +105,141 @@ class ThemeTemplate:
   tint: str = '#ff0000'
 
 
-def create_theme(convert_pallet: dict):
-  p = ThemeTemplate(**convert_pallet)
+def create_theme_json(pallet: dict, vs_theme_dict: dict) -> str:
+  p = ThemeTemplate(**pallet)
+  dict_theme = {
+    '__url': 'url',
+    'background': '#ff0000',
+    'bar_background': '#ff0000',
+    'dark_keyboard': True,
+    'default_text': '#ff0000',
+    'editor_actions_icon_background': '#ff0000',
+    'editor_actions_icon_tint': '#ff0000',
+    'editor_actions_popover_background': '#ff0000',
+    'error_text': '#ff0000',
+    'font-family': 'Menlo-Regular',
+    'font-size': 15.0,
+    'gutter_background': '#ff0000',
+    'gutter_border': '#ff0000',
+    'interstitial': '#ff0000',
+    'library_background': '#ff0000',
+    'library_tint': '#ff0000',
+    'line_number': '#ff0000',
+    'name': 'tmpFormatDump',
+    'scopes': {
+      'bold': {
+        'font-style': 'bold',
+      },
+      'bold-italic': {
+        'font-style': 'bold-italic',
+      },
+      'builtinfunction': {
+        'color': '#ff0000',
+      },
+      'checkbox': {
+        'checkbox': True,
+      },
+      'checkbox-done': {
+        'checkbox': True,
+        'done': True,
+      },
+      'class': {
+        'color': '#ff0000',
+      },
+      'classdef': {
+        'color': '#ff0000',
+        'font-style': 'bold',
+      },
+      'code': {
+        'background-color': '#ff0000',
+        'corner-radius': 2.0,
+      },
+      'codeblock-start': {
+        'color': '#ff0000',
+      },
+      'comment': {
+        'color': '#ff0000',
+        'font-style': 'italic',
+      },
+      'decorator': {
+        'color': '#ff0000'
+      },
+      'default': {
+        'color': '#ff0000',
+      },
+      'docstring': {
+        'color': '#ff0000',
+        'font-style': 'italic',
+      },
+      'escape': {
+        'background-color': '#ff0000',
+      },
+      'formatting': {
+        'color': '#ff0000',
+      },
+      'function': {
+        'color': '#ff0000',
+      },
+      'functiondef': {
+        'color': '#ff0000',
+        'font-style': 'bold',
+      },
+      'heading-1': {
+        'font-style': 'bold',
+      },
+      'heading-2': {
+        'font-style': 'bold',
+      },
+      'heading-3': {
+        'font-style': 'bold',
+      },
+      'italic': {
+        'font-style': 'italic',
+      },
+      'keyword': {
+        'color': '#ff0000',
+      },
+      'link': {
+        'text-decoration': 'underline',
+      },
+      'marker': {
+        'box-background-color': '#ff0000',
+        'box-border-color': '#ff0000',
+        'box-border-type': 4,
+      },
+      'module': {
+        'color': '#ff0000',
+      },
+      'number': {
+        'color': '#ff0000',
+      },
+      'project': {
+        'font-style': 'bold',
+      },
+      'string': {
+        'color': '#ff0000',
+      },
+      'tag': {
+        'text-decoration': 'none',
+      },
+      'task-done': {
+        'color': '#ff0000',
+        'text-decoration': 'strikeout',
+      },
+    },
+    'separator_line': '#ff0000',
+    'tab_background': '#ff0000',
+    'tab_title': '#ff0000',
+    'text_selection_tint': '#ff0000',
+    'thumbnail_border': '#ff0000',
+    'tint': '#ff0000',
+  }
+
+  json_theme = json.dumps(dict_theme,
+                          indent=1,
+                          sort_keys=True,
+                          ensure_ascii=False)
+  return json_theme
 
 
 if __name__ == '__main__':
@@ -99,10 +247,65 @@ if __name__ == '__main__':
   vs_dir = './vscodeThemes'
   vs_name = 'iceberg.color-theme.json'
 
-  tmp_dir = './dumps'
-  tmp_name = 'tmpFormatDump.json'
-
-  tsdc = {'background': '#000000'}
-
-  tt = ThemeTemplate(**tsdc)
+  color_pallet = {
+    'url': 'url',
+    'background': '#ff0000',
+    'bar_background': ' #ff0000',
+    'dark_keyboard': True,
+    'default_text': '#ff0000',
+    'editor_actions_icon_background': '#ff0000',
+    'editor_actions_icon_tint': '#ff0000',
+    'editor_actions_popover_background': '#ff0000',
+    'error_text': '#ff0000',
+    #'font_family': 'Menlo-Regular'
+    #'font_size': 15.0
+    'gutter_background': '#ff0000',
+    'gutter_border': '#ff0000',
+    'interstitial': '#ff0000',
+    'library_background': '#ff0000',
+    'library_tint': '#ff0000',
+    'line_number': '#ff0000',
+    'name': 'tmpFormatDump',
+    'scopes_bold_font_style': 'bold',
+    'scopes_bold_italic_font_style': 'bold-italic',
+    'scopes_builtinfunction_color': '#ff0000',
+    'scopes_checkbox_checkbox': True,
+    'scopes_checkbox_done_checkbox': True,
+    'scopes_checkbox_done_done': True,
+    'scopes_class_color': '#ff0000',
+    'scopes_classdef_color': '#ff0000',
+    'scopes_code_backgroundColor': '#ff0000',
+    'scopes_code_corner_radius': 2.0,
+    'scopes_codeblockStart_color': '#ff0000',
+    'scopes_decorator_color': '#ff0000',
+    'scopes_comment_color': '#ff0000',
+    'scopes_default_color': '#ff0000',
+    'scopes_docstring_color': '#ff0000',
+    'scopes_escape_color': '#ff0000',
+    'scopes_formatting_color': '#ff0000',
+    'scopes_function_color': '#ff0000',
+    'scopes_functiondef_color': '#ff0000',
+    'scopes_heading1_font_style': 'bold',
+    'scopes_heading2_font_style': 'bold',
+    'scopes_heading3_font_style': 'bold',
+    'scopes_italic_font_style': 'italic',
+    'scopes_keyword_color': '#ff0000',
+    'scopes_link_text_decoration': 'underline',
+    'scopes_marker_box_background_color': '#ff0000',
+    'scopes_marker_box_border_color': '#ff0000',
+    'scopes_marker_box_border': 4,
+    'scopes_module_color': '#ff0000',
+    'scopes_number_color': '#ff0000',
+    'scopes_project_font_style': 'bold',
+    'scopes_string_color': '#ff0000',
+    'scopes_tag_text_decoration': 'none',
+    'scopes_taskDone_color': '#ff0000',
+    'scopes_taskDone_text_decoration': 'strikeout',
+    'separator_line': '#ff0000',
+    'tab_background': '#ff0000',
+    'tab_title': '#ff0000',
+    'text_selection_tint': '#ff0000',
+    'thumbnail_border': '#ff0000',
+    'tint': '#ff0000',
+  }
 
