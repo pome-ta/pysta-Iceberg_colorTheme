@@ -7,8 +7,6 @@ from pathlib import Path
 import json
 from dataclasses import dataclass
 
-from scripts.myScripts.outputMarkdownTable import colors
-
 
 def get_target_path(path: Path | str) -> Path:
   root_path = Path(__file__).parent
@@ -320,7 +318,8 @@ def export_theme(json_theme: str,
       continue
     
     # todo: `tmp_dir` の場合のみ
-    dir_path = p.mkdir(parents=True, exist_ok=True) if n else p
+    #dir_path = p.mkdir(parents=True, exist_ok=True) if n else p
+    dir_path = p
     json_path = Path(dir_path, file_name)
     json_path.write_text(json_theme, encoding='utf-8')
 
@@ -331,6 +330,8 @@ if __name__ == '__main__':
   vs_name = 'iceberg.color-theme.json'
   vs_target = Path(vs_dir, vs_name)
   vs_filename = vs_target.name
+  
+  
   
   vsc = get_vs_theme_base(vs_target)
   
@@ -460,3 +461,5 @@ if __name__ == '__main__':
   }
   
   out_json = create_theme_json(color_pallet)
+  export_dir = Path('./testThemes')
+  export_theme(out_json, vs_filename, export_dir)
