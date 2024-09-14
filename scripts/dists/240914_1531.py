@@ -7,6 +7,8 @@ from pathlib import Path
 import json
 from dataclasses import dataclass
 
+from scripts.myScripts.outputMarkdownTable import colors
+
 
 def get_target_path(path: Path | str) -> Path:
   root_path = Path(__file__).parent
@@ -27,7 +29,7 @@ def get_json_path_to_dict(json_path: Path) -> dict:
 
 
 class VSTheme:
-
+  
   def __init__(self, theme: Path | dict):
     # xxx: 文字列でのurl やjson は考慮しない
     # xxx: Path か、dict(json からの変換) のみ
@@ -35,11 +37,11 @@ class VSTheme:
       self.base_theme = theme
     else:
       self.base_theme = get_json_path_to_dict(theme)
-
+  
   def __for_colors(self, key: str) -> str | bool | int | float | None:
     # xxx: `get` じゃなくて`[key]` の方がいいか?
     return self.base_theme['colors'].get(key)
-
+  
   def __for_token_colors(self,
                          keys: list[str]) -> str | bool | int | float | None:
     scope, settings = keys
@@ -49,21 +51,21 @@ class VSTheme:
       scopes = _scop if isinstance(_scop, list) else [_scop]
       if scope in scopes:
         return tokenColor.get('settings').get(settings)
-
+  
   def get_value(
       self,
       search_value: str = '',
       colors: str | None = None,
       tokenColors: list[str] | None = None) -> str | bool | int | float | None:
     value = None
-
+    
     if search_value:
       value = self.base_theme.get(search_value)
     elif colors is not None and isinstance(colors, str):
       value = self.__for_colors(colors)
     elif tokenColors is not None and isinstance(tokenColors, list):
       value = self.__for_token_colors(tokenColors)
-
+    
     if value is None:
       raise print(
         f'VSTheme: value の値が`{value}` です:\n- {search_value=}\n- {colors=}\n- {tokenColors=}'
@@ -91,7 +93,7 @@ class ThemeTemplate:
   library_tint: str = '#ff0000'
   line_number: str = '#ff0000'
   name: str = 'tmpFormatDump'
-
+  
   scopes_bold_font_style: str = 'bold'
   scopes_bold_italic_font_style: str = 'bold-italic'
   scopes_builtinfunction_color: str = '#ff0000'
@@ -131,7 +133,7 @@ class ThemeTemplate:
   scopes_tag_text_decoration: str = 'none'
   scopes_taskDone_color: str = '#ff0000'
   scopes_taskDone_text_decoration: str = 'strikeout'
-
+  
   separator_line: str = '#ff0000'
   tab_background: str = '#ff0000'
   tab_title: str = '#ff0000'
@@ -154,7 +156,7 @@ def create_theme_json(pallet: dict) -> str:
           print(f'value が、{parent=},{v=} です\nkey->{k=}: value->{v=}')
           return True
     return False
-
+  
   p = ThemeTemplate(**pallet)
   dict_theme = {
     '__url': 'None',
@@ -283,10 +285,10 @@ def create_theme_json(pallet: dict) -> str:
     'thumbnail_border': p.thumbnail_border,
     'tint': p.tint,
   }
-
+  
   if is_dict_in_none_value(dict_theme):
     raise print('None の値があるため、変換できません')
-
+  
   json_theme = json.dumps(dict_theme,
                           indent=1,
                           sort_keys=True,
@@ -302,7 +304,6 @@ def get_vs_theme_base(path: Path) -> VSTheme:
 def export_theme(json_theme: str,
                  file_name: str,
                  tmp_dir: Path | None = None) -> None:
-
   def get_user_themes_dir() -> Path | None:
     try:
       # todo: 一応
@@ -312,12 +313,12 @@ def export_theme(json_theme: str,
     _path_objc = ObjCClass('PA2UITheme').sharedTheme().userThemesPath()
     _path = Path(str(_path_objc))
     return _path if _path.exists() else None
-
+  
   user_themes_dir = get_user_themes_dir()
   for n, p in enumerate([user_themes_dir, tmp_dir]):
     if p is None:
       continue
-
+    
     # todo: `tmp_dir` の場合のみ
     dir_path = p.mkdir(parents=True, exist_ok=True) if n else p
     json_path = Path(dir_path, file_name)
@@ -330,131 +331,132 @@ if __name__ == '__main__':
   vs_name = 'iceberg.color-theme.json'
   vs_target = Path(vs_dir, vs_name)
   vs_filename = vs_target.name
-
+  
   vsc = get_vs_theme_base(vs_target)
-
+  
   color_pallet = {
     'url':
-    'url',
+      'url',
     'background':
-    vsc.get_value(colors='editor.background'),
+      vsc.get_value(colors='editor.background'),
     'bar_background':
-    vsc.get_value(colors='tab.activeBackground'),
+      vsc.get_value(colors='tab.activeBackground'),
     'dark_keyboard':
-    True,
+      True,
     'default_text':
-    vsc.get_value(tokenColors=['text', 'foreground']),
+      vsc.get_value(tokenColors=['text', 'foreground']),
     'editor_actions_icon_background':
-    '#ff0000',
+      '#ff0000',
     'editor_actions_icon_tint':
-    '#ff0000',
+      '#ff0000',
     'editor_actions_popover_background':
-    '#ff0000',
+      '#ff0000',
     'error_text':
-    vsc.get_value(colors='editorError.foreground'),
+      vsc.get_value(colors='editorError.foreground'),
     # 'font_family': 'Menlo-Regular'
     # 'font_size': 15.0
     'gutter_background':
-    vsc.get_value(colors='editorGutter.background'),
+      vsc.get_value(colors='editorGutter.background'),
     'gutter_border':
-    vsc.get_value(colors='tab.border'),
+      vsc.get_value(colors='tab.border'),
     'interstitial':
-    '#ff0000',
+      '#ff0000',
     'library_background':
-    vsc.get_value(colors='sideBar.background'),
+      vsc.get_value(colors='sideBar.background'),
     'library_tint':
-    vsc.get_value(colors='sideBar.foreground'),
+      vsc.get_value(colors='sideBar.foreground'),
     'line_number':
-    vsc.get_value(colors='editorLineNumber.foreground'),
+      vsc.get_value(colors='editorLineNumber.foreground'),
     'name':
-    vsc.get_value('name'),
+      vsc.get_value('name'),
     'scopes_bold_font_style':
-    'bold',
+      'bold',
     'scopes_bold_italic_font_style':
-    'bold-italic',
+      'bold-italic',
     'scopes_builtinfunction_color':
-    vsc.get_value(tokenColors=['entity.name.function', 'foreground']),
+      vsc.get_value(tokenColors=['entity.name.function', 'foreground']),
     'scopes_checkbox_checkbox':
-    True,
+      True,
     'scopes_checkbox_done_checkbox':
-    True,
+      True,
     'scopes_checkbox_done_done':
-    True,
+      True,
     'scopes_class_color':
-    vsc.get_value(tokenColors=['entity.name.class', 'foreground']),
+      vsc.get_value(tokenColors=['entity.name.class', 'foreground']),
     'scopes_classdef_color':
-    vsc.get_value(tokenColors=['entity.name.class', 'foreground']),
+      vsc.get_value(tokenColors=['entity.name.class', 'foreground']),
     'scopes_classdef_font_style':
-    'bold',
+      'bold',
     'scopes_code_backgroundColor':
-    '#ff0000',
+      vsc.get_value(tokenColors=['markup.fenced_code.block', 'foreground']),
     'scopes_code_corner_radius':
-    2.0,
+      2.0,
     'scopes_codeblockStart_color':
-    '#ff0000',
+      vsc.get_value(tokenColors=['markup.inline.raw.string', 'foreground']),
     'scopes_decorator_color':
-    '#ff0000',
+      vsc.get_value(tokenColors=['text', 'foreground']),
     'scopes_comment_color':
-    '#ff0000',
+      vsc.get_value(tokenColors=['comment', 'foreground']),
     'scopes_comment_font_style':
-    0,
+      0,
     'scopes_default_color':
-    '#ff0000',
+      vsc.get_value(tokenColors=['text', 'foreground']),
     'scopes_docstring_color':
-    '#ff0000',
+      vsc.get_value(tokenColors=['punctuation.definition.template-expression', 'foreground']),
+    'scopes_docstring_font_style': 'italic',
     'scopes_escape_color':
-    '#ff0000',
+      vsc.get_value(tokenColors=['entity.other.attribute-name', 'foreground']),
     'scopes_formatting_color':
-    '#ff0000',
+      vsc.get_value(tokenColors=['markup.fenced_code.block', 'foreground']),
     'scopes_function_color':
-    '#ff0000',
+      vsc.get_value(tokenColors=['entity.name.function', 'foreground']),
     'scopes_functiondef_color':
-    '#ff0000',
+      vsc.get_value(tokenColors=['entity.name.function', 'foreground']),
+    'scopes_functiondef_font_style': 'bold',
     'scopes_heading1_font_style':
-    'bold',
+      'bold',
     'scopes_heading2_font_style':
-    'bold',
+      'bold',
     'scopes_heading3_font_style':
-    'bold',
+      'bold',
     'scopes_italic_font_style':
-    'italic',
+      'italic',
     'scopes_keyword_color':
-    '#ff0000',
+      vsc.get_value(tokenColors=['keyword', 'foreground']),
     'scopes_link_text_decoration':
-    'underline',
+      'underline',
     'scopes_marker_box_background_color':
-    '#ff0000',
+      vsc.get_value(colors='editorMarkerNavigation.background'),
     'scopes_marker_box_border_color':
-    '#ff0000',
+      vsc.get_value(colors='inputOption.activeBorder'),
     'scopes_marker_box_border_type':
-    4,
+      4,
     'scopes_module_color':
-    '#ff0000',
+      vsc.get_value(tokenColors=['entity.name.import.go', 'foreground']),
     'scopes_number_color':
-    '#ff0000',
+      vsc.get_value(tokenColors=['constant', 'foreground']),
     'scopes_project_font_style':
-    'bold',
+      'bold',
     'scopes_string_color':
-    '#ff0000',
+      vsc.get_value(tokenColors=['string', 'foreground']),
     'scopes_tag_text_decoration':
-    'none',
+      'none',
     'scopes_taskDone_color':
-    '#ff0000',
+      vsc.get_value(colors='notificationsInfoIcon.foreground'),
     'scopes_taskDone_text_decoration':
-    'strikeout',
+      'strikeout',
     'separator_line':
-    '#ff0000',
+      vsc.get_value(colors='focusBorder'),
     'tab_background':
-    '#ff0000',
+      vsc.get_value(colors='tab.inactiveBackground'),
     'tab_title':
-    '#ff0000',
+      vsc.get_value(colors='tab.inactiveForeground'),
     'text_selection_tint':
-    '#ff0000',
+      vsc.get_value(colors='selection.background'),
     'thumbnail_border':
-    '#ff0000',
+      vsc.get_value(colors='sideBar.border'),
     'tint':
-    '#ff0000',
+      vsc.get_value(colors='editorCursor.foreground'),
   }
-
+  
   out_json = create_theme_json(color_pallet)
-
