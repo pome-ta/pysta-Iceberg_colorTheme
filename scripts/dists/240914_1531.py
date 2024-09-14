@@ -27,7 +27,7 @@ def get_json_path_to_dict(json_path: Path) -> dict:
 
 
 class VSTheme:
-  
+
   def __init__(self, theme: Path | dict):
     # xxx: 文字列でのurl やjson は考慮しない
     # xxx: Path か、dict(json からの変換) のみ
@@ -35,13 +35,13 @@ class VSTheme:
       self.base_theme = theme
     else:
       self.base_theme = get_json_path_to_dict(theme)
-  
+
   def __for_colors(self, key: str) -> str | bool | int | float | None:
     # xxx: `get` じゃなくて`[key]` の方がいいか?
     return self.base_theme['colors'].get(key)
-  
-  def __for_token_colors(
-      self, keys: list[str]) -> str | bool | int | float | None:
+
+  def __for_token_colors(self,
+                         keys: list[str]) -> str | bool | int | float | None:
     scope, settings = keys
     for tokenColor in self.base_theme.get('tokenColors'):
       _scop = tokenColor.get('scope')
@@ -49,22 +49,21 @@ class VSTheme:
       scopes = _scop if isinstance(_scop, list) else [_scop]
       if scope in scopes:
         return tokenColor.get('settings').get(settings)
-  
+
   def get_value(
       self,
       search_value: str = '',
       colors: str | None = None,
-      tokenColors: list[str] | None = None
-  ) -> str | bool | int | float | None:
+      tokenColors: list[str] | None = None) -> str | bool | int | float | None:
     value = None
-    
+
     if search_value:
       value = self.base_theme.get(search_value)
     elif colors is not None and isinstance(colors, str):
       value = self.__for_colors(colors)
     elif tokenColors is not None and isinstance(tokenColors, list):
       value = self.__for_token_colors(tokenColors)
-    
+
     if value is None:
       raise print(
         f'VSTheme: value の値が`{value}` です:\n- {search_value=}\n- {colors=}\n- {tokenColors=}'
@@ -92,7 +91,7 @@ class ThemeTemplate:
   library_tint: str = '#ff0000'
   line_number: str = '#ff0000'
   name: str = 'tmpFormatDump'
-  
+
   scopes_bold_font_style: str = 'bold'
   scopes_bold_italic_font_style: str = 'bold-italic'
   scopes_builtinfunction_color: str = '#ff0000'
@@ -129,7 +128,7 @@ class ThemeTemplate:
   scopes_tag_text_decoration: str = 'none'
   scopes_taskDone_color: str = '#ff0000'
   scopes_taskDone_text_decoration: str = 'strikeout'
-  
+
   separator_line: str = '#ff0000'
   tab_background: str = '#ff0000'
   tab_title: str = '#ff0000'
@@ -152,7 +151,7 @@ def create_theme_json(pallet: dict) -> str:
           print(f'value が、{parent=},{v=} です\nkey->{k=}: value->{v=}')
           return True
     return False
-  
+
   p = ThemeTemplate(**pallet)
   dict_theme = {
     '__url': 'None',
@@ -281,10 +280,10 @@ def create_theme_json(pallet: dict) -> str:
     'thumbnail_border': '#ff0000',
     'tint': '#ff0000',
   }
-  
+
   if is_dict_in_none_value(dict_theme):
     raise print('None の値があるため、変換できません')
-  
+
   json_theme = json.dumps(dict_theme,
                           indent=1,
                           sort_keys=True,
@@ -297,16 +296,40 @@ def get_vs_theme_base(path: Path) -> VSTheme:
   return VSTheme(vs_path)
 
 
+'''
 def export_theme(json_data: str, json_name: str, target: Path) -> None:
   json_path = Path(target, json_name)
   json_path.write_text(json_data, encoding='utf-8')
+'''
+
+
+def export_theme(json_theme: str,
+                 file_name: str,
+                 tmp_dir: Path | None = None) -> None:
+
+  def get_user_themes_dir() -> Path | None:
+    try:
+      # todo: 一応
+      from objc_util import ObjCClass
+    except ModuleNotFoundError:
+      return None
+    _path_objc = ObjCClass('PA2UITheme').sharedTheme().userThemesPath()
+    _path = Path(str(_path_objc))
+    return _path if _path.exists() else None
+
+  user_themes_dir = get_user_themes_dir()
+  for p in [user_themes_dir, tmp_dir]:
+    if p is None:
+      continue
+     
+    
 
 
 if __name__ == '__main__':
   # xxx: 後にGitHub から持ってくる
   vs_dir = './vscodeThemes'
   vs_name = 'iceberg.color-theme.json'
-  
+
   vsc = get_vs_theme_base(Path(vs_dir, vs_name))
   color_pallet = {
     'url': 'url',
@@ -369,5 +392,6 @@ if __name__ == '__main__':
     'thumbnail_border': '#ff0000',
     'tint': '#ff0000',
   }
-  
+
   out_json = create_theme_json(color_pallet)
+
