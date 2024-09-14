@@ -1,6 +1,6 @@
 """
-note: それぞれの値の適応の仕方を考える
-テンプレを持ってきて書き換えるか？
+note: iceberg 完成を目指す
+適応とコメントつける
 """
 
 from pathlib import Path
@@ -67,7 +67,7 @@ class VSTheme:
 
     if value is None:
       raise print(
-        f'value の値が`{value}` です:\n- {search_value=}\n- {colors=}\n- {tokenColors=}'
+        f'VSTheme: value の値が`{value}` です:\n- {search_value=}\n- {colors=}\n- {tokenColors=}'
       )
     return value
 
@@ -137,13 +137,28 @@ class ThemeTemplate:
   tint: str = '#ff0000'
 
 
-def create_theme_json(pallet: dict, vs_theme_dict: dict) -> str:
+def create_theme_json(pallet: dict) -> str:
+
+  # xxx: `None` が存在するか確認したいけど
+  #     存在すれば、`True` ? `False` ? どっち?
+  #     今回は、存在すれば、`True` (逆か?)
+  def is_dict_in_none_value(d: dict | str | None, parent: str = '') -> bool:
+    for k, v in d.items():
+      if isinstance(v, dict):
+        if is_dict_in_none_value(v, k):
+          return False
+      else:
+        if v is None:
+          print(f'value が、{parent=},{v=} です\nkey->{k=}: value->{v=}')
+          return True
+    return False
+
   p = ThemeTemplate(**pallet)
   dict_theme = {
-    '__url': 'url',
-    'background': '#ff0000',
-    'bar_background': '#ff0000',
-    'dark_keyboard': True,
+    '__url': 'None',
+    'background': p.background,
+    'bar_background': p.bar_background,
+    'dark_keyboard': p.dark_keyboard,
     'default_text': '#ff0000',
     'editor_actions_icon_background': '#ff0000',
     'editor_actions_icon_tint': '#ff0000',
@@ -267,6 +282,9 @@ def create_theme_json(pallet: dict, vs_theme_dict: dict) -> str:
     'tint': '#ff0000',
   }
 
+  if is_dict_in_none_value(dict_theme):
+    raise print('None の値があるため、変換できません')
+
   json_theme = json.dumps(dict_theme,
                           indent=1,
                           sort_keys=True,
@@ -342,4 +360,6 @@ if __name__ == '__main__':
     'thumbnail_border': '#ff0000',
     'tint': '#ff0000',
   }
+
+  out_json = create_theme_json(color_pallet)
 
