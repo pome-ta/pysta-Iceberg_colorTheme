@@ -1,7 +1,6 @@
 """
 note: それぞれの値の適応の仕方を考える
 テンプレを持ってきて書き換えるか？
-辞書並び、フォーマッターとの相性
 """
 
 from pathlib import Path
@@ -61,9 +60,9 @@ class VSTheme:
 
     if search_value:
       value = self.base_theme.get(search_value)
-    elif colors is not None:
+    elif colors is not None and isinstance(colors, str):
       value = self.__for_colors(colors)
-    elif tokenColors is not None:
+    elif tokenColors is not None and isinstance(tokenColors, list):
       value = self.__for_tokenColors(tokenColors)
 
     if value is None:
@@ -282,14 +281,13 @@ if __name__ == '__main__':
   vs_path = get_target_path(Path(vs_dir, vs_name))
 
   vsc = VSTheme(vs_path)
-  '''
   color_pallet = {
     'url': 'url',
     #'background': '#ff0000',
     'background': vsc.get_value(colors='editor.background'),
-    'bar_background': vsc.get_value(tokenColors=['keyword.operator.expression','foreground',]),
+    'bar_background': vsc.get_value(colors='tab.activeBackground'),
     'dark_keyboard': True,
-    'default_text': '#ff0000',
+    'default_text': vsc.get_value(tokenColors=['text', 'foreground']),
     'editor_actions_icon_background': '#ff0000',
     'editor_actions_icon_tint': '#ff0000',
     'editor_actions_popover_background': '#ff0000',
@@ -345,12 +343,4 @@ if __name__ == '__main__':
     'thumbnail_border': '#ff0000',
     'tint': '#ff0000',
   }
-  '''
-  color_pallet = dict([
-    ('url', 'url'),
-    #'background': '#ff0000',
-    ('background', vsc.get_value(colors='editor.background')),
-    ('bar_background',
-     vsc.get_value(tokenColors=['keyword.operator.expression', 'foreground'])),
-  ])
 
