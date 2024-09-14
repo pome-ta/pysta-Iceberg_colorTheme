@@ -292,13 +292,22 @@ def create_theme_json(pallet: dict) -> str:
   return json_theme
 
 
+def get_vs_theme_base(path: Path) -> VSTheme:
+  vs_path = get_target_path(path)
+  return VSTheme(vs_path)
+
+
+def export_theme(json_data: str, json_name: str, target: Path) -> None:
+  json_path = Path(target, json_name)
+  json_path.write_text(json_data, encoding='utf-8')
+
+
 if __name__ == '__main__':
   # xxx: 後にGitHub から持ってくる
   vs_dir = './vscodeThemes'
   vs_name = 'iceberg.color-theme.json'
-  vs_path = get_target_path(Path(vs_dir, vs_name))
 
-  vsc = VSTheme(vs_path)
+  vsc = get_vs_theme_base(Path(vs_dir, vs_name))
   color_pallet = {
     'url': 'url',
     'background': vsc.get_value(colors='editor.background'),
