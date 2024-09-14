@@ -27,7 +27,7 @@ def get_json_path_to_dict(json_path: Path) -> dict:
 
 
 class VSTheme:
-
+  
   def __init__(self, theme: Path | dict):
     # xxx: 文字列でのurl やjson は考慮しない
     # xxx: Path か、dict(json からの変換) のみ
@@ -35,13 +35,13 @@ class VSTheme:
       self.base_theme = theme
     else:
       self.base_theme = get_json_path_to_dict(theme)
-
+  
   def __for_colors(self, key: str) -> str | bool | int | float | None:
     # xxx: `get` じゃなくて`[key]` の方がいいか?
     return self.base_theme['colors'].get(key)
-
-  def __for_tokenColors(
-      self, keys: list[str, str]) -> str | bool | int | float | None:
+  
+  def __for_token_colors(
+      self, keys: list[str]) -> str | bool | int | float | None:
     scope, settings = keys
     for tokenColor in self.base_theme.get('tokenColors'):
       _scop = tokenColor.get('scope')
@@ -49,22 +49,22 @@ class VSTheme:
       scopes = _scop if isinstance(_scop, list) else [_scop]
       if scope in scopes:
         return tokenColor.get('settings').get(settings)
-
+  
   def get_value(
-    self,
-    search_value: str = '',
-    colors: str | None = None,
-    tokenColors: list[str, str] | None = None
+      self,
+      search_value: str = '',
+      colors: str | None = None,
+      tokenColors: list[str] | None = None
   ) -> str | bool | int | float | None:
     value = None
-
+    
     if search_value:
       value = self.base_theme.get(search_value)
     elif colors is not None and isinstance(colors, str):
       value = self.__for_colors(colors)
     elif tokenColors is not None and isinstance(tokenColors, list):
-      value = self.__for_tokenColors(tokenColors)
-
+      value = self.__for_token_colors(tokenColors)
+    
     if value is None:
       raise print(
         f'VSTheme: value の値が`{value}` です:\n- {search_value=}\n- {colors=}\n- {tokenColors=}'
@@ -92,7 +92,7 @@ class ThemeTemplate:
   library_tint: str = '#ff0000'
   line_number: str = '#ff0000'
   name: str = 'tmpFormatDump'
-
+  
   scopes_bold_font_style: str = 'bold'
   scopes_bold_italic_font_style: str = 'bold-italic'
   scopes_builtinfunction_color: str = '#ff0000'
@@ -101,6 +101,7 @@ class ThemeTemplate:
   scopes_checkbox_done_done: bool = True
   scopes_class_color: str = '#ff0000'
   scopes_classdef_color: str = '#ff0000'
+  scopes_classdef_font_style: str = 'bold'
   scopes_code_backgroundColor: str = '#ff0000'
   scopes_code_corner_radius: float = 2.0
   scopes_codeblockStart_color: str = '#ff0000'
@@ -128,7 +129,7 @@ class ThemeTemplate:
   scopes_tag_text_decoration: str = 'none'
   scopes_taskDone_color: str = '#ff0000'
   scopes_taskDone_text_decoration: str = 'strikeout'
-
+  
   separator_line: str = '#ff0000'
   tab_background: str = '#ff0000'
   tab_title: str = '#ff0000'
@@ -138,7 +139,6 @@ class ThemeTemplate:
 
 
 def create_theme_json(pallet: dict) -> str:
-
   # xxx: `None` が存在するか確認したいけど
   #     存在すれば、`True` ? `False` ? どっち?
   #     今回は、存在すれば、`True` (逆か?)
@@ -152,54 +152,54 @@ def create_theme_json(pallet: dict) -> str:
           print(f'value が、{parent=},{v=} です\nkey->{k=}: value->{v=}')
           return True
     return False
-
+  
   p = ThemeTemplate(**pallet)
   dict_theme = {
     '__url': 'None',
     'background': p.background,
     'bar_background': p.bar_background,
     'dark_keyboard': p.dark_keyboard,
-    'default_text': '#ff0000',
-    'editor_actions_icon_background': '#ff0000',
-    'editor_actions_icon_tint': '#ff0000',
-    'editor_actions_popover_background': '#ff0000',
-    'error_text': '#ff0000',
+    'default_text': p.default_text,
+    'editor_actions_icon_background': p.editor_actions_icon_background,
+    'editor_actions_icon_tint': p.editor_actions_icon_tint,
+    'editor_actions_popover_background': p.editor_actions_popover_background,
+    'error_text': p.error_text,
     'font-family': 'Menlo-Regular',
     'font-size': 15.0,
-    'gutter_background': '#ff0000',
-    'gutter_border': '#ff0000',
-    'interstitial': '#ff0000',
-    'library_background': '#ff0000',
-    'library_tint': '#ff0000',
-    'line_number': '#ff0000',
-    'name': 'tmpFormatDump',
+    'gutter_background': p.gutter_background,
+    'gutter_border': p.gutter_border,
+    'interstitial': p.interstitial,
+    'library_background': p.library_background,
+    'library_tint': p.library_tint,
+    'line_number': p.line_number,
+    'name': p.name,
     'scopes': {
       'bold': {
-        'font-style': 'bold',
+        'font-style': p.scopes_bold_font_style,
       },
       'bold-italic': {
-        'font-style': 'bold-italic',
+        'font-style': p.scopes_bold_italic_font_style,
       },
       'builtinfunction': {
-        'color': '#ff0000',
+        'color': p.scopes_builtinfunction_color,
       },
       'checkbox': {
-        'checkbox': True,
+        'checkbox': p.scopes_checkbox_checkbox,
       },
       'checkbox-done': {
-        'checkbox': True,
-        'done': True,
+        'checkbox': p.scopes_checkbox_done_checkbox,
+        'done': p.scopes_checkbox_done_done,
       },
       'class': {
-        'color': '#ff0000',
+        'color': p.scopes_class_color,
       },
       'classdef': {
-        'color': '#ff0000',
-        'font-style': 'bold',
+        'color': p.scopes_classdef_color,
+        'font-style': p.scopes_classdef_font_style,
       },
       'code': {
-        'background-color': '#ff0000',
-        'corner-radius': 2.0,
+        'background-color': p.scopes_code_backgroundColor,
+        'corner-radius': p.scopes_code_corner_radius,
       },
       'codeblock-start': {
         'color': '#ff0000',
@@ -281,10 +281,10 @@ def create_theme_json(pallet: dict) -> str:
     'thumbnail_border': '#ff0000',
     'tint': '#ff0000',
   }
-
+  
   if is_dict_in_none_value(dict_theme):
     raise print('None の値があるため、変換できません')
-
+  
   json_theme = json.dumps(dict_theme,
                           indent=1,
                           sort_keys=True,
@@ -306,7 +306,7 @@ if __name__ == '__main__':
   # xxx: 後にGitHub から持ってくる
   vs_dir = './vscodeThemes'
   vs_name = 'iceberg.color-theme.json'
-
+  
   vsc = get_vs_theme_base(Path(vs_dir, vs_name))
   color_pallet = {
     'url': 'url',
@@ -369,6 +369,5 @@ if __name__ == '__main__':
     'thumbnail_border': '#ff0000',
     'tint': '#ff0000',
   }
-
+  
   out_json = create_theme_json(color_pallet)
-
