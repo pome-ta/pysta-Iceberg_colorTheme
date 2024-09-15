@@ -157,7 +157,7 @@ def create_theme_json(pallet: dict) -> str:
   
   p = ThemeTemplate(**pallet)
   dict_theme = {
-    '__url': 'None',
+    #'__url': 'None',
     'background': p.background,
     'bar_background': p.bar_background,
     'dark_keyboard': p.dark_keyboard,
@@ -168,6 +168,7 @@ def create_theme_json(pallet: dict) -> str:
     'error_text': p.error_text,
     'font-family': 'Menlo-Regular',
     'font-size': 15.0,
+    
     'gutter_background': p.gutter_background,
     'gutter_border': p.gutter_border,
     'interstitial': p.interstitial,
@@ -282,6 +283,7 @@ def create_theme_json(pallet: dict) -> str:
     'text_selection_tint': p.text_selection_tint,
     'thumbnail_border': p.thumbnail_border,
     'tint': p.tint,
+    
   }
   
   if is_dict_in_none_value(dict_theme):
