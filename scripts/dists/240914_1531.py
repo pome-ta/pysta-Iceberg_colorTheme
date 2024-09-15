@@ -155,7 +155,8 @@ def create_theme_json(pallet: dict) -> str:
           return True
     return False
   
-  p = ThemeTemplate(**pallet)
+  #p = ThemeTemplate(**pallet)
+  p = ThemeTemplate()
   dict_theme = {
     # '__url': 'None',
     'background': p.background,
