@@ -69,7 +69,7 @@ class VSTheme:
 			raise print(
 			f'VSTheme: value の値が`{value}` です:\n- {search_value=}\n- {colors=}\n- {tokenColors=}'
 			)
-		return value[:7] if value[0]=='#' else value
+		return value#value[:7] if value[0]=='#' else value
 		
 		
 @dataclass
