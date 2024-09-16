@@ -369,6 +369,7 @@ if __name__ == '__main__':
     vsc.get_value(colors='sideBar.foreground'),
     'line_number':
     vsc.get_value(colors='editorLineNumber.foreground'),
+    # 「テーマ」メニューでのテーマの表示名
     'name':
     vsc.get_value('name'),
     'scopes_bold_font_style':
@@ -400,7 +401,7 @@ if __name__ == '__main__':
     'scopes_comment_color':
     vsc.get_value(tokenColors=['comment', 'foreground']),
     'scopes_comment_font_style':
-    'bold',
+    'italic',
     'scopes_default_color':
     vsc.get_value(tokenColors=['text', 'foreground']),
     'scopes_docstring_color':
@@ -458,9 +459,10 @@ if __name__ == '__main__':
     'tab_title':
     vsc.get_value(colors='tab.inactiveForeground'),
     'text_selection_tint':
-    vsc.get_value(colors='selection.background'),
+    vsc.get_value(colors='editorLineNumber.activeForeground'),
     'thumbnail_border':
     vsc.get_value(colors='sideBar.border'),
+    # インターフェースボタンの色合い
     'tint':
     vsc.get_value(colors='editorCursor.foreground'),
   }
