@@ -1,9 +1,17 @@
+# 📝 2024/09/16
+
+iceberg は、ぼちぼちできてきたかも
+
+
 
 # 📝 2024/09/12
 
 
 ## iceberg 集中強化週間
 
+こっちに移動
+
+[pystaColorThemeDev/docs/icebergColorPallet.md at main · pome-ta/pystaColorThemeDev · GitHub](https://github.com/pome-ta/pystaColorThemeDev/blob/main/docs/icebergColorPallet.md)
 
 
 
