@@ -46,7 +46,7 @@
   },
   "comment": {
    "color": "#6b7089",
-   "font-style": 0
+   "font-style": "bold"
   },
   "default": {
    "color": "#c6c8d1"

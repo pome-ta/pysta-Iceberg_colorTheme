@@ -400,7 +400,7 @@ if __name__ == '__main__':
 	'scopes_comment_color':
 	vsc.get_value(tokenColors=['comment', 'foreground']),
 	'scopes_comment_font_style':
-	0,
+	'bold',
 	'scopes_default_color':
 	vsc.get_value(tokenColors=['text', 'foreground']),
 	'scopes_docstring_color':
