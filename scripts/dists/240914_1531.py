@@ -5,6 +5,7 @@ note: iceberg 完成を目指す
 
 from pathlib import Path
 import json
+import re
 from dataclasses import dataclass
 
 
@@ -68,7 +69,7 @@ class VSTheme:
 			raise print(
 			f'VSTheme: value の値が`{value}` です:\n- {search_value=}\n- {colors=}\n- {tokenColors=}'
 			)
-		return value
+		return value[:7] if value[0]=='#' else value
 		
 		
 @dataclass
@@ -155,8 +156,8 @@ def create_theme_json(pallet: dict) -> str:
 					return True
 		return False
 		
-	#p = ThemeTemplate(**pallet)
-	p = ThemeTemplate()
+	p = ThemeTemplate(**pallet)
+	#p = ThemeTemplate()
 	dict_theme = {
 	# '__url': 'None',
 	'background': p.background,
