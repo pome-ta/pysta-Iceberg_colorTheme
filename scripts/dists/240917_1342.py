@@ -9,35 +9,58 @@ raw は取れてるから、他の情報
 from urllib.parse import urlparse
 import requests
 import json
+from pprint import pprint
 
 params = {
   'licenses': 'true',
 }
 
 
-def get_repo_author_license(full_url: str) -> dict:
+def get_repository_tokens(github_url: str) -> dict:
   _scheme, _netloc, path, *_ = urlparse(url)
   [owner_name, repo_name, *_] = [p for p in path.split('/') if p]
   api_url = f'https://api.github.com/repos/{owner_name}/{repo_name}'
+  # wip: 制限かかった時の処理
   res = requests.get(api_url)
-  res_dict = res.json()
-  #html_url = res_dict['html_url']
-  #author = res_dict['owner']['login']
-  #license = res_dict['license']['name']
-  #return [html_url, author, license]
+  return res.json()
+
+
+def get_repo_author_license_pushed_at(github_url: str) -> dict:
+  tokens = get_repository_tokens(github_url)
+  '''
   return {
-    'html_url': res_dict['html_url'],
-    'author': res_dict['owner']['login'],
-    'license': res_dict['license']['name'],
+    'html_url':
+    tokens['html_url'],
+    'author':
+    tokens['owner']['login'],
+    'license':
+    tokens['license']
+    if tokens['license'] is None else tokens['license']['name'],
+    'pushed_at':
+    tokens['pushed_at'],
+  }
+  '''
+  _html_url = tokens.get('html_url')
+  _author = tokens.get('owner').get('login')
+  _license = tokens.get('license').get('name') if tokens.get(
+    'license') is not None else str(tokens.get('license'))
+  _pushed_at = tokens.get('pushed_at')
+  return {
+    'html_url': _html_url,
+    'author': _author,
+    'license': _license,
+    'pushed_at': _pushed_at,
   }
 
 
 if __name__ == '__main__':
-  from pprint import pprint
+
   #url = 'https://github.com/pome-ta/pystaColorThemeDev/blob/main/scripts/dists/dumps/myOceanic.json'
   #url = 'https://github.com/pome-ta/pystaColorThemeDev/'
 
   url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg.color-theme.json'
+  url = 'https://github.com/pome-ta/bnnGenArtPE'
 
-  a = get_repo_author_license(url)
+  api_info = get_repo_author_license_pushed_at(url)
+  #api_info = get_repository_tokens(url)
 

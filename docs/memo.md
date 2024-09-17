@@ -1,3 +1,39 @@
+# 📝 2024/09/17
+
+
+## GitHub API
+
+ガチャガチャと、情報は抜き出した。1時間60回くらいの制限あるっぽいけどまぁ大丈夫かな（トークン使わないと）？
+
+
+
+### ガリガリと書き直しをローカルでやるか？
+
+更新とか考えるとあまりよくないかも？
+
+そこは、実行者の手に委ねるか、、、情報差を取るか、、、
+
+
+### `.json` に突っ込む場合
+
+取得した`.json` をローカルに保管予定（`.gitignore` する）。
+
+整形してdump のつもりだけど、API の情報も入れるか？
+
+
+
+### 更新情報
+
+`['updated_at']` と`['pushed_at']` とで、微妙に違うのねぇ
+
+[GitHub API V3 : what is the difference between pushed_at and updated_at? - Stack Overflow](https://stackoverflow.com/questions/15918588/github-api-v3-what-is-the-difference-between-pushed-at-and-updated-at)
+
+### とはいえ、、、
+
+`requests` を2回`get` するの筋悪いな、、、
+
+
+
 # 📝 2024/09/16
 
 iceberg は、ぼちぼちできてきたかも
@@ -14,10 +50,6 @@ params = {
 }
 
 ```
-
-
-
-
 
 
 # 📝 2024/09/12
