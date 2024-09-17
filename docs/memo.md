@@ -2,6 +2,22 @@
 
 iceberg は、ぼちぼちできてきたかも
 
+## GitHub 上の諸々をとってくる
+
+### `raw` ってどうやって見つけたっけ？
+
+```.py
+import requests
+
+params = {
+  'raw': 'true',
+}
+
+```
+
+
+
+
 
 
 # 📝 2024/09/12
