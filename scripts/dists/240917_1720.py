@@ -1,13 +1,18 @@
 from dataclasses import dataclass
 
 
+class VSTheme:
+  def __init__(self):
+    pass
+
+
 @dataclass
 class ThemeTemplate:
   url: str = 'github_url'
   author: str = 'author_name'
   license: str = 'license'
   pushed_at: str = 'pushed_at'
-
+  
   # xxx: これで全部だっけ？
   background: str = '#ff0000'
   bar_background: str = ' #ff0000'
@@ -26,7 +31,7 @@ class ThemeTemplate:
   library_tint: str = '#ff0000'
   line_number: str = '#ff0000'
   name: str = 'tmpFormatDump'
-
+  
   scopes_bold_font_style: str = 'bold'
   scopes_bold_italic_font_style: str = 'bold-italic'
   scopes_builtinfunction_color: str = '#ff0000'
@@ -66,11 +71,10 @@ class ThemeTemplate:
   scopes_tag_text_decoration: str = 'none'
   scopes_taskDone_color: str = '#ff0000'
   scopes_taskDone_text_decoration: str = 'strikeout'
-
+  
   separator_line: str = '#ff0000'
   tab_background: str = '#ff0000'
   tab_title: str = '#ff0000'
   text_selection_tint: str = '#ff0000'
   thumbnail_border: str = '#ff0000'
   tint: str = '#ff0000'
-

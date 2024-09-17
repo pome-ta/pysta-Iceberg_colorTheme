@@ -3,15 +3,12 @@
  "bar_background": "#161821",
  "dark_keyboard": true,
  "default_text": "#c6c8d1",
- "editor_actions_icon_background": "#ff0000",
- "editor_actions_icon_tint": "#ffff00",
- "editor_actions_popover_background": "#ff00ff",
  "error_text": "#e27878",
  "font-family": "Menlo-Regular",
  "font-size": 15.0,
  "gutter_background": "#1e2132",
  "gutter_border": "#0e1015",
- "interstitial": "#00ff00",
+ "interstitial": "#ff0000",
  "library_background": "#161821",
  "library_tint": "#c6c8d1",
  "line_number": "#444b71",
@@ -51,18 +48,12 @@
    "color": "#6b7089",
    "font-style": "italic"
   },
-  "decorator": {
-   "color": "#c6c8d1"
-  },
   "default": {
    "color": "#c6c8d1"
   },
   "docstring": {
    "color": "#b4be82",
    "font-style": "italic"
-  },
-  "escape": {
-   "background-color": "#a093c7"
   },
   "formatting": {
    "color": "#6b7089"
@@ -92,19 +83,11 @@
   "link": {
    "text-decoration": "underline"
   },
-  "marker": {
-   "box-background-color": "#1e2132",
-   "box-border-color": "#84a0c6",
-   "box-border-type": 4
-  },
   "module": {
    "color": "#89b8c2"
   },
   "number": {
    "color": "#a093c7"
-  },
-  "project": {
-   "font-style": "bold"
   },
   "string": {
    "color": "#89b8c2"

@@ -8,8 +8,6 @@ raw は取れてるから、他の情報
 
 from urllib.parse import urlparse
 import requests
-import json
-from pprint import pprint
 
 params = {
   'licenses': 'true',
@@ -17,7 +15,7 @@ params = {
 
 
 def get_repository_tokens(github_url: str) -> dict:
-  _scheme, _netloc, path, *_ = urlparse(url)
+  _scheme, _netloc, path, *_ = urlparse(github_url)
   [owner_name, repo_name, *_] = [p for p in path.split('/') if p]
   api_url = f'https://api.github.com/repos/{owner_name}/{repo_name}'
   # wip: 制限かかった時の処理
@@ -42,9 +40,11 @@ def get_repo_author_license_pushed_at(github_url: str) -> dict:
   '''
   _html_url = tokens.get('html_url')
   _author = tokens.get('owner').get('login')
-  _license = tokens.get('license').get('name') if tokens.get(
-    'license') is not None else str(tokens.get('license'))
+  # _license = tokens.get('license').get('name') if tokens.get('license') is not None else str(tokens.get('license'))
+  _license = l.get('name') if (l := tokens.get('license')) is not None else str(l)
+  
   _pushed_at = tokens.get('pushed_at')
+  
   return {
     'html_url': _html_url,
     'author': _author,
@@ -54,13 +54,14 @@ def get_repo_author_license_pushed_at(github_url: str) -> dict:
 
 
 if __name__ == '__main__':
-
-  #url = 'https://github.com/pome-ta/pystaColorThemeDev/blob/main/scripts/dists/dumps/myOceanic.json'
-  #url = 'https://github.com/pome-ta/pystaColorThemeDev/'
-
+  # url = 'https://github.com/pome-ta/pystaColorThemeDev/blob/main/scripts/dists/dumps/myOceanic.json'
+  # url = 'https://github.com/pome-ta/pystaColorThemeDev/'
+  
   url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg.color-theme.json'
-  url = 'https://github.com/pome-ta/bnnGenArtPE'
-
+  # url = 'https://github.com/pome-ta/bnnGenArtPE'
+  
   api_info = get_repo_author_license_pushed_at(url)
-  #api_info = get_repository_tokens(url)
+  # api_info = get_repository_tokens(url)
+  print(api_info)
+  x = 1
 
