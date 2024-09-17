@@ -1,7 +1,11 @@
 from dataclasses import dataclass
+from urllib.parse import urlparse
+
+import requests
 
 
 class VSTheme:
+
   def __init__(self):
     pass
 
@@ -12,7 +16,7 @@ class ThemeTemplate:
   author: str = 'author_name'
   license: str = 'license'
   pushed_at: str = 'pushed_at'
-  
+
   # xxx: これで全部だっけ？
   background: str = '#ff0000'
   bar_background: str = ' #ff0000'
@@ -31,7 +35,7 @@ class ThemeTemplate:
   library_tint: str = '#ff0000'
   line_number: str = '#ff0000'
   name: str = 'tmpFormatDump'
-  
+
   scopes_bold_font_style: str = 'bold'
   scopes_bold_italic_font_style: str = 'bold-italic'
   scopes_builtinfunction_color: str = '#ff0000'
@@ -71,10 +75,58 @@ class ThemeTemplate:
   scopes_tag_text_decoration: str = 'none'
   scopes_taskDone_color: str = '#ff0000'
   scopes_taskDone_text_decoration: str = 'strikeout'
-  
+
   separator_line: str = '#ff0000'
   tab_background: str = '#ff0000'
   tab_title: str = '#ff0000'
   text_selection_tint: str = '#ff0000'
   thumbnail_border: str = '#ff0000'
   tint: str = '#ff0000'
+
+
+def get_theme_data(json_url: str) -> dict:
+  params = {
+    'raw': 'true',
+  }
+  response = requests.get(json_url, params)
+  file_name = Path(json_url).name
+  
+  try:
+    vscode_theme_dict = response.json()
+  except requests.exceptions.JSONDecodeError:
+    import re
+    regex = re.compile(r'/\*[\s\S]*?\*/|//.*')
+    res_comment_json = regex.sub('', response.text)
+    vscode_theme_dict = json.loads(res_comment_json)
+
+
+def get_repository_tokens(github_url: str) -> dict:
+  _scheme, _netloc, path, *_ = urlparse(github_url)
+  [owner_name, repo_name, *_] = [p for p in path.split('/') if p]
+  api_url = f'https://api.github.com/repos/{owner_name}/{repo_name}'
+  # wip: 制限かかった時の処理
+  res = requests.get(api_url)
+  return res.json()
+
+
+def get_repo_author_license_pushed_at(github_url: str) -> dict:
+  tokens = get_repository_tokens(github_url)
+
+  _html_url = tokens.get('html_url')
+  _author = tokens.get('owner').get('login')
+  _license = l.get('name') if (l :=
+                               tokens.get('license')) is not None else str(l)
+
+  _pushed_at = tokens.get('pushed_at')
+
+  return {
+    'html_url': _html_url,
+    'author': _author,
+    'license': _license,
+    'pushed_at': _pushed_at,
+  }
+
+
+if __name__ == '__main__':
+  target_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg.color-theme.json'
+
