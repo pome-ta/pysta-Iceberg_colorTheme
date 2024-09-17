@@ -1,12 +1,14 @@
 from dataclasses import dataclass
 
+
 @dataclass
 class ThemeTemplate:
   url: str = 'github_url'
-  author:str = 'author_name'
-  license:str = 'license'
-  pushed_at:str = 'pushed_at'
-  
+  author: str = 'author_name'
+  license: str = 'license'
+  pushed_at: str = 'pushed_at'
+
+  # xxx: これで全部だっけ？
   background: str = '#ff0000'
   bar_background: str = ' #ff0000'
   dark_keyboard: bool = True
