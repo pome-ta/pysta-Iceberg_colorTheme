@@ -90,7 +90,7 @@ def get_theme_data(json_url: str) -> dict:
   }
   response = requests.get(json_url, params)
   file_name = Path(json_url).name
-  
+
   try:
     vscode_theme_dict = response.json()
   except requests.exceptions.JSONDecodeError:
