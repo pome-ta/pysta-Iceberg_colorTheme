@@ -84,12 +84,12 @@ class ThemeTemplate:
   tint: str = '#ff0000'
 
 
-def get_theme_data(json_url: str) -> dict:
+def get_vs_theme(json_url: str) -> dict:
   params = {
     'raw': 'true',
   }
   response = requests.get(json_url, params)
-  file_name = Path(json_url).name
+  #file_name = Path(json_url).name
 
   try:
     vscode_theme_dict = response.json()
@@ -129,4 +129,7 @@ def get_repo_author_license_pushed_at(github_url: str) -> dict:
 
 if __name__ == '__main__':
   target_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg.color-theme.json'
+
+  iceberg_data = get_vs_theme(target_url)
+  iceberg_info = get_repo_author_license_pushed_at(target_url)
 
