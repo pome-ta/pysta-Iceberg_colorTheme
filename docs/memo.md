@@ -6,6 +6,23 @@
 URL でもよしなにやってくれる
 
 
+## 取得情報の保管方法
+
+GitHub から持ってくる情報の格納を`SimpleNamespace` で検討したけど
+
+
+
+
+```.py
+class DictDotNotation(dict):
+
+  def __init__(self, *args, **kwargs):
+    super().__init__(*args, **kwargs)
+    self.__dict__ = self
+```
+
+これにして、ドットアクセスと辞書の情報（`.json` にねじり込む用）を持たせるようにするか
+
 
 ## GitHub からの取り込み時
 
