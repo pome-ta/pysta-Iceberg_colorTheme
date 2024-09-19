@@ -289,7 +289,6 @@ def create_theme_json(pallet: dict) -> str:
   return json_theme
 
 
-
 def export_theme(json_theme: str,
                  file_name: str,
                  tmp_dir: Path | None = None) -> None:
@@ -314,8 +313,6 @@ def export_theme(json_theme: str,
     dir_path = p
     json_path = Path(dir_path, file_name)
     json_path.write_text(json_theme, encoding='utf-8')
-
-
 
 
 def get_vs_theme_data(json_url: str) -> list:
@@ -511,7 +508,7 @@ if __name__ == '__main__':
     'tint':
     vsc.get_value(colors='editorCursor.foreground'),
   }
-  
+
   out_json = create_theme_json(color_pallet)
   export_dir = Path('./testThemes')
   export_theme(out_json, iceberg_name, export_dir)
