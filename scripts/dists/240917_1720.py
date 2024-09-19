@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from pathlib import Path
 from urllib.parse import urlparse
 
 import requests
@@ -84,12 +85,12 @@ class ThemeTemplate:
   tint: str = '#ff0000'
 
 
-def get_vs_theme(json_url: str) -> dict:
+def get_vs_theme_data(json_url: str) -> list:
   params = {
     'raw': 'true',
   }
   response = requests.get(json_url, params)
-  #file_name = Path(json_url).name
+  file_name = Path(json_url).name
 
   try:
     vscode_theme_dict = response.json()
@@ -99,10 +100,16 @@ def get_vs_theme(json_url: str) -> dict:
     res_comment_json = regex.sub('', response.text)
     vscode_theme_dict = json.loads(res_comment_json)
 
+  return [file_name, vscode_theme_dict]
+
 
 def get_repository_tokens(github_url: str) -> dict:
+  '''
   _scheme, _netloc, path, *_ = urlparse(github_url)
   [owner_name, repo_name, *_] = [p for p in path.split('/') if p]
+  '''
+  # todo: (https, github.com, user_name, repository_name, ...others)
+  _, _, owner_name, repo_name, *_ = Path(github_url).parts
   api_url = f'https://api.github.com/repos/{owner_name}/{repo_name}'
   # wip: 制限かかった時の処理
   res = requests.get(api_url)
@@ -130,6 +137,6 @@ def get_repo_author_license_pushed_at(github_url: str) -> dict:
 if __name__ == '__main__':
   target_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg.color-theme.json'
 
-  iceberg_data = get_vs_theme(target_url)
+  iceberg_name, iceberg_data = get_vs_theme_data(target_url)
   iceberg_info = get_repo_author_license_pushed_at(target_url)
 
