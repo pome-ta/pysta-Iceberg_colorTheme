@@ -3,8 +3,8 @@ import json
 
 import requests
 
-url = 'https://github.com/tokyo-night/tokyo-night-vscode-theme/blob/master/themes/tokyo-night-color-theme.json'
-
+#url = 'https://github.com/tokyo-night/tokyo-night-vscode-theme/blob/master/themes/tokyo-night-color-theme.json'
+url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg.color-theme.json'
 
 params = {
   'raw': 'true',
@@ -26,7 +26,7 @@ json_str = json.dumps(vscode_theme_dict,
                       sort_keys=True,
                       ensure_ascii=False)
 
-root_path = Path('./')
+root_path = Path(__file__).parent
 target_path = Path('../dists/vscodeThemes')
 
 theme_path = Path(root_path, target_path, file_name)
