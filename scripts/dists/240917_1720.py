@@ -1,6 +1,12 @@
-from dataclasses import dataclass
+"""
+note: GitHub 取り込みの処理
+情報を最終の`.json` に入れたりとか
+"""
+
 from pathlib import Path
 from urllib.parse import urlparse
+from dataclasses import dataclass
+from types import SimpleNamespace
 
 import requests
 
@@ -116,22 +122,22 @@ def get_repository_tokens(github_url: str) -> dict:
   return res.json()
 
 
-def get_repo_author_license_pushed_at(github_url: str) -> dict:
+def get_repo_author_license_pushed_at(github_url: str) -> SimpleNamespace:
   tokens = get_repository_tokens(github_url)
 
   _html_url = tokens.get('html_url')
   _author = tokens.get('owner').get('login')
   _license = l.get('name') if (l :=
                                tokens.get('license')) is not None else str(l)
-
   _pushed_at = tokens.get('pushed_at')
 
-  return {
-    'html_url': _html_url,
-    'author': _author,
-    'license': _license,
-    'pushed_at': _pushed_at,
-  }
+  return SimpleNamespace(
+    **{
+      'html_url': _html_url,
+      'author': _author,
+      'license': _license,
+      'pushed_at': _pushed_at,
+    })
 
 
 if __name__ == '__main__':
