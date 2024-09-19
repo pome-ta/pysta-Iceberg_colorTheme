@@ -1,4 +1,8 @@
 {
+ "___author": "cocopon",
+ "___html_url": "https://github.com/cocopon/vscode-iceberg-theme",
+ "___license": "MIT License",
+ "___pushed_at": "2023-01-17T12:49:57Z",
  "colors": {
   "activityBar.background": "#161821",
   "activityBar.foreground": "#c6c8d1",
