@@ -54,7 +54,7 @@ class ThemeObject:
   def export(self, vs_themes: Path):
     if not vs_themes.is_dir():
       vs_themes.mkdir(parents=True)
-      
+
     theme_json = self.to_dump()
     json_file = Path(vs_themes, self.name)
     json_file.write_text(theme_json, encoding='utf-8')
@@ -99,6 +99,15 @@ class ThemeObject:
       # wip: comment 削除処理
       return response.json()
 
+  def __api_tokens(self, url: str) -> dict | None:
+    _, _, owner_name, repo_name, *_ = Path(url).parts
+
+    api_url = f'https://api.github.com/repos/{owner_name}/{repo_name}'
+    # wip: 制限かかった時の処理
+    response = requests.get(api_url)
+    if response.status_code == 200:
+      return response.json()
+
   def __get_info_attribute(self, url: str) -> DictDotNotation | None:
     tokens = self.__api_tokens(url)
     if tokens is None:
@@ -119,21 +128,12 @@ class ThemeObject:
 
     return self.DictDotNotation(info)
 
-  def __api_tokens(self, url: str) -> dict | None:
-    _, _, owner_name, repo_name, *_ = Path(url).parts
-
-    api_url = f'https://api.github.com/repos/{owner_name}/{repo_name}'
-    # wip: 制限かかった時の処理
-    response = requests.get(api_url)
-    if response.status_code == 200:
-      return response.json()
-
 
 if __name__ == '__main__':
-  #target_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg.color-theme.json'
-  target_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg-light.color-theme.json'
+  target_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg.color-theme.json'
+  #target_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg-light.color-theme.json'
 
   to = ThemeObject(target_url)
   #aa = to.to_dump()
-  to.export(Path('./testThemes'))
+  to.export(Path('./vscodeThemes'))
 
