@@ -9,12 +9,6 @@ import json
 import requests
 
 
-class ThemeInterpretation:
-
-  def __init__(self):
-    pass
-
-
 class ThemeObject:
   """
   repository の情報をまるっと持つ
@@ -127,6 +121,50 @@ class ThemeObject:
     }
 
     return self.DictDotNotation(info)
+
+
+class ThemeInterpretation:
+  """
+  VSCode のTheme 情報を指定して取得
+  """
+
+  def __init__(self, target: dict):
+    self.target = target
+
+  def __for_colors(self, key: str) -> str | bool | int | float | None:
+    # xxx: `get` じゃなくて`[key]` の方がいいか?
+    return self.target['colors'].get(key)
+
+  def __for_token_colors(self,
+                         keys: list[str]) -> str | bool | int | float | None:
+    scope, settings = keys
+    for tokenColor in self.target.get('tokenColors'):
+      _scop = tokenColor.get('scope')
+      # xxx: 配列格納に合わせる
+      scopes = _scop if isinstance(_scop, list) else [_scop]
+      if scope in scopes:
+        return tokenColor.get('settings').get(settings)
+
+  def get_value(
+      self,
+      search_value: str = '',
+      colors: str | None = None,
+      tokenColors: list[str] | None = None) -> str | bool | int | float | None:
+    value = None
+
+    if search_value:
+      value = self.target.get(search_value)
+    elif colors is not None and isinstance(colors, str):
+      value = self.__for_colors(colors)
+    elif tokenColors is not None and isinstance(tokenColors, list):
+      value = self.__for_token_colors(tokenColors)
+
+    if value is None:
+      # xxx: `raise` を正しく使いたい
+      raise print(
+        f'{self}: value の値が`{value}` です:\n- {search_value=}\n- {colors=}\n- {tokenColors=}'
+      )
+    return value
 
 
 if __name__ == '__main__':
