@@ -21,9 +21,10 @@ class ThemeObject:
   """
   
   def __init__(self, github_url: str):
-    self.name: str = Path(github_url).name
-    self.data: dict | None = self.__get_json_data(github_url)
-    self.info: dict | None = self.__get_info_attribute(github_url)
+    self.url_path: Path = Path(github_url)
+    self.name: str = self.url_path.name
+    self.data: dict | None = self.__get_json_data()
+    self.info: dict | None = self.__get_info_attribute()
     # xxx: `None` の時ここで弾く？
   
   def to_dump(self) -> str:
@@ -48,29 +49,27 @@ class ThemeObject:
       super().__init__(*args, **kwargs)
       self.__dict__ = self
   
-  @staticmethod
-  def __get_json_data(url: str) -> dict | None:
+  def __get_json_data(self) -> dict | None:
     params = {
       'raw': 'true',
     }
-    response = requests.get(url, params)
+    response = requests.get(str(self.url_path), params)
     if response.status_code == 200:
       # xxx: iceberg には、comment ない
       # wip: comment 削除処理
       return response.json()
   
-  @staticmethod
-  def __api_tokens(url: str) -> dict | None:
-    _, _, owner_name, repo_name, *_ = Path(url).parts
-    
+  def __api_tokens(self) -> dict | None:
+    _, _, owner_name, repo_name, *_ = self.url_path.parts
     api_url = f'https://api.github.com/repos/{owner_name}/{repo_name}'
+    
     # wip: 制限かかった時の処理
     response = requests.get(api_url)
     if response.status_code == 200:
       return response.json()
   
-  def __get_info_attribute(self, url: str) -> DictDotNotation | None:
-    tokens = self.__api_tokens(url)
+  def __get_info_attribute(self) -> DictDotNotation | None:
+    tokens = self.__api_tokens()
     if tokens is None:
       return
     _html_url = tokens.get('html_url')
@@ -103,9 +102,9 @@ class ThemeInterpretation:
   def __for_token_colors(self, keys: list[str]) -> str | bool | int | float | None:
     scope, settings = keys
     for tokenColor in self.target.get('tokenColors'):
-      _scop = tokenColor.get('scope')
+      _scope = tokenColor.get('scope')
       # xxx: 配列格納に合わせる
-      scopes = _scop if isinstance(_scop, list) else [_scop]
+      scopes = _scope if isinstance(_scope, list) else [_scope]
       if scope in scopes:
         return tokenColor.get('settings').get(settings)
   
@@ -132,6 +131,6 @@ if __name__ == '__main__':
   target_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg.color-theme.json'
   # target_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg-light.color-theme.json'
   
-  to = ThemeObject(target_url)
+  theme_object = ThemeObject(target_url)
   # aa = to.to_dump()
-  to.export(Path('./vscodeThemes'))
+  # to.export(Path('./vscodeThemes'))
