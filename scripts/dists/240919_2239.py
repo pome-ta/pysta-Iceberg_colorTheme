@@ -4,6 +4,7 @@ note: GitHub 取り込みと、dump 取り込み双方での設計
 """
 
 from pathlib import Path
+import json
 
 import requests
 
@@ -30,12 +31,33 @@ class ThemeObject:
     self._data: dict | None
     self._info: dict | None
 
-    self.__setup_attributes(github_url)
+    self.__setup_repository_attributes(github_url)
 
-  def __setup_attributes(self, url: str):
+  def __setup_repository_attributes(self, url: str):
     self.name = url
     self.data = url
     self.info = url
+
+    # xxx: `None` の時ここで弾く？
+
+  def to_dump(self) -> str:
+    data = self.data if self.info is None else self.data | self.info
+
+    kwargs = {
+      'indent': 1,
+      'sort_keys': True,
+      'ensure_ascii': False,
+    }
+    dump_json = json.dumps(data, **kwargs)
+    return dump_json
+
+  def export(self, vs_themes: Path):
+    if not vs_themes.is_dir():
+      vs_themes.mkdir(parents=True)
+      
+    theme_json = self.to_dump()
+    json_file = Path(vs_themes, self.name)
+    json_file.write_text(theme_json, encoding='utf-8')
 
   @property
   def name(self) -> str:
@@ -112,4 +134,6 @@ if __name__ == '__main__':
   target_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg-light.color-theme.json'
 
   to = ThemeObject(target_url)
+  #aa = to.to_dump()
+  to.export(Path('./testThemes'))
 
