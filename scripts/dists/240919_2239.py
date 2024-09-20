@@ -1,5 +1,6 @@
 """
 note: GitHub 取り込みと、dump 取り込み双方での設計
+  - 制限考えるのはAPI 使う時のみか
 """
 
 from pathlib import Path
@@ -59,6 +60,7 @@ class ThemeData:
   @name.setter
   def name(self, name: str):
     pass
+    
 
   @property
   def data(self) -> dict:
@@ -75,9 +77,12 @@ class ThemeData:
   @info.setter
   def info(self, info: dict):
     pass
+    
+  def setup_info(self):
+    pass
 
-  def __api_tokens(self) -> dict:
-    _, _, owner_name, repo_name, *_ = Path(self.github_url).parts
+  def __api_tokens(self, github_url: str) -> dict:
+    _, _, owner_name, repo_name, *_ = Path(github_url).parts
 
     api_url = f'https://api.github.com/repos/{owner_name}/{repo_name}'
     # wip: 制限かかった時の処理

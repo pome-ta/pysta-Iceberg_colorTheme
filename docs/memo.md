@@ -1,3 +1,59 @@
+# 📝 2024/09/20
+
+## class にして、構造的に書いていく
+
+### api の制限
+
+[レート制限用 REST API エンドポイント - GitHub Docs](https://docs.github.com/ja/rest/rate-limit/rate-limit?apiVersion=2022-11-28)
+
+`.json` の取得は問題ないだろうけど、repository 情報を取りたい時に怖いよなぁ
+
+
+最悪、`license`、`pushed_at` を握りつぶすか
+
+
+`status_code`
+
+
+[REST API のトラブルシューティング - GitHub Docs](https://docs.github.com/ja/rest/using-the-rest-api/troubleshooting-the-rest-api?apiVersion=2022-11-28)
+
+
+適当にAPI 呼び出しと、データ取得を回してみる
+
+
+```.py
+import time
+import requests
+
+url = 'https://github.com/pome-ta/dockerReactSample/blob/main/.devcontainer/devcontainer.json'
+
+_, _, owner_name, repo_name, *_ = Path(url).parts
+api_url = f'https://api.github.com/repos/{owner_name}/{repo_name}'
+# wip: 制限かかった時の処理
+
+api_res = requests.get(api_url)
+api_json = api_res.json()
+'''
+for i in range(65):
+  api_res = requests.get(api_url)
+  api_json = api_res.json()
+  print(i)
+  time.sleep(0.9)
+'''
+params = {
+  'raw': 'true',
+}
+
+res = requests.get(url, params)
+res_json = res.json()
+
+
+```
+
+API 制限がされても、データの取得はできそう
+
+
+
 # 📝 2024/09/19
 
 
