@@ -83,6 +83,9 @@ class ConvertThemeTemplate:
   tint: str = '#ff0000'
 
 
+class ConvertTheme(ConvertThemeTemplate):
+  pass
+
 class Pythonista3ThemeObject:
   """
   memo:
@@ -226,5 +229,6 @@ if __name__ == '__main__':
   #vs_theme = VSCodeThemeObject(target_url)
   # aa = to.to_dump()
   # to.export(Path('./vscodeThemes'))
-  tp = ConvertThemeTemplate(url='hige')
+  #tp = ConvertThemeTemplate(url='hige')
+  tp = ConvertTheme(url='hoge')
 
