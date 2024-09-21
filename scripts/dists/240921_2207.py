@@ -11,12 +11,12 @@ import requests
 
 
 @dataclass
-class ConvertThemeTemplate:
+class SchemeTemplate:
   url: str = 'github_url'  # 対象のVSCode Color Theme リポジトリURL
   author: str = 'author_name'  # Theme 作者名
   license: str = 'license'  # リポジトリに表記されているライセンス
   pushed_at: str = 'pushed_at'  # main ブランチでの最終コミット日時
-  
+
   background: str = '#ff0000'  # エディターのデフォルトの背景色
   bar_background: str = ' #ff0000'  # ツールバーとアクティブなタブの背景色
   dark_keyboard: bool = True  # ダーク色のオンスクリーン キーボードを使用するかどうか
@@ -74,7 +74,7 @@ class ConvertThemeTemplate:
   scopes_tag_textDecoration: str = 'none'  # これは Task paper ですか、HTML ですか、それとも何ですか?
   scopes_taskDone_color: str = '#ff0000'  # タスクペーパーのタスクが完了しました
   scopes_taskDone_textDecoration: str = 'strikeout'
-  
+
   separator_line: str = '#ff0000'  # ツールバー/タブとエディターの間の区切り線の色
   tab_background: str = '#ff0000'  # 非アクティブなタブの背景色
   tab_title: str = '#ff0000'  # タブのタイトルのテキストの色
@@ -83,7 +83,7 @@ class ConvertThemeTemplate:
   tint: str = '#ff0000'  # インターフェースボタンの色合い
 
 
-class ConvertTheme(ConvertThemeTemplate):
+class SchemeItems(SchemeTemplate):
   pass
 
 
@@ -93,7 +93,7 @@ class Pythonista3ThemeObject:
   `VSCodeThemeObject` 構成と似たような感じにするには。。。
   そもそも、構成として似せた方がええよね？
   """
-  
+
   def __init__(self):
     pass
 
@@ -108,14 +108,14 @@ class VSCodeThemeObject:
   # 今後
   API の制限回避としてローカルdump から持ってくるパターンも考えたい
   """
-  
+
   def __init__(self, github_url: str):
-    self.url_path: Path = Path(github_url)
-    self.name: str = self.url_path.name
+    self.url: str = github_url
+    self.name: str = Path(self.url).name
     self.data: dict | None = self.__get_json_data()
     self.info: dict | None = self.__get_info_attribute()
     # xxx: `None` の時ここで弾く？
-  
+
   def to_dump(self) -> str:
     data = self.data if self.info is None else self.data | self.info
     kwargs = {
@@ -124,40 +124,40 @@ class VSCodeThemeObject:
       'ensure_ascii': False,
     }
     return json.dumps(data, **kwargs)
-  
+
   def export(self, vs_themes: Path):
     if not vs_themes.is_dir():
       vs_themes.mkdir(parents=True)
-    
+
     theme_json = self.to_dump()
     json_file = Path(vs_themes, self.name)
     json_file.write_text(theme_json, encoding='utf-8')
-  
+
   class DictDotNotation(dict):
-    
+
     def __init__(self, *args, **kwargs):
       super().__init__(*args, **kwargs)
       self.__dict__ = self
-  
+
   def __get_json_data(self) -> dict | None:
     params = {
       'raw': 'true',
     }
-    response = requests.get(str(self.url_path), params)
+    response = requests.get(self.url, params)
     if response.status_code == 200:
       # xxx: iceberg には、comment ない
       # wip: comment 削除処理
       return response.json()
-  
+
   def __api_tokens(self) -> dict | None:
-    _, _, owner_name, repo_name, *_ = self.url_path.parts
+    _, _, owner_name, repo_name, *_ = Path(self.url).parts
     api_url = f'https://api.github.com/repos/{owner_name}/{repo_name}'
-    
+
     # wip: 制限かかった時の処理
     response = requests.get(api_url)
     if response.status_code == 200:
       return response.json()
-  
+
   def __get_info_attribute(self) -> DictDotNotation | None:
     tokens = self.__api_tokens()
     if tokens is None:
@@ -167,9 +167,7 @@ class VSCodeThemeObject:
     _license = l.get('name') if (l :=
                                  tokens.get('license')) is not None else str(l)
     _pushed_at = tokens.get('pushed_at')
-    
-    # xxx: `_` は3つ
-    # xxx: ↑ いや、、、不要なはず
+
     info = {
       'html_url': _html_url,
       'author': _author,
@@ -183,14 +181,14 @@ class ThemeInterpretation:
   """
   VSCode のTheme 情報を指定して取得
   """
-  
+
   def __init__(self, target: dict):
     self.target = target
-  
+
   def __for_colors(self, key: str) -> str | bool | int | float | None:
     # xxx: `get` じゃなくて`[key]` の方がいいか?
     return self.target['colors'].get(key)
-  
+
   def __for_token_colors(self,
                          keys: list[str]) -> str | bool | int | float | None:
     scope, settings = keys
@@ -200,21 +198,21 @@ class ThemeInterpretation:
       scopes = _scope if isinstance(_scope, list) else [_scope]
       if scope in scopes:
         return tokenColor.get('settings').get(settings)
-  
+
   def get_value(
       self,
       search_value: str = '',
       colors: str | None = None,
       tokenColors: list[str] | None = None) -> str | bool | int | float | None:
     value = None
-    
+
     if search_value:
       value = self.target.get(search_value)
     elif colors is not None and isinstance(colors, str):
       value = self.__for_colors(colors)
     elif tokenColors is not None and isinstance(tokenColors, list):
       value = self.__for_token_colors(tokenColors)
-    
+
     if value is None:
       # xxx: `raise` を正しく使いたい
       raise print(
@@ -226,9 +224,10 @@ class ThemeInterpretation:
 if __name__ == '__main__':
   target_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg.color-theme.json'
   # target_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg-light.color-theme.json'
-  
-  # vs_theme = VSCodeThemeObject(target_url)
+
+  vs_theme = VSCodeThemeObject(target_url)
   # aa = to.to_dump()
-  # to.export(Path('./vscodeThemes'))
+  vs_theme.export(Path('./vscodeThemes'))
   # tp = ConvertThemeTemplate(url='bar')
-  tp = ConvertTheme(url='a')
+  #s = SchemeItems(url='a')
+
