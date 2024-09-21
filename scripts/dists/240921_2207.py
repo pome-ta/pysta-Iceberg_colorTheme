@@ -109,8 +109,12 @@ class VSCodeThemeObject:
   API の制限回避としてローカルdump から持ってくるパターンも考えたい
   """
 
-  def __init__(self, github_url: str):
+  def __init__(self,
+               github_url: str,
+               local_dir: Path | None = None,
+               use_local: bool = False):
     self.url: str = github_url
+    self.local_dir = local_dir
     self.name: str = Path(self.url).name
     self.data: dict | None = self.__get_json_data()
     self.info: dict | None = self.__get_info_attribute()
@@ -125,7 +129,8 @@ class VSCodeThemeObject:
     }
     return json.dumps(data, **kwargs)
 
-  def export(self, vs_themes: Path):
+  def export(self, vs_themes: Path | None = None):
+    vs_themes = self.local_dir if vs_themes is None else vs_themes
     if not vs_themes.is_dir():
       vs_themes.mkdir(parents=True)
 
@@ -168,7 +173,6 @@ class VSCodeThemeObject:
                                  tokens.get('license')) is not None else str(l)
     _pushed_at = tokens.get('pushed_at')
 
-    
     # xxx: `_` 3つ
     info = {
       '___html_url': _html_url,
