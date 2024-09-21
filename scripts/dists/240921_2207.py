@@ -168,11 +168,13 @@ class VSCodeThemeObject:
                                  tokens.get('license')) is not None else str(l)
     _pushed_at = tokens.get('pushed_at')
 
+    
+    # xxx: `_` 3つ
     info = {
-      'html_url': _html_url,
-      'author': _author,
-      'license': _license,
-      'pushed_at': _pushed_at,
+      '___html_url': _html_url,
+      '___author': _author,
+      '___license': _license,
+      '___pushed_at': _pushed_at,
     }
     return self.DictDotNotation(info)
 
@@ -223,7 +225,7 @@ class ThemeInterpretation:
 
 if __name__ == '__main__':
   target_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg.color-theme.json'
-  # target_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg-light.color-theme.json'
+  #target_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg-light.color-theme.json'
 
   vs_theme = VSCodeThemeObject(target_url)
   # aa = to.to_dump()
