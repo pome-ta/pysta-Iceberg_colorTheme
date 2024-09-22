@@ -111,13 +111,22 @@ class VSCodeThemeObject:
 
   def __init__(self,
                github_url: str,
-               local_dir: Path | None = None,
-               use_local: bool = False):
-    self.url: str = github_url
-    self.local_dir = local_dir
-    self.name: str = Path(self.url).name
-    self.data: dict | None = self.__get_json_data()
-    self.info: dict | None = self.__get_info_attribute()
+               use_local: bool = False,
+               local: Path | None = None):
+    self.url = github_url
+    # wip: モジュール化した時のファイルパス扱い
+    self.local_path = Path('./vscodeThemes') if local is None else local
+
+    self.name: str = Path(github_url).name
+    self.data: dict | None
+    self.info: dict | None
+
+    if not use_local:
+      self.data = self.__get_url_json()
+      self.info = self.__get_info_attribute()
+    else:
+      self.data, self.info = self.__get_local_data()
+
     # xxx: `None` の時ここで弾く？
 
   def to_dump(self) -> str:
@@ -130,7 +139,9 @@ class VSCodeThemeObject:
     return json.dumps(data, **kwargs)
 
   def export(self, vs_themes: Path | None = None):
-    vs_themes = self.local_dir if vs_themes is None else vs_themes
+    vs_themes = self.local_path if vs_themes is None else vs_themes
+
+    # xxx: ディレクトリ周り、存在しない時の処理
     if not vs_themes.is_dir():
       vs_themes.mkdir(parents=True)
 
@@ -144,7 +155,7 @@ class VSCodeThemeObject:
       super().__init__(*args, **kwargs)
       self.__dict__ = self
 
-  def __get_json_data(self) -> dict | None:
+  def __get_url_json(self) -> dict | None:
     params = {
       'raw': 'true',
     }
@@ -181,6 +192,22 @@ class VSCodeThemeObject:
       '___pushed_at': _pushed_at,
     }
     return self.DictDotNotation(info)
+
+  def __get_local_data(self) -> list[dict, DictDotNotation] | None:
+    data_text = Path(self.local_path, self.name).read_text()
+    loads = json.loads(data_text)
+    # xxx: `_` 3つ
+    info = {
+      '___html_url': loads.get('___html_url'),
+      '___author': loads.get('___author'),
+      '___license': loads.get('___license'),
+      '___pushed_at': loads.get('___pushed_at'),
+    }
+
+    return [
+      loads,
+      self.DictDotNotation(info),
+    ]
 
 
 class ThemeInterpretation:
@@ -231,9 +258,9 @@ if __name__ == '__main__':
   target_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg.color-theme.json'
   #target_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg-light.color-theme.json'
 
-  vs_theme = VSCodeThemeObject(target_url)
+  vs_theme = VSCodeThemeObject(target_url, 1)
   # aa = to.to_dump()
-  vs_theme.export(Path('./vscodeThemes'))
+  #vs_theme.export(Path('./vscodeThemes'))
   # tp = ConvertThemeTemplate(url='bar')
   #s = SchemeItems(url='a')
 
