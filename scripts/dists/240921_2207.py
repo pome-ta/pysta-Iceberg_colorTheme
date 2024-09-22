@@ -186,14 +186,14 @@ class VSCodeThemeObject:
       return response.json()
 
   def __create_info(self,
-                    html_url: str,
+                    repository_url: str,
                     author: str,
                     license: str,
                     pushed_at: str,
                     file_name: str | None = None) -> DictDotNotation:
     # xxx: `_` 3つ
     info = {
-      '___repository_url': html_url,
+      '___repository_url': repository_url,
       '___author': author,
       '___license': license,
       '___pushed_at': pushed_at,
@@ -206,13 +206,13 @@ class VSCodeThemeObject:
     tokens = self.__api_tokens()
     if tokens is None:
       return
-    _html_url = tokens.get('html_url')
+    _repository_url = tokens.get('html_url')
     _author = tokens.get('owner').get('login')
     _license = l.get('name') if (l :=
                                  tokens.get('license')) is not None else str(l)
     _pushed_at = tokens.get('pushed_at')
 
-    info = self.__create_info(_html_url, _author, _license, _pushed_at)
+    info = self.__create_info(_repository_url, _author, _license, _pushed_at)
 
     return info
 
@@ -220,12 +220,12 @@ class VSCodeThemeObject:
     data_text = Path(self.local_path, self.name).read_text()
     loads = json.loads(data_text)
 
-    _html_url = loads.get('___html_url')
+    _repository_url = loads.get('___repository_url')
     _author = loads.get('___author')
     _license = loads.get('___license')
     _pushed_at = loads.get('___pushed_at')
 
-    info = self.__create_info(_html_url, _author, _license, _pushed_at)
+    info = self.__create_info(_repository_url, _author, _license, _pushed_at)
 
     return [
       loads,
@@ -281,7 +281,7 @@ if __name__ == '__main__':
   target_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg.color-theme.json'
   #target_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg-light.color-theme.json'
 
-  vs_theme = VSCodeThemeObject(target_url, use_local=False)
+  vs_theme = VSCodeThemeObject(target_url, use_local=True)
   vs_theme.export()
   # tp = ConvertThemeTemplate(url='bar')
   #s = SchemeItems(url='a')
