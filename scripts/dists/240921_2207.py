@@ -18,7 +18,7 @@ class SchemeTemplate:
   license_kind: str = 'license'  # リポジトリに表記されているライセンス
   pushed_at: str = 'pushed_at'  # main ブランチでの最終コミット日時
   repository_url: str = 'github_url'  # 対象のVSCode Color Theme リポジトリURL
-  
+
   background: str = '#ff0000'  # エディターのデフォルトの背景色
   bar_background: str = ' #ff0000'  # ツールバーとアクティブなタブの背景色
   dark_keyboard: bool = True  # ダーク色のオンスクリーン キーボードを使用するかどうか
@@ -76,7 +76,7 @@ class SchemeTemplate:
   scopes_tag_textDecoration: str = 'none'  # これは Task paper ですか、HTML ですか、それとも何ですか?
   scopes_taskDone_color: str = '#ff0000'  # タスクペーパーのタスクが完了しました
   scopes_taskDone_textDecoration: str = 'strikeout'
-  
+
   separator_line: str = '#ff0000'  # ツールバー/タブとエディターの間の区切り線の色
   tab_background: str = '#ff0000'  # 非アクティブなタブの背景色
   tab_title: str = '#ff0000'  # タブのタイトルのテキストの色
@@ -95,7 +95,7 @@ class Pythonista3ThemeObject:
   initialize 時の変数、引数の持たせ方を考えたい
   
   """
-  
+
   def __init__(self,
                vs_data: dict,
                save_local: bool = True,
@@ -118,7 +118,7 @@ class VSCodeThemeObject:
   # 今後
   API の制限回避としてローカルdump から持ってくるパターンも考えたい
   """
-  
+
   def __init__(self,
                github_url: str,
                use_local: bool = False,
@@ -126,18 +126,18 @@ class VSCodeThemeObject:
     self.url = github_url
     # wip: モジュール化した時のファイルパス扱い
     self.local_path = Path('./vscodeThemes') if local is None else local
-    
+
     self.name: str = Path(github_url).name
     self.data: dict | None
     self.info: dict | None
-    
+
     if not use_local:
       self.data = self.__get_url_json()
       self.info = self.__get_info_attribute()
     else:
       self.data, self.info = self.__get_local_data()
     # xxx: `None` の時ここで弾く？
-  
+
   def to_dump(self) -> str:
     data = self.data if self.info is None else self.data | self.info
     kwargs = {
@@ -146,18 +146,18 @@ class VSCodeThemeObject:
       'ensure_ascii': False,
     }
     return json.dumps(data, **kwargs)
-  
+
   def export(self, vs_themes: Path | None = None):
     vs_themes = self.local_path if vs_themes is None else vs_themes
-    
+
     # xxx: ディレクトリ周り、存在しない時の処理
     if not vs_themes.is_dir():
       vs_themes.mkdir(parents=True)
-    
+
     theme_json = self.to_dump()
     json_file = Path(vs_themes, self.name)
     json_file.write_text(theme_json, encoding='utf-8')
-  
+
   class DictDotNotation(dict):
     """
     ドットアクセスしたいための実装だけど。。。
@@ -165,11 +165,11 @@ class VSCodeThemeObject:
     先頭に`_` を付けたいけど、PyCharm 的に`protected メンバー` のアクセスとして
     警告出ちゃう。。。（無視で対処したくない）
     """
-    
+
     def __init__(self, *args, **kwargs):
       super().__init__(*args, **kwargs)
       self.__dict__ = self
-  
+
   def __get_url_json(self) -> dict | None:
     params = {
       'raw': 'true',
@@ -179,16 +179,16 @@ class VSCodeThemeObject:
       # xxx: iceberg には、comment ない
       # wip: comment 削除処理
       return response.json()
-  
+
   def __api_tokens(self) -> dict | None:
     _, _, owner_name, repo_name, *_ = Path(self.url).parts
     api_url = f'https://api.github.com/repos/{owner_name}/{repo_name}'
-    
+
     # wip: 制限かかった時の処理
     response = requests.get(api_url)
     if response.status_code == 200:
       return response.json()
-  
+
   def __create_info(self,
                     repository_url: str,
                     author_name: str,
@@ -204,30 +204,32 @@ class VSCodeThemeObject:
       '_file_url': self.url,
     }
     return self.DictDotNotation(info)
-  
+
   def __get_info_attribute(self) -> DictDotNotation | None:
     tokens = self.__api_tokens()
     if tokens is None:
       return
     _repository_url = tokens.get('html_url')
     _author_name = tokens.get('owner').get('login')
-    _license_kind = l.get('name') if (l :=
-                                      tokens.get('license')) is not None else str(l)
+    _license_kind = l.get('name') if (
+      l := tokens.get('license')) is not None else str(l)
     _pushed_at = tokens.get('pushed_at')
-    
-    info = self.__create_info(_repository_url, _author_name, _license_kind, _pushed_at)
+
+    info = self.__create_info(_repository_url, _author_name, _license_kind,
+                              _pushed_at)
     return info
-  
+
   def __get_local_data(self) -> list[dict | DictDotNotation]:
     data_text = Path(self.local_path, self.name).read_text()
     loads = json.loads(data_text)
-    
+
     _repository_url = loads.get('_repository_url')
     _author_name = loads.get('_author_name')
     _license_kind = loads.get('_license_kind')
     _pushed_at = loads.get('_pushed_at')
-    
-    info = self.__create_info(_repository_url, _author_name, _license_kind, _pushed_at)
+
+    info = self.__create_info(_repository_url, _author_name, _license_kind,
+                              _pushed_at)
     return [
       loads,
       info,
@@ -238,14 +240,14 @@ class ThemeInterpretation:
   """
   VSCode のTheme 情報を指定して取得
   """
-  
+
   def __init__(self, target: dict):
     self.target = target
-  
+
   def __for_colors(self, key: str) -> str | bool | int | float | None:
     # xxx: `get` じゃなくて`[key]` の方がいいか?
     return self.target['colors'].get(key)
-  
+
   def __for_token_colors(self,
                          keys: list[str]) -> str | bool | int | float | None:
     scope, settings = keys
@@ -255,21 +257,21 @@ class ThemeInterpretation:
       scopes = _scope if isinstance(_scope, list) else [_scope]
       if scope in scopes:
         return tokenColor.get('settings').get(settings)
-  
+
   def get_value(
       self,
       search_value: str = '',
       colors: str | None = None,
       tokenColors: list[str] | None = None) -> str | bool | int | float | None:
     value = None
-    
+
     if search_value:
       value = self.target.get(search_value)
     elif colors is not None and isinstance(colors, str):
       value = self.__for_colors(colors)
     elif tokenColors is not None and isinstance(tokenColors, list):
       value = self.__for_token_colors(tokenColors)
-    
+
     if value is None:
       # xxx: `raise` を正しく使いたい
       raise print(
@@ -279,25 +281,30 @@ class ThemeInterpretation:
 
 
 if __name__ == '__main__':
+
   class SchemeItems(SchemeTemplate):
+
     def __init__(self, vscode_theme: VSCodeThemeObject):
       vsi = ThemeInterpretation(vscode_theme.data)
-      
+
       self.author = vscode_theme.info['_author_name']
       self.file_name = vscode_theme.info['_file_name']
       self.file_url = vscode_theme.info['_file_url']
       self.license_kind = vscode_theme.info['_license_kind']
       self.repository_url = vscode_theme.info['_repository_url']
-      
+
       self.background = vsi.get_value(colors='editor.background')
       self.bar_background = vsi.get_value(colors='tab.activeBackground')
       self.dark_keyboard = True
-      self.default_text = vsi.get_value(tokenColors=['text', 'foreground', ])
+      self.default_text = vsi.get_value(tokenColors=[
+        'text',
+        'foreground',
+      ])
       self.editor_actions_icon_background = '#ff0000'
       self.editor_actions_icon_tint = '#00ff00'
       self.editor_actions_popover_background = '#0000ff'
       self.error_text = vsi.get_value(colors='editorError.foreground')
-      
+
       self.gutter_background = vsi.get_value(colors='editorGutter.background')
       self.gutter_border = vsi.get_value(colors='tab.border')
       self.interstitial = '#ff00ff'
@@ -305,65 +312,118 @@ if __name__ == '__main__':
       self.library_tint = vsi.get_value(colors='sideBar.foreground')
       self.line_number = vsi.get_value(colors='editorLineNumber.foreground')
       self.name = vscode_theme.name
-      
+
       self.scopes_bold_fontStyle = 'bold'
       self.scopes_boldItalic_fontStyle = 'bold-italic'
-      self.scopes_builtinfunction_color = vsi.get_value(tokenColors=['entity.name.function', 'foreground', ])
+      self.scopes_builtinfunction_color = vsi.get_value(tokenColors=[
+        'entity.name.function',
+        'foreground',
+      ])
       self.scopes_checkbox_checkbox = True
       self.scopes_checkboxDone_checkbox = True
       self.scopes_checkboxDone_done = True
-      self.scopes_class_color = vsi.get_value(tokenColors=['entity.name.class', 'foreground', ])
-      self.scopes_classdef_color = vsi.get_value(tokenColors=['entity.name.class', 'foreground', ])
+      self.scopes_class_color = vsi.get_value(tokenColors=[
+        'entity.name.class',
+        'foreground',
+      ])
+      self.scopes_classdef_color = vsi.get_value(tokenColors=[
+        'entity.name.class',
+        'foreground',
+      ])
       self.scopes_classdef_fontStyle = 'bold'
-      self.scopes_code_backgroundColor = vsi.get_value(tokenColors=['markup.fenced_code.block', 'foreground', ])
+      self.scopes_code_backgroundColor = vsi.get_value(tokenColors=[
+        'markup.fenced_code.block',
+        'foreground',
+      ])
       self.scopes_code_cornerRadius = 2.0
-      self.scopes_codeblockStart_color = vsi.get_value(tokenColors=['markup.inline.raw.string', 'foreground', ])
-      self.scopes_comment_color = vsi.get_value(tokenColors=['comment', 'foreground', ])
+      self.scopes_codeblockStart_color = vsi.get_value(tokenColors=[
+        'markup.inline.raw.string',
+        'foreground',
+      ])
+      self.scopes_comment_color = vsi.get_value(tokenColors=[
+        'comment',
+        'foreground',
+      ])
       self.scopes_comment_fontStyle = 'italic'
-      self.scopes_decorator_color = vsi.get_value(tokenColors=['text', 'foreground', ])
-      self.scopes_default_color = vsi.get_value(tokenColors=['text', 'foreground', ])
-      self.scopes_docstring_color = vsi.get_value(
-        tokenColors=['punctuation.definition.template-expression', 'foreground',
-                     ])
+      self.scopes_decorator_color = vsi.get_value(tokenColors=[
+        'text',
+        'foreground',
+      ])
+      self.scopes_default_color = vsi.get_value(tokenColors=[
+        'text',
+        'foreground',
+      ])
+      self.scopes_docstring_color = vsi.get_value(tokenColors=[
+        'punctuation.definition.template-expression',
+        'foreground',
+      ])
       self.scopes_docstring_fontStyle = 'italic'
-      self.scopes_escape_backgroundColor = vsi.get_value(tokenColors=['entity.other.attribute-name', 'foreground', ])
-      self.scopes_formatting_color = vsi.get_value(tokenColors=['markup.fenced_code.block', 'foreground', ])
-      self.scopes_function_color = vsi.get_value(tokenColors=['entity.name.function', 'foreground', ])
-      self.scopes_functiondef_color = vsi.get_value(tokenColors=['entity.name.function', 'foreground', ])
+      self.scopes_escape_backgroundColor = vsi.get_value(tokenColors=[
+        'entity.other.attribute-name',
+        'foreground',
+      ])
+      self.scopes_formatting_color = vsi.get_value(tokenColors=[
+        'markup.fenced_code.block',
+        'foreground',
+      ])
+      self.scopes_function_color = vsi.get_value(tokenColors=[
+        'entity.name.function',
+        'foreground',
+      ])
+      self.scopes_functiondef_color = vsi.get_value(tokenColors=[
+        'entity.name.function',
+        'foreground',
+      ])
       self.scopes_functiondef_fontStyle = 'bold'
       self.scopes_heading1_fontStyle = 'bold'
       self.scopes_heading2_fontStyle = 'bold'
       self.scopes_heading3_fontStyle = 'bold'
       self.scopes_italic_fontStyle = 'italic'
-      self.scopes_keyword_color = vsi.get_value(tokenColors=['keyword', 'foreground', ])
+      self.scopes_keyword_color = vsi.get_value(tokenColors=[
+        'keyword',
+        'foreground',
+      ])
       self.scopes_link_textDecoration = 'underline'
-      self.scopes_marker_boxBackgroundColor = vsi.get_value(colors='editorMarkerNavigation.background')
-      self.scopes_marker_boxBorderColor = vsi.get_value(colors='inputOption.activeBorder')
+      self.scopes_marker_boxBackgroundColor = vsi.get_value(
+        colors='editorMarkerNavigation.background')
+      self.scopes_marker_boxBorderColor = vsi.get_value(
+        colors='inputOption.activeBorder')
       self.scopes_marker_boxBorderType = 4
-      self.scopes_module_color = vsi.get_value(tokenColors=['entity.name.import.go', 'foreground', ])
-      self.scopes_number_color = vsi.get_value(tokenColors=['constant', 'foreground', ])
+      self.scopes_module_color = vsi.get_value(tokenColors=[
+        'entity.name.import.go',
+        'foreground',
+      ])
+      self.scopes_number_color = vsi.get_value(tokenColors=[
+        'constant',
+        'foreground',
+      ])
       self.scopes_project_fontStyle = 'bold'
-      self.scopes_string_color = vsi.get_value(tokenColors=['string', 'foreground', ])
+      self.scopes_string_color = vsi.get_value(tokenColors=[
+        'string',
+        'foreground',
+      ])
       self.scopes_tag_textDecoration = 'none'
-      self.scopes_taskDone_color = vsi.get_value(colors='notificationsInfoIcon.foreground')
+      self.scopes_taskDone_color = vsi.get_value(
+        colors='notificationsInfoIcon.foreground')
       self.scopes_taskDone_textDecoration = 'strikeout'
-      
+
       self.separator_line = vsi.get_value(colors='focusBorder')
       self.tab_background = vsi.get_value(colors='tab.inactiveBackground')
       self.tab_title = vsi.get_value(colors='tab.inactiveForeground')
-      self.text_selection_tint = vsi.get_value(colors='editorLineNumber.activeForeground')
+      self.text_selection_tint = vsi.get_value(
+        colors='editorLineNumber.activeForeground')
       self.thumbnail_border = vsi.get_value(colors='sideBar.border')
       self.tint = vsi.get_value(colors='editorCursor.foreground')
-  
-  
-  target_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg.color-theme.json'
-  # target_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg-light.color-theme.json'
-  
+
+  #target_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg.color-theme.json'
+  target_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg-light.color-theme.json'
+
   vs_theme = VSCodeThemeObject(target_url, use_local=False)
-  # vs_theme.export()
-  
-  scheme = SchemeItems(vs_theme)
+  vs_theme.export()
+
+  #scheme = SchemeItems(vs_theme)
   # print(scheme.file_url)
   x = 1
   # tp = ConvertThemeTemplate(url='bar')
   # s = SchemeItems(url='a')
+
