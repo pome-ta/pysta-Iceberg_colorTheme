@@ -419,9 +419,9 @@ if __name__ == '__main__':
   target_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg-light.color-theme.json'
 
   vs_theme = VSCodeThemeObject(target_url, use_local=False)
-  vs_theme.export()
+  #vs_theme.export()
 
-  #scheme = SchemeItems(vs_theme)
+  scheme = SchemeItems(vs_theme)
   # print(scheme.file_url)
   x = 1
   # tp = ConvertThemeTemplate(url='bar')
