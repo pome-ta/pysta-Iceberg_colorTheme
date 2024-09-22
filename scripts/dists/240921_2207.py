@@ -12,10 +12,12 @@ import requests
 
 @dataclass
 class SchemeTemplate:
-  url: str = 'github_url'  # 対象のVSCode Color Theme リポジトリURL
   author: str = 'author_name'  # Theme 作者名
+  file_name: str = 'json_file_name'  # 参照元`.json` ファイル名
+  file_url: str = 'json_file_url'  # 参照元`.json` ファイル名
   license: str = 'license'  # リポジトリに表記されているライセンス
   pushed_at: str = 'pushed_at'  # main ブランチでの最終コミット日時
+  repository_url: str = 'github_url'  # 対象のVSCode Color Theme リポジトリURL
 
   background: str = '#ff0000'  # エディターのデフォルトの背景色
   bar_background: str = ' #ff0000'  # ツールバーとアクティブなタブの背景色
@@ -92,11 +94,19 @@ class Pythonista3ThemeObject:
   memo:
   `VSCodeThemeObject` 構成と似たような感じにするには。。。
   そもそも、構成として似せた方がええよね？
+  
+  vscode のtheme 情報をどの状態で持たせるか？
+  initialize 時の変数、引数の持たせ方を考えたい
+  
   """
 
-  def __init__(self, seve_local: bool = True, local: Path | None = None):
+  def __init__(self,
+               vs_data: dict,
+               seve_local: bool = True,
+               local: Path | None = None):
     # wip: モジュール化した時のファイルパス扱い
     self.local_path = Path('./testThemes') if local is None else local
+    self.name: str
 
 
 class VSCodeThemeObject:
@@ -183,11 +193,12 @@ class VSCodeThemeObject:
                     file_name: str | None = None) -> DictDotNotation:
     # xxx: `_` 3つ
     info = {
-      '___html_url': html_url,
+      '___repository_url': html_url,
       '___author': author,
       '___license': license,
       '___pushed_at': pushed_at,
       '___file_name': self.name if file_name is None else file_name,
+      '___file_url': self.url,
     }
     return self.DictDotNotation(info)
 
@@ -267,11 +278,10 @@ class ThemeInterpretation:
 
 
 if __name__ == '__main__':
-  #target_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg.color-theme.json'
-  target_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg-light.color-theme.json'
+  target_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg.color-theme.json'
+  #target_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg-light.color-theme.json'
 
-  vs_theme = VSCodeThemeObject(target_url, 0)
-  # aa = to.to_dump()
+  vs_theme = VSCodeThemeObject(target_url, use_local=False)
   vs_theme.export()
   # tp = ConvertThemeTemplate(url='bar')
   #s = SchemeItems(url='a')
