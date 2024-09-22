@@ -94,8 +94,9 @@ class Pythonista3ThemeObject:
   そもそも、構成として似せた方がええよね？
   """
 
-  def __init__(self):
-    pass
+  def __init__(self, seve_local: bool = True, local: Path | None = None):
+    # wip: モジュール化した時のファイルパス扱い
+    self.local_path = Path('./testThemes') if local is None else local
 
 
 class VSCodeThemeObject:
@@ -174,6 +175,22 @@ class VSCodeThemeObject:
     if response.status_code == 200:
       return response.json()
 
+  def __create_info(self,
+                    html_url: str,
+                    author: str,
+                    license: str,
+                    pushed_at: str,
+                    file_name: str | None = None) -> DictDotNotation:
+    # xxx: `_` 3つ
+    info = {
+      '___html_url': html_url,
+      '___author': author,
+      '___license': license,
+      '___pushed_at': pushed_at,
+      '___file_name': self.name if file_name is None else file_name,
+    }
+    return self.DictDotNotation(info)
+
   def __get_info_attribute(self) -> DictDotNotation | None:
     tokens = self.__api_tokens()
     if tokens is None:
@@ -184,29 +201,24 @@ class VSCodeThemeObject:
                                  tokens.get('license')) is not None else str(l)
     _pushed_at = tokens.get('pushed_at')
 
-    # xxx: `_` 3つ
-    info = {
-      '___html_url': _html_url,
-      '___author': _author,
-      '___license': _license,
-      '___pushed_at': _pushed_at,
-    }
-    return self.DictDotNotation(info)
+    info = self.__create_info(_html_url, _author, _license, _pushed_at)
+
+    return info
 
   def __get_local_data(self) -> list[dict, DictDotNotation] | None:
     data_text = Path(self.local_path, self.name).read_text()
     loads = json.loads(data_text)
-    # xxx: `_` 3つ
-    info = {
-      '___html_url': loads.get('___html_url'),
-      '___author': loads.get('___author'),
-      '___license': loads.get('___license'),
-      '___pushed_at': loads.get('___pushed_at'),
-    }
+
+    _html_url = loads.get('___html_url')
+    _author = loads.get('___author')
+    _license = loads.get('___license')
+    _pushed_at = loads.get('___pushed_at')
+
+    info = self.__create_info(_html_url, _author, _license, _pushed_at)
 
     return [
       loads,
-      self.DictDotNotation(info),
+      info,
     ]
 
 
@@ -255,12 +267,12 @@ class ThemeInterpretation:
 
 
 if __name__ == '__main__':
-  target_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg.color-theme.json'
-  #target_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg-light.color-theme.json'
+  #target_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg.color-theme.json'
+  target_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg-light.color-theme.json'
 
-  vs_theme = VSCodeThemeObject(target_url, 1)
+  vs_theme = VSCodeThemeObject(target_url, 0)
   # aa = to.to_dump()
-  #vs_theme.export(Path('./vscodeThemes'))
+  vs_theme.export()
   # tp = ConvertThemeTemplate(url='bar')
   #s = SchemeItems(url='a')
 
