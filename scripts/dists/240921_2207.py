@@ -12,7 +12,7 @@ import requests
 
 @dataclass
 class SchemeTemplate:
-  author: str = 'author_name'  # Theme 作者名
+  author_name: str = 'author_name'  # Theme 作者名
   file_name: str = 'json_file_name'  # 参照元`.json` ファイル名
   file_url: str = 'json_file_url'  # 参照元`.json` ファイル名
   license_kind: str = 'license'  # リポジトリに表記されているライセンス
@@ -88,24 +88,165 @@ class SchemeTemplate:
 class Pythonista3ThemeObject:
   """
   memo:
-  `VSCodeThemeObject` 構成と似たような感じにするには。。。
-  そもそも、構成として似せた方がええよね？
+  `VSCodeThemeObject` 構成と似たような感じにするには。。。
+  そもそも、構成として似せた方がええよね?
   
-  vscode のtheme 情報をどの状態で持たせるか？
+  vscode のtheme 情報をどの状態で持たせるか?
   initialize 時の変数、引数の持たせ方を考えたい
   
   """
 
-  def __init__(self,
-               vs_data: dict,
-               save_local: bool = True,
-               local: Path | None = None):
+  def __init__(self, save_local: bool = True, local: Path | None = None):
+    self.sava_local = save_local
     # wip: モジュール化した時のファイルパス扱い
     self.local_path = Path('./testThemes') if local is None else local
     self.name: str
-    # xxx: 仮
-    self.vs_data = vs_data
-    self.sava_local = save_local
+    self.data: dict
+
+  def convert(self, scheme: SchemeItems):
+    self.data = {
+      '_author_name': scheme.author_name,
+      '_file_name': scheme.file_name,
+      '_file_url': scheme.file_url,
+      '_license_kind': scheme.license_kind,
+      '_pushed_at': scheme.pushed_at,
+      '_repository_url': scheme.repository_url,
+
+
+      'background': p.background,
+      'bar_background': p.bar_background,
+      'dark_keyboard': p.dark_keyboard,
+      'default_text': p.default_text,
+      'editor_actions_icon_background': p.editor_actions_icon_background,
+      'editor_actions_icon_tint': p.editor_actions_icon_tint,
+      'editor_actions_popover_background': p.editor_actions_popover_background,
+      'error_text': p.error_text,
+      'font-family': 'Menlo-Regular',
+      'font-size': 15.0,
+      'gutter_background': p.gutter_background,
+      'gutter_border': p.gutter_border,
+      'interstitial': p.interstitial,
+      'library_background': p.library_background,
+      'library_tint': p.library_tint,
+      'line_number': p.line_number,
+      'name': p.name,
+      'scopes': {
+        'bold': {
+          'font-style': p.scopes_bold_font_style,
+        },
+        'bold-italic': {
+          'font-style': p.scopes_bold_italic_font_style,
+        },
+        'builtinfunction': {
+          'color': p.scopes_builtinfunction_color,
+        },
+        'checkbox': {
+          'checkbox': p.scopes_checkbox_checkbox,
+        },
+        'checkbox-done': {
+          'checkbox': p.scopes_checkbox_done_checkbox,
+          'done': p.scopes_checkbox_done_done,
+        },
+        'class': {
+          'color': p.scopes_class_color,
+        },
+        'classdef': {
+          'color': p.scopes_classdef_color,
+          'font-style': p.scopes_classdef_font_style,
+        },
+        'code': {
+          'background-color': p.scopes_code_backgroundColor,
+          'corner-radius': p.scopes_code_corner_radius,
+        },
+        'codeblock-start': {
+          'color': p.scopes_codeblockStart_color,
+        },
+        'comment': {
+          'color': p.scopes_comment_color,
+          'font-style': p.scopes_comment_font_style,
+        },
+        'decorator': {
+          'color': p.scopes_decorator_color,
+        },
+        'default': {
+          'color': p.scopes_default_color,
+        },
+        'docstring': {
+          'color': p.scopes_docstring_color,
+          'font-style': p.scopes_docstring_font_style,
+        },
+        'escape': {
+          'background-color': p.scopes_escape_color,
+        },
+        'formatting': {
+          'color': p.scopes_formatting_color,
+        },
+        'function': {
+          'color': p.scopes_function_color,
+        },
+        'functiondef': {
+          'color': p.scopes_functiondef_color,
+          'font-style': p.scopes_functiondef_font_style,
+        },
+        'heading-1': {
+          'font-style': p.scopes_heading1_font_style,
+        },
+        'heading-2': {
+          'font-style': p.scopes_heading2_font_style,
+        },
+        'heading-3': {
+          'font-style': p.scopes_heading3_font_style,
+        },
+        'italic': {
+          'font-style': p.scopes_italic_font_style,
+        },
+        'keyword': {
+          'color': p.scopes_keyword_color,
+        },
+        'link': {
+          'text-decoration': p.scopes_link_text_decoration,
+        },
+        'marker': {
+          'box-background-color': p.scopes_marker_box_background_color,
+          'box-border-color': p.scopes_marker_box_border_color,
+          'box-border-type': p.scopes_marker_box_border_type,
+        },
+        'module': {
+          'color': p.scopes_module_color,
+        },
+        'number': {
+          'color': p.scopes_number_color,
+        },
+        'project': {
+          'font-style': p.scopes_project_font_style,
+        },
+        'string': {
+          'color': p.scopes_string_color,
+        },
+        'tag': {
+          'text-decoration': p.scopes_tag_text_decoration,
+        },
+        'task-done': {
+          'color': p.scopes_taskDone_color,
+          'text-decoration': p.scopes_taskDone_text_decoration,
+        },
+      },
+      'separator_line': p.separator_line,
+      'tab_background': p.tab_background,
+      'tab_title': p.tab_title,
+      'text_selection_tint': p.text_selection_tint,
+      'thumbnail_border': p.thumbnail_border,
+      'tint': p.tint,
+    }
+
+  def build(self, scheme: SchemeItems | None):
+    if scheme is not None:
+      self.convert(scheme)
+    
+      
+
+  def export(self):
+    pass
 
 
 class VSCodeThemeObject:
@@ -287,11 +428,12 @@ if __name__ == '__main__':
     def __init__(self, vscode_theme: VSCodeThemeObject):
       vsi = ThemeInterpretation(vscode_theme.data)
 
-      self.author = vscode_theme.info['_author_name']
+      self.author_name = vscode_theme.info['_author_name']
       self.file_name = vscode_theme.info['_file_name']
       self.file_url = vscode_theme.info['_file_url']
       self.license_kind = vscode_theme.info['_license_kind']
       self.repository_url = vscode_theme.info['_repository_url']
+      self.pushed_at = vscode_theme.info['_pushed_at']
 
       self.background = vsi.get_value(colors='editor.background')
       self.bar_background = vsi.get_value(colors='tab.activeBackground')
