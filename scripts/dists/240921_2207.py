@@ -20,7 +20,7 @@ class VSCodeThemeObject:
   # 今後
   API の制限回避としてローカルdump から持ってくるパターンも考えたい
   """
-
+  
   def __init__(self,
                github_url: str,
                use_local: bool = False,
@@ -28,18 +28,18 @@ class VSCodeThemeObject:
     self.url = github_url
     # wip: モジュール化した時のファイルパス扱い
     self.local_path = Path('./vscodeThemes') if local is None else local
-
+    
     self.name: str = Path(github_url).name
     self.data: dict | None
     self.info: dict | None
-
+    
     if not use_local:
       self.data = self.__get_url_json()
       self.info = self.__get_info_attribute()
     else:
       self.data, self.info = self.__get_local_data()
     # xxx: `None` の時ここで弾く？
-
+  
   def to_dump(self) -> str:
     data = self.data if self.info is None else self.data | self.info
     kwargs = {
@@ -48,18 +48,18 @@ class VSCodeThemeObject:
       'ensure_ascii': False,
     }
     return json.dumps(data, **kwargs)
-
+  
   def export(self, vs_themes: Path | None = None):
     vs_themes = self.local_path if vs_themes is None else vs_themes
-
+    
     # xxx: ディレクトリ周り、存在しない時の処理
     if not vs_themes.is_dir():
       vs_themes.mkdir(parents=True)
-
+    
     theme_json = self.to_dump()
     json_file = Path(vs_themes, self.name)
     json_file.write_text(theme_json, encoding='utf-8')
-
+  
   class DictDotNotation(dict):
     """
     ドットアクセスしたいための実装だけど。。。
@@ -67,11 +67,11 @@ class VSCodeThemeObject:
     先頭に`_` を付けたいけど、PyCharm 的に`protected メンバー` のアクセスとして
     警告出ちゃう。。。（無視で対処したくない）
     """
-
+    
     def __init__(self, *args, **kwargs):
       super().__init__(*args, **kwargs)
       self.__dict__ = self
-
+  
   def __get_url_json(self) -> dict | None:
     params = {
       'raw': 'true',
@@ -81,16 +81,16 @@ class VSCodeThemeObject:
       # xxx: iceberg には、comment ない
       # wip: comment 削除処理
       return response.json()
-
+  
   def __api_tokens(self) -> dict | None:
     _, _, owner_name, repo_name, *_ = Path(self.url).parts
     api_url = f'https://api.github.com/repos/{owner_name}/{repo_name}'
-
+    
     # wip: 制限かかった時の処理
     response = requests.get(api_url)
     if response.status_code == 200:
       return response.json()
-
+  
   def __create_info(self,
                     repository_url: str,
                     author_name: str,
@@ -106,7 +106,7 @@ class VSCodeThemeObject:
       '_file_url': self.url,
     }
     return self.DictDotNotation(info)
-
+  
   def __get_info_attribute(self) -> DictDotNotation | None:
     tokens = self.__api_tokens()
     if tokens is None:
@@ -114,22 +114,22 @@ class VSCodeThemeObject:
     _repository_url = tokens.get('html_url')
     _author_name = tokens.get('owner').get('login')
     _license_kind = l.get('name') if (
-      l := tokens.get('license')) is not None else str(l)
+                                       l := tokens.get('license')) is not None else str(l)
     _pushed_at = tokens.get('pushed_at')
-
+    
     info = self.__create_info(_repository_url, _author_name, _license_kind,
                               _pushed_at)
     return info
-
+  
   def __get_local_data(self) -> list[dict | DictDotNotation]:
     data_text = Path(self.local_path, self.name).read_text()
     loads = json.loads(data_text)
-
+    
     _repository_url = loads.get('_repository_url')
     _author_name = loads.get('_author_name')
     _license_kind = loads.get('_license_kind')
     _pushed_at = loads.get('_pushed_at')
-
+    
     info = self.__create_info(_repository_url, _author_name, _license_kind,
                               _pushed_at)
     return [
@@ -142,14 +142,14 @@ class ThemeInterpretation:
   """
   VSCode のTheme 情報を指定して取得
   """
-
+  
   def __init__(self, target: dict):
     self.target = target
-
+  
   def __for_colors(self, key: str) -> str | bool | int | float | None:
     # xxx: `get` じゃなくて`[key]` の方がいいか?
     return self.target['colors'].get(key)
-
+  
   def __for_token_colors(self,
                          keys: list[str]) -> str | bool | int | float | None:
     scope, settings = keys
@@ -159,21 +159,21 @@ class ThemeInterpretation:
       scopes = _scope if isinstance(_scope, list) else [_scope]
       if scope in scopes:
         return tokenColor.get('settings').get(settings)
-
+  
   def get_value(
       self,
       search_value: str = '',
       colors: str | None = None,
       tokenColors: list[str] | None = None) -> str | bool | int | float | None:
     value = None
-
+    
     if search_value:
       value = self.target.get(search_value)
     elif colors is not None and isinstance(colors, str):
       value = self.__for_colors(colors)
     elif tokenColors is not None and isinstance(tokenColors, list):
       value = self.__for_token_colors(tokenColors)
-
+    
     if value is None:
       # xxx: `raise` を正しく使いたい
       raise print(
@@ -190,7 +190,7 @@ class SchemaTemplate:
   license_kind: str = 'license'  # リポジトリに表記されているライセンス
   pushed_at: str = 'pushed_at'  # main ブランチでの最終コミット日時
   repository_url: str = 'github_url'  # 対象のVSCode Color Theme リポジトリURL
-
+  
   background: str = '#ff0000'  # エディターのデフォルトの背景色
   bar_background: str = ' #ff0000'  # ツールバーとアクティブなタブの背景色
   dark_keyboard: bool = True  # ダーク色のオンスクリーン キーボードを使用するかどうか
@@ -248,7 +248,7 @@ class SchemaTemplate:
   scopes_tag_textDecoration: str = 'none'  # これは Task paper ですか、HTML ですか、それとも何ですか?
   scopes_taskDone_color: str = '#ff0000'  # タスクペーパーのタスクが完了しました
   scopes_taskDone_textDecoration: str = 'strikeout'
-
+  
   separator_line: str = '#ff0000'  # ツールバー/タブとエディターの間の区切り線の色
   tab_background: str = '#ff0000'  # 非アクティブなタブの背景色
   tab_title: str = '#ff0000'  # タブのタイトルのテキストの色
@@ -258,17 +258,17 @@ class SchemaTemplate:
 
 
 class SchemaItems(SchemaTemplate):
-
+  
   def __init__(self, vscode_theme: VSCodeThemeObject):
     vsi = ThemeInterpretation(vscode_theme.data)
-
+    
     self.author_name = vscode_theme.info['_author_name']
     self.file_name = vscode_theme.info['_file_name']
     self.file_url = vscode_theme.info['_file_url']
     self.license_kind = vscode_theme.info['_license_kind']
     self.repository_url = vscode_theme.info['_repository_url']
     self.pushed_at = vscode_theme.info['_pushed_at']
-
+    
     self.background = vsi.get_value(colors='editor.background')
     self.bar_background = vsi.get_value(colors='tab.activeBackground')
     self.dark_keyboard = True
@@ -280,7 +280,7 @@ class SchemaItems(SchemaTemplate):
     self.editor_actions_icon_tint = '#00ff00'
     self.editor_actions_popover_background = '#0000ff'
     self.error_text = vsi.get_value(colors='editorError.foreground')
-
+    
     self.gutter_background = vsi.get_value(colors='editorGutter.background')
     self.gutter_border = vsi.get_value(colors='tab.border')
     self.interstitial = '#ff00ff'
@@ -288,7 +288,7 @@ class SchemaItems(SchemaTemplate):
     self.library_tint = vsi.get_value(colors='sideBar.foreground')
     self.line_number = vsi.get_value(colors='editorLineNumber.foreground')
     self.name = vscode_theme.name
-
+    
     self.scopes_bold_fontStyle = 'bold'
     self.scopes_boldItalic_fontStyle = 'bold-italic'
     self.scopes_builtinfunction_color = vsi.get_value(tokenColors=[
@@ -382,7 +382,7 @@ class SchemaItems(SchemaTemplate):
     self.scopes_taskDone_color = vsi.get_value(
       colors='notificationsInfoIcon.foreground')
     self.scopes_taskDone_textDecoration = 'strikeout'
-
+    
     self.separator_line = vsi.get_value(colors='focusBorder')
     self.tab_background = vsi.get_value(colors='tab.inactiveBackground')
     self.tab_title = vsi.get_value(colors='tab.inactiveForeground')
@@ -402,7 +402,7 @@ class Pythonista3ThemeObject:
   initialize 時の変数、引数の持たせ方を考えたい
 
   """
-
+  
   def __init__(self, save_local: bool = True, local: Path | None = None):
     self.sava_local = save_local
     # wip: モジュール化した時のファイルパス扱い
@@ -410,7 +410,7 @@ class Pythonista3ThemeObject:
     self.name: str | None = None
     self.data: dict | None = None
     self.dump: str | None = None
-
+  
   def convert(self, schema: SchemaItems):
     self.name = schema.file_name
     self.data = {
@@ -427,7 +427,7 @@ class Pythonista3ThemeObject:
       'editor_actions_icon_background': schema.editor_actions_icon_background,
       'editor_actions_icon_tint': schema.editor_actions_icon_tint,
       'editor_actions_popover_background':
-      schema.editor_actions_popover_background,
+        schema.editor_actions_popover_background,
       'error_text': schema.error_text,
       # 'font-family': 'Menlo-Regular',
       # 'font-size': 15.0,
@@ -546,7 +546,7 @@ class Pythonista3ThemeObject:
       'thumbnail_border': schema.thumbnail_border,
       'tint': schema.tint,
     }
-
+  
   def to_dump(self):
     kwargs = {
       'indent': 1,
@@ -554,12 +554,12 @@ class Pythonista3ThemeObject:
       'ensure_ascii': False,
     }
     return json.dumps(self.data, **kwargs)
-
+  
   def build(self, schema: SchemaItems | None, local_dir: Path | None = None):
-
+    
     if schema is not None:
       self.convert(schema)
-
+    
     # xxx: Pythonista3 反映処理はここの間でやる
     def get_user_themes_dir() -> Path | None:
       try:
@@ -570,15 +570,15 @@ class Pythonista3ThemeObject:
       _path_objc = ObjCClass('PA2UITheme').sharedTheme().userThemesPath()
       _path = Path(str(_path_objc))
       return _path if _path.exists() else None
-
+    
     user_themes_dir = get_user_themes_dir()
     self.dump = self.to_dump()
     json_file = Path(user_themes_dir, self.name)
-    json_file.write_text(theme_json, encoding='utf-8')
-
+    json_file.write_text(self.dump, encoding='utf-8')
+    
     if self.sava_local:
       self.export(local_dir)
-
+  
   def export(self, local_dir: Path | None = None):
     # todo: local へdump する処理 ※ Pythonista3 への反映は、`build` 内で実行
     local_dir = self.local_path if local_dir is None else local_dir
@@ -589,11 +589,10 @@ class Pythonista3ThemeObject:
 if __name__ == '__main__':
   # target_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg.color-theme.json'
   target_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg-light.color-theme.json'
-
+  
   vs_theme = VSCodeThemeObject(target_url, use_local=False)
   # vs_theme.export()
-
+  
   schema_item = SchemaItems(vs_theme)
-
+  
   x = 1
-
