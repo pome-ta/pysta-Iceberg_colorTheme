@@ -346,7 +346,7 @@ class SchemaItems(SchemaTemplate):
     ])
     self.scopes_comment_fontStyle = 'italic'
     self.scopes_decorator_color = vsi.get_value(tokenColors=[
-      'text',
+      'meta.type.annotation',
       'foreground',
     ])
     self.scopes_default_color = vsi.get_value(tokenColors=[
@@ -359,7 +359,7 @@ class SchemaItems(SchemaTemplate):
     ])
     self.scopes_docstring_fontStyle = 'italic'
     self.scopes_escape_backgroundColor = vsi.get_value(tokenColors=[
-      'entity.other.attribute-name',
+      'support',
       'foreground',
     ])
     self.scopes_formatting_color = vsi.get_value(tokenColors=[
@@ -367,11 +367,11 @@ class SchemaItems(SchemaTemplate):
       'foreground',
     ])
     self.scopes_function_color = vsi.get_value(tokenColors=[
-      'entity.name.function',
+      'entity.name.function.method',
       'foreground',
     ])
     self.scopes_functiondef_color = vsi.get_value(tokenColors=[
-      'entity.name.function',
+      'entity.name.function.method',
       'foreground',
     ])
     self.scopes_functiondef_fontStyle = 'bold'
