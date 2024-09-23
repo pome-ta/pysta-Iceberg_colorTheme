@@ -354,7 +354,7 @@ class SchemaItems(SchemaTemplate):
       'foreground',
     ])
     self.scopes_docstring_color = vsi.get_value(tokenColors=[
-      'punctuation.definition.template-expression',
+      'entity.other.attribute-name',
       'foreground',
     ])
     self.scopes_docstring_fontStyle = 'italic'
