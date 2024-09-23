@@ -56,7 +56,7 @@
    "font-style": "italic"
   },
   "decorator": {
-   "color": "#33374c"
+   "color": "#668e3d"
   },
   "default": {
    "color": "#33374c"
@@ -66,16 +66,16 @@
    "font-style": "italic"
   },
   "escape": {
-   "background-color": "#7759b4"
+   "background-color": "#2d539e"
   },
   "formatting": {
    "color": "#8389a3"
   },
   "function": {
-   "color": "#33374c"
+   "color": "#c57339"
   },
   "functiondef": {
-   "color": "#33374c",
+   "color": "#c57339",
    "font-style": "bold"
   },
   "heading-1": {
