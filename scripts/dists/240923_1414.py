@@ -297,8 +297,10 @@ class SchemaItems(SchemaTemplate):
       'text',
       'foreground',
     ])
-    self.editor_actions_icon_background = vsi.get_value(colors='menu.selectionBackground')
-    self.editor_actions_icon_tint = vsi.get_value(colors='menu.selectionForeground"')
+    self.editor_actions_icon_background = vsi.get_value(
+      colors='menu.selectionBackground')
+    self.editor_actions_icon_tint = vsi.get_value(
+      colors='menu.selectionForeground')
     self.editor_actions_popover_background = vsi.get_value(
       colors='menu.background')
     self.error_text = vsi.get_value(colors='editorError.foreground')
@@ -650,7 +652,7 @@ if __name__ == '__main__':
     dark_url,
     light_url,
   ]
-  
+
   for u in targets:
     vs_theme = VSCodeThemeObject(u, use_local=False)
     schema_item = SchemaItems(vs_theme)
