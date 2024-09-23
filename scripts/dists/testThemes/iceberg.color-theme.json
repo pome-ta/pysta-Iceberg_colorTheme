@@ -79,12 +79,15 @@
    "font-style": "bold"
   },
   "heading-1": {
+   "color": "#e2a478",
    "font-style": "bold"
   },
   "heading-2": {
+   "color": "#e2a478",
    "font-style": "bold"
   },
   "heading-3": {
+   "color": "#e2a478",
    "font-style": "bold"
   },
   "italic": {
