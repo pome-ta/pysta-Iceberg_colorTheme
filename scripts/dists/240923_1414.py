@@ -297,10 +297,10 @@ class SchemaItems(SchemaTemplate):
       'text',
       'foreground',
     ])
-    self.editor_actions_icon_background = vsi.get_value(colors='menu.background')
-    self.editor_actions_icon_tint = vsi.get_value(colors='menu.foreground')
+    self.editor_actions_icon_background = vsi.get_value(colors='menu.selectionBackground')
+    self.editor_actions_icon_tint = vsi.get_value(colors='menu.selectionForeground"')
     self.editor_actions_popover_background = vsi.get_value(
-      colors='editorHoverWidget.background')
+      colors='menu.background')
     self.error_text = vsi.get_value(colors='editorError.foreground')
 
     self.gutter_background = vsi.get_value(colors='editorGutter.background')
