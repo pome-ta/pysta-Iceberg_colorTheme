@@ -1,14 +1,23 @@
 {
+ "_author_name": "cocopon",
+ "_file_name": "iceberg-light.color-theme.json",
+ "_file_url": "https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg-light.color-theme.json",
+ "_license_kind": "MIT License",
+ "_pushed_at": "2023-01-17T12:49:57Z",
+ "_repository_url": "https://github.com/cocopon/vscode-iceberg-theme",
  "background": "#e8e9ec",
  "bar_background": "#e8e9ec",
  "dark_keyboard": true,
  "default_text": "#33374c",
- "font-family": "Menlo-Regular",
- "font-size": 12.0,
+ "editor_actions_icon_background": "#ff0000",
+ "editor_actions_icon_tint": "#00ff00",
+ "editor_actions_popover_background": "#0000ff",
+ "error_text": "#cc517a",
  "gutter_background": "#dcdfe7",
  "gutter_border": "#c8cfdd",
+ "interstitial": "#ff00ff",
  "library_background": "#e8e9ec",
- "library_tint": "#c8cfdd",
+ "library_tint": "#33374c",
  "line_number": "#9fa7bd",
  "name": "Iceberg Light",
  "scopes": {
@@ -36,15 +45,18 @@
    "font-style": "bold"
   },
   "code": {
-   "background-color": "#7759b4",
+   "background-color": "#8389a3",
    "corner-radius": 2.0
   },
   "codeblock-start": {
-   "color": "#8389a3"
+   "color": "#7759b4"
   },
   "comment": {
    "color": "#8389a3",
    "font-style": "italic"
+  },
+  "decorator": {
+   "color": "#33374c"
   },
   "default": {
    "color": "#33374c"
@@ -52,6 +64,9 @@
   "docstring": {
    "color": "#668e3d",
    "font-style": "italic"
+  },
+  "escape": {
+   "background-color": "#7759b4"
   },
   "formatting": {
    "color": "#8389a3"
@@ -81,6 +96,11 @@
   "link": {
    "text-decoration": "underline"
   },
+  "marker": {
+   "box-background-color": "#dcdfe7",
+   "box-border-color": "#2d539e",
+   "box-border-type": 4
+  },
   "module": {
    "color": "#3f83a6"
   },
@@ -97,14 +117,14 @@
    "text-decoration": "none"
   },
   "task-done": {
-   "color": "#7759b4",
+   "color": "#3f83a6",
    "text-decoration": "strikeout"
   }
  },
- "separator_line": "#8389a34d",
+ "separator_line": "#cbcfda",
  "tab_background": "#c8cfdd",
- "tab_title": "#33374c",
- "text_selection_tint": "#cacdd7",
+ "tab_title": "#8389a3",
+ "text_selection_tint": "#586b9e",
  "thumbnail_border": "#c8cfdd",
- "tint": "#2d539e"
+ "tint": "#33374c"
 }
