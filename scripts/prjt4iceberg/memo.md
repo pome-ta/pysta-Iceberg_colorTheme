@@ -18,7 +18,10 @@
 - 変更するには、変更点が多すぎる
   - `settings.*` みたいな形式で準備させて、ゴリっと吐き出せるようにしたい
   - `dataclass` だと厳格すぎる？
-    - [Python3.7のdataclassesでクラスを動的に生成してみる #Python - Qiita](https://qiita.com/zena/items/3056856c2c07d05f69e0)
+    - `make_dataclass` を使う?
+      - [Python3.7のdataclassesでクラスを動的に生成してみる #Python - Qiita](https://qiita.com/zena/items/3056856c2c07d05f69e0)
+    - `fields` を事前に用意して格納させるとか？
+    
 
 
 
