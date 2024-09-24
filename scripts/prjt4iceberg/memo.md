@@ -21,7 +21,9 @@
     - `make_dataclass` を使う?
       - [Python3.7のdataclassesでクラスを動的に生成してみる #Python - Qiita](https://qiita.com/zena/items/3056856c2c07d05f69e0)
     - `fields` を事前に用意して格納させるとか？
-    
-
-
+- わざわざ渡さなくてもよい？
+  - 変えたい所だけ指定
+    - 必須要素は、ミニマムなdump にする？
+    - 変換時に`None` がある場合、dict で削除とか？
+    - 追加の要素が`None` の時はエラー的な？
 
