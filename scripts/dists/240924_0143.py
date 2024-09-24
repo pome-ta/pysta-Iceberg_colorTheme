@@ -11,7 +11,7 @@ from dataclasses import dataclass
 
 import requests
 
-# todo: Pythonista3 意外の実行環境用クッション
+# todo: Pythonista3 以外の実行環境用クッション
 ROOT_PATH: Path = Path(__file__).parent
 
 
