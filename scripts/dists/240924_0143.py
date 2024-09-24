@@ -256,6 +256,7 @@ class SchemaTemplate:
   scopes_italic_fontStyle: str = 'italic'  # 斜体のテキスト
   scopes_keyword_color: str = '#ff0000'  # 言語のキーワード
   scopes_link_textDecoration: str = 'underline'  # タイトルをリンクします
+  scopes_link_color: str = '#ff0000'
   scopes_marker_boxBackgroundColor: str = '#ff0000'
   scopes_marker_boxBorderColor: str = '#ff0000'
   scopes_marker_boxBorderType: int = 4
@@ -401,6 +402,10 @@ class SchemaItems(SchemaTemplate):
       'foreground',
     ])
     self.scopes_link_textDecoration = 'underline'
+    self.scopes_link_color = vsi.get_value(tokenColors=[
+      'markup.underline.link',
+      'foreground',
+    ])
     self.scopes_marker_boxBackgroundColor = vsi.get_value(
       colors='editorMarkerNavigation.background')
     self.scopes_marker_boxBorderColor = vsi.get_value(
@@ -555,6 +560,7 @@ class Pythonista3ThemeObject:
         },
         'link': {
           'text-decoration': schema.scopes_link_textDecoration,
+          'color':schema.scopes_link_color,
         },
         'marker': {
           'box-background-color': schema.scopes_marker_boxBackgroundColor,
