@@ -1,3 +1,20 @@
+# 📝 2024/09/27
+
+## `zlib` しらべ
+
+
+[structure - What does a zlib header look like? - Stack Overflow](https://stackoverflow.com/questions/9050260/what-does-a-zlib-header-look-like)
+
+```
+78 01 - No Compression/low
+78 5E - Fast Compression
+78 9C - Default Compression
+78 DA - Best Compression 
+```
+
+
+
+
 # 📝 2024/09/23
 
 
