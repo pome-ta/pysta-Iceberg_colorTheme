@@ -11,16 +11,17 @@ url_scheme = 'pythonista3://?action=add-theme&theme-data=eNqtVk2PmzAQve-viNhraYC
 # theme-dataを取得
 parse_result = urllib.parse.urlparse(url_scheme)
 query_params = urllib.parse.parse_qs(parse_result.query)
-_b64string = query_params["theme-data"][0]
+_b64string = query_params['theme-data'][0]
 
 # 文字を置換してBase64デコード
-b64string = _b64string.replace("-", "+").replace("_", "/").replace("~", "=")
+b64string = _b64string.replace('-', '+').replace('_', '/').replace('~', '=')
 #b64string = b64string.replace("_", "/")
 #b64string = b64string.replace("~", "=")
 compressed_data = base64.b64decode(b64string)
 
 # zlibで展開
 decompressed_data = zlib.decompress(compressed_data)
+decoded = decompressed_data.decode()
 
-print(decompressed_data.decode())
+print(decoded)
 
