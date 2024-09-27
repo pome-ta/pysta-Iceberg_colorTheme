@@ -56,8 +56,9 @@ scheme_compressed = zlib.compress(local_bytes_json, level=9)
 scheme_b64bytes = base64.urlsafe_b64encode(scheme_compressed)
 scheme_b64str = scheme_b64bytes.decode('utf-8').replace('=', '~')
 
-print(_b64string == scheme_b64str)
+
 
 param = 'pythonista3://?action=add-theme&theme-data='
+print(f'{param}{scheme_b64str}')
 
 
