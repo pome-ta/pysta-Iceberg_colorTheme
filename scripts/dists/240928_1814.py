@@ -432,5 +432,6 @@ if __name__ == '__main__':
 
   vs_iceberg_dark = VSCodeThemeObject(dark_url, use_local=False)
   theme_dict = convert(vs_iceberg_dark)
+
   x = 1
 
