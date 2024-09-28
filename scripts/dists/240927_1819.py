@@ -20,7 +20,7 @@ class ThemeObject:
   info: dict | None
   # info_keys: list = ['_repository_url', '_author_name', '_license_kind', '_pushed_at', ]
   info_keys: list
-  
+
   @staticmethod
   def get_file_name(url: str) -> str | None:
     path = Path(url)  # xxx: 取り出し方が乱暴
@@ -28,36 +28,36 @@ class ThemeObject:
       return path.name
     # wip: `None` 時、エラー吐く
     return None
-  
+
   @staticmethod
   def get_tmp_dir(tmp_dir: Path | str | None) -> Path:
-    
+
     if tmp_dir is None:
       return Path(ROOT_PATH, './vscodeThemes')
     elif isinstance(tmp_dir, Path):
       return tmp_dir
     else:
       return Path(tmp_dir)
-  
+
   def get_tmp_data_info(self) -> list[dict]:
     data_text = Path(self.tmp_dir, self.file_name).read_text()
     loads = json.loads(data_text)
-    
+
     # xxx: key をclass 内に2回書いてる(ちょっと違うけど)
-    
+
     # _url = loads.get('_repository_url')
     # _name = loads.get('_author_name')
     # _license = loads.get('_license_kind')
     # _pushed_at = loads.get('_pushed_at')
-    
+
     info = self.__create_info(*[loads.get(key) for key in self.info_keys])
-    
+
     # info = self.__create_info(_url, _name, _license, _pushed_at)
     return [
       loads,
       info,
     ]
-  
+
   def get_data(self) -> dict | None:
     params = {
       'raw': 'true',
@@ -69,7 +69,7 @@ class ThemeObject:
       return response.json()
     # wip: `None` 時、エラー吐く
     return None
-  
+
   def get_info(self) -> dict | None:
     tokens = self.__api_tokens()
     if tokens is None:
@@ -80,22 +80,22 @@ class ThemeObject:
     _license = l.get('name') if (l :=
                                  tokens.get('license')) is not None else str(l)
     _pushed_at = tokens.get('pushed_at')
-    
+
     info = self.__create_info(_url, _name, _license, _pushed_at)
     return info
-  
+
   def __api_tokens(self) -> dict | None:
     _, _, owner_name, repo_name, *_ = Path(
       self.json_url).parts  # xxx: 取り出し方が乱暴
     api_url = f'https://api.github.com/repos/{owner_name}/{repo_name}'
-    
+
     # wip: 制限かかった時の処理
     response = requests.get(api_url)
     if response.status_code == 200:
       return response.json()
     # wip: `None` 時、エラー吐く
     return None
-  
+
   def __create_info(self,
                     repository_url: str,
                     author_name: str,
@@ -104,10 +104,16 @@ class ThemeObject:
                     file_name: str | None = None,
                     file_url: str | None = None) -> dict:
     # xxx: key をclass 内に2回書いてる（ちょっと違うけど）
-    values = [repository_url, author_name, license_kind, pushed_at, self.file_name if file_name is None else file_name,
-              self.json_url if file_url is None else file_url, ]
+    values = [
+      repository_url,
+      author_name,
+      license_kind,
+      pushed_at,
+      self.file_name if file_name is None else file_name,
+      self.json_url if file_url is None else file_url,
+    ]
     info = {key: value for key, value in zip(self.info_keys, values)}
-    
+
     # info = {
     #   '_repository_url': repository_url,
     #   '_author_name': author_name,
@@ -120,30 +126,37 @@ class ThemeObject:
 
 
 class VSCodeThemeObject(ThemeObject):
-  
+
   def __init__(self,
                theme_json_url: str,
                use_local: bool = False,
                tmp_dir: Path | str | None = None):
-    self.info_keys: list = ['_repository_url', '_author_name', '_license_kind', '_pushed_at', '_file_name',
-                            '_file_url', ]
-    
+    self.info_keys: list = [
+      '_repository_url',
+      '_author_name',
+      '_license_kind',
+      '_pushed_at',
+      '_file_name',
+      '_file_url',
+    ]
+
     self.json_url = theme_json_url
     self.file_name = self.get_file_name(theme_json_url)
     self.tmp_dir = self.get_tmp_dir(tmp_dir)
-    
+
     if use_local:
       self.data, self.info = self.get_tmp_data_info()
     else:
       self.data = self.get_data()
       self.info = self.get_info()
-    
+
     # xxx: `None` の時ここで弾く?
 
 
 if __name__ == '__main__':
   dark_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg.color-theme.json'
   light_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg-light.color-theme.json'
-  
+
   iceberg_dark = VSCodeThemeObject(dark_url, use_local=False)
   x = 1
+
