@@ -19,7 +19,7 @@ class ThemeObject:
   data: dict | None
   info: dict | None
   info_keys: list
-  
+
   @staticmethod
   def get_file_name(url: str) -> str | None:
     path = Path(url)  # xxx: 取り出し方が乱暴
@@ -27,7 +27,7 @@ class ThemeObject:
       return path.name
     # wip: `None` 時、エラー吐く
     return None
-  
+
   @staticmethod
   def get_tmp_dir(tmp_dir: Path | str | None) -> Path:
     if tmp_dir is None:
@@ -36,18 +36,18 @@ class ThemeObject:
       return tmp_dir
     else:
       return Path(tmp_dir)
-  
+
   def get_tmp_data_info(self) -> list[dict]:
     data_text = Path(self.tmp_dir, self.file_name).read_text()
     loads = json.loads(data_text)
-    
+
     info = self.__create_info(*[loads.get(key) for key in self.info_keys])
-    
+
     return [
       loads,
       info,
     ]
-  
+
   def get_data(self) -> dict | None:
     params = {
       'raw': 'true',
@@ -59,7 +59,7 @@ class ThemeObject:
       return response.json()
     # wip: `None` 時、エラー吐く
     return None
-  
+
   def get_info(self) -> dict | None:
     tokens = self.__api_tokens()
     if tokens is None:
@@ -70,22 +70,22 @@ class ThemeObject:
     _license = l.get('name') if (l :=
                                  tokens.get('license')) is not None else str(l)
     _pushed_at = tokens.get('pushed_at')
-    
+
     info = self.__create_info(_url, _name, _license, _pushed_at)
     return info
-  
+
   def __api_tokens(self) -> dict | None:
     _, _, owner_name, repo_name, *_ = Path(
       self.json_url).parts  # xxx: 取り出し方が乱暴
     api_url = f'https://api.github.com/repos/{owner_name}/{repo_name}'
-    
+
     # wip: 制限かかった時の処理
     response = requests.get(api_url)
     if response.status_code == 200:
       return response.json()
     # wip: `None` 時、エラー吐く
     return None
-  
+
   def __create_info(self,
                     repository_url: str,
                     author_name: str,
@@ -102,12 +102,12 @@ class ThemeObject:
       self.json_url if file_url is None else file_url,
     ]
     info = {key: value for key, value in zip(self.info_keys, values)}
-    
+
     return info
 
 
 class VSCodeThemeObject(ThemeObject):
-  
+
   def __init__(self,
                theme_json_url: str,
                use_local: bool = False,
@@ -120,19 +120,19 @@ class VSCodeThemeObject(ThemeObject):
       '_file_name',
       '_file_url',
     ]
-    
+
     self.json_url = theme_json_url
     self.file_name = self.get_file_name(theme_json_url)
     self.tmp_dir = self.get_tmp_dir(tmp_dir)
-    
+
     if use_local:
       self.data, self.info = self.get_tmp_data_info()
     else:
       self.data = self.get_data()
       self.info = self.get_info()
-    
+
     # xxx: `None` の時ここで弾く?
-  
+
   def to_dump(self) -> str | None:
     if self.data is None:
       # wip: `None` 時、エラー吐く
@@ -144,15 +144,15 @@ class VSCodeThemeObject(ThemeObject):
       'ensure_ascii': False,
     }
     return json.dumps(data, **kwargs)
-  
+
   def export(self, vs_themes_dir: Path | str | None = None):
     themes_dir = self.tmp_dir if vs_themes_dir is None else vs_themes_dir if isinstance(
       vs_themes_dir, Path) else Path(vs_themes_dir)
-    
+
     # xxx: ディレクトリ周り、存在しない時の処理
     if not themes_dir.is_dir():
       themes_dir.mkdir(parents=True)
-    
+
     theme_json = self.to_dump()
     json_file = Path(themes_dir, self.file_name)
     json_file.write_text(theme_json, encoding='utf-8')
@@ -162,14 +162,14 @@ class VSCodeThemeInterpretation:
   """
   VSCode のTheme 情報を指定して取得
   """
-  
+
   def __init__(self, target: dict):
     self.target = target
-  
+
   def __for_colors(self, key: str) -> str | bool | int | float | None:
     # xxx: `get` じゃなくて`[key]` の方がいいか?
     return self.target['colors'].get(key)
-  
+
   def __for_token_colors(self,
                          keys: list[str]) -> str | bool | int | float | None:
     scope, settings = keys
@@ -179,21 +179,21 @@ class VSCodeThemeInterpretation:
       scopes = _scope if isinstance(_scope, list) else [_scope]
       if scope in scopes:
         return tokenColor.get('settings').get(settings)
-  
+
   def get_value(
       self,
       search_value: str = '',
       colors: str | None = None,
       tokenColors: list[str] | None = None) -> str | bool | int | float | None:
     value = None
-    
+
     if search_value:
       value = self.target.get(search_value)
     elif colors is not None and isinstance(colors, str):
       value = self.__for_colors(colors)
     elif tokenColors is not None and isinstance(tokenColors, list):
       value = self.__for_token_colors(tokenColors)
-    
+
     if value is None:
       # xxx: `raise` を正しく使いたい
       # wip: `None` 時、エラー吐く
@@ -206,20 +206,26 @@ class VSCodeThemeInterpretation:
 def convert(vs_theme_obj: VSCodeThemeObject) -> dict:
   vt = VSCodeThemeInterpretation(vs_theme_obj.data)
   d = dict()
-  
+
   d |= vs_theme_obj.info
   d['background'] = vt.get_value(colors='editor.background')
   d['bar_background'] = vt.get_value(colors='tab.activeBackground')
   d['dark_keyboard'] = True
-  d['default_text'] = vt.get_value(tokenColors=['text', 'foreground', ])
-  d['editor_actions_icon_background'] = vt.get_value(colors='menu.selectionBackground')
-  d['editor_actions_icon_tint'] = vt.get_value(colors='menu.selectionForeground')
-  d['editor_actions_popover_background'] = vt.get_value(colors='menu.background')
+  d['default_text'] = vt.get_value(tokenColors=[
+    'text',
+    'foreground',
+  ])
+  d['editor_actions_icon_background'] = vt.get_value(
+    colors='menu.selectionBackground')
+  d['editor_actions_icon_tint'] = vt.get_value(
+    colors='menu.selectionForeground')
+  d['editor_actions_popover_background'] = vt.get_value(
+    colors='menu.background')
   d['error_text'] = vt.get_value(colors='editorError.foreground')
-  
+
   # d['font-family'] = 'Menlo-Regular'
   # d['font-siz'] = 15.0
-  
+
   d['gutter_background'] = vt.get_value(colors='editorGutter.background')
   d['gutter_border'] = vt.get_value(colors='tab.border')
   d['interstitial'] = '#ff00ff'  # xxx: 仮
@@ -230,45 +236,68 @@ def convert(vs_theme_obj: VSCodeThemeObject) -> dict:
   d['separator_line'] = vt.get_value(colors='focusBorder')
   d['tab_background'] = vt.get_value(colors='tab.inactiveBackground')
   d['tab_title'] = vt.get_value(colors='tab.inactiveForeground')
-  d['text_selection_tint'] = vt.get_value(colors='editorLineNumber.activeForeground')
+  d['text_selection_tint'] = vt.get_value(
+    colors='editorLineNumber.activeForeground')
   d['thumbnail_border'] = vt.get_value(colors='sideBar.border')
   d['tint'] = vt.get_value(colors='editorCursor.foreground')
-  
+
   s = dict()  # scopes
-  s['bold'] = {'font-style': 'bold', }
-  s['bold-italic'] = {'font-style': 'bold-italic', }
-  s['builtinfunction'] = {'color': vt.get_value(tokenColors=[
-    'entity.name.function',
-    'foreground',
-  ]), }
-  s['checkbox'] = {'checkbox': True, }
-  s['checkbox-done'] = {'checkbox': True, 'done': True, }
-  s['class'] = {'color': vt.get_value(tokenColors=[
-    'entity.name.class',
-    'foreground',
-  ]), }
-  s['classdef'] = {'color': vt.get_value(tokenColors=[
-    'entity.name.class',
-    'foreground',
-  ]), 'font-style': 'bold', }
-  s['code'] = {'background-color': vt.get_value(tokenColors=[
-    'markup.inline.raw.string',
-    'foreground',
-  ]), 'corner-radius': 2.0, }
-  
+  s['bold'] = {
+    'font-style': 'bold',
+  }
+  s['bold-italic'] = {
+    'font-style': 'bold-italic',
+  }
+  s['builtinfunction'] = {
+    'color': vt.get_value(tokenColors=[
+      'entity.name.function',
+      'foreground',
+    ]),
+  }
+  s['checkbox'] = {
+    'checkbox': True,
+  }
+  s['checkbox-done'] = {
+    'checkbox': True,
+    'done': True,
+  }
+  s['class'] = {
+    'color': vt.get_value(tokenColors=[
+      'entity.name.class',
+      'foreground',
+    ]),
+  }
+  s['classdef'] = {
+    'color': vt.get_value(tokenColors=[
+      'entity.name.class',
+      'foreground',
+    ]),
+    'font-style': 'bold',
+  }
+  s['code'] = {
+    'background-color':
+    vt.get_value(tokenColors=[
+      'markup.inline.raw.string',
+      'foreground',
+    ]),
+    'corner-radius':
+    2.0,
+  }
+
   d['scopes'] = s
-  
+
   # s['bold']['font-style'] = 'bold'
   # ['bold']['font-style'] = 'bold'
   # d['scopes'] = s
-  
+
   return d
 
 
 if __name__ == '__main__':
   dark_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg.color-theme.json'
   light_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg-light.color-theme.json'
-  
+
   vs_iceberg_dark = VSCodeThemeObject(dark_url, use_local=True)
   theme_dict = convert(vs_iceberg_dark)
   x = 1
+
