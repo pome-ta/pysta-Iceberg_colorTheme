@@ -283,12 +283,145 @@ def convert(vs_theme_obj: VSCodeThemeObject) -> dict:
     'corner-radius':
     2.0,
   }
+  s['codeblock-start'] = {
+    'color':
+    vt.get_value(tokenColors=[
+      'markup.inline.raw.string',
+      'foreground',
+    ]),
+  }
+  s['comment'] = {
+    'color': vt.get_value(tokenColors=[
+      'comment',
+      'foreground',
+    ]),
+    'font-style': 'italic',
+  }
+  s['decorator'] = {
+    'color': vt.get_value(tokenColors=[
+      'meta.type.annotation',
+      'foreground',
+    ]),
+  }
+  s['default'] = {
+    'color': vt.get_value(tokenColors=[
+      'text',
+      'foreground',
+    ]),
+  }
+  s['docstring'] = {
+    'color':
+    vt.get_value(tokenColors=[
+      'entity.other.attribute-name',
+      'foreground',
+    ]),
+    'font-style':
+    'italic',
+  }
+  s['escape'] = {
+    'background-color': vt.get_value(tokenColors=[
+      'support',
+      'foreground',
+    ]),
+  }
+  s['formatting'] = {
+    'color':
+    vt.get_value(tokenColors=[
+      'markup.fenced_code.block',
+      'foreground',
+    ]),
+  }
+  s['function'] = {
+    'color':
+    vt.get_value(tokenColors=[
+      'entity.name.function.method',
+      'foreground',
+    ]),
+  }
+  s['functiondef'] = {
+    'color':
+    vt.get_value(tokenColors=[
+      'entity.name.function.method',
+      'foreground',
+    ]),
+    'font-style':
+    'bold',
+  }
+  s['heading-1'] = {
+    'color': vt.get_value(tokenColors=[
+      'markup.heading',
+      'foreground',
+    ]),
+    'font-style': 'bold',
+  }
+  s['heading-2'] = {
+    'color': vt.get_value(tokenColors=[
+      'markup.heading',
+      'foreground',
+    ]),
+    'font-style': 'bold',
+  }
+  s['heading-3'] = {
+    'color': vt.get_value(tokenColors=[
+      'markup.heading',
+      'foreground',
+    ]),
+    'font-style': 'bold',
+  }
+  s['italic'] = {
+    'font-style': 'italic',
+  }
+  s['keyword'] = {
+    'color': vt.get_value(tokenColors=[
+      'keyword',
+      'foreground',
+    ]),
+  }
+  s['link'] = {
+    'text-decoration': 'underline',
+    'color': vt.get_value(tokenColors=[
+      'markup.underline.link',
+      'foreground',
+    ]),
+  }
+  s['marker'] = {
+    'box-background-color':
+    vt.get_value(colors='editorMarkerNavigation.background'),
+    'box-border-color':
+    vt.get_value(colors='inputOption.activeBorder'),
+    'box-border-type':
+    4,
+  }
+  s['module'] = {
+    'color': vt.get_value(tokenColors=[
+      'entity.name.import.go',
+      'foreground',
+    ]),
+  }
+  s['number'] = {
+    'color': vt.get_value(tokenColors=[
+      'constant',
+      'foreground',
+    ]),
+  }
+  s['project'] = {
+    'font-style': 'bold',
+  }
+  s['string'] = {
+    'color': vt.get_value(tokenColors=[
+      'string',
+      'foreground',
+    ]),
+  }
+  s['tag'] = {
+    'text-decoration': 'none',
+  }
+  s['task-done'] = {
+    'color': vt.get_value(colors='notificationsInfoIcon.foreground'),
+    'text-decoration': 'strikeout',
+  }
 
   d['scopes'] = s
-
-  # s['bold']['font-style'] = 'bold'
-  # ['bold']['font-style'] = 'bold'
-  # d['scopes'] = s
 
   return d
 
@@ -297,7 +430,7 @@ if __name__ == '__main__':
   dark_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg.color-theme.json'
   light_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg-light.color-theme.json'
 
-  vs_iceberg_dark = VSCodeThemeObject(dark_url, use_local=True)
+  vs_iceberg_dark = VSCodeThemeObject(dark_url, use_local=False)
   theme_dict = convert(vs_iceberg_dark)
   x = 1
 
