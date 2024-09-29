@@ -42,38 +42,38 @@ class VSCodeThemeServer:
     '_file_name',
     '_file_url',
   ]
-  
+
   def __init__(self,
                theme_json_url: str,
                use_local: bool = False,
                tmp_dir: Path = VS_LOCAL):
-    
+
     self.__json_url = theme_json_url
     self.file_name = self.__get_file_name(theme_json_url)
     self.tmp_dir = tmp_dir
-    
+
     if use_local:
       self.data, self.info = self.__get_tmp_data_info()
     else:
       self.data = self.__get_data()
       self.info = self.__get_info()
-    
+
     self.dump = to_dump(self.data, self.info)
-  
+
   def get_value(
       self,
       search_value: str = '',
       colors: str | None = None,
       tokenColors: list[str] | None = None) -> str | bool | int | float | None:
     value = None
-    
+
     if search_value:
       value = self.data.get(search_value)
     elif colors is not None and isinstance(colors, str):
       value = self.__for_colors(colors)
     elif tokenColors is not None and isinstance(tokenColors, list):
       value = self.__for_token_colors(tokenColors)
-    
+
     if value is None:
       # xxx: `raise` を正しく使いたい
       # wip: `None` 時、エラー吐く
@@ -81,11 +81,11 @@ class VSCodeThemeServer:
         f'{self}: value の値が`{value}` です:\n- {search_value=}\n- {colors=}\n- {tokenColors=}'
       )
     return value
-  
+
   def __for_colors(self, key: str) -> str | bool | int | float | None:
     # xxx: `get` じゃなくて`[key]` の方がいいか?
     return self.data['colors'].get(key)
-  
+
   def __for_token_colors(self,
                          keys: list[str]) -> str | bool | int | float | None:
     scope, settings = keys
@@ -95,7 +95,7 @@ class VSCodeThemeServer:
       scopes = _scope if isinstance(_scope, list) else [_scope]
       if scope in scopes:
         return tokenColor.get('settings').get(settings)
-  
+
   @staticmethod
   def __get_file_name(url: str) -> str | None:
     path = Path(url)  # xxx: 取り出し方が乱暴
@@ -103,18 +103,18 @@ class VSCodeThemeServer:
       return path.name
     # wip: `None` 時、エラー吐く
     return None
-  
+
   def __get_tmp_data_info(self) -> list[dict]:
     data_text = Path(self.tmp_dir, self.file_name).read_text()
     loads = json.loads(data_text)
-    
+
     info = self.__create_info(*[loads.get(key) for key in self.info_keys])
-    
+
     return [
       loads,
       info,
     ]
-  
+
   def __get_data(self) -> dict | None:
     params = {
       'raw': 'true',
@@ -126,7 +126,7 @@ class VSCodeThemeServer:
       return response.json()
     # wip: `None` 時、エラー吐く
     return None
-  
+
   def __get_info(self) -> dict | None:
     tokens = self.__api_tokens()
     if tokens is None:
@@ -137,22 +137,22 @@ class VSCodeThemeServer:
     _license = l.get('name') if (l :=
                                  tokens.get('license')) is not None else str(l)
     _pushed_at = tokens.get('pushed_at')
-    
+
     info = self.__create_info(_url, _name, _license, _pushed_at)
     return info
-  
+
   def __api_tokens(self) -> dict | None:
     _, _, owner_name, repo_name, *_ = Path(
       self.__json_url).parts  # xxx: 取り出し方が乱暴
     api_url = f'https://api.github.com/repos/{owner_name}/{repo_name}'
-    
+
     # wip: 制限かかった時の処理
     response = requests.get(api_url)
     if response.status_code == 200:
       return response.json()
     # wip: `None` 時、エラー吐く
     return None
-  
+
   def __create_info(self,
                     repository_url: str,
                     author_name: str,
@@ -169,13 +169,13 @@ class VSCodeThemeServer:
       self.__json_url if file_url is None else file_url,
     ]
     info = {key: value for key, value in zip(self.info_keys, values)}
-    
+
     return info
 
 
 def convert(ts: VSCodeThemeServer) -> dict:
   d = dict()
-  
+
   d |= ts.info
   d['background'] = ts.get_value(colors='editor.background')
   d['bar_background'] = ts.get_value(colors='tab.activeBackground')
@@ -191,10 +191,10 @@ def convert(ts: VSCodeThemeServer) -> dict:
   d['editor_actions_popover_background'] = ts.get_value(
     colors='menu.background')
   d['error_text'] = ts.get_value(colors='editorError.foreground')
-  
+
   # d['font-family'] = 'Menlo-Regular'
   # d['font-siz'] = 15.0
-  
+
   d['gutter_background'] = ts.get_value(colors='editorGutter.background')
   d['gutter_border'] = ts.get_value(colors='tab.border')
   d['interstitial'] = '#ff00ff'  # xxx: 仮
@@ -209,7 +209,7 @@ def convert(ts: VSCodeThemeServer) -> dict:
     colors='editorLineNumber.activeForeground')
   d['thumbnail_border'] = ts.get_value(colors='sideBar.border')
   d['tint'] = ts.get_value(colors='editorCursor.foreground')
-  
+
   s = dict()  # scopes
   s['bold'] = {
     'font-style': 'bold',
@@ -245,19 +245,19 @@ def convert(ts: VSCodeThemeServer) -> dict:
   }
   s['code'] = {
     'background-color':
-      ts.get_value(tokenColors=[
-        'markup.inline.raw.string',
-        'foreground',
-      ]),
+    ts.get_value(tokenColors=[
+      'markup.inline.raw.string',
+      'foreground',
+    ]),
     'corner-radius':
-      2.0,
+    2.0,
   }
   s['codeblock-start'] = {
     'color':
-      ts.get_value(tokenColors=[
-        'markup.inline.raw.string',
-        'foreground',
-      ]),
+    ts.get_value(tokenColors=[
+      'markup.inline.raw.string',
+      'foreground',
+    ]),
   }
   s['comment'] = {
     'color': ts.get_value(tokenColors=[
@@ -280,12 +280,12 @@ def convert(ts: VSCodeThemeServer) -> dict:
   }
   s['docstring'] = {
     'color':
-      ts.get_value(tokenColors=[
-        'entity.other.attribute-name',
-        'foreground',
-      ]),
+    ts.get_value(tokenColors=[
+      'entity.other.attribute-name',
+      'foreground',
+    ]),
     'font-style':
-      'italic',
+    'italic',
   }
   s['escape'] = {
     'background-color': ts.get_value(tokenColors=[
@@ -295,26 +295,26 @@ def convert(ts: VSCodeThemeServer) -> dict:
   }
   s['formatting'] = {
     'color':
-      ts.get_value(tokenColors=[
-        'markup.fenced_code.block',
-        'foreground',
-      ]),
+    ts.get_value(tokenColors=[
+      'markup.fenced_code.block',
+      'foreground',
+    ]),
   }
   s['function'] = {
     'color':
-      ts.get_value(tokenColors=[
-        'entity.name.function.method',
-        'foreground',
-      ]),
+    ts.get_value(tokenColors=[
+      'entity.name.function.method',
+      'foreground',
+    ]),
   }
   s['functiondef'] = {
     'color':
-      ts.get_value(tokenColors=[
-        'entity.name.function.method',
-        'foreground',
-      ]),
+    ts.get_value(tokenColors=[
+      'entity.name.function.method',
+      'foreground',
+    ]),
     'font-style':
-      'bold',
+    'bold',
   }
   s['heading-1'] = {
     'color': ts.get_value(tokenColors=[
@@ -355,11 +355,11 @@ def convert(ts: VSCodeThemeServer) -> dict:
   }
   s['marker'] = {
     'box-background-color':
-      ts.get_value(colors='editorMarkerNavigation.background'),
+    ts.get_value(colors='editorMarkerNavigation.background'),
     'box-border-color':
-      ts.get_value(colors='inputOption.activeBorder'),
+    ts.get_value(colors='inputOption.activeBorder'),
     'box-border-type':
-      4,
+    4,
   }
   s['module'] = {
     'color': ts.get_value(tokenColors=[
@@ -389,7 +389,7 @@ def convert(ts: VSCodeThemeServer) -> dict:
     'color': ts.get_value(colors='notificationsInfoIcon.foreground'),
     'text-decoration': 'strikeout',
   }
-  
+
   d['scopes'] = s
   return d
 
@@ -422,12 +422,17 @@ def create_url_scheme(json_data: bytes) -> str:
   return f'{scheme_header}{param_body}'
 
 
-def build(ts: VSCodeThemeServer, save_vscode: bool = True, vscode_dir: Path = None,
-          save_pythonista: bool = True, pythonista_dir: Path = PY_LOCAL) -> str:
+def build(ts: VSCodeThemeServer,
+          save_vscode: bool = True,
+          vscode_dir: Path = None,
+          save_pythonista: bool = True,
+          pythonista_dir: Path = PY_LOCAL) -> str:
   converted = convert(ts)
   theme_dump = to_dump(converted)
-  
-  compiled_scheme = create_url_scheme(theme_dump.encode(encoding='utf-8'))
+  bytes_dump = theme_dump.encode(encoding='utf-8')
+
+  compiled_scheme = create_url_scheme(bytes_dump)
+  '''
   
   if save_vscode:
     export(ts.dump, ts.file_name, ts.tmp_dir if vscode_dir is None else vscode_dir)
@@ -436,14 +441,17 @@ def build(ts: VSCodeThemeServer, save_vscode: bool = True, vscode_dir: Path = No
   # user_theme_dir = get_user_theme_dir()
   if (user_theme_dir := get_user_theme_dir()) is not None:
     export(theme_dump, ts.file_name, user_theme_dir)
+  '''
   return compiled_scheme
 
 
 if __name__ == '__main__':
   dark_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg.color-theme.json'
   light_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg-light.color-theme.json'
-  
+
   iceberg_dark_server = VSCodeThemeServer(dark_url)
   scheme_url = build(iceberg_dark_server)
-  
+  print(scheme_url)
+
   x = 1
+
