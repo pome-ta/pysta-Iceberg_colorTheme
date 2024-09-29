@@ -563,6 +563,21 @@ def convert(vs_theme_obj: VSCodeThemeObject) -> dict:
 
   return d
 
+'''
+- theme を格納
+- schema を返す
+
+- export
+  - vs のdump 格納
+  - pysta のdump 格納
+
+
+
+vs は、server として渡す機能
+'''
+def build(vs_theme, ) -> str:
+  pass
+
 
 if __name__ == '__main__':
   dark_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg.color-theme.json'
