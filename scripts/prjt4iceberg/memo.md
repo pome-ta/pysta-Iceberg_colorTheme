@@ -1,3 +1,15 @@
+# 📝 2024/09/29
+
+## module 下での`Path` の挙動
+
+PC もケアとなると、どんな挙動になるか確認は必要やな
+
+
+[Pythonで実行中のファイルの場所(パス)を取得する__file__ | note.nkmk.me](https://note.nkmk.me/python-script-file-path/)
+
+module の位置ということで良いか？
+
+
 # 📝 2024/09/24
 
 
