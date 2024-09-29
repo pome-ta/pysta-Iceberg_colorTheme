@@ -237,7 +237,7 @@ def convert(ts: VSCodeThemeServer) -> dict:
   s['code'] = {
     'background-color':
     ts.get_value(tokenColors=[
-      'markup.inline.raw.string',
+      'markup.fenced_code.block',
       'foreground',
     ]),
     'corner-radius':
@@ -433,15 +433,16 @@ def build(ts: VSCodeThemeServer,
   bytes_dump = theme_dump.encode(encoding='utf-8')
 
   compiled_scheme = create_url_scheme(bytes_dump)
-  
+
   if save_vscode:
-    export(ts.dump, ts.file_name, ts.tmp_dir if vscode_dir is None else vscode_dir)
+    export(ts.dump, ts.file_name,
+           ts.tmp_dir if vscode_dir is None else vscode_dir)
   if save_pythonista:
     export(theme_dump, ts.file_name, pythonista_dir)
 
   if (user_theme_dir := get_user_theme_dir()) is not None:
     export(theme_dump, ts.file_name, user_theme_dir)
-  
+
   return compiled_scheme
 
 
@@ -449,10 +450,19 @@ if __name__ == '__main__':
   dark_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg.color-theme.json'
   light_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg-light.color-theme.json'
 
+  urls = [
+    dark_url,
+    light_url,
+  ]
+  for u in urls:
+    build(VSCodeThemeServer(u))
+
+  '''
   #iceberg_server = VSCodeThemeServer(dark_url)
   iceberg_server = VSCodeThemeServer(light_url)
   scheme_url = build(iceberg_server)
   print(scheme_url)
+  '''
 
   x = 1
 
