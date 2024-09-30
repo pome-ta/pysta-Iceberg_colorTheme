@@ -164,7 +164,7 @@ class VSCodeThemeServer:
 
 def convert(ts: VSCodeThemeServer) -> dict:
   d = dict()
-
+  # GitHub 
   d |= ts.info
   d['background'] = ts.get_value(colors='editor.background')
   d['bar_background'] = ts.get_value(colors='tab.activeBackground')
