@@ -444,6 +444,17 @@ def build(ts: VSCodeThemeServer,
   return compiled_scheme
 
 
+
+def create_short_url(long_url:str)->str:
+  # TinyURLのAPIエンドポイント
+  api_url = "http://tinyurl.com/api-create.php"
+  # リクエストパラメータの設定
+  params = {'url': long_url}
+  # APIリクエストを送信し、レスポンスを受け取る
+  response = requests.get(api_url, params=params)
+  # 短縮されたURLを返す
+  return response.text
+
 if __name__ == '__main__':
   dark_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg.color-theme.json'
   light_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg-light.color-theme.json'
@@ -458,9 +469,10 @@ if __name__ == '__main__':
   ]
   for n, u in enumerate(urls):
     b = build(VSCodeThemeServer(u))
+    short_url = create_short_url(b)
 
-    #print(f'[{names[n]}]({b})\n')
+    #print(f'[{names[n]}]({b})\n\n')
     #print(f'<{b}>\n\n')
-
-    print(f'<a href="{b}">{names[n]}</a>\n\n')
+    #print(f'<a href="{b}">{names[n]}</a>\n\n')
+    print(f'[{names[n]}]({short_url})\n\n')
 
