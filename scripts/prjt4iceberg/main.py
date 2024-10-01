@@ -460,5 +460,7 @@ if __name__ == '__main__':
     b = build(VSCodeThemeServer(u))
 
     #print(f'[{names[n]}]({b})\n')
-    print(f'<{b}>\n\n')
+    #print(f'<{b}>\n\n')
+
+    print(f'<a href="{b}">{names[n]}</a>\n\n')
 
