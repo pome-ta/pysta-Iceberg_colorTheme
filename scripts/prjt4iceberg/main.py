@@ -413,14 +413,6 @@ def export(dump_theme: str, theme_file_name: str, target_dir: Path) -> None:
   json_file.write_text(dump_theme, encoding='utf-8')
 
 
-def create_url_scheme(json_data: bytes) -> str:
-  compressed = zlib.compress(json_data, level=9)
-  b64bytes = base64.urlsafe_b64encode(compressed)
-  param_body = b64bytes.decode('utf-8').replace('=', '~')
-  scheme_header = 'pythonista3://?action=add-theme&theme-data='
-  return f'{scheme_header}{param_body}'
-
-
 def build(ts: VSCodeThemeServer,
           save_vscode: bool = True,
           vscode_dir: Path = None,
@@ -428,9 +420,6 @@ def build(ts: VSCodeThemeServer,
           pythonista_dir: Path = PY_LOCAL) -> str:
   converted = convert(ts)
   theme_dump = to_dump(converted)
-  bytes_dump = theme_dump.encode(encoding='utf-8')
-
-  compiled_scheme = create_url_scheme(bytes_dump)
 
   if save_vscode:
     export(ts.dump, ts.file_name,
@@ -441,11 +430,19 @@ def build(ts: VSCodeThemeServer,
   if (user_theme_dir := get_user_theme_dir()) is not None:
     export(theme_dump, ts.file_name, user_theme_dir)
 
-  return compiled_scheme
+  return theme_dump
 
 
+def create_url_scheme(json_data: bytes) -> str:
+  compressed = zlib.compress(json_data, level=9)
+  b64bytes = base64.urlsafe_b64encode(compressed)
+  param_body = b64bytes.decode('utf-8').replace('=', '~')
+  scheme_header = 'pythonista3://?action=add-theme&theme-data='
+  return f'{scheme_header}{param_body}'
 
-def create_short_url(long_url:str)->str:
+
+# ref: [Pythonで短縮URLを自動生成するサンプルコード|Python自動化研究所](https://note.com/python_lab/n/n1635a2f56b99)
+def create_short_url(long_url: str) -> str:
   # TinyURLのAPIエンドポイント
   api_url = "http://tinyurl.com/api-create.php"
   # リクエストパラメータの設定
@@ -455,6 +452,40 @@ def create_short_url(long_url:str)->str:
   # 短縮されたURLを返す
   return response.text
 
+
+def out_for_print(ts: VSCodeThemeServer,
+                  save_vscode: bool = True,
+                  vscode_dir: Path = None,
+                  save_pythonista: bool = True,
+                  pythonista_dir: Path = PY_LOCAL) -> str:
+
+  builded_theme = build(ts, save_vscode, vscode_dir, save_pythonista,
+                        pythonista_dir)
+
+  bytes_theme = builded_theme.encode(encoding='utf-8')
+  compiled_scheme = create_url_scheme(bytes_theme)
+  short_url = create_short_url(compiled_scheme)
+
+  new_line = '\n'
+
+  name_header = f'### {ts.get_value("name")}'
+  link_header = f'#### Link(URL scheme)'
+  link_tag = f'[{ts.file_name}]({short_url})'
+  json_header = f'#### JSON'
+  json_tag = f'```{new_line}{builded_theme}{new_line}```'
+
+  out_text = (new_line*2).join([
+    name_header,
+    link_header,
+    link_tag,
+    json_header,
+    json_tag,
+    new_line * 2,
+  ])
+
+  return out_text
+
+
 if __name__ == '__main__':
   dark_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg.color-theme.json'
   light_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg-light.color-theme.json'
@@ -463,16 +494,8 @@ if __name__ == '__main__':
     dark_url,
     light_url,
   ]
-  names = [
-    'dark_url',
-    'light_url',
-  ]
-  for n, u in enumerate(urls):
-    b = build(VSCodeThemeServer(u))
-    short_url = create_short_url(b)
 
-    #print(f'[{names[n]}]({b})\n\n')
-    #print(f'<{b}>\n\n')
-    #print(f'<a href="{b}">{names[n]}</a>\n\n')
-    print(f'[{names[n]}]({short_url})\n\n')
+  for u in urls:
+    t = VSCodeThemeServer(u)
+    print(out_for_print(t))
 
