@@ -164,7 +164,7 @@ class VSCodeThemeServer:
 
 def convert(ts: VSCodeThemeServer) -> dict:
   d = dict()
-  # GitHub 
+  # GitHub
   d |= ts.info
   d['background'] = ts.get_value(colors='editor.background')
   d['bar_background'] = ts.get_value(colors='tab.activeBackground')
@@ -452,12 +452,13 @@ if __name__ == '__main__':
     dark_url,
     light_url,
   ]
-  for u in urls:
+  names = [
+    'dark_url',
+    'light_url',
+  ]
+  for n, u in enumerate(urls):
     b = build(VSCodeThemeServer(u))
-    
-    print(f'[dark_url]({b})')
 
-
-  
-
+    #print(f'[{names[n]}]({b})\n')
+    print(f'<{b}>\n\n')
 
