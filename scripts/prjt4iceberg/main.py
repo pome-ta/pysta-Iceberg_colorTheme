@@ -453,7 +453,9 @@ if __name__ == '__main__':
     light_url,
   ]
   for u in urls:
-    build(VSCodeThemeServer(u))
+    b = build(VSCodeThemeServer(u))
+    
+    print(f'[dark_url]({b})')
 
 
   
