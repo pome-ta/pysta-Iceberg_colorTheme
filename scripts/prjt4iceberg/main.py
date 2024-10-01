@@ -471,15 +471,15 @@ def out_for_print(ts: VSCodeThemeServer,
   name_header = f'### {ts.get_value("name")}'
   link_header = f'#### Link(URL scheme)'
   link_tag = f'[{ts.file_name}]({short_url})'
-  json_header = f'#### JSON'
-  json_tag = f'```{new_line}{builded_theme}{new_line}```'
+  scheme_header = f'#### scheme raw'
+  scheme_tag = f'```{new_line}{compiled_scheme}{new_line}```'
 
   out_text = (new_line*2).join([
     name_header,
     link_header,
     link_tag,
-    json_header,
-    json_tag,
+    scheme_header,
+    scheme_tag,
     new_line * 2,
   ])
 
