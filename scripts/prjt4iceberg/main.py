@@ -119,7 +119,7 @@ class VSCodeThemeServer:
   def __get_info(self) -> dict | None:
     tokens = self.__api_tokens()
     if tokens is None:
-      # wip: `None` 時、エラー吐く
+      # wip: `None` 時、エラー吐く?
       return None
     _url = tokens.get('html_url')
     _name = tokens.get('owner').get('login')
