@@ -114,26 +114,29 @@ class VSCodeThemeServer:
     params = {
       'raw': 'true',
     }
-    
-    try:
-      response = requests.get(self.__json_url, params)
-      response.raise_for_status()
-    except ConnectionError as ce:
-      print(f'Connection Error:{ce}')
-    except HTTPError as he:
-      print(f'HTTP Error:{he}')
-    except Timeout as te:
-      print(f'Timeout Error:{te}')
-    except RequestException as re:
-      print(f'Error:{re}')
 
-    # xxx: iceberg には、comment なし
-    # wip: `.jsonc` (JSON with Comments) 対応
-    return response.json()
+    try:
+      response = requests.get(self.__json_url + 'a', params)
+      response.raise_for_status()
+    except ConnectionError as e:
+      print(f'Connection Error:{e}')
+      raise ConnectionError
+    except HTTPError as e:
+      print(f'HTTP Error:{e}')
+      #raise HTTPError(f'HTTP Error:{e}')
+      raise HTTPError
+    except Timeout as te:
+      print(f'Timeout Error:{e}')
+    except RequestException as e:
+      print(f'Error:{e}')
+    else:
+      # xxx: iceberg には、comment なし
+      # wip: `.jsonc` (JSON with Comments) 対応
+      return response.json()
 
   def __get_info(self) -> dict | None:
     tokens = self.__api_tokens()
-    
+
     _url = tokens.get('html_url')
     _name = tokens.get('owner').get('login')
     _license = l.get('name') if (l :=
@@ -191,9 +194,23 @@ class VSCodeThemeServer:
 
 
 def convert(ts: VSCodeThemeServer) -> dict:
-  d = dict()
+
+  def is_dict_in_none_value(dct: dict | str | None, parent: str = '') -> bool:
+    for ky, vl in dct.items():
+      if isinstance(vl, dict):
+        if is_dict_in_none_value(vl, f'{parent}.{ky}' if parent else ky):
+          return True
+      else:
+        if vl is None:
+          print(f'値に`None` が存在します')
+          print(f'{parent=}:\n\tkey={ky}: value={vl}')
+          return True
+    return False
+
+  main = dict()
   # GitHub Repository Data
-  d |= ts.info
+  main |= ts.info
+  d = dict()
   # Pythonista3 Color Theme
   d['background'] = ts.get_value(colors='editor.background')
   d['bar_background'] = ts.get_value(colors='tab.activeBackground')
@@ -409,7 +426,11 @@ def convert(ts: VSCodeThemeServer) -> dict:
   }
 
   d['scopes'] = s
-  return d
+
+  if is_dict_in_none_value(d):
+    raise ValueError('設定する値に`None` が存在するため変換できません')
+  main |= d
+  return main
 
 
 def get_user_theme_dir() -> Path | None:
@@ -477,7 +498,7 @@ def create_url_scheme(json_data: bytes) -> str:
 def create_short_url(long_url: str) -> str:
   api_url = 'http://tinyurl.com/api-create.php'
   params = {'url': long_url}
-  
+
   try:
     response = requests.get(api_url, params=params)
     response.raise_for_status()
@@ -489,8 +510,8 @@ def create_short_url(long_url: str) -> str:
     print(f'Timeout Error:{te}')
   except RequestException as re:
     print(f'Error:{re}')
-  
-  return response.text
+  else:
+    return response.text
 
 
 def out_for_print(ts: VSCodeThemeServer,
@@ -537,7 +558,7 @@ if __name__ == '__main__':
 
   for u in urls:
     t = VSCodeThemeServer(u, use_local=False)
-    #convert(t)
-    build(t)
+    aaa = convert(t)
+    #build(t)
     #print(out_for_print(t))
 
