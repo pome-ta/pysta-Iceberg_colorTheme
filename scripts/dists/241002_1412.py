@@ -116,23 +116,23 @@ class VSCodeThemeServer:
     }
 
     try:
-      response = requests.get(self.__json_url + 'a', params)
+      response = requests.get(self.__json_url, params=params)
       response.raise_for_status()
     except ConnectionError as e:
       print(f'Connection Error:{e}')
-      raise ConnectionError
+      raise
     except HTTPError as e:
       print(f'HTTP Error:{e}')
-      #raise HTTPError(f'HTTP Error:{e}')
-      raise HTTPError
-    except Timeout as te:
+      raise
+    except Timeout as e:
       print(f'Timeout Error:{e}')
+      raise
     except RequestException as e:
       print(f'Error:{e}')
-    else:
-      # xxx: iceberg には、comment なし
-      # wip: `.jsonc` (JSON with Comments) 対応
-      return response.json()
+      raise
+    # xxx: iceberg には、comment なし
+    # wip: `.jsonc` (JSON with Comments) 対応
+    return response.json()
 
   def __get_info(self) -> dict | None:
     tokens = self.__api_tokens()
@@ -162,14 +162,18 @@ class VSCodeThemeServer:
     try:
       response = requests.get(api_url)
       response.raise_for_status()
-    except ConnectionError as ce:
-      print(f'Connection Error:{ce}')
-    except HTTPError as he:
-      print(f'HTTP Error:{he}')
-    except Timeout as te:
-      print(f'Timeout Error:{te}')
-    except RequestException as re:
-      print(f'Error:{re}')
+    except ConnectionError as e:
+      print(f'Connection Error:{e}')
+      raise
+    except HTTPError as e:
+      print(f'HTTP Error:{e}')
+      raise
+    except Timeout as e:
+      print(f'Timeout Error:{e}')
+      raise
+    except RequestException as e:
+      print(f'Error:{e}')
+      raise
 
     return response.json()
 
@@ -502,16 +506,19 @@ def create_short_url(long_url: str) -> str:
   try:
     response = requests.get(api_url, params=params)
     response.raise_for_status()
-  except ConnectionError as ce:
-    print(f'Connection Error:{ce}')
-  except HTTPError as he:
-    print(f'HTTP Error:{he}')
-  except Timeout as te:
-    print(f'Timeout Error:{te}')
-  except RequestException as re:
-    print(f'Error:{re}')
-  else:
-    return response.text
+  except ConnectionError as e:
+    print(f'Connection Error:{e}')
+    raise
+  except HTTPError as e:
+    print(f'HTTP Error:{e}')
+    raise
+  except Timeout as e:
+    print(f'Timeout Error:{e}')
+    raise
+  except RequestException as e:
+    print(f'Error:{e}')
+    raise
+  return response.text
 
 
 def out_for_print(ts: VSCodeThemeServer,
