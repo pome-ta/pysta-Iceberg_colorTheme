@@ -66,7 +66,7 @@ class VSCodeThemeServer:
     if value is None:
       # xxx: `raise` を正しく使いたい
       # wip: `None` 時、エラー吐く
-      raise print(
+      raise ValueError(
         f'{self}: value の値が`{value}` です:\n- {search_value=}\n- {colors=}\n- {tokenColors=}'
       )
     return value
@@ -388,7 +388,6 @@ def get_user_theme_dir() -> Path | None:
     # xxx: 一応
     from objc_util import ObjCClass
   except ModuleNotFoundError as e:
-    # wip: `None` 時、エラー吐く
     print(f'{e}:')
     return None
   _path_objc = ObjCClass('PA2UITheme').sharedTheme().userThemesPath()
@@ -406,7 +405,11 @@ def to_dump(json_data: dict, info_data: dict | None = None) -> str:
   return json.dumps(dump_data, **kwargs)
 
 
-def export(dump_theme: str, theme_file_name: str, target_dir: Path) -> None:
+def export(dump_theme: str, theme_file_name: str,
+           target_dir: Path | None) -> None:
+  if target_dir is None:
+    raise ValueError(f'target_dir')
+
   if not target_dir.is_dir():
     target_dir.mkdir(parents=True)
   json_file = Path(target_dir, theme_file_name)
@@ -443,13 +446,9 @@ def create_url_scheme(json_data: bytes) -> str:
 
 # ref: [Pythonで短縮URLを自動生成するサンプルコード|Python自動化研究所](https://note.com/python_lab/n/n1635a2f56b99)
 def create_short_url(long_url: str) -> str:
-  # TinyURLのAPIエンドポイント
-  api_url = "http://tinyurl.com/api-create.php"
-  # リクエストパラメータの設定
+  api_url = 'http://tinyurl.com/api-create.php'
   params = {'url': long_url}
-  # APIリクエストを送信し、レスポンスを受け取る
   response = requests.get(api_url, params=params)
-  # 短縮されたURLを返す
   return response.text
 
 
@@ -474,7 +473,7 @@ def out_for_print(ts: VSCodeThemeServer,
   scheme_header = f'#### scheme raw'
   scheme_tag = f'```{new_line}{compiled_scheme}{new_line}```'
 
-  out_text = (new_line*2).join([
+  out_text = (new_line * 2).join([
     name_header,
     link_header,
     link_tag,
@@ -497,5 +496,6 @@ if __name__ == '__main__':
 
   for u in urls:
     t = VSCodeThemeServer(u)
-    print(out_for_print(t))
+    convert(t)
+    #print(out_for_print(t))
 
