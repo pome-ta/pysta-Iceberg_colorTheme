@@ -164,8 +164,9 @@ class VSCodeThemeServer:
 
 def convert(ts: VSCodeThemeServer) -> dict:
   d = dict()
-  # GitHub
+  # GitHub Repository Data
   d |= ts.info
+  # Pythonista3 Color Theme
   d['background'] = ts.get_value(colors='editor.background')
   d['bar_background'] = ts.get_value(colors='tab.activeBackground')
   d['dark_keyboard'] = True
