@@ -1,9 +1,11 @@
 """
 note: とりあえず分割せずに全部ここに
   - 後々分割か?
+  - エラーハンドリング
   - comment つける
   - エラー処理
   - markdown のmodule 関係使えるかな？
+    - jinja2 でもいいかも
 """
 
 from pathlib import Path
@@ -12,6 +14,8 @@ import base64
 import zlib
 
 import requests
+# ref: [Pythonのrequestsライブラリで学ぶHTTPエラー処理の基本 - 社内SE 〜しゃちくによる社内IT化計画〜](https://shanai-se.blog/python/library-requests-error/)
+from requests.exceptions import RequestException, ConnectionError, HTTPError, Timeout
 
 # todo: Pythonista3 以外での`Path` 挙動クッション用
 ROOT_PATH: Path = Path(__file__).parent
@@ -20,6 +24,7 @@ ROOT_PATH: Path = Path(__file__).parent
 #PY_LOCAL = Path(ROOT_PATH, './Pythonista3ThemeDump')
 VS_LOCAL = Path(ROOT_PATH, './vscodeThemes')
 PY_LOCAL = Path(ROOT_PATH, './testThemes')
+
 
 class VSCodeThemeServer:
   file_name: str
@@ -55,28 +60,25 @@ class VSCodeThemeServer:
 
   def get_value(
       self,
-      search_value: str = '',
+      top_name: str = '',
       colors: str | None = None,
       tokenColors: list[str] | None = None) -> str | bool | int | float | None:
     value = None
 
-    if search_value:
-      value = self.data.get(search_value)
+    if top_name:
+      value = self.data.get(top_name)
     elif colors is not None and isinstance(colors, str):
       value = self.__for_colors(colors)
     elif tokenColors is not None and isinstance(tokenColors, list):
       value = self.__for_token_colors(tokenColors)
 
     if value is None:
-      # xxx: `raise` を正しく使いたい
-      # wip: `None` 時、エラー吐く
       raise ValueError(
-        f'{self}: value の値が`{value}` です:\n- {search_value=}\n- {colors=}\n- {tokenColors=}'
+        f'value の値が`{value}` です:\n- {top_name=}\n- {colors=}\n- {tokenColors=}'
       )
     return value
 
   def __for_colors(self, key: str) -> str | bool | int | float | None:
-    # xxx: `get` じゃなくて`[key]` の方がいいか?
     return self.data['colors'].get(key)
 
   def __for_token_colors(self,
@@ -90,12 +92,12 @@ class VSCodeThemeServer:
         return tokenColor.get('settings').get(settings)
 
   @staticmethod
-  def __get_file_name(url: str) -> str | None:
+  def __get_file_name(url: str) -> str:
     path = Path(url)  # xxx: 取り出し方が乱暴
     if path.suffix == '.json':
       return path.name
-    # wip: `None` 時、エラー吐く
-    return None
+    else:
+      raise ValueError(f'`.json` 形式のファイルではありません\n\turl:{url}')
 
   def __get_tmp_data_info(self) -> list[dict]:
     data_text = Path(self.tmp_dir, self.file_name).read_text()
@@ -112,39 +114,61 @@ class VSCodeThemeServer:
     params = {
       'raw': 'true',
     }
-    response = requests.get(self.__json_url, params)
-    if response.status_code == 200:
-      # xxx: iceberg には、comment なし
-      # wip: comment 削除処理
-      return response.json()
-    # wip: `None` 時、エラー吐く
-    return None
+    
+    try:
+      response = requests.get(self.__json_url, params)
+      response.raise_for_status()
+    except ConnectionError as ce:
+      print(f'Connection Error:{ce}')
+    except HTTPError as he:
+      print(f'HTTP Error:{he}')
+    except Timeout as te:
+      print(f'Timeout Error:{te}')
+    except RequestException as re:
+      print(f'Error:{re}')
+
+    # xxx: iceberg には、comment なし
+    # wip: `.jsonc` (JSON with Comments) 対応
+    return response.json()
 
   def __get_info(self) -> dict | None:
     tokens = self.__api_tokens()
-    if tokens is None:
-      # wip: `None` 時、エラー吐く?
-      return None
+    
     _url = tokens.get('html_url')
     _name = tokens.get('owner').get('login')
     _license = l.get('name') if (l :=
                                  tokens.get('license')) is not None else str(l)
     _pushed_at = tokens.get('pushed_at')
 
-    info = self.__create_info(_url, _name, _license, _pushed_at)
+    # xxx: `None` は許容？
+    pre_info = [
+      _url,
+      _name,
+      _license,
+      _pushed_at,
+    ]
+
+    info = self.__create_info(*pre_info)
     return info
 
-  def __api_tokens(self) -> dict | None:
+  def __api_tokens(self) -> dict:
     _, _, owner_name, repo_name, *_ = Path(
       self.__json_url).parts  # xxx: 取り出し方が乱暴
     api_url = f'https://api.github.com/repos/{owner_name}/{repo_name}'
 
-    # wip: 制限かかった時の処理
-    response = requests.get(api_url)
-    if response.status_code == 200:
-      return response.json()
-    # wip: `None` 時、エラー吐く
-    return None
+    try:
+      response = requests.get(api_url)
+      response.raise_for_status()
+    except ConnectionError as ce:
+      print(f'Connection Error:{ce}')
+    except HTTPError as he:
+      print(f'HTTP Error:{he}')
+    except Timeout as te:
+      print(f'Timeout Error:{te}')
+    except RequestException as re:
+      print(f'Error:{re}')
+
+    return response.json()
 
   def __create_info(self,
                     repository_url: str,
@@ -453,7 +477,19 @@ def create_url_scheme(json_data: bytes) -> str:
 def create_short_url(long_url: str) -> str:
   api_url = 'http://tinyurl.com/api-create.php'
   params = {'url': long_url}
-  response = requests.get(api_url, params=params)
+  
+  try:
+    response = requests.get(api_url, params=params)
+    response.raise_for_status()
+  except ConnectionError as ce:
+    print(f'Connection Error:{ce}')
+  except HTTPError as he:
+    print(f'HTTP Error:{he}')
+  except Timeout as te:
+    print(f'Timeout Error:{te}')
+  except RequestException as re:
+    print(f'Error:{re}')
+  
   return response.text
 
 
@@ -500,8 +536,8 @@ if __name__ == '__main__':
   ]
 
   for u in urls:
-    t = VSCodeThemeServer(u)
+    t = VSCodeThemeServer(u, use_local=False)
     #convert(t)
-    print(out_for_print(t))
-
+    build(t)
+    #print(out_for_print(t))
 
