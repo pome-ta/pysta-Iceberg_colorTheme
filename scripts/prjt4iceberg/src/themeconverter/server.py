@@ -5,6 +5,7 @@ import requests
 from requests.exceptions import RequestException, ConnectionError, HTTPError, Timeout
 
 from .cope import to_dump
+#from .themeconverter import to_dump
 
 # todo: Pythonista3 以外での`Path` 挙動クッション用
 ROOT_PATH: Path = Path(__file__).parent

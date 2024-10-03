@@ -1,10 +1,12 @@
 from pathlib import Path
 
-from themeconverter.server import VSCodeThemeServer
 
-# todo: Pythonista3 以外での`Path` 挙動クッション用
-ROOT_PATH: Path = Path(__file__).parent
-PY_LOCAL = Path(ROOT_PATH, '../theme')
+#from themeconverter.server import VSCodeThemeServer
+
+#from themeconverter.cope import build
+
+from themeconverter import VSCodeThemeServer
+
 
 
 def convert(ts: VSCodeThemeServer) -> dict:
@@ -250,6 +252,9 @@ def convert(ts: VSCodeThemeServer) -> dict:
 if __name__ == '__main__':
   dark_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg.color-theme.json'
   light_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg-light.color-theme.json'
-
-  t = VSCodeThemeServer(dark_url)
+  
+  urls = [dark_url,light_url,]
+  for u in urls:
+    t = VSCodeThemeServer(u)
+    #build(convert, t)
 
