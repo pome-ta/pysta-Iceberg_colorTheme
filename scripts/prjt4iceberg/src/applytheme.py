@@ -1,8 +1,8 @@
 from pathlib import Path
 
-# from themeconverter import VSCodeThemeServer
-from themeconverter.server import VSCodeThemeServer
-from themeconverter.build import build
+from themeconverter import VSCodeThemeServer,build
+#from themeconverter.server import VSCodeThemeServer
+#from themeconverter.build import build
 
 
 def convert(ts: VSCodeThemeServer) -> dict:

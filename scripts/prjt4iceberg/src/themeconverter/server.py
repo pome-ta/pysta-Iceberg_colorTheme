@@ -4,7 +4,7 @@ import json
 import requests
 from requests.exceptions import RequestException, ConnectionError, HTTPError, Timeout
 
-from . import VS_LOCAL
+from .rootlocate import VS_LOCAL
 from .to_dump import to_dump
 
 

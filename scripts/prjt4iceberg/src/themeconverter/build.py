@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from . import PY_LOCAL
+from .rootlocate import PY_LOCAL
 from .server import VSCodeThemeServer
 from .to_dump import to_dump
 from .export import export
