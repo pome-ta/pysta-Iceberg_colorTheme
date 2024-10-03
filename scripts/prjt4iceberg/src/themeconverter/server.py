@@ -4,13 +4,14 @@ import json
 import requests
 from requests.exceptions import RequestException, ConnectionError, HTTPError, Timeout
 
-from .cope import to_dump
-#from .themeconverter import to_dump
+from . import VS_LOCAL
+from .to_dump import to_dump
+
 
 # todo: Pythonista3 以外での`Path` 挙動クッション用
-ROOT_PATH: Path = Path(__file__).parent
-
-VS_LOCAL = Path(ROOT_PATH, '../opt/VSCodeThemeDumps')
+# ROOT_PATH: Path = Path(__file__).parent
+#
+# VS_LOCAL = Path(ROOT_PATH, '../opt/VSCodeThemeDumps')
 
 
 class VSCodeThemeServer:
@@ -182,5 +183,3 @@ class VSCodeThemeServer:
     info = {key: value for key, value in zip(self.info_keys, values)}
     
     return info
-
-
