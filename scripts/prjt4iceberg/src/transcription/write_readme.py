@@ -9,18 +9,26 @@ ROOT_PATH: Path = Path(__file__).parent
 
 md_name = 'readmeTemplate.md'
 tmp_file = Path(ROOT_PATH, '../opt', md_name)
+master_readme = Path(ROOT_PATH, '../../', 'README.md')
 
 
 def to_override(json_dump: str,
                 file_name: str,
                 theme_name: str,
-                override_file: Path = tmp_file):
+                override_file: Path = tmp_file,
+                master_file: Path = master_readme):
   if override_file.suffix != '.md':
     # xxx: 雑
     raise print('markdown')
   source_md = override_file.read_text(encoding='utf-8')
   template: Template = Template(source=source_md)
-  #rendered
+  render_kwargs = {
+    'h2name': 'おほー',
+    'code': 'code',
+  }
+  rendered = template.render(render_kwargs)
+  master_file.write_text(rendered, encoding='utf-8')
+  return rendered
 
 
 # wip: export しないvar も？
