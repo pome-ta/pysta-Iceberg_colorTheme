@@ -253,7 +253,8 @@ if __name__ == '__main__':
     light_url,
   ]
   for u in urls:
-    t = VSCodeThemeServer(u)
+    #t = VSCodeThemeServer(u)
+    to_override('','','')
     #b = build(convert, t)
     # pass
   # t = VSCodeThemeServer(dark_url)

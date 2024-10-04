@@ -1,8 +1,26 @@
+from pathlib import Path
+
+from jinja2 import Template
+
 from .create_url import url_scheme, short_url
 
+# todo: Pythonista3 以外での`Path` 挙動クッション用
+ROOT_PATH: Path = Path(__file__).parent
 
-def to_override(json_dump: str, file_name: str, theme_name: str):
-  pass
+md_name = 'readmeTemplate.md'
+tmp_file = Path(ROOT_PATH, '../opt', md_name)
+
+
+def to_override(json_dump: str,
+                file_name: str,
+                theme_name: str,
+                override_file: Path = tmp_file):
+  if override_file.suffix != '.md':
+    # xxx: 雑
+    raise print('markdown')
+  source_md = override_file.read_text(encoding='utf-8')
+  template: Template = Template(source=source_md)
+  #rendered
 
 
 # wip: export しないvar も？
