@@ -2,7 +2,7 @@ from pathlib import Path
 
 from jinja2 import Template
 
-from .create_url import url_scheme, short_url
+from .create_url import url_scheme, shorten_url
 
 # todo: Pythonista3 以外での`Path` 挙動クッション用
 ROOT_PATH: Path = Path(__file__).parent
@@ -22,6 +22,13 @@ def to_override(json_dump: str,
     raise print('markdown')
   source_md = override_file.read_text(encoding='utf-8')
   template: Template = Template(source=source_md)
+  
+  compiled_scheme = url_scheme(json_dump)
+  shortened_url = shorten_url(compiled_scheme)
+  
+  
+  
+  
   render_kwargs = {
     'h2name': 'おほー',
     'code': 'code',

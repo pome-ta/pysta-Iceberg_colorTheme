@@ -244,6 +244,13 @@ def convert(ts: VSCodeThemeServer) -> dict:
   return main
 
 
+def for_themes(theme_url: str)->str:
+  theme_server = VSCodeThemeServer(theme_url)
+  built_theme = build(convert, theme_server)
+  
+  
+
+
 if __name__ == '__main__':
   dark_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg.color-theme.json'
   light_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg-light.color-theme.json'
@@ -254,7 +261,7 @@ if __name__ == '__main__':
   ]
   for u in urls:
     #t = VSCodeThemeServer(u)
-    t=to_override('','','')
+    t = to_override('', '', '')
     #b = build(convert, t)
     # pass
   # t = VSCodeThemeServer(dark_url)
