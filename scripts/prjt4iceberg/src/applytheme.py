@@ -1,11 +1,11 @@
 from pathlib import Path
 
-from themeconverter import VSCodeThemeServer,build
-#from themeconverter.server import VSCodeThemeServer
-#from themeconverter.build import build
+from themeconverter import VSCodeThemeServer, build
+from transcription import to_override
 
 
 def convert(ts: VSCodeThemeServer) -> dict:
+
   def is_dict_in_none_value(dct: dict | str | None, parent: str = '') -> bool:
     for ky, vl in dct.items():
       if isinstance(vl, dict):
@@ -17,7 +17,7 @@ def convert(ts: VSCodeThemeServer) -> dict:
           print(f'{parent=}:\n\tkey={ky}: value={vl}')
           return True
     return False
-  
+
   main = dict()
   # GitHub Repository Data
   main |= ts.info
@@ -37,10 +37,10 @@ def convert(ts: VSCodeThemeServer) -> dict:
   d['editor_actions_popover_background'] = ts.get_value(
     colors='menu.background')
   d['error_text'] = ts.get_value(colors='editorError.foreground')
-  
+
   # d['font-family'] = 'Menlo-Regular'
   # d['font-siz'] = 15.0
-  
+
   d['gutter_background'] = ts.get_value(colors='editorGutter.background')
   d['gutter_border'] = ts.get_value(colors='tab.border')
   d['interstitial'] = '#ff00ff'  # xxx: 仮
@@ -55,7 +55,7 @@ def convert(ts: VSCodeThemeServer) -> dict:
     colors='editorLineNumber.activeForeground')
   d['thumbnail_border'] = ts.get_value(colors='sideBar.border')
   d['tint'] = ts.get_value(colors='editorCursor.foreground')
-  
+
   s = dict()  # scopes
   s['bold'] = {
     'font-style': 'bold',
@@ -91,19 +91,19 @@ def convert(ts: VSCodeThemeServer) -> dict:
   }
   s['code'] = {
     'background-color':
-      ts.get_value(tokenColors=[
-        'markup.fenced_code.block',
-        'foreground',
-      ]),
+    ts.get_value(tokenColors=[
+      'markup.fenced_code.block',
+      'foreground',
+    ]),
     'corner-radius':
-      2.0,
+    2.0,
   }
   s['codeblock-start'] = {
     'color':
-      ts.get_value(tokenColors=[
-        'markup.inline.raw.string',
-        'foreground',
-      ]),
+    ts.get_value(tokenColors=[
+      'markup.inline.raw.string',
+      'foreground',
+    ]),
   }
   s['comment'] = {
     'color': ts.get_value(tokenColors=[
@@ -126,12 +126,12 @@ def convert(ts: VSCodeThemeServer) -> dict:
   }
   s['docstring'] = {
     'color':
-      ts.get_value(tokenColors=[
-        'entity.other.attribute-name',
-        'foreground',
-      ]),
+    ts.get_value(tokenColors=[
+      'entity.other.attribute-name',
+      'foreground',
+    ]),
     'font-style':
-      'italic',
+    'italic',
   }
   s['escape'] = {
     'background-color': ts.get_value(tokenColors=[
@@ -141,26 +141,26 @@ def convert(ts: VSCodeThemeServer) -> dict:
   }
   s['formatting'] = {
     'color':
-      ts.get_value(tokenColors=[
-        'markup.fenced_code.block',
-        'foreground',
-      ]),
+    ts.get_value(tokenColors=[
+      'markup.fenced_code.block',
+      'foreground',
+    ]),
   }
   s['function'] = {
     'color':
-      ts.get_value(tokenColors=[
-        'entity.name.function.method',
-        'foreground',
-      ]),
+    ts.get_value(tokenColors=[
+      'entity.name.function.method',
+      'foreground',
+    ]),
   }
   s['functiondef'] = {
     'color':
-      ts.get_value(tokenColors=[
-        'entity.name.function.method',
-        'foreground',
-      ]),
+    ts.get_value(tokenColors=[
+      'entity.name.function.method',
+      'foreground',
+    ]),
     'font-style':
-      'bold',
+    'bold',
   }
   s['heading-1'] = {
     'color': ts.get_value(tokenColors=[
@@ -201,11 +201,11 @@ def convert(ts: VSCodeThemeServer) -> dict:
   }
   s['marker'] = {
     'box-background-color':
-      ts.get_value(colors='editorMarkerNavigation.background'),
+    ts.get_value(colors='editorMarkerNavigation.background'),
     'box-border-color':
-      ts.get_value(colors='inputOption.activeBorder'),
+    ts.get_value(colors='inputOption.activeBorder'),
     'box-border-type':
-      4,
+    4,
   }
   s['module'] = {
     'color': ts.get_value(tokenColors=[
@@ -235,9 +235,9 @@ def convert(ts: VSCodeThemeServer) -> dict:
     'color': ts.get_value(colors='notificationsInfoIcon.foreground'),
     'text-decoration': 'strikeout',
   }
-  
+
   d['scopes'] = s
-  
+
   if is_dict_in_none_value(d):
     raise ValueError('設定する値に`None` が存在するため変換できません')
   main |= d
@@ -247,12 +247,16 @@ def convert(ts: VSCodeThemeServer) -> dict:
 if __name__ == '__main__':
   dark_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg.color-theme.json'
   light_url = 'https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg-light.color-theme.json'
-  
-  urls = [dark_url, light_url, ]
+
+  urls = [
+    dark_url,
+    light_url,
+  ]
   for u in urls:
     t = VSCodeThemeServer(u)
-    b = build(convert, t)
+    #b = build(convert, t)
     # pass
   # t = VSCodeThemeServer(dark_url)
   # b = build(convert, t)
   x = 1
+
