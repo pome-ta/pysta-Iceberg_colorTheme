@@ -88,7 +88,7 @@ class VSCodeThemeServer:
       raise ValueError(f'`.json` 形式のファイルではありません\n\turl:{url}')
   
   def __get_tmp_data_info(self) -> list[dict]:
-    data_text = Path(self.tmp_dir, self.file_name).read_text()
+    data_text = Path(self.tmp_dir, self.file_name).read_text(encoding='utf-8')
     loads = json.loads(data_text)
     
     info = self.__create_info(*[loads.get(key) for key in self.info_keys])
