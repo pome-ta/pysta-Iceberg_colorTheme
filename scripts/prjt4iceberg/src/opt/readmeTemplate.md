@@ -9,10 +9,7 @@ Pythonista3 がインストールされている端末で、リンク先をタ�
 
 もしくは、url scheme をPythonista3（console 等）に貼り付けて、ハイパーリンクをタップ。
 
-
-
 {{ section }}
-
 
 ## なんかのせつめい
 

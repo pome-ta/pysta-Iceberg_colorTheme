@@ -1,5 +1,3 @@
-
-
 ### {{ name_header }}
 
 #### Link(URL scheme)
@@ -11,4 +9,3 @@
 ```
 {{ scheme_raw }}
 ```
-

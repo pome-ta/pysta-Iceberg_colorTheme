@@ -1,12 +1,13 @@
 # あ
 
+
 注意事項とか
 
 ## simple import
 
 Pythonista3 がインストールされている端末で、リンク先をタップ。
 
-もしくは、url scheme を Pythonista3（console 等）に貼り付けて、ハイパーリンクをタップ。
+もしくは、url scheme をPythonista3（console 等）に貼り付けて、ハイパーリンクをタップ。
 
 ### Iceberg
 
@@ -37,3 +38,4 @@ pythonista3://?action=add-theme&theme-data=eNqtVk1z4jAMvfdXMPRKGiDQAP-gM7u3nvaSc
 ほけど、ほげほげ
 
 ふが
+
