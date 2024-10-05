@@ -12,14 +12,9 @@ readme_template = 'readmeTemplate.md'
 section_template = 'sectionTemplate.md'
 
 
-def create_section(json_dump: str,
-                   file_name: str,
-                   theme_name: str,
-                   override_file: Path = tmp_file,
-                   section_file: Path = tmp_dir + section_template) -> str:
-  if section_file.suffix != '.md':
-    # xxx: 雑
-    raise print('section markdown')
+def create_section(json_dump: str, file_name: str, theme_name: str) -> str:
+
+  section_file = Path(tmp_dir, section_template)
   section_md = section_file.read_text(encoding='utf-8')
   template: Template = Template(source=section_md)
 
@@ -29,7 +24,7 @@ def create_section(json_dump: str,
   render_kwargs = {
     'name_header': theme_name,
     'link_name': file_name,
-    'link_url': shorten_url,
+    'link_url': shortened_url,
     'scheme_raw': compiled_scheme,
   }
   rendered = template.render(render_kwargs)
@@ -38,26 +33,18 @@ def create_section(json_dump: str,
 
 def to_override(*args):
   new_line = '\n'
-  
   sections = (new_line * 2).join(args)
-  
-  
-  if override_file.suffix != '.md':
-    # xxx: 雑
-    raise print('markdown')
-  source_md = override_file.read_text(encoding='utf-8')
-  template: Template = Template(source=source_md)
 
-  compiled_scheme = url_scheme(json_dump)
-  shortened_url = shorten_url(compiled_scheme)
+  readme_file = Path(tmp_dir, readme_template)
+  readme_md = readme_file.read_text(encoding='utf-8')
+  template: Template = Template(source=readme_md)
 
   render_kwargs = {
-    'h2name': 'おほー',
-    'code': 'code',
+    'section': sections,
   }
   rendered = template.render(render_kwargs)
-  master_file.write_text(rendered, encoding='utf-8')
-  return rendered
+  master_readme = Path(ROOT_PATH, '../../', 'README.md')
+  master_readme.write_text(rendered, encoding='utf-8')
 
 
 # wip: export しないvar も？

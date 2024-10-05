@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from themeconverter import VSCodeThemeServer, build
-from transcription import to_override
+from transcription import create_section, to_override
 
 
 def convert(ts: VSCodeThemeServer) -> dict:
@@ -244,11 +244,13 @@ def convert(ts: VSCodeThemeServer) -> dict:
   return main
 
 
-def for_themes(theme_url: str)->str:
+def for_themes(theme_url: str) -> str:
   theme_server = VSCodeThemeServer(theme_url)
-  built_theme = build(convert, theme_server)
-  
-  
+  json_dump = build(convert, theme_server)
+  file_name = theme_server.file_name
+  theme_name = theme_server.data['name']
+  section = create_section(json_dump, file_name, theme_name)
+  return section
 
 
 if __name__ == '__main__':
@@ -259,12 +261,7 @@ if __name__ == '__main__':
     dark_url,
     light_url,
   ]
-  for u in urls:
-    #t = VSCodeThemeServer(u)
-    t = to_override('', '', '')
-    #b = build(convert, t)
-    # pass
-  # t = VSCodeThemeServer(dark_url)
-  # b = build(convert, t)
+  sections = [for_themes(u) for u in urls]
+  to_override(*sections)
   x = 1
 
