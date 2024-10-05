@@ -10,16 +10,14 @@ Pythonista3 がインストールされている端末で、リンク先をタ�
 もしくは、url scheme をPythonista3（console 等）に貼り付けて、ハイパーリンクをタップ。
 
 
-### {{name_header}}
 
-#### Link(URL scheme)
+{{ section }}
 
-[|tap to import| {{link_name}}]({{link_url}})
 
-#### scheme raw
+## なんかのせつめい
 
-```
-{{code}}
-```
+ほけど、ほげほげ
+
+ふが
 
 
