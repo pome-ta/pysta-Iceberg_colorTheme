@@ -1,3 +1,10 @@
+# (現状)完成版
+
+
+[GitHub - pome-ta/pythonista-iceberg-theme](https://github.com/pome-ta/pythonista-iceberg-theme)
+
+
+
 # pystaColorThemeDev
 
 [cocopon/iceberg.vim](https://github.com/cocopon/iceberg.vim) for [Pythonista 3](http://omz-software.com/pythonista/) color theme
