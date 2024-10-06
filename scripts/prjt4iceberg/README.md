@@ -1,7 +1,6 @@
 # あ
 
-![Iceberg](./screenshot/Iceberg.png)
-![IcebergLight](./screenshot/IcebergLight.png)
+![screenshot](./screenshot/screenshot.png)
 
 注意事項とか
 
