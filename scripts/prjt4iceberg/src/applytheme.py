@@ -244,7 +244,7 @@ def convert(ts: VSCodeThemeServer) -> dict:
   return main
 
 
-def for_themes(theme_url: str) -> str:
+def for_theme_sections(theme_url: str) -> str:
   theme_server = VSCodeThemeServer(theme_url)
   json_dump = build(convert, theme_server)
   file_name = theme_server.file_name
@@ -261,7 +261,7 @@ if __name__ == '__main__':
     dark_url,
     light_url,
   ]
-  sections = [for_themes(u) for u in urls]
+  sections = [for_theme_sections(u) for u in urls]
   to_override(*sections)
   x = 1
 
