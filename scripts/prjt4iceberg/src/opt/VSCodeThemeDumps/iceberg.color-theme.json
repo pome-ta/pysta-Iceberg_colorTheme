@@ -1,10 +1,10 @@
 {
- "_author_name": "cocopon",
- "_file_name": "iceberg.color-theme.json",
- "_file_url": "https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg.color-theme.json",
- "_license_kind": "MIT License",
- "_pushed_at": "2023-01-17T12:49:57Z",
- "_repository_url": "https://github.com/cocopon/vscode-iceberg-theme",
+ "___author_name": "cocopon",
+ "___file_name": "iceberg.color-theme.json",
+ "___file_url": "https://github.com/cocopon/vscode-iceberg-theme/blob/main/themes/iceberg.color-theme.json",
+ "___license_kind": "MIT License",
+ "___pushed_at": "2023-01-17T12:49:57Z",
+ "___repository_url": "https://github.com/cocopon/vscode-iceberg-theme",
  "colors": {
   "activityBar.background": "#161821",
   "activityBar.foreground": "#c6c8d1",

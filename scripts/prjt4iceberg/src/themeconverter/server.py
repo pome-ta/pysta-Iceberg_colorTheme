@@ -15,12 +15,12 @@ class VSCodeThemeServer:
   info: dict
   dump: str
   info_keys: list[str] = [
-    '_repository_url',
-    '_author_name',
-    '_license_kind',
-    '_pushed_at',
-    '_file_name',
-    '_file_url',
+    '___repository_url',
+    '___author_name',
+    '___license_kind',
+    '___pushed_at',
+    '___file_name',
+    '___file_url',
   ]
 
   def __init__(self,
